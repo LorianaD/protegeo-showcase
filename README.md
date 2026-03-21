@@ -1,5 +1,11 @@
 # Protégéo – Showcase
 
+> French project – README available in French only due to legal and contextual specificity.
+
+> Ce projet s’inscrit dans un contexte juridique et administratif français (curatelle, gestion, accompagnement), ce qui explique le choix d’une documentation uniquement en français.
+
+Interface web conçue pour présenter la vitrine du projet Protégéo, avec une architecture front-end refactorisée et évolutive.
+
 Interface web conçue pour présenter la vitrine du projet Protégéo, avec une architecture front-end refactorisée et évolutive.
 
 Cette version publique met en avant la conception UI/UX, la structuration du projet et les bases techniques permettant d’intégrer à terme des fonctionnalités dynamiques telles qu’une FAQ, une communauté et un chatbot d’accompagnement.
