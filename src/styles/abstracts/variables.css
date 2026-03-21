@@ -1,0 +1,25 @@
+:root {
+  --font-primary: "Mariane", sans-serif;
+
+  --color-primary: #2b7fff;
+  --color-primary-dark: #1f5fbf;
+  --color-text: #1e1e1e;
+  --color-background: #f8fbff;
+  --color-white: #ffffff;
+  --color-border: #dbe7f5;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  --container-width: 1200px;
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+}
