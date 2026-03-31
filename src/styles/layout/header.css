@@ -1,0 +1,33 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 24px;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+.brand__container {
+    width: 180px;
+}
+
+.header__logo {
+    width: 100%;
+}
+
+.header__list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+}
+
+.header__item {
+    color: rgba(0, 51, 102, 1);
+    text-decoration-line: underline;
+    line-height: 140%;
+    text-underline-offset: 5px;
+}

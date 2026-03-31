@@ -1,9 +1,11 @@
+import Main from "../components/ui/Main.jsx";
+
 function Home() {
     return(
-        <main>
+        <Main>
             <h1>Protégéo</h1>
             <p>Version showcase du projet</p>
-        </main>
+        </Main>
     )
 }
 

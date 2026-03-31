@@ -1,10 +1,9 @@
 :root {
   --font-primary: "Mariane", sans-serif;
-
   --color-primary: #2b7fff;
   --color-primary-dark: #1f5fbf;
-  --color-text: #1e1e1e;
-  --color-background: #f8fbff;
+  --color-text: rgba(0, 51, 102, 1);
+  --color-background: rgb(207, 232, 248);
   --color-white: #ffffff;
   --color-border: #dbe7f5;
 
