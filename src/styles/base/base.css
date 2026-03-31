@@ -27,3 +27,19 @@ textarea,
 select {
   font: inherit;
 }
+
+li {
+  list-style: none;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  background-color: var(--color-white);
+  align-items: center;
+  gap: 48px;
+  padding: 50px;
+  min-height: 100vh;
+  margin: auto;
+}
