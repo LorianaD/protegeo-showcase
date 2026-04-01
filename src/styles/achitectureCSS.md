@@ -10,8 +10,9 @@ styles/
         reset.css
         base.css
     layout/             ->  Pour les grandes structures réutilisables.
-        container.css
-        grid.css
+        main.css
+        header.css
+        footer.css
     components/         ->  Pour les styles des blocs réutilisables, sans les mettre dans les composants JSX.
         buttons.css
         cards.css

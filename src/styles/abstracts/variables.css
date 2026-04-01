@@ -1,24 +1,55 @@
 :root {
-  --font-primary: "Mariane", sans-serif;
-  --color-primary: #2b7fff;
-  --color-primary-dark: #1f5fbf;
-  --color-text: rgba(0, 51, 102, 1);
-  --color-background: rgb(207, 232, 248);
-  --color-white: #ffffff;
-  --color-border: #dbe7f5;
+  /* ***********************************
+    TYPOGRAPHIE
+  *********************************** */
+  --font-primary: "Mariane", Arial, sans-serif;
 
+  /* ***********************************
+    COULEURS
+  *********************************** */
+  --color-primary: #003366;
+  --color-secondary: #0078A8;
+
+  --color-success: #4CAF50;
+  --color-error: #D32F2F;
+
+  --color-text: #333333;
+  --color-background: #FFFFFF;
+
+  --color-border: #e0e0e0;
+
+  /* ***********************************
+    RADIUS
+  *********************************** */
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
 
+  /* ***********************************
+    SHADOW
+  *********************************** */  
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.06);
 
+  /* ***********************************
+    LAYOUT
+  *********************************** */ 
   --container-width: 1200px;
 
+  /* ***********************************
+    SPACING
+  *********************************** */ 
   --space-xs: 0.5rem;
   --space-sm: 0.75rem;
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
   --space-2xl: 3rem;
+
+  /* ***********************************
+    BREAKPOINTS
+  *********************************** */
+  --bp-mobile: 480px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  
 }
