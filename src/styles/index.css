@@ -11,7 +11,7 @@
 /* *****************************************
    LAYOUT
 ***************************************** */
-/* @import "./layout/container.css"; */
+@import "./layout/main.css";
 @import "./layout/header.css";
 @import "./layout/footer.css";
 

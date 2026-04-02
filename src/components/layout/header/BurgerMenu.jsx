@@ -1,4 +1,4 @@
-import menuBurger from "../../assets/imgs/menu-burger.png";
+import menuBurger from "../../../assets/imgs/menu-burger.png";
 
 function BurgerMenu({toggleMenu, isMenuOpen}) {
     return(

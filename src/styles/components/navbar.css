@@ -44,15 +44,15 @@
     align-items: center;
     width: 100%;
     padding: 28px 0;
-    color: #1f1f1f;
+    color: var(--color-primary);
     text-decoration: none;
-    font-size: 2rem;
-    font-weight: 700;
     line-height: 1.2;
 }
 
-.header__arrow {
-    font-size: 1.8rem;
-    color: var(--color-primary);
-    line-height: 1;
+.header__link:hover {
+    font-weight: 600;
+}
+
+.header__link--active {
+    font-weight: 600;
 }

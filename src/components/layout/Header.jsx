@@ -1,9 +1,9 @@
 import { Link } from "react-router"
 import logo from "../../assets/imgs/logo-protegeo.png";
-import Navbar from "./Navbar.jsx";
+import Navbar from "./header/Navbar.jsx";
 import { useState } from "react";
-import BurgerMenu from "./BurgerMenu.jsx";
-import MobileMenu from "./MobileMenu.jsx";
+import BurgerMenu from "./header/BurgerMenu.jsx";
+import MobileMenu from "./header/MobileMenu.jsx";
 
 function Header() {
 

@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    background-color: var(--color-background);
+    align-items: center;
+    gap: 48px;
+    padding: 50px;
+    min-height: 100vh;
+    margin: auto;
+}
+
+/* ***********************************
+    Responsive
+*********************************** */
+
+@media screen and (max-width: 1024px) {
+    .main {
+        width: 100%;
+    }
+}
