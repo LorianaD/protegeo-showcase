@@ -1,3 +1,39 @@
+/* *****************************************
+   ABSTRACTS
+***************************************** */
 @import "./abstracts/variables.css";
+
+/* *****************************************
+   BASE
+***************************************** */
 @import "./base/base.css";
+
+/* *****************************************
+   LAYOUT
+***************************************** */
+/* @import "./layout/container.css"; */
 @import "./layout/header.css";
+/* @import "./layout/footer.css"; */
+
+/* *****************************************
+   COMPONENTS
+***************************************** */
+/* @import "./components/buttons.css"; */
+/* @import "./components/cards.css"; */
+/* @import "./components/forms.css"; */
+/* @import "./components/tables.css"; */
+/* @import "./components/modals.css"; */
+@import "./components/navbar.css";
+
+/* ******************************************
+   PAGES
+****************************************** */
+/* @import "./pages/home.css"; */
+/* @import "./pages/about.css"; */
+/* @import "./pages/faq.css"; */
+/* @import "./pages/community.css"; */
+
+/* *****************************************
+   UTILITIES
+***************************************** */
+/* @import "./utilities/helpers.css"; */
