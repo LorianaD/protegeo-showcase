@@ -1,4 +1,4 @@
-import Main from "../components/ui/Main.jsx";
+import Main from "../components/layout/Main.jsx";
 
 function Home() {
     return(

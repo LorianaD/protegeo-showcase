@@ -7,10 +7,12 @@
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: var(--shadow-sm);
     position: relative;
+    z-index: 20;
 }
 
 .brand__container {
     width: 180px;
+    flex-shrink: 0;
 }
 
 .header__logo {
@@ -21,7 +23,6 @@
     display: none;
     justify-content: center;
     align-items: center;
-    background: transparent;
     cursor: pointer;
     width: 56px;
     height: 56px;
@@ -65,7 +66,7 @@
     .mobile-menu {
         display: none;
         position: absolute;
-        top: calc(100% + 12px);
+        top: 0;
         left: 0;
         width: 100%;
         background-color: #f8f8f8;

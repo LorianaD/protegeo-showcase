@@ -1,4 +1,4 @@
-import Navbar from "./Navbar"
+import Navbar from "./Navbar.jsx"
 
 function MobileMenu({isMenuOpen, closeMenu}) {
     return(

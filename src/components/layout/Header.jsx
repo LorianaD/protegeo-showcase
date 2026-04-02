@@ -31,10 +31,10 @@ function Header() {
             </div>
 
             {/* Bouton burger mobile */}
-            <BurgerMenu/>
+            <BurgerMenu toggleMenu={toggleMenu} isMenuOpen={isMenuOpen}/>
 
             {/* Menu mobile */}
-            <MobileMenu/>
+            <MobileMenu isMenuOpen={isMenuOpen} closeMenu={closeMenu}/>
         </header>
     )
 }

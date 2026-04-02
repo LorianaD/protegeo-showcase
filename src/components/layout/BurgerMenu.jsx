@@ -9,7 +9,7 @@ function BurgerMenu({toggleMenu, isMenuOpen}) {
             aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={isMenuOpen}
         >
-            <img src={menuBurger} alt="" className="header__burger-icon" />
+            <img src={menuBurger} alt="menu" className="header__burger-icon" />
         </button>        
     )
 }
