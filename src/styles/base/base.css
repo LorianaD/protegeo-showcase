@@ -8,7 +8,7 @@ body {
   margin: 0;
   font-family: var(--font-primary);
   color: var(--color-text);
-  background-color: var(--color-background);
+  background-color: #CFE8F8;
 }
 
 img {
@@ -30,16 +30,4 @@ select {
 
 li {
   list-style: none;
-}
-
-.main {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  background-color: var(--color-white);
-  align-items: center;
-  gap: 48px;
-  padding: 50px;
-  min-height: 100vh;
-  margin: auto;
 }
