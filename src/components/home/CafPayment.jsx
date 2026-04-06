@@ -16,7 +16,7 @@ function CafPayment() {
                         { CafPaymentData.item3 }
                     </li>
                 </ul>
-                <PrimaryButton children={ CafPaymentData.btn } href={ CafPaymentData.href }/>
+                <PrimaryButton children={ CafPaymentData.btn } href={ CafPaymentData.link }/>
         </SectionContainer>
     )
 }

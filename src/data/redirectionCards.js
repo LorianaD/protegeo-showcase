@@ -11,7 +11,7 @@ const redirectionCards = {
         img: measureIcon,
         title: "Comprendre la mesure",
         description: "Tutelle, curatelle, sauvegarde de justice : des explications simples...",
-        link: "/"
+        link: "/measure"
     },
 
     helps: {
@@ -19,7 +19,7 @@ const redirectionCards = {
         img: helpsIcon,
         title: "Vos aides et droits",
         description: "CAF, MDPH, CPAM, impôts.",
-        link: "/"
+        link: "/helps"
     },
 
     account: {
@@ -27,7 +27,7 @@ const redirectionCards = {
         img: accountIcon,
         title: "Le compte de gestion",
         description: "Explication simple et exemples.",
-        link: "/"
+        link: "/account"
     },
 
     contact: {
@@ -35,15 +35,15 @@ const redirectionCards = {
         img: contactIcon,
         title: "Contact & sources officielles",
         description: "Sites officiels, annuaires MDPH, CAF, CPAM.",
-        link: "/"
+        link: "/contact"
     },
 
     template: {
-        name: "template",
+        name: "templates",
         img: templateIcon,
         title: "Modèles utiles",
         description: "Dossiers, attestations, documents PDF nécessaires.",
-        link: "/"
+        link: "/templates"
     },
 
     steps: {
@@ -51,7 +51,7 @@ const redirectionCards = {
         img: stepsIcon,
         title: "Étapes après le jugement",
         description: "Les actions indispensables après la décision.",
-        link: "/"
+        link: "/steps"
     },
 };
 

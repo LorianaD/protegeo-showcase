@@ -3,7 +3,7 @@ const hero =
         title: "Simplifiez la gestion de la protection juridique",
         description: "Informations essentielles, démarches expliquées, outils pour tuteurs, curateurs et familles.",
         btn: "Découvrir Protégéo",
-        link: "/"
+        link: "/about"
     }
 
 const CafPaymentData =

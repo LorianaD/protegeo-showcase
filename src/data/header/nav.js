@@ -1,7 +1,7 @@
 const navLinks = [
     { id: 1, label: "Accueil", path: "/" },
-    { id: 2, label: "Comprendre", path: "/understand" },
-    { id: 3, label: "Aides", path: "/aides" },
+    { id: 2, label: "Comprendre", path: "/measure" },
+    { id: 3, label: "Aides", path: "/helps" },
     { id: 4, label: "Modèles", path: "/templates" },
     { id: 5, label: "Étapes", path: "/steps" },
     { id: 6, label: "Contact", path: "/contact" },
