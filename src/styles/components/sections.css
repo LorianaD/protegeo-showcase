@@ -38,7 +38,7 @@ Section lien de redirection
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 30px 30px;
     width: 100%;
 }
 
