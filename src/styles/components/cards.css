@@ -44,3 +44,15 @@ Redirection cards
     color: #0078A8;
     font-size: 16px;
 }
+
+/* ***********************************
+    Responsive
+*********************************** */
+
+@media screen and (max-width: 768px) {
+
+    .redirection-card {
+        width: 100%;
+    }
+
+}
