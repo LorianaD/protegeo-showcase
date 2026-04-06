@@ -1,0 +1,15 @@
+/***********************************
+CAF Payment Section
+***********************************/
+.caf-payment__list {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+    width: 100%;
+    padding-left: 20px;
+}
+
+.caf-payment__item {
+    list-style: disc;
+    width: 100%;
+}

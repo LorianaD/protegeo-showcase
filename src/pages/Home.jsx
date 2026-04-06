@@ -1,10 +1,14 @@
+import CafPayment from "../components/home/CafPayment.jsx";
+import CardsRedirections from "../components/home/CardsRedirections.jsx";
+import Hero from "../components/home/Hero.jsx";
 import Main from "../components/layout/Main.jsx";
 
 function Home() {
     return(
         <Main>
-            <h1>Protégéo</h1>
-            <p>Version showcase du projet</p>
+            <Hero/>
+            <CardsRedirections/>
+            <CafPayment/>
         </Main>
     )
 }

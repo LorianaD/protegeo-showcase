@@ -1,0 +1,46 @@
+/* *******************
+Redirection cards
+******************* */
+.redirection-card {
+    display: flex;
+    width: 300px;
+    height: 260px;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    background: #FFF;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
+    line-height: 140%;
+    font-family: var(--font-secondary);
+}
+
+.redirection-card__icon {
+    width: 47px;
+    height: 47px;
+    aspect-ratio: 1/1;
+}
+
+.redirection-card__img {
+    width: 100%;
+}
+
+.redirection-card__title {
+    color: #003366;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.redirection-card__description {
+    color: #333333;
+    text-align: center;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.redirection-card__link {
+    color: #0078A8;
+    font-size: 16px;
+}
