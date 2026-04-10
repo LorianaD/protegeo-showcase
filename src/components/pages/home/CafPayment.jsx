@@ -1,6 +1,6 @@
-import SectionContainer from "../ui/SectionContainer.jsx";
-import PrimaryButton from "../ui/PrimaryButton.jsx";
-import { CafPaymentData } from "../../data/homePage.js";
+import SectionContainer from "../../ui/SectionContainer.jsx";
+import PrimaryButton from "../../ui/PrimaryButton.jsx";
+import { CafPaymentData } from "../../../data/homePage.js";
 
 function CafPayment() {
     return(

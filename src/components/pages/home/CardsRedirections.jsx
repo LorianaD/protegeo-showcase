@@ -1,4 +1,4 @@
-import SectionCardsContainer from "../ui/SectionCardsContainer.jsx";
+import SectionCardsContainer from "../../ui/SectionCardsContainer.jsx";
 
 function CardsRedirections() {
     return(

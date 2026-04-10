@@ -9,6 +9,7 @@ import Contact from './pages/Contact'
 import Login from './pages/Login'
 import About from './pages/About'
 import Account from './pages/Account'
+import Register from './pages/Register'
 
 function App() {
   return (
@@ -21,8 +22,9 @@ function App() {
         <Route path='/steps' element={<Steps/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/account' element={<Account/>}/>
-        <Route path='/login' element={<Login/>}/>
         <Route path='/about' element={<About/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/register' element={<Register />}/>
       </Route>
     </Routes>
   )

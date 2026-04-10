@@ -1,10 +1,10 @@
 import Main from "../components/layout/Main";
+import InBuild from "../components/ui/messages/InBuild";
 
 function Helps() {
     return(
         <Main>
-            <h2>Helps Page</h2>
-            <p>En construction</p>
+            <InBuild title={"Vos aides et droits"}/>
         </Main>
     )
 }

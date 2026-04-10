@@ -1,5 +1,5 @@
-import SectionHeroContainer from "../ui/SectionHeroContainer";
-import { hero } from "../../data/homePage.js";
+import SectionHeroContainer from "../../ui/SectionHeroContainer.jsx";
+import { hero } from "../../../data/homePage.js";
 
 function Hero() {
     return(

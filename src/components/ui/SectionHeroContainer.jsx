@@ -9,7 +9,9 @@ function SectionHeroContainer({ title, description, btn, to }) {
             <p className="hero-container_description">
                 { description }
             </p>
-            <PrimaryButton children={ btn } to={ to } />
+            {btn && (
+                <PrimaryButton children={ btn } to={ to } />
+            )}
         </section>
     )
 }

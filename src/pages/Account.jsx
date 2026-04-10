@@ -1,10 +1,10 @@
 import Main from "../components/layout/Main";
+import InBuild from "../components/ui/messages/InBuild";
 
 function Account() {
     return (
         <Main>
-            <h2>About Measure Page</h2>
-            <p>En construction</p>
+            <InBuild title={"Le compte de gestion"}/>
         </Main>
     )
 }

@@ -1,10 +1,10 @@
 import Main from "../components/layout/Main";
+import InBuild from "../components/ui/messages/InBuild";
 
 function Contact() {
     return (
         <Main>
-            <h2>Contact Page</h2>
-            <p>En construction</p>
+            <InBuild title={ "Contacts et sources officielles" }/>
         </Main>
     )
 }

@@ -1,10 +1,10 @@
 import Main from "../components/layout/Main";
+import InBuild from "../components/ui/messages/InBuild";
 
 function About() {
     return (
         <Main>
-            <h2>About Page</h2>
-            <p>En construction</p>
+            <InBuild title={"À propos"} />
         </Main>
     )
 }

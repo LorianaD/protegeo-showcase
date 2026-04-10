@@ -1,12 +1,12 @@
 import Main from "../components/layout/Main";
 import InBuild from "../components/ui/messages/InBuild";
 
-function Login() {
+function Register() {
     return (
         <Main>
-            <InBuild title={"Connexion à Protégéo"}/>
+            <InBuild title={"Création  de compte sur Protégéo"}/>
         </Main>
     )
 }
 
-export default Login;
+export default Register;
