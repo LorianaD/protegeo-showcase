@@ -1,8 +1,7 @@
-import SectionContainer from "../../ui/SectionContainer.jsx";
-import PrimaryButton from "../../ui/PrimaryButton.jsx";
+import { SectionContainer , PrimaryButton } from "../../ui";
 import { CafPaymentData } from "../../../data/homePage.js";
 
-function CafPayment() {
+function CafPaymentHome() {
     return(
         <SectionContainer title={ CafPaymentData.title }>
                 <ul className="caf-payment__list">
@@ -21,4 +20,4 @@ function CafPayment() {
     )
 }
 
-export default CafPayment;
+export default CafPaymentHome;

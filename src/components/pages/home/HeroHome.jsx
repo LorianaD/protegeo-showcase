@@ -1,9 +1,10 @@
-import SectionHeroContainer from "../../ui/SectionHeroContainer.jsx";
+import { SectionHeroContainer } from "../../ui";
 import { hero } from "../../../data/homePage.js";
 
-function Hero() {
+function HeroHome() {
     return(
         <SectionHeroContainer 
+            variant="home"
             title={hero.title}
             description={hero.description}
             btn={hero.btn}
@@ -12,4 +13,4 @@ function Hero() {
     )
 }
 
-export default Hero
+export default HeroHome;

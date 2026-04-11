@@ -1,6 +1,6 @@
 import Main from "../components/layout/Main";
-import HeroMeasure from "../components/pages/measure/HeroMeasure";
-import InBuild from "../components/ui/messages/InBuild";
+import { HeroMeasure } from "../components/pages/measure";
+import { InBuild } from "../components/ui";
 
 function Measure() {
     return(

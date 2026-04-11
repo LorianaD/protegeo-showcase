@@ -8,25 +8,44 @@ Sections Hero
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 24px;
     background-color: var(--color-background);
     width: 100%;
+    font-family: var(--font-primary);
 }
 
-.hero-container_title {
+.hero-container__title {
     color: var(--color-primary);
-    font-size: 36px;
-    line-height: 140%;
-    font-weight: 900;
     width: 100%;
+    font-size: 36px;
+    font-weight: 900;
 }
 
-.hero-container_description {
+.hero-container__description {
     text-align: justify;
-    font-size: 36px;
-    line-height: 140%;
     color: #000000;
     width: 100%;
+}
+
+/***** home *****/
+
+.hero--home {
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    border-radius: 12px;
+    gap: 24px;
+}
+
+.hero--home, .hero__description {
+    font-size: 36px;
+}
+
+/***** public *****/
+
+.hero--public {
+    gap: 32px;
+}
+
+.hero--public .hero__description {
+    font-size: 20px;
 }
 
 /***********************************
