@@ -99,6 +99,10 @@ Sections
 *********************************** */
 
 @media screen and (max-width: 1024px) {
+    .hero-container__description {
+        text-align: left;
+    }
+
     .section-cards-container {
         justify-content: center;
     }
