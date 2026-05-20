@@ -1,4 +1,4 @@
-import { access } from "../../../data/helpsPage";
+import { helpsAccess as access } from "../../../data";
 import { ItemCard, PrimaryButton, SectionContainer } from "../../ui";
 
 function AccessHelps() {

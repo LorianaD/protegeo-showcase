@@ -1,18 +1,18 @@
-import { role } from "../../../data/measurePage";
+import { measureRole } from "../../../data";
 import { SectionContainer, ItemCard } from "../../ui";
 
 function RoleMeasure() {
     return (
-        <SectionContainer title={role.title}>
+        <SectionContainer title={measureRole.title}>
             
             <ItemCard
                 lists={[
                     {
-                        title: role.description.title,
-                        items: role.description.items,
+                        title: measureRole.description.title,
+                        items: measureRole.description.items,
                     },
                 ]}
-                conclusion={role.description.conclusion}
+                conclusion={measureRole.description.conclusion}
             />
             
         </SectionContainer>

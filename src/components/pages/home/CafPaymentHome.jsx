@@ -1,21 +1,21 @@
 import { SectionContainer , PrimaryButton } from "../../ui";
-import { CafPaymentData } from "../../../data/homePage.js";
+import { homeCafPaymentData } from "../../../data";
 
 function CafPaymentHome() {
     return(
-        <SectionContainer title={ CafPaymentData.title }>
+        <SectionContainer title={ homeCafPaymentData.title }>
                 <ul className="caf-payment__list">
                     <li className="caf-payment__item">
-                        { CafPaymentData.item1 }
+                        { homeCafPaymentData.item1 }
                     </li>
                     <li className="caf-payment__item">
-                        { CafPaymentData.item2 }
+                        { homeCafPaymentData.item2 }
                     </li>
                     <li className="caf-payment__item">
-                        { CafPaymentData.item3 }
+                        { homeCafPaymentData.item3 }
                     </li>
                 </ul>
-                <PrimaryButton children={ CafPaymentData.btn } href={ CafPaymentData.link }/>
+                <PrimaryButton children={ homeCafPaymentData.btn } href={ homeCafPaymentData.link }/>
         </SectionContainer>
     )
 }

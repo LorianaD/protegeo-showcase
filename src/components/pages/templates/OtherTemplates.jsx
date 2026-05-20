@@ -1,11 +1,11 @@
-import { other } from "../../../data/templatesPage";
+import { templatesOther } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function OtherTemplates() {
     return (
-        <SectionContainer title={other.title}>
+        <SectionContainer title={templatesOther.title}>
             <ItemCard
-                lists={other.lists}
+                lists={templatesOther.lists}
             />
         </SectionContainer>
     )

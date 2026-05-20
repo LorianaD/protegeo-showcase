@@ -1,11 +1,11 @@
-import { banks } from "../../../data/templatesPage";
+import { templatesBanks } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function BanksTemplates() {
     return (
-        <SectionContainer title={banks.title}>
+        <SectionContainer title={templatesBanks.title}>
             <ItemCard
-                lists={banks.lists}
+                lists={templatesBanks.lists}
             />
         </SectionContainer>
     )

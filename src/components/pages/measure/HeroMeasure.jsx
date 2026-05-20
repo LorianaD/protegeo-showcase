@@ -1,12 +1,12 @@
-import { hero } from "../../../data/measurePage";
+import { measureHero } from "../../../data";
 import { SectionHeroContainer } from "../../ui";
 
 function HeroMeasure() {
     return (
         <SectionHeroContainer
             variant="public"
-            title={hero.title}
-            description={hero.description}
+            title={measureHero.title}
+            description={measureHero.description}
         />
     )
 }

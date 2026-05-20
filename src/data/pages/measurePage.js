@@ -1,10 +1,10 @@
-const hero = 
+const measureHero = 
 {
     title: "Comprendre les mesures de protection juridique",
     description: "Les mesures de tutelle, curatelle et sauvegarde de justice ont pour but de protéger une personne vulnérable dans la gestion de ses droits et de ses biens. Voici les différences expliquées simplement.",
 }
 
-const measures =
+const measureMeasures =
 {
     title: "Les mesures",
     cards: [
@@ -79,7 +79,7 @@ const measures =
     ]
 };
 
-const role = {
+const measureRole = {
     title: "Le rôle du tuteur ou curateur",
     description: {
         title: "Le tuteur ou curateur est chargé de:",
@@ -95,7 +95,7 @@ const role = {
     },
 };
 
-const protectedPersonneRights = {
+const measureProtectedPersonneRights = {
     title: "Les droits de la personne protégée",
     description: {
         title: "Même sous mesure de protection, la personne conserve:",
@@ -112,8 +112,8 @@ const protectedPersonneRights = {
 };
 
 export {
-    hero,
-    measures,
-    role,
-    protectedPersonneRights,
+    measureHero,
+    measureMeasures,
+    measureRole,
+    measureProtectedPersonneRights,
 }

@@ -1,4 +1,19 @@
-function ItemCard({ title, description, lists = [], infos = [], links = [], conclusion }) {
+function ItemCard({ title, description, lists = [], infos = [], links = [], conclusion, linkPosition = "bottom" }) {
+    
+    const renderLinks = () => (
+        links.map((link, index) => (
+            <a
+                key={index}
+                href={link.href}
+                className="item-card__link"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                {link.label}
+            </a>
+        ))
+    );
+    
     return (
         <article className="item-card">
             <h3 className="item-card__title">{title}</h3>
@@ -9,6 +24,8 @@ function ItemCard({ title, description, lists = [], infos = [], links = [], conc
                 </p>
             )}
 
+            {linkPosition === "beforeLists" && renderLinks()}
+
             {lists.map((list, index) => (
                 <div key={index} className="item-card__group">
                     {list.title && (
@@ -18,7 +35,38 @@ function ItemCard({ title, description, lists = [], infos = [], links = [], conc
                     <ul className="item-card__list">
                         {list.items.map((item, itemIndex) => (
                             <li key={itemIndex} className="item-card__list-item">
-                                {item}
+                                {typeof item === "string" ? (
+                                    item
+                                ) : (
+                                    <>
+                                        <div className="item-card__row">
+                                            <strong className="item-card__label">
+                                                {item.label}
+                                            </strong>
+                                                {item.details}
+                                        </div>
+
+                                        {item.text && (
+                                            item.textAsParagraph ? (
+                                                <p className="item-card__extra">{item.text}</p>
+                                            ) : (
+                                                <> {item.text}</>
+                                            )
+                                        )}
+
+                                        {item.href && (
+                                            <a href={item.href} className="item-card__link" target="_blank" rel="noopener noreferrer">
+                                                {item.href}
+                                            </a>
+                                        )}
+
+                                        {item.extra && (
+                                            <p className="item-card__extra">
+                                                {item.extra}
+                                            </p>
+                                        )}
+                                    </>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -32,11 +80,7 @@ function ItemCard({ title, description, lists = [], infos = [], links = [], conc
                 </p>
             ))}
 
-            {links.map((link, index) => (
-                <a href={link.href} className="item-card__link" target="_blank">
-                    {link.label}
-                </a>
-            ))}
+            {linkPosition === "bottom" && renderLinks()}
 
             {conclusion && (
                 <p className="item-card__description">

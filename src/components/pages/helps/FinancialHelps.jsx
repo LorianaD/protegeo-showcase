@@ -1,4 +1,4 @@
-import { financial } from "../../../data/helpsPage";
+import { helpsFinancial as financial } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function FinancialHelps() {

@@ -1,4 +1,4 @@
-const hero = 
+const templatesHero = 
 {
     title: "Courriers administratifs — Modèles généraux",
     lists: [
@@ -14,7 +14,7 @@ const hero =
     ]
 }
 
-const caf =
+const templatesCaf =
 {
     title: "CAF — Modèles de courriers",
     lists: [
@@ -30,7 +30,7 @@ const caf =
     ]
 }
 
-const mdph =
+const templatesMdph =
 {
     title: "MDPH — Modèles de courriers et formulaires",
     lists: [
@@ -47,7 +47,7 @@ const mdph =
     ]
 }
 
-const cpam =
+const templatesCpam =
 {
     title: "CPAM — Modèles de courriers",
     lists: [
@@ -65,7 +65,7 @@ const cpam =
     ]
 }
 
-const taxes =
+const templatesTaxes =
 {
     title: "Impôts — Modèles de courriers",
     lists: [
@@ -82,7 +82,7 @@ const taxes =
     ]
 }
 
-const banks =
+const templatesBanks =
 {
     title: "Banque — Modèles de courriers essentiels",
     lists: [
@@ -99,7 +99,7 @@ const banks =
     ]
 }
 
-const other =
+const templatesOther =
 {
     title: "Attestations et documents divers",
     lists: [
@@ -118,11 +118,11 @@ const other =
 }
 
 export {
-    hero,
-    caf,
-    mdph,
-    cpam,
-    taxes,
-    banks,
-    other,
+    templatesHero,
+    templatesCaf,
+    templatesMdph,
+    templatesCpam,
+    templatesBanks,
+    templatesTaxes,
+    templatesOther,
 }

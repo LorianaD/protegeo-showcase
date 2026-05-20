@@ -1,7 +1,7 @@
-import { cpam } from "../../../data/helpsPage";
+import { helpsCpam as cpam } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
-function CpamHelps(params) {
+function CpamHelps() {
     return (
         <SectionContainer title={cpam.title}>
 

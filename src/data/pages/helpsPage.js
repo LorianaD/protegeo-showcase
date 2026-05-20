@@ -1,10 +1,10 @@
-const hero = 
+const helpsHero = 
 {
     title: "Comprendre les mesures de protection juridique",
     description: "Les mesures de tutelle, curatelle et sauvegarde de justice ont pour but de protéger une personne vulnérable dans la gestion de ses droits et de ses biens. Voici les différences expliquées simplement.",
 }
 
-const financial =
+const helpsFinancial =
 {
     title: "Aides financières et sociales",
     cards: [
@@ -84,7 +84,7 @@ const financial =
     ]
 }
 
-const mdph = {
+const helpsMdph = {
     title: "MDPH - Droits & démarches",
     description: "La MDPH évalue la situation de handicap de la personne protégée.",
     lists: [
@@ -107,7 +107,7 @@ const mdph = {
     conclusion: "Toujours anticiper les renouvellements.",
 };
 
-const cpam = {
+const helpsCpam = {
     title: "CPAM - Droits à la santé",
     infos: [
         {
@@ -121,7 +121,7 @@ const cpam = {
     ]
 }
 
-const taxes = {
+const helpsTaxes = {
     title: "Impôts - Déclaration & obligations",
     lists: [
         {
@@ -141,7 +141,7 @@ const taxes = {
     ],
 };
 
-const access = {
+const helpsAccess = {
     title: "Évaluer vos droits et aides disponibles",
     description: "Il existe plusieurs outils officiels permettant de connaître vos droits, d’estimer des aides financières ou d’accéder aux services proches de chez vous :",
     infos: [
@@ -170,7 +170,7 @@ const access = {
     href: "https://www.mesdroitssociaux.gouv.fr/accueil/",
 };
 
-const transport = {
+const helpsTransport = {
     title: "Aides locales au transport et à la mobilité",
     description: "Selon votre région ou département, des aides spécifiques existent :",
     lists: [
@@ -203,11 +203,11 @@ const transport = {
 };
 
 export {
-    hero,
-    financial,
-    mdph,
-    cpam,
-    taxes,
-    access,
-    transport,
+    helpsHero,
+    helpsFinancial,
+    helpsMdph,
+    helpsCpam,
+    helpsTaxes,
+    helpsAccess,
+    helpsTransport,
 }

@@ -1,4 +1,4 @@
-const hero = 
+const homeHero = 
     {
         title: "Simplifiez la gestion de la protection juridique",
         description: "Informations essentielles, démarches expliquées, outils pour tuteurs, curateurs et familles.",
@@ -6,7 +6,7 @@ const hero =
         link: "/about"
     }
 
-const CafPaymentData =
+const homeCafPaymentData =
     {
         title : "Versements CAF",
         item1 : "AAH / RSA / Allocations familiales sont versées le 5 du mois.",
@@ -17,6 +17,6 @@ const CafPaymentData =
     }
 
 export {
-    hero,
-    CafPaymentData
+    homeHero,
+    homeCafPaymentData,
 }

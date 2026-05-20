@@ -1,12 +1,12 @@
-import { hero } from "../../../data/templatesPage";
+import { templatesHero } from "../../../data";
 import { ItemCard, SectionHeroContainer } from "../../ui";
 
 function HeroTemplates() {
     return (
-        <SectionHeroContainer variant="public" title={hero.title}>
+        <SectionHeroContainer variant="public" title={templatesHero.title}>
             <ItemCard
-                lists={hero.lists}
-                infos={hero.infos}
+                lists={templatesHero.lists}
+                infos={templatesHero.infos}
             />
         </SectionHeroContainer>
     )

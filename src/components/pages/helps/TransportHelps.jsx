@@ -1,4 +1,4 @@
-import { transport } from "../../../data/helpsPage";
+import { helpsTransport as transport } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function TransportHelps() {

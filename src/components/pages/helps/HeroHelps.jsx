@@ -1,4 +1,4 @@
-import { hero } from "../../../data/helpsPage";
+import { helpsHero as hero } from "../../../data";
 import { SectionHeroContainer } from "../../ui";
 
 function HeroHelps() {

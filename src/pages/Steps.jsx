@@ -1,10 +1,13 @@
 import Main from "../components/layout/Main";
+import { CardsRedirectionsSteps, HeroSteps, StepsSteps } from "../components/pages/steps";
 import InBuild from "../components/ui/messages/InBuild";
 
 function Steps() {
     return (
         <Main>
-            <InBuild title={"Étapes essentielles après le jugement"} />
+            <HeroSteps/>
+            <StepsSteps/>
+            <CardsRedirectionsSteps/>
         </Main>
     )
 }

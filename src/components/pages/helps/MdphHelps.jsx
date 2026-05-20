@@ -1,4 +1,4 @@
-import { mdph } from "../../../data/helpsPage";
+import { helpsMdph as mdph } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function MdphHelps() {

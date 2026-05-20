@@ -1,17 +1,17 @@
-import { protectedPersonneRights } from "../../../data/measurePage";
+import { measureProtectedPersonneRights } from "../../../data";
 import { SectionContainer, ItemCard } from "../../ui";
 
 function ProtectedPersonneRightsMeasure() {
     return (
-        <SectionContainer title={protectedPersonneRights.title}>
+        <SectionContainer title={measureProtectedPersonneRights.title}>
             <ItemCard
                 lists={[
                     {
-                        title: protectedPersonneRights.description.title,
-                        items: protectedPersonneRights.description.items,
+                        title: measureProtectedPersonneRights.description.title,
+                        items: measureProtectedPersonneRights.description.items,
                     },
                 ]}
-                conclusion={protectedPersonneRights.description.conclusion}
+                conclusion={measureProtectedPersonneRights.description.conclusion}
             />
         </SectionContainer>
     )

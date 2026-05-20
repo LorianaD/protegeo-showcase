@@ -1,11 +1,11 @@
-import { caf } from "../../../data/templatesPage";
+import { templatesCaf } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function CafTemplates() {
     return (
-        <SectionContainer title={caf.title}>
+        <SectionContainer title={templatesCaf.title}>
             <ItemCard
-                lists={caf.lists}
+                lists={templatesCaf.lists}
             />
         </SectionContainer>
     )

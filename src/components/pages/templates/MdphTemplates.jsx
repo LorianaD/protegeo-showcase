@@ -1,11 +1,11 @@
-import { mdph } from "../../../data/templatesPage";
+import { templatesMdph } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function MdphTemplates() {
     return (
-        <SectionContainer title={mdph.title}>
+        <SectionContainer title={templatesMdph.title}>
             <ItemCard
-                lists={mdph.lists}
+                lists={templatesMdph.lists}
             />
         </SectionContainer>
     )

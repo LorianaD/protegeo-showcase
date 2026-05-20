@@ -1,4 +1,4 @@
-import { taxes } from "../../../data/helpsPage";
+import { helpsTaxes as taxes } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function TaxesHelps() {

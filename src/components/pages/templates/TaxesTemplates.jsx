@@ -1,11 +1,11 @@
-import { taxes } from "../../../data/templatesPage";
+import { templatesTaxes } from "../../../data";
 import { ItemCard, SectionContainer } from "../../ui";
 
 function TaxesTemplates() {
     return (
-        <SectionContainer title={taxes.title}>
+        <SectionContainer title={templatesTaxes.title}>
             <ItemCard
-                lists={taxes.lists}
+                lists={templatesTaxes.lists}
             />
         </SectionContainer>
     )
