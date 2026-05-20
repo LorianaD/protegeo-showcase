@@ -1,15 +1,20 @@
 import { measures } from "../../../data/measurePage";
-import { SectionContainer } from "../../ui";
-import ItemCard from "../../ui/cards/IntemCard";
+import { SectionContainer, ItemCard } from "../../ui";
 
 function MeasureTypeMeasure() {
     return (
-        <SectionContainer title="Les mesures">
-            <div>
-                {measures.cards.map((card) => (
-                    <ItemCard key={card.id} title={card.title} description={card.description} lists={card.lists} infos={card.infos} />
-                ))}
-            </div>
+        <SectionContainer title={measures.title}>
+            
+            {measures.cards.map((card) => (
+                <ItemCard 
+                    key={card.id} 
+                    title={card.title} 
+                    description={card.description} 
+                    lists={card.lists} 
+                    infos={card.infos} 
+                />
+            ))}
+            
         </SectionContainer>
     )
 }

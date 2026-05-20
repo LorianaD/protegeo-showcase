@@ -1,5 +1,6 @@
 import Main from "../components/layout/Main";
-import { HeroMeasure, MeasureTypeMeasure } from "../components/pages/measure";
+import { HeroMeasure, MeasureTypeMeasure, RoleMeasure, ProtectedPersonneRightsMeasure } from "../components/pages/measure";
+import CardsRedirectionsMeasure from "../components/pages/measure/CardsRedirectionsMeasure";
 import { InBuild } from "../components/ui";
 
 function Measure() {
@@ -7,7 +8,9 @@ function Measure() {
         <Main>
             <HeroMeasure/>
             <MeasureTypeMeasure/>
-            <InBuild />
+            <RoleMeasure/>
+            <ProtectedPersonneRightsMeasure/>
+            <CardsRedirectionsMeasure/>
         </Main>
     )
 }

@@ -1,4 +1,4 @@
-function ItemCard({ title, description, lists = [], infos = [] }) {
+function ItemCard({ title, description, lists = [], infos = [], links = [], conclusion }) {
     return (
         <article className="item-card">
             <h3 className="item-card__title">{title}</h3>
@@ -31,6 +31,18 @@ function ItemCard({ title, description, lists = [], infos = [] }) {
                     {info.value}
                 </p>
             ))}
+
+            {links.map((link, index) => (
+                <a href={link.href} className="item-card__link" target="_blank">
+                    {link.label}
+                </a>
+            ))}
+
+            {conclusion && (
+                <p className="item-card__description">
+                    { conclusion }
+                </p>
+            )}
         </article>
     )
 }

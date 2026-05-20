@@ -1,41 +1,17 @@
-/* *****************************************
-   ABSTRACTS
-***************************************** */
-@import "./abstracts/variables.css";
+/***** ABSTRACTS ***** */
+@import "./abstracts/index.css";
 
-/* *****************************************
-   BASE
-***************************************** */
-@import "./base/base.css";
+/***** BASE *****/
+@import "./base/index.css";
 
-/* *****************************************
-   LAYOUT
-***************************************** */
-@import "./layout/main.css";
-@import "./layout/header.css";
-@import "./layout/footer.css";
+/***** LAYOUT *****/
+@import "./layout/index.css";
 
-/* *****************************************
-   COMPONENTS
-***************************************** */
-@import "./components/navbar.css";
-@import "./components/buttons.css";
-@import "./components/sections.css";
-@import "./components/cards.css";
-/* @import "./components/forms.css"; */
-/* @import "./components/tables.css"; */
-/* @import "./components/modals.css"; */
+/***** COMPONENTS *****/
+@import "./components/index.css";
 
+/***** PAGES *****/
+@import "./pages/index.css";
 
-/* ******************************************
-   PAGES
-****************************************** */
-@import "./pages/home.css";
-/* @import "./pages/about.css"; */
-/* @import "./pages/faq.css"; */
-/* @import "./pages/community.css"; */
-
-/* *****************************************
-   UTILITIES
-***************************************** */
-/* @import "./utilities/helpers.css"; */
+/***** UTILITIES ***** */
+@import "./utilities/index.css";

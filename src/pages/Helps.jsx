@@ -1,10 +1,18 @@
 import Main from "../components/layout/Main";
+import { AccessHelps, CardsRedirectionsHelps, CpamHelps, FinancialHelps, HeroHelps, MdphHelps, TaxesHelps, TransportHelps } from "../components/pages/helps";
 import InBuild from "../components/ui/messages/InBuild";
 
 function Helps() {
     return(
         <Main>
-            <InBuild title={"Vos aides et droits"}/>
+            <HeroHelps/>
+            <FinancialHelps/>
+            <MdphHelps/>
+            <CpamHelps/>
+            <TaxesHelps/>
+            <AccessHelps/>
+            <TransportHelps/>
+            <CardsRedirectionsHelps/>
         </Main>
     )
 }
