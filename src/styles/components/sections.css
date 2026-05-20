@@ -39,11 +39,11 @@ Sections Hero
 
 /***** public *****/
 
-.hero--public {
-    gap: 32px;
+.hero--home .hero-container__description {
+    font-size: 36px;
 }
 
-.hero--public .hero__description {
+.hero--public .hero-container__description {
     font-size: 20px;
 }
 

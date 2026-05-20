@@ -1,10 +1,16 @@
 import Main from "../components/layout/Main";
-import InBuild from "../components/ui/messages/InBuild";
+import { BanksTemplates, CafTemplates, CpamTemplates, HeroTemplates, MdphTemplates, OtherTemplates, TaxesTemplates } from "../components/pages/templates";
 
 function Templates() {
     return (
         <Main>
-            <InBuild title={"Courriers administratifs — Modèles généraux"} />
+            <HeroTemplates/>
+            <CafTemplates/>
+            <MdphTemplates/>
+            <CpamTemplates/>
+            <TaxesTemplates/>
+            <BanksTemplates/>
+            <OtherTemplates/>
         </Main>
     )
 }
