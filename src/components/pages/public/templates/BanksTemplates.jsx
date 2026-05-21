@@ -1,0 +1,14 @@
+import { templatesBanks } from "@/data";
+import { ItemCard, SectionContainer } from "@/components/ui";
+
+function BanksTemplates() {
+    return (
+        <SectionContainer title={templatesBanks.title}>
+            <ItemCard
+                lists={templatesBanks.lists}
+            />
+        </SectionContainer>
+    )
+}
+
+export default BanksTemplates;

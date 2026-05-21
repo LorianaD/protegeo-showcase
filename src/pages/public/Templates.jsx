@@ -1,4 +1,4 @@
-import { Main } from "../../components";
+import { CardsRedirectionsTemplates, Main } from "../../components";
 import { BanksTemplates, CafTemplates, CpamTemplates, HeroTemplates, MdphTemplates, OtherTemplates, TaxesTemplates } from "../../components";
 
 function Templates() {
@@ -11,6 +11,7 @@ function Templates() {
             <TaxesTemplates/>
             <BanksTemplates/>
             <OtherTemplates/>
+            <CardsRedirectionsTemplates/>
         </Main>
     )
 }
