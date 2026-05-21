@@ -1,6 +1,6 @@
-function SectionContainer({title, description, children}) {
+function SectionContainer({ id, title, description, children, variant = "center" }) {
     return(
-        <section className="section-container">
+        <section id={id} className={`section-container section-container--${variant}`}>
             <h2 className="section-container__title">
                 { title }
             </h2>

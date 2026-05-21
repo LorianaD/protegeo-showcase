@@ -65,6 +65,12 @@ Redirection cards
     line-height: 130%; /* 31.2px */
 }
 
+.item-card__descriptions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .item-card__description {
     color: var(--color-text);
     font-family: var(--font-secondary);

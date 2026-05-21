@@ -1,6 +1,5 @@
-import Main from "../components/layout/Main";
-import { AccessHelps, CardsRedirectionsHelps, CpamHelps, FinancialHelps, HeroHelps, MdphHelps, TaxesHelps, TransportHelps } from "../components/pages/helps";
-import InBuild from "../components/ui/messages/InBuild";
+import { Main, InBuild } from "../../components";
+import { AccessHelps, CardsRedirectionsHelps, CpamHelps, FinancialHelps, HeroHelps, MdphHelps, TaxesHelps, TransportHelps } from "../../components";
 
 function Helps() {
     return(

@@ -1,6 +1,5 @@
-import Main from "../components/layout/Main";
-import { CardsRedirectionsContacts, EssentialsContacts, HeroContacts, LocalTransportHelpContacts, MdphContacts, OnlineToolsContacts } from "../components/pages/contacts";
-import InBuild from "../components/ui/messages/InBuild";
+import { Main, InBuild } from "../../components";
+import { CardsRedirectionsContacts, EssentialsContacts, HeroContacts, LocalTransportHelpContacts, MdphContacts, OnlineToolsContacts } from "../../components";
 
 function Contact() {
     return (

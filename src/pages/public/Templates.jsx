@@ -1,5 +1,5 @@
-import Main from "../components/layout/Main";
-import { BanksTemplates, CafTemplates, CpamTemplates, HeroTemplates, MdphTemplates, OtherTemplates, TaxesTemplates } from "../components/pages/templates";
+import { Main } from "../../components";
+import { BanksTemplates, CafTemplates, CpamTemplates, HeroTemplates, MdphTemplates, OtherTemplates, TaxesTemplates } from "../../components";
 
 function Templates() {
     return (

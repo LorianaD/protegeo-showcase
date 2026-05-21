@@ -1,5 +1,5 @@
-import { HeroHome, CardsRedirectionsHome, CafPaymentHome } from "../components/pages/home";
-import Main from "../components/layout/Main.jsx";
+import { HeroHome, CardsRedirectionsHome, CafPaymentHome } from "../../components";
+import { Main } from "../../components";
 
 function Home() {
     return(

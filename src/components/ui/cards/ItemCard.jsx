@@ -18,10 +18,20 @@ function ItemCard({ title, description, lists = [], infos = [], links = [], conc
         <article className="item-card">
             <h3 className="item-card__title">{title}</h3>
 
-            {description && (
-                <p className="item-card__description">
-                    {description}
-                </p>
+            {Array.isArray(description) ? (
+                <div className="item-card__descriptions">
+                    {description.map((text, index) => (
+                        <p key={index} className="item-card__description">
+                            {text}
+                        </p>
+                    ))}
+                </div>
+            ) : (
+                description && (
+                    <p className="item-card__description">
+                        {description}
+                    </p>
+                )
             )}
 
             {linkPosition === "beforeLists" && renderLinks()}

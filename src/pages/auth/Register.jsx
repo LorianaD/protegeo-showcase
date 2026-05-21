@@ -1,5 +1,5 @@
-import Main from "../components/layout/Main";
-import InBuild from "../components/ui/messages/InBuild";
+import Main from "../../components/layout/Main";
+import InBuild from "../../components/ui/messages/InBuild";
 
 function Register() {
     return (

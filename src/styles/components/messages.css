@@ -1,0 +1,72 @@
+.login-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    padding: 80px 32px;
+    min-height: 70vh;
+}
+
+.login-preview__content {
+    max-width: 460px;
+}
+
+.login-preview__badge {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #EAF7FC;
+    color: #0078A8;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.login-preview__title {
+    color: #003366;
+    font-size: 36px;
+    margin-bottom: 16px;
+}
+
+.login-preview__description {
+    color: #333333;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+}
+
+.login-preview__link {
+    display: inline-block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #003366;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.login-preview__visual {
+    max-width: 520px;
+    padding: 16px;
+    border-radius: 18px;
+    background: #FFFFFF;
+    box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
+}
+
+.login-preview__img {
+    width: 100%;
+    display: block;
+    border-radius: 12px;
+}
+
+@media screen and (max-width: 900px) {
+    .login-preview {
+        flex-direction: column;
+        text-align: center;
+        padding: 56px 24px;
+    }
+
+    .login-preview__title {
+        font-size: 30px;
+    }
+}
