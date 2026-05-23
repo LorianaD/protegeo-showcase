@@ -1,8 +1,7 @@
 import { Main, SectionHeroContainer, SectionLegal } from "@/components";
-import {  } from "@/data";
-import { sitemapHero, sitemapSections } from "@/data/pages/legal/sitemapPage";
+import { sitemapHero, sitemapSections } from "@/data";
 
-function PrivacyPolicy() {
+function Sitemap() {
     return (
         <Main variant="legal">
             <SectionHeroContainer title={sitemapHero.title} description={sitemapHero.description}/>
@@ -13,4 +12,4 @@ function PrivacyPolicy() {
     )
 }
 
-export default PrivacyPolicy;
+export default Sitemap;

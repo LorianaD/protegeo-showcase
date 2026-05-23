@@ -55,9 +55,8 @@ Section lien de redirection
 .section-cards-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 20px;
     width: 100%;
 }
 
@@ -108,11 +107,25 @@ Sections
     gap: 24px;
 }
 
+.section-container--withoutborder {
+    box-shadow: none;
+    align-items: flex-start;
+    text-align: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.section-container--withoutborder .section-container__contents {
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+}
+
 /* ***********************************
     Responsive
 *********************************** */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1050px) {
     .hero-container__description {
         text-align: left;
     }
