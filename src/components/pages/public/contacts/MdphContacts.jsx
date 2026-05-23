@@ -1,5 +1,5 @@
 import { contactMdph } from "@/data";
-import { ItemCard, SectionContainer } from "@/components/ui";
+import { ItemCard, SectionContainer } from "@/components";
 
 function MdphContacts() {
     return (

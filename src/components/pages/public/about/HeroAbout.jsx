@@ -1,5 +1,5 @@
-import { aboutHero } from "../../../../data";
-import { SectionHeroContainer } from "../../../ui"
+import { aboutHero } from "@/data";
+import { SectionHeroContainer } from "@/components";
 
 function HeroAbout() {
     return (

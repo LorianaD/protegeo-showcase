@@ -1,5 +1,5 @@
-import { aboutOverviewCards } from "../../../../data";
-import { RedirectionCard } from "../../../ui";
+import { aboutOverviewCards } from "@/data";
+import { RedirectionCard } from "@/components";
 
 function OverviewCardsAbout() {
     return (

@@ -1,4 +1,4 @@
-import { SectionCardsContainer } from "@/components/ui";
+import { SectionCardsContainer } from "@/components";
 
 function CardsRedirectionsMeasure() {
     return(

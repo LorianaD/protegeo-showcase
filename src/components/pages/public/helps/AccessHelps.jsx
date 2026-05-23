@@ -1,5 +1,5 @@
 import { helpsAccess as access } from "@/data";
-import { ItemCard, PrimaryButton, SectionContainer } from "@/components/ui";
+import { ItemCard, PrimaryButton, SectionContainer } from "@/components";
 
 function AccessHelps() {
     return (

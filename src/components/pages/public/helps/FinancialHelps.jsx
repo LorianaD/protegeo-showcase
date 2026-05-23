@@ -1,5 +1,5 @@
 import { helpsFinancial as financial } from "@/data";
-import { ItemCard, SectionContainer } from "@/components/ui";
+import { ItemCard, SectionContainer } from "@/components";
 
 function FinancialHelps() {
     return(

@@ -1,5 +1,5 @@
 import { aboutTools } from "../../../../data";
-import { ItemCard, PrimaryButton, SectionContainer } from "../../../ui";
+import { ItemCard, PrimaryButton, SectionContainer } from "@/components";
 
 function ToolsAbout() {
     return (

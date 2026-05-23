@@ -1,5 +1,5 @@
 import { helpsCpam as cpam } from "@/data";
-import { ItemCard, SectionContainer } from "@/components/ui";
+import { ItemCard, SectionContainer } from "@/components";
 
 function CpamHelps() {
     return (

@@ -1,5 +1,5 @@
 import { contactEssentials } from "@/data";
-import { ItemCard, SectionContainer } from "@/components/ui";
+import { ItemCard, SectionContainer } from "@/components";
 
 function EssentialsContacts() {
     return (

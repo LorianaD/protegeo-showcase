@@ -1,5 +1,5 @@
-import { aboutPurpose } from "../../../../data";
-import { ItemCard, PrimaryButton, SectionContainer } from "../../../ui";
+import { aboutPurpose } from "@/data";
+import { ItemCard, PrimaryButton, SectionContainer } from "@/components";
 
 function PurposeAbout() {
     return (

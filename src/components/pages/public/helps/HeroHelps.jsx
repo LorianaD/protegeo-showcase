@@ -1,5 +1,5 @@
 import { helpsHero as hero } from "@/data";
-import { SectionHeroContainer } from "@/components/ui";
+import { SectionHeroContainer } from "@/components";
 
 function HeroHelps() {
     return (
