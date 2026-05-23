@@ -15,7 +15,7 @@ function PublicRoutes() {
                 <Route path='contact' element={<Contact />}/>
                 <Route path='about' element={<About />}/>
 
-                <Route path="legal-notice" element={<LegalNotice/>}/>
+                <Route path="legal-notice" element={<LegalNotice />}/>
                 <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="cookies" element={<CookiePolicy/>}/>
                 <Route path="sitemap" element={<Sitemap/>}/>

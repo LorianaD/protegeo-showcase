@@ -3,7 +3,7 @@ Redirection cards
 ******************* */
 .redirection-card {
     display: flex;
-    width: 300px;
+    width: 260px;
     height: 260px;
     padding: 20px;
     flex-direction: column;
@@ -85,8 +85,6 @@ Redirection cards
     gap: 16px;
 }
 
-.item-card__group-title {}
-
 .item-card__list {
     margin-block-start: 1em;
     margin-block-end: 1em;
@@ -100,8 +98,6 @@ Redirection cards
 .item-card__list-item {
     list-style: disc;
 }
-
-.item-card__info {}
 
 .item-card__info-title {
     color: #000;
