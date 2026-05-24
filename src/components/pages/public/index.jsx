@@ -5,3 +5,5 @@ export * from "./templates";
 export * from "./steps";
 export * from "./contacts";
 export * from "./about";
+export * from "./faq";
+export * from "./guides";

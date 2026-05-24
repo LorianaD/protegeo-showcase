@@ -1,0 +1,135 @@
+import iconDoc from "@/assets/imgs/icon-doc.png";
+import iconTrib from "@/assets/imgs/icon-trib.png";
+import iconBank from "@/assets/imgs/icon-bank.png"
+
+const faqHero = {
+    title: "Questions fréquentes",
+    description: "Retrouvez rapidement des réponses simples concernant la tutelle, la curatelle, les démarches administratives et l’utilisation de Protégéo.",
+    btnLabel: "Comprendre les mesures",
+    btnLink: "/measure",
+    searchLabel: "Rechercher une question...",
+};
+
+const faqCards = [
+    {
+        icon: iconDoc,
+        title: "Comment remplir le compte de gestion ?",
+    },
+    {
+        icon: iconTrib,
+        title: "Quelle différence entre tutelle et curatelle ?",
+    },
+    {
+        icon: iconBank,
+        title: "Quels documents faut-il conserver ?",
+    }
+];
+
+const faqQuestions = [
+    {
+        categoryTitle: "Mesures de protection",
+        questions: [
+            {
+                questionTitle: "Quelle est la différence entre une tutelle et une curatelle ?",
+                questionAnswer: [
+                    "La curatelle accompagne la personne dans certains actes importants.",
+                    "La tutelle représente davantage la personne dans la gestion quotidienne.",
+                ],
+            },
+            {
+                questionTitle: "Une personne sous protection garde-t-elle ses droits ?",
+                questionAnswer: [
+                    "Oui. Elle conserve ses droits fondamentaux, sa vie privée et participe autant que possible aux décisions.",
+                ],
+            },
+            {
+                questionTitle: "Combien de temps dure une mesure ?",
+                questionAnswer: [
+                    "Cela dépend du jugement. Une mesure peut être temporaire ou renouvelée.",
+                ],
+            },
+        ],
+    },
+
+    {
+        categoryTitle: "Gestion administrative",
+        questions: [
+            {
+                questionTitle: "Quels documents faut-il garder ?",
+                questionAnswer: [
+                    "relevés bancaires",
+                    "avis d’imposition",
+                    "factures importantes",
+                    "justificatifs CAF / MDPH",
+                    "jugement de protection",
+                ],
+            },
+            {
+                questionTitle: "Quand faut-il rendre le compte de gestion ?",
+                questionAnswer: [
+                    "Le compte de gestion doit être transmis chaque année au tribunal compétent.",
+                ],
+            },
+            {
+                questionTitle: "Peut-on faire les démarches CAF à distance ?",
+                questionAnswer: [
+                    "Oui, la majorité des démarches peuvent être réalisées depuis les espaces en ligne officiels.",
+                ],
+            },
+        ],
+    },
+
+    {
+        categoryTitle: "Protégéo",
+        questions: [
+            {
+                questionTitle: "Protégéo remplace-t-il le tribunal ?",
+                questionAnswer: [
+                    "Non. Protégéo est un outil d’accompagnement et d’organisation.",
+                ],
+            },
+            {
+                questionTitle: "Les données sont-elles sécurisées ?",
+                questionAnswer: [
+                    "Protégéo prévoit une gestion sécurisée des accès et des rôles utilisateurs.",
+                ],
+            },
+            {
+                questionTitle: "Qui peut accéder aux dossiers ?",
+                questionAnswer: [
+                    "Cela dépend des autorisations et du rôle :",
+                    "tuteur",
+                    "curateur",
+                    "mandataire",
+                    "famille",
+                    "personne protégée",
+                ],
+            },
+        ],
+    },
+];
+
+const faqHelper = {
+    title: "Besoin d’aide supplémentaire ?",
+    description: [
+        "Vous ne trouvez pas votre réponse ?",
+        "Consultez nos guides pratiques ou contactez les organismes officiels.",
+    ],
+    btns: [
+        {
+            btnLabel: "Voir les démarches",
+            btnLink: "steps",
+        },
+        {
+            btnLabel: "Contacts utiles",
+            btnLink: "contact",
+        }
+    ]
+}
+
+export {
+    faqHero,
+    faqCards,
+    faqQuestions,
+    faqHelper,
+}

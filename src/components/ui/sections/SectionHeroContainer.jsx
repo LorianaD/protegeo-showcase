@@ -1,5 +1,6 @@
-import PrimaryButton from "../buttons/PrimaryButton.jsx";
-import { Target } from "../buttons";
+import { Target } from "../badges";
+import { PrimaryButton } from "../buttons";
+
 
 function SectionHeroContainer({ title, description, target, children, btn, to, variant = "default" }) {
     return(

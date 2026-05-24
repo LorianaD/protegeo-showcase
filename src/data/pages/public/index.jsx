@@ -5,4 +5,6 @@ export * from "./templatesPage";
 export * from "./stepsPage";
 export * from "./contactsPage";
 export * from "./aboutPage";
+export * from "./faqPage";
+
 export * from "./guides";

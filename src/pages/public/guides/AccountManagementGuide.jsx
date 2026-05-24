@@ -1,9 +1,9 @@
-import { Main } from "@/components";
+import { HeroAccountManagementGuide, Main } from "@/components";
 
 function AccountManagementGuide() {
     return (
         <Main>
-
+            <HeroAccountManagementGuide/>
         </Main>
     )
 }
