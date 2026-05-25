@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { MainLayout } from "../components";
-import { About, Contact, Faq, Helps, Home, Measure, Steps, Templates } from "@/pages/public";
+import { About, Contact, ContactUs, Faq, Helps, Home, Measure, Steps, Templates } from "@/pages/public";
 import { CookiePolicy, LegalNotice, PrivacyPolicy, Sitemap } from "@/pages/legal";
 
 function PublicRoutes() {
@@ -15,6 +15,7 @@ function PublicRoutes() {
                 <Route path='contact' element={<Contact />}/>
                 <Route path='about' element={<About />}/>
                 <Route path="faq" element={<Faq />}/>
+                <Route path="contact-us" element={<ContactUs />}/>
 
                 <Route path="legal-notice" element={<LegalNotice />}/>
                 <Route path="privacy-policy" element={<PrivacyPolicy/>}/>

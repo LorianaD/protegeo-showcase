@@ -7,3 +7,4 @@ export * from "./contacts";
 export * from "./about";
 export * from "./faq";
 export * from "./guides";
+export * from "./contactUs";

@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import AuthRoutes from "./AuthRoutes";
-import PublicRoutes from "./PublicRoutes";
+import PublicRoutes from "./publicRoutes";
 
 function AppRoutes() {
     return (

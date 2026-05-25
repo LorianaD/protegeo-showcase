@@ -1,0 +1,1 @@
+export { default as iconWarning } from "./icon-warning.png";

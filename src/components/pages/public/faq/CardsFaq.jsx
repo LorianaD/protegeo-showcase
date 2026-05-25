@@ -6,7 +6,8 @@ function CardsFaq() {
         <SectionContainer variant="withoutborder" variantChindren="row">
             {faqCards.map((card) => (
 
-                <ShortcutCard 
+                <ShortcutCard
+                    key={card.title} 
                     img={card.icon} 
                     title={card.title}
                 />

@@ -4,6 +4,7 @@ import accountIcon from "../assets/imgs/icon-account.png";
 import contactIcon from "../assets/imgs/icon-contacts.png";
 import templateIcon from "../assets/imgs/icon-template.png";
 import stepsIcon from "../assets/imgs/icon-steps.png";
+import faqIcon from "../assets/imgs/icon-faq.png";
 
 const redirectionCards = {
     measure: {
@@ -52,6 +53,14 @@ const redirectionCards = {
         title: "Étapes après le jugement",
         description: "Les actions indispensables après la décision.",
         link: "/steps"
+    },
+
+    faq: {
+        name: "faq",
+        img: faqIcon,
+        title: "Consulter la FAQ",
+        description: "Retrouvez les réponses aux questions fréquentes.",
+        link: "/faq"
     },
 };
 

@@ -3,7 +3,7 @@ const footerNavLinks = [
         id: 1,
         title: "Protégéo",
         links: [
-            { id: 1, label: "Nous contacter", to: "/contact" },
+            { id: 1, label: "Nous contacter", to: "/contact-us" },
             { id: 2, label: "FAQ", to: "/faq" },
             { id: 3, label: "Communauté", to: "/community" },
         ],

@@ -6,5 +6,6 @@ export * from "./stepsPage";
 export * from "./contactsPage";
 export * from "./aboutPage";
 export * from "./faqPage";
+export * from "./contactUsPage";
 
 export * from "./guides";
