@@ -31,22 +31,27 @@ const faqQuestions = [
         questions: [
             {
                 questionTitle: "Quelle est la différence entre une tutelle et une curatelle ?",
-                questionAnswer: [
-                    "La curatelle accompagne la personne dans certains actes importants.",
-                    "La tutelle représente davantage la personne dans la gestion quotidienne.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: [
+                        "La curatelle accompagne la personne dans certains actes importants.",
+                        "La tutelle représente davantage la personne dans la gestion quotidienne."
+                    ],
+                }],
             },
             {
                 questionTitle: "Une personne sous protection garde-t-elle ses droits ?",
-                questionAnswer: [
-                    "Oui. Elle conserve ses droits fondamentaux, sa vie privée et participe autant que possible aux décisions.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Oui. Elle conserve ses droits fondamentaux, sa vie privée et participe autant que possible aux décisions.",
+                }],
             },
             {
                 questionTitle: "Combien de temps dure une mesure ?",
-                questionAnswer: [
-                    "Cela dépend du jugement. Une mesure peut être temporaire ou renouvelée.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Cela dépend du jugement. Une mesure peut être temporaire ou renouvelée.",
+                }],
             },
         ],
     },
@@ -56,25 +61,31 @@ const faqQuestions = [
         questions: [
             {
                 questionTitle: "Quels documents faut-il garder ?",
-                questionAnswer: [
-                    "relevés bancaires",
-                    "avis d’imposition",
-                    "factures importantes",
-                    "justificatifs CAF / MDPH",
-                    "jugement de protection",
-                ],
+                questionAnswer: [{
+                    type: "list",
+                    content: [
+                        "relevés bancaires",
+                        "avis d’imposition",
+                        "factures importantes",
+                        "justificatifs CAF / MDPH",
+                        "jugement de protection",
+                    ]
+                    
+                }],
             },
             {
                 questionTitle: "Quand faut-il rendre le compte de gestion ?",
-                questionAnswer: [
-                    "Le compte de gestion doit être transmis chaque année au tribunal compétent.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Le compte de gestion doit être transmis chaque année au tribunal compétent.",
+                }],
             },
             {
                 questionTitle: "Peut-on faire les démarches CAF à distance ?",
-                questionAnswer: [
-                    "Oui, la majorité des démarches peuvent être réalisées depuis les espaces en ligne officiels.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Oui, la majorité des démarches peuvent être réalisées depuis les espaces en ligne officiels.",
+                }],
             },
         ],
     },
@@ -84,32 +95,42 @@ const faqQuestions = [
         questions: [
             {
                 questionTitle: "Protégéo remplace-t-il le tribunal ?",
-                questionAnswer: [
-                    "Non. Protégéo est un outil d’accompagnement et d’organisation.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Non. Protégéo est un outil d’accompagnement et d’organisation.",
+                }],
             },
             {
                 questionTitle: "Les données sont-elles sécurisées ?",
-                questionAnswer: [
-                    "Protégéo prévoit une gestion sécurisée des accès et des rôles utilisateurs.",
-                ],
+                questionAnswer: [{
+                    type: "paragraph",
+                    content: "Protégéo prévoit une gestion sécurisée des accès et des rôles utilisateurs.",
+                }],
             },
             {
                 questionTitle: "Qui peut accéder aux dossiers ?",
                 questionAnswer: [
-                    "Cela dépend des autorisations et du rôle :",
-                    "tuteur",
-                    "curateur",
-                    "mandataire",
-                    "famille",
-                    "personne protégée",
+                    {
+                        type: "paragraph",
+                        content: "Cela dépend des autorisations et du rôle :",
+                    },
+                    {
+                        type: "list",
+                        content: [
+                            "tuteur",
+                            "curateur",
+                            "mandataire",
+                            "famille",
+                            "personne protégée",
+                        ],
+                    },
                 ],
             },
         ],
     },
 ];
 
-const faqHelper = {
+const faqSupport = {
     title: "Besoin d’aide supplémentaire ?",
     description: [
         "Vous ne trouvez pas votre réponse ?",
@@ -118,11 +139,11 @@ const faqHelper = {
     btns: [
         {
             btnLabel: "Voir les démarches",
-            btnLink: "steps",
+            btnLink: "/steps",
         },
         {
             btnLabel: "Contacts utiles",
-            btnLink: "contact",
+            btnLink: "/contact",
         }
     ]
 }
@@ -131,5 +152,5 @@ export {
     faqHero,
     faqCards,
     faqQuestions,
-    faqHelper,
+    faqSupport,
 }

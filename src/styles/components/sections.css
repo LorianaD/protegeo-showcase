@@ -121,6 +121,15 @@ Sections
     gap: 16px;
 }
 
+.section-container--blue {
+    background-color: var(--color-background-second);
+}
+
+.section-container__row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* ***********************************
     Responsive
 *********************************** */
@@ -132,5 +141,9 @@ Sections
 
     .section-cards-container {
         justify-content: center;
+    }
+
+    .section-container__row {
+        flex-direction: column;
     }
 }

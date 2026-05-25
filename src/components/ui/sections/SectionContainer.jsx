@@ -1,15 +1,29 @@
-function SectionContainer({ id, title, description, children, variant = "center" }) {
+function SectionContainer({ id, title, description, children, variant = "center", variantChindren = "columne" }) {
     return(
         <section id={id} className={`section-container section-container--${variant}`}>
-            <h2 className="section-container__title">
-                { title }
-            </h2>
-            {description && (
-                <p className="section-container__description">
-                    { description }
-                </p>
+            {title && (
+                <h2 className="section-container__title">
+                    { title }
+                </h2>
             )}
-            <div className="section-container__contents">
+            {description && (
+                <div className="section-container__description">
+                    {Array.isArray(description) ? (
+
+                        description.map((text, index) => (
+                            <p key={index}>
+                                {text}
+                            </p>
+                        ))
+
+                    ) : (
+
+                        <p>{description}</p>
+
+                    )}
+                </div>
+            )}
+            <div className={`section-container__contents section-container__${variantChindren}`}>
                 { children }
             </div>
         </section>

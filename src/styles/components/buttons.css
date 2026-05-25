@@ -13,3 +13,57 @@
     font-weight: 700;
     line-height: 140%;
 }
+
+.button-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Shortcut Cards */
+
+.shortcut-card {
+    display: flex;
+    width: 300px;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--color-background);
+    border-radius: 12px;
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.shortcut-card__icon {
+    width: 50px;
+    height: 50px;
+}
+
+.shortcut-card__img {}
+
+.shortcut-card__title {
+    color: var(--color-primary);
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 140%; /* 28px */
+}
+
+.shortcut-card__description {
+    color: var(--color-text);
+    font-family: var(--font-secondary);
+    font-size: 16px;
+    line-height: 140%; /* 22.4px */
+}
+
+/* ***********************************
+    Responsive
+*********************************** */
+
+@media screen and (max-width: 1050px) {
+    .shortcut-card {
+        width: 100%;
+    }
+}
