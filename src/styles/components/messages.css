@@ -1,4 +1,8 @@
-.login-preview {
+/* ************************
+********* PREVIEW *********
+************************ */
+
+.preview {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -7,11 +11,11 @@
     min-height: 70vh;
 }
 
-.login-preview__content {
+.preview__content {
     max-width: 460px;
 }
 
-.login-preview__badge {
+.preview__badge {
     display: inline-block;
     margin-bottom: 16px;
     padding: 8px 14px;
@@ -22,20 +26,20 @@
     font-size: 14px;
 }
 
-.login-preview__title {
+.preview__title {
     color: #003366;
     font-size: 36px;
     margin-bottom: 16px;
 }
 
-.login-preview__description {
+.preview__description {
     color: #333333;
     font-size: 18px;
     line-height: 1.6;
     margin-bottom: 28px;
 }
 
-.login-preview__link {
+.preview__link {
     display: inline-block;
     padding: 12px 20px;
     border-radius: 8px;
@@ -45,7 +49,7 @@
     font-weight: 700;
 }
 
-.login-preview__visual {
+.preview__visual {
     max-width: 520px;
     padding: 16px;
     border-radius: 18px;
@@ -53,11 +57,15 @@
     box-shadow: 0 12px 32px rgba(0, 51, 102, 0.15);
 }
 
-.login-preview__img {
+.preview__img {
     width: 100%;
     display: block;
     border-radius: 12px;
 }
+
+/* *********************** 
+******INFO WARNING *******
+*********************** */
 
 .info-warning {
     display: flex;
@@ -100,13 +108,13 @@
 }
 
 @media screen and (max-width: 900px) {
-    .login-preview {
+    .preview {
         flex-direction: column;
         text-align: center;
         padding: 56px 24px;
     }
 
-    .login-preview__title {
+    .preview__title {
         font-size: 30px;
     }
 }

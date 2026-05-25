@@ -1,1 +1,2 @@
-export { default as iconWarning } from "./icon-warning.png";
+export * from "./icons";
+export * from "./maquettes";

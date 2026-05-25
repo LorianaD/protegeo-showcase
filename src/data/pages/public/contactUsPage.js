@@ -1,4 +1,4 @@
-import iconWarning from "../../../assets/imgs/icon-warning.png";
+import { iconWarning } from "@/assets";
 
 const contactUsHero = {
     title: "Nous contacter",

@@ -1,6 +1,4 @@
-import iconDoc from "@/assets/imgs/icon-doc.png";
-import iconTrib from "@/assets/imgs/icon-trib.png";
-import iconBank from "@/assets/imgs/icon-bank.png"
+import { iconDoc, iconTrib, iconBank } from "@/assets";
 
 const faqHero = {
     title: "Questions fréquentes",

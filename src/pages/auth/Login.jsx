@@ -1,8 +1,8 @@
-import { Main, LoginPreview } from "../../components";
+import { Main, LoginPreview } from "@/components";
 
 function Login() {
     return (
-        <Main>
+        <Main >
             <LoginPreview/>
         </Main>
     )

@@ -1,15 +1,9 @@
-import measureIcon from "../assets/imgs/icon-measure.png";
-import helpsIcon from "../assets/imgs/icon-helps.png";
-import accountIcon from "../assets/imgs/icon-account.png";
-import contactIcon from "../assets/imgs/icon-contacts.png";
-import templateIcon from "../assets/imgs/icon-template.png";
-import stepsIcon from "../assets/imgs/icon-steps.png";
-import faqIcon from "../assets/imgs/icon-faq.png";
+import { iconMeasure, iconHelps, iconAccount, iconContacts, iconTemplate, iconSteps, iconFaq } from "@/assets";
 
 const redirectionCards = {
     measure: {
         name: "measure",
-        img: measureIcon,
+        img: iconMeasure,
         title: "Comprendre la mesure",
         description: "Tutelle, curatelle, sauvegarde de justice : des explications simples...",
         link: "/measure"
@@ -17,7 +11,7 @@ const redirectionCards = {
 
     helps: {
         name: "helps",
-        img: helpsIcon,
+        img: iconHelps,
         title: "Vos aides et droits",
         description: "CAF, MDPH, CPAM, impôts.",
         link: "/helps"
@@ -25,7 +19,7 @@ const redirectionCards = {
 
     account: {
         name: "account",
-        img: accountIcon,
+        img: iconAccount,
         title: "Le compte de gestion",
         description: "Explication simple et exemples.",
         link: "/account"
@@ -33,7 +27,7 @@ const redirectionCards = {
 
     contact: {
         name: "contact",
-        img: contactIcon,
+        img: iconContacts,
         title: "Contact & sources officielles",
         description: "Sites officiels, annuaires MDPH, CAF, CPAM.",
         link: "/contact"
@@ -41,7 +35,7 @@ const redirectionCards = {
 
     template: {
         name: "templates",
-        img: templateIcon,
+        img: iconTemplate,
         title: "Modèles utiles",
         description: "Dossiers, attestations, documents PDF nécessaires.",
         link: "/templates"
@@ -49,7 +43,7 @@ const redirectionCards = {
 
     steps: {
         name: "steps",
-        img: stepsIcon,
+        img: iconSteps,
         title: "Étapes après le jugement",
         description: "Les actions indispensables après la décision.",
         link: "/steps"
@@ -57,7 +51,7 @@ const redirectionCards = {
 
     faq: {
         name: "faq",
-        img: faqIcon,
+        img: iconFaq,
         title: "Consulter la FAQ",
         description: "Retrouvez les réponses aux questions fréquentes.",
         link: "/faq"
