@@ -10,6 +10,7 @@ function CardsFaq() {
                     key={card.title} 
                     img={card.icon} 
                     title={card.title}
+                    to={card.link}
                 />
 
             ))}

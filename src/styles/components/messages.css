@@ -76,6 +76,11 @@
     background: #E8F3FC;
 }
 
+.info-warning--danger {
+    border-left: 5px solid var(--red);
+    background: var(--pale-red);
+}
+
 .info-warning__icon {
     width: 100px;
 }
@@ -85,6 +90,10 @@
     flex-direction: column;
     gap: 16px;
     color: #54A5E6;
+}
+
+.info-warning__content--danger {
+    color: var(--red);
 }
 
 .info-warning__title {

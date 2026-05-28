@@ -1,0 +1,28 @@
+.icon-band {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    color: var(--white);
+}
+
+.icon-band--blue {
+    background-color: var(--color-primary);
+    border: 1px solid var(--white);
+}
+
+.icon-band--light-blue {
+    background-color: var(--light-blue);
+}
+
+.icon-band--green {
+    background-color: var(--green);
+}
+
+.icon-band--danger {
+    color: var(--red);
+    border: 1px solid var(--red);
+}

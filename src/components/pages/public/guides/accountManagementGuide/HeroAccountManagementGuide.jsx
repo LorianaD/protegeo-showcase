@@ -11,6 +11,7 @@ function HeroAccountManagementGuide() {
             title={title} 
             description={description}
             target={target}
+            variant="guide"
         />
     )
 }

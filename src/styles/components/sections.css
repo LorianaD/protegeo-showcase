@@ -48,6 +48,11 @@ Sections Hero
     font-size: 20px;
 }
 
+/***** guide ******/
+.hero--guide {
+    align-items: flex-start;
+}
+
 /***********************************
 Section lien de redirection
 ***********************************/
@@ -128,6 +133,87 @@ Sections
 .section-container__row {
     flex-direction: row;
     justify-content: space-between;
+}
+
+/* Section Band (band blue) */
+
+.section-band {
+    display: flex;
+    padding: 5px 20px;
+    align-items: center;
+    gap: 15px;
+    border-radius: 12px;
+    background-color: var(--color-primary);
+    width: 100%;
+}
+
+.section-band__icon {
+    width: 40px;
+    height: 40px;
+}
+
+.section-band__content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.section-band__title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.section-band--blue {
+    color: var(--white);
+}
+
+/**********
+ GUIDES 
+**********/
+
+/* Section Steps Container */
+
+.step-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.steps-container__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    /* grid-template-columns: repeat(2, 1fr); */
+    /* grid-template-areas: "content visual"; */
+    width: 100%;
+}
+
+.steps-container__content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    grid-area: content;
+}
+
+.steps-container__question {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.steps-container__question-title {
+    font-weight: 700;
+}
+
+.steps-container__visual {
+    height: 100%;
+    grid-area: visual;
+}
+
+.step-container__footer {
+    
 }
 
 /* ***********************************

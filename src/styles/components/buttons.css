@@ -36,12 +36,28 @@
     min-height: 200px;
 }
 
+.shortcut-card--guide {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    cursor: default;
+    min-height: 200px;
+    gap: 16px;
+}
+
 .shortcut-card__icon {
     width: 50px;
     height: 50px;
 }
 
 .shortcut-card__img {}
+
+.shortcut-card__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
 
 .shortcut-card__title {
     color: var(--color-primary);
@@ -50,6 +66,10 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 140%; /* 28px */
+}
+
+.shortcut-card__title--guide {
+    text-align: left;
 }
 
 .shortcut-card__description {

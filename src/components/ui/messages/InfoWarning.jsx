@@ -1,11 +1,26 @@
-function InfoWarning({ icon, title, description, important, variant = "default" }) {
+import { IconBand } from "../badges";
+
+function InfoWarning({ icon, iconColor, img, title, description, important, variant = "default" }) {
     return (
         <div className={`info-warning info-warning--${variant}`}>
-            <div className="info-warning__icon">
-                <img src={icon} alt="Attention" className="info-warning__img" />
-            </div>
             
-            <div className="info-warning__content">
+            {(img || icon) && (
+                <div className="info-warning__icon">
+                    {img ? (
+                        
+                        <img src={img} alt="Attention" className="info-warning__img" />
+                                        
+                    ) : (
+                        <IconBand
+                            sign={icon}
+                            color={iconColor}
+                            alt={icon}
+                        />
+                    )}
+                </div>
+            )}
+
+            <div className={`info-warning__content info-warning__content--${variant}`}>
                 {title && (
                     <p className="info-warning__description">
                         <span className="info-warning__title">
@@ -23,6 +38,12 @@ function InfoWarning({ icon, title, description, important, variant = "default" 
                             </p>
                         ))}
                     </div>
+                )}
+
+                {!title && typeof description === "string" && (
+                    <p className="info-warning__description">
+                        {description}
+                    </p>
                 )}
 
                 {important && (

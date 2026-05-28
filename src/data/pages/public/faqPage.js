@@ -12,6 +12,7 @@ const faqCards = [
     {
         icon: iconDoc,
         title: "Comment remplir le compte de gestion ?",
+        link: "/guides/account-management",
     },
     {
         icon: iconTrib,

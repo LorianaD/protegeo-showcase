@@ -8,17 +8,39 @@
   /* ***********************************
     COULEURS
   *********************************** */
-  --color-primary: #003366;
+  --color-primary: var(--blue);
   --color-secondary: #0078A8;
 
-  --color-success: #4CAF50;
-  --color-error: #D32F2F;
+  --color-success: var(--green);
+  --color-error: var(--red);
 
-  --color-text: #333333;
-  --color-background: #FFFFFF;
-  --color-background-second: #D9E4EE;
+  --color-text: var(--gray);
+
+  --color-background: var(--white);
+  --color-background-second: var(--pale-blue);
 
   --color-border: #e0e0e0;
+
+  
+  --blue: #003366;
+  --med-blue: #185FA5; 
+  --light-blue: #54A5E6;
+  --pale-blue: #D9E4EE;
+ 
+  --dark-green: #2E7D32;
+  --green: #4CAF50;
+  --pale-green: #EAF7EA;
+ 
+  --red: #D32F2F;
+  --pale-red: #FDECEA;
+
+  --orange: #F57C00;
+  --pale-orange: #FFF8E1;
+
+  --gray: #333333;
+  --light-gray: #F4F6F9;
+
+  --white: #FFFFFF;
 
   /* ***********************************
     RADIUS
