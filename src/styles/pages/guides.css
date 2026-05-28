@@ -13,3 +13,43 @@
     gap: 40px;
     width: 100%;
 }
+
+.guide-footer {
+    display: flex;
+    padding: 40px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: var(--color-primary);
+    color: var(--white);
+}
+
+.guide-footer__label {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.guide-footer__checklist {
+    display: grid;
+    gap: 25px;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.guide-footer__check-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ***********************************
+    Responsive
+*********************************** */
+
+@media screen and (max-width: 1050px) {
+
+    .guide-footer__checklist {
+        display: flex;
+        flex-direction: column;
+    }
+}
