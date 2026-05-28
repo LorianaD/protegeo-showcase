@@ -1,4 +1,4 @@
-import { iconWarning, iconInfo, step1, step2, step3, step4, step5, step6, step7 } from "@/assets";
+import { iconWarning, iconInfo, step1, step2, step3, step4, step5, step6, step7, step9 } from "@/assets";
 
 const accountManagementGuideHero = {
     target: "GUIDE PÉDAGOGIQUE",
@@ -300,28 +300,31 @@ const accountManagementGuideSteps = {
             questions: [
                 {
                     title: "À quoi ça sert ?",
-                    description: "",
+                    description: "Cette partie permet d’ajouter des informations complémentaires concernant la gestion de l’année, les difficultés rencontrées ou certains éléments importants à signaler au juge.",
                 },
                 {
                     title: "Comment remplir ?",
                     description: [
-                        "",
+                        "La zone « Observations » est facultative. Vous pouvez y préciser des informations utiles sur la situation de la personne protégée ou sur certaines dépenses exceptionnelles.",
+                        "Indiquez ensuite la date et le lieu de signature.",
+                        "Le tuteur, curateur ou mandataire doit signer pour certifier que le compte de gestion est sincère et conforme aux justificatifs fournis.",
+                        "Si un subrogé tuteur a été nommé, il doit également compléter et signer la partie prévue.",
                     ]
                 },
                 {
                     title: "Exemple :",
-                    description: "",
+                    description: "Observation : hospitalisation de plusieurs mois ayant entraîné une augmentation temporaire des frais médicaux et du maintien à domicile.",
                 },
                 {
                     title: "Documents utiles :",
-                    description: "",
+                    description: "Compte de gestion complété, justificatifs éventuels liés aux observations, jugement de protection si nécessaire.",
                 },
                 {
                     title: "Erreur fréquente :",
-                    description: "",
+                    description: "Oublier de dater ou signer le document, ou laisser des observations importantes sans explication.",
                 },
             ],
-            screenshot: "",
+            screenshot: step9,
         },
     ],
 

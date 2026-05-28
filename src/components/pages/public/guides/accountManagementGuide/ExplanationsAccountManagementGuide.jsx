@@ -22,7 +22,9 @@ function ExplanationsAccountManagementGuide() {
                         explain={item.explain}
                         footer={item.footer}
                         screenshot={item.screenshot}
-                        reminder={item.explain}
+                        items={item.items}                        
+                        reminder={item.reminder}
+
                     />
                     
                 </div>

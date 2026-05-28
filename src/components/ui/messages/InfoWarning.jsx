@@ -22,11 +22,14 @@ function InfoWarning({ icon, iconColor, img, title, description, important, vari
 
             <div className={`info-warning__content info-warning__content--${variant}`}>
                 {title && (
-                    <p className="info-warning__description">
-                        <span className="info-warning__title">
+                    <p className={`info-warning__description info-warning__description--${variant}`}>
+                        <span className={`info-warning__title info-warning__title--${variant}`}>
                             {title}
                         </span>
-                        {description}
+                        <span className={`info-warning__description-description info-warning__description-description--${variant}`}>
+                            {description}
+                        </span>
+                        
                     </p>
                 )}
 

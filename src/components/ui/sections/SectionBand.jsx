@@ -20,7 +20,7 @@ function SectionBand({ icon, img, sign, iconColor, title, description, variant =
                 </div>
             )}
 
-            <div className="section-band__content">
+            <div className={`section-band__content section-band__content--${variant}`}>
                 {title && (
                     <p className="section-band__title">
                         {title}
@@ -28,7 +28,7 @@ function SectionBand({ icon, img, sign, iconColor, title, description, variant =
                 )}
 
                 {description && (
-                    <p className="section-band__description">
+                    <p className={`section-band__description section-band__description--${variant}`}>
                         {description}
                     </p>
                 )}

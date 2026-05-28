@@ -1,4 +1,6 @@
+import { IconBand } from "../badges";
 import { InfoWarning } from "../messages";
+import SectionBand from "./SectionBand";
 
 function StepsContainer({ questions = [], warning, band, info, explain, footer, screenshot, reminder, items = [], }) {
     return (
@@ -14,14 +16,11 @@ function StepsContainer({ questions = [], warning, band, info, explain, footer, 
             )}
 
             {band && (
-                <div className="steps-container__band">
-                    <p className="steps-container__band-title">
-                        {band.title}
-                    </p>
-                    <p className="steps-container__band-description">
-                        {band.description}
-                    </p>
-                </div>
+                <SectionBand
+                    title={band.title}
+                    description={band.description}
+                    variant="steps"
+                />
             )}
 
             <div className="steps-container__body">
@@ -41,7 +40,7 @@ function StepsContainer({ questions = [], warning, band, info, explain, footer, 
                         </div>
                     )}
 
-                    {explain && (
+                    {/* {explain && (
                         <div className="steps-container__explain">
                             <p className="steps-container__explain-title">
                                 {explain.title}
@@ -50,6 +49,14 @@ function StepsContainer({ questions = [], warning, band, info, explain, footer, 
                                 {explain.description}
                             </p>
                         </div>
+                    )} */}
+
+                    {explain && (
+                        <InfoWarning
+                            title={explain.title}
+                            description={explain.description}
+                            variant="explain"
+                        />
                     )}
 
                     {questions.map((question) => (
@@ -83,6 +90,29 @@ function StepsContainer({ questions = [], warning, band, info, explain, footer, 
                     </div>
                 )}
             </div>
+
+            {items && (
+                <div className="steps-container__items">
+                    {items.map((item) => (
+                        <div className="steps-container__item">
+                            <IconBand
+                                color="light-blue"
+                            />
+                            <p className="steps-container__item-text">
+                                { item }
+                            </p>                            
+                        </div>
+                    ))}
+                </div>
+            )}
+
+            {reminder && (
+                <InfoWarning 
+                    title={reminder.title}
+                    description={reminder.text}
+                    variant="reminder"
+                />
+            )}
 
             {footer && (
                 <div className="steps-container__footer">

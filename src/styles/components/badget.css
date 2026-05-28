@@ -1,12 +1,13 @@
 .icon-band {
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: larger;
     color: var(--white);
+    flex-shrink: 0
 }
 
 .icon-band--blue {
@@ -25,4 +26,8 @@
 .icon-band--danger {
     color: var(--red);
     border: 1px solid var(--red);
+}
+
+@media screen and (max-width: 1050px) {
+
 }

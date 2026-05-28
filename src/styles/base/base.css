@@ -34,3 +34,9 @@ select {
 li {
   list-style: none;
 }
+
+@media screen and (max-width: 1050px) {
+  section {
+    padding: 25px;
+  }
+}
