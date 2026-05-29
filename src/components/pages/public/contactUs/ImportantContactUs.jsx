@@ -5,7 +5,7 @@ function ImportantContactUs() {
     return (
         <SectionContainer variant="blue">
             <InfoWarning
-                icon={contactUsImportant.icon}
+                img={contactUsImportant.img}
                 description={contactUsImportant.description}
                 variant="large"
             />

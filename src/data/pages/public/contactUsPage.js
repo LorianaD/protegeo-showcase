@@ -5,7 +5,7 @@ const contactUsHero = {
     description:
         "Une question, une remarque ou une suggestion sur Protégéo ? Ce formulaire permet de me transmettre un message concernant le projet, son contenu ou son amélioration.",
     warning: {
-        icon: iconWarning,
+        img: iconWarning,
         title: "À savoir : ",
         description: "Protégéo est un projet réalisé par une développeuse web. Ce site n’est pas une entreprise, une association, ni un service administratif officiel.",
         important: "Pour une démarche urgente ou officielle, contactez directement les organismes compétents.",
@@ -67,7 +67,7 @@ const contactUsForm = {
 };
 
 const contactUsImportant = {
-    icon: iconWarning,
+    img: iconWarning,
     description: [
         "Protégéo ne remplace pas un tribunal, un avocat, la CAF, la CPAM, la MDPH ou les impôts.",
         "Les informations proposées servent uniquement à mieux comprendre et organiser les démarches."

@@ -25,7 +25,12 @@
 
 .icon-band--danger {
     color: var(--red);
-    border: 1px solid var(--red);
+    border: 2px solid var(--red);
+}
+
+.icon-band__sign {
+    font-size: 20px;
+    font-weight: 700;
 }
 
 @media screen and (max-width: 1050px) {

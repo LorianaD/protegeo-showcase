@@ -5,7 +5,7 @@ function HeroContactUs() {
     return (
         <SectionHeroContainer title={contactUsHero.title} description={contactUsHero.description}>
             <InfoWarning
-                icon={contactUsHero.warning.icon}
+                img={contactUsHero.warning.img}
                 title={contactUsHero.warning.title}
                 description={contactUsHero.warning.description}
                 important={contactUsHero.warning.important}

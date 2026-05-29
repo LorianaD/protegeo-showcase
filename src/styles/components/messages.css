@@ -125,19 +125,20 @@
 .info-warning--large {
     background-color: transparent;
     border: none;
-    padding: none;
-}
-
-.info-warning__descriptions {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
+    padding: 0;
 }
 
 .info-warning__description--explain {
+    display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--color-text);
+}
+
+.info-warning__description--large {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .info-warning__title--explain {

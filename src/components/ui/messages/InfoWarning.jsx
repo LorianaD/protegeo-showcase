@@ -34,9 +34,9 @@ function InfoWarning({ icon, iconColor, img, title, description, important, vari
                 )}
 
                 {!title && Array.isArray(description) && (
-                    <div className="info-warning__descriptions">
+                    <div className={`info-warning__description info-warning__description--${variant}`}>
                         {description.map((text, index) => (
-                            <p key={index} className="info-warning__description">
+                            <p key={index} className="info-warning__description-text">
                                 {text}
                             </p>
                         ))}
