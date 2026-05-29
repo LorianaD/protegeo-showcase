@@ -1,6 +1,6 @@
 .primary-button {
     display: flex;
-    height: 40px;
+    min-height: 40px;
     padding: 5px 10px;
     justify-content: center;
     align-items: center;
@@ -84,6 +84,11 @@
 *********************************** */
 
 @media screen and (max-width: 1050px) {
+    .primary-button {
+        text-align: center;
+        height: auto;
+    }
+    
     .shortcut-card {
         width: 100%;
     }

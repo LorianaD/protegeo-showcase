@@ -4,10 +4,10 @@
     width: 70%;
     background-color: var(--color-background);
     align-items: center;
-    gap: 30px;
-    padding: 50px;
-    min-height: 100vh;
-    margin: auto;
+    gap: var(--space-2xl);
+    padding: var(--space-3xl);
+    margin: 0 auto;
+    flex: 1;
 }
 
 .legal {
@@ -21,6 +21,6 @@
 @media screen and (max-width: 1024px) {
     .main {
         width: 100%;
-        padding: 25px;
+        padding: var(--space-xl);
     }
 }

@@ -6,11 +6,26 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 body {
   margin: 0;
-  font-family: var(--font-primary);
+  font-family: var(--font-secondary);
   color: var(--color-text);
-  background-color: #CFE8F8;
+  background-color: var(--color-page-background);
+  line-height: var(--line-text);
+  font-size: var(--text-base);
+  min-height: 100vh;
 }
 
 img {
@@ -37,6 +52,6 @@ li {
 
 @media screen and (max-width: 1050px) {
   section {
-    padding: 25px;
+    padding: var(--space-xl);
   }
 }
