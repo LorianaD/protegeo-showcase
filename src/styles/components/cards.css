@@ -59,7 +59,7 @@ Redirection cards
     font-family: var(--font-secondary);
     font-size: var(--title-h4);
     font-style: normal;
-    font-weight: var(--weight-bold: 700);
+    font-weight: var(--weight-bold);
     line-height: 130%; /* 31.2px */
 }
 
