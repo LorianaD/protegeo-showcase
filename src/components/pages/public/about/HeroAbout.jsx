@@ -7,6 +7,8 @@ function HeroAbout() {
             variant="public"
             title={aboutHero.title}
             description={aboutHero.description}
+            btn={aboutHero.btnLabel}
+            to={aboutHero.btnLink}
         />
     )
 }

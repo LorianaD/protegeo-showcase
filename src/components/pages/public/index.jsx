@@ -5,6 +5,7 @@ export * from "./templates";
 export * from "./steps";
 export * from "./contacts";
 export * from "./about";
+export * from "./discover";
 export * from "./faq";
 export * from "./guides";
 export * from "./contactUs";

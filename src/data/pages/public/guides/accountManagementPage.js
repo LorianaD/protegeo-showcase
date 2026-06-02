@@ -331,21 +331,35 @@ const accountManagementGuideSteps = {
 };
 
 const accountManagementGuideFooter = {
-    title: "Checklist avant envoi au greffe",
+    title: "Checklist avant l'envoi au greffe",
     items: [
         "Rubriques A, B, C, D remplies",
         "Totaux cohérents avec les relevés",
         "Justificatifs joints pour les dépenses supérieures à 1 000 €",
         "Copies des relevés bancaires jointes",
         "Feuille d’imposition jointe",
-        "Document signé et daté",
-        "Envoyé avant la date limite",
-        "Conserver une copie pour soi",
+        "Signatures de tous les curateurs, tuteurs et subrogés présentes",
+        "Envoyé dans l’année après la date indiquée par le tribunal",
+        "Attestations bancaires de situation jointes (souvent adressées en début d'année par les établissements bancaires)",
+        
     ],
+    reminder: "Conserver une copie pour soi",
     leftText:
         "Protégéo — Projet d’aide à la gestion de la protection juridique des majeurs · Loriana Diano · 2025",
     rightText:
         "Document non contractuel — à titre indicatif uniquement",
+};
+
+const accountManagementGuideWarningFinal = {
+    warningColor: "reminder",
+    icon: "!",
+    iconColor: "reminder",
+    title: "Attention avant l'envoi",
+    description: [
+        "En cas de dossier incomplet, de pièce justificative manquante ou d'erreur constatée lors de la vérification, le greffe peut retourner le compte de gestion afin de demander les éléments manquants ou des corrections.",
+        "Le dossier corrigé doit alors être renvoyé dans le délai indiqué par le tribunal.",
+        "Il est donc recommandé de vérifier la présence de toutes les signatures, attestations bancaires et pièces justificatives avant l'envoi."
+    ],
 };
 
 export {
@@ -353,4 +367,5 @@ export {
     accountManagementGuideWarning,
     accountManagementGuideSteps,
     accountManagementGuideFooter,
+    accountManagementGuideWarningFinal,
 };

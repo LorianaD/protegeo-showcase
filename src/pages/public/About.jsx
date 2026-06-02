@@ -1,10 +1,9 @@
-import { Main, HeroAbout, OverviewCardsAbout, PurposeAbout, ToolsAbout } from "../../components";
+import { Main, HeroAbout, PurposeAbout, ToolsAbout } from "../../components";
 
 function About() {
     return (
         <Main>
             <HeroAbout/>
-            <OverviewCardsAbout/>
             <PurposeAbout/>
             <ToolsAbout/>
         </Main>

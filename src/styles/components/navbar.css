@@ -12,14 +12,14 @@
 .header__list--desktop {
     display: flex;
     align-items: center;
-    gap: 32px;
+    gap: var(--space-2xl);
 }
 
 .header__nav--desktop .header__link {
     color: var(--color-primary);
     /* text-decoration: underline; */
     text-underline-offset: 5px;
-    line-height: 140%;
+    line-height: var(--line-text);
 }
 
 /* Mobile */
@@ -50,11 +50,10 @@
 }
 
 .header__link:hover {
-    /* font-weight: 600; */
     text-decoration: underline;
 }
 
 .header__link--active {
-    font-weight: 600;
+    font-weight: var(--weight-semibold);
     text-decoration: underline;
 }

@@ -2,7 +2,7 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 20px 24px;
+    padding: var(--space-lg) var(--space-xl);
     align-items: center;
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: var(--shadow-sm);
@@ -47,7 +47,7 @@
 
 @media screen and (max-width: 1024px) {
     .header {
-        padding: 16px 20px;
+        padding: var(--space-md) var(--space-lg);
     }
 
     .brand__container {
@@ -84,7 +84,7 @@
         justify-content: flex-end;
         align-items: center;
         min-height: 90px;
-        padding: 24px 32px;
+        padding: var(--space-xl) var(--space-2xl);
         border-bottom: 1px solid #d8d8d8;
     }
 
@@ -92,11 +92,10 @@
         border: none;
         background: transparent;
         color: var(--color-primary);
-        font-size: 1rem;
         cursor: pointer;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: var(--space-sm);
     }
 
     .mobile-menu__close-icon {

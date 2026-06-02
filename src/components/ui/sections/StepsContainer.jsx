@@ -94,7 +94,7 @@ function StepsContainer({ questions = [], warning, band, info, explain, footer, 
             {items && (
                 <div className="steps-container__items">
                     {items.map((item) => (
-                        <div className="steps-container__item">
+                        <div className="steps-container__item" key={item}>
                             <IconBand
                                 color="light-blue"
                             />

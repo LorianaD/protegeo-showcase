@@ -4,17 +4,16 @@ Redirection cards
 .redirection-card {
     display: flex;
     width: 100%;
-    /* max-height: 260px; */
+    max-height: 260px;
     aspect-ratio: 1;
-    padding: 20px;
+    padding: var(--space-lg);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    border-radius: 12px;
-    background: #FFF;
+    gap: var(--space-sm);
+    border-radius: var(--radius-md);
+    background: var(--color-background);
     box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
-    line-height: 140%;
     font-family: var(--font-secondary);
 }
 
@@ -29,22 +28,19 @@ Redirection cards
 }
 
 .redirection-card__title {
-    color: #003366;
-    font-size: 20px;
-    font-weight: 700;
+    color: var(--color-primary);
+    font-size: var(--title-h5);
+    font-weight: var(--weight-bold);
     text-align: center;
 }
 
 .redirection-card__description {
-    color: #333333;
+    color: var(--color-text);
     text-align: center;
-    font-size: 16px;
-    line-height: 140%;
 }
 
 .redirection-card__link {
     color: #0078A8;
-    font-size: 16px;
 }
 
 /* Article */
@@ -54,47 +50,43 @@ Redirection cards
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 16px;
+    gap: var(--space-md);
     align-self: stretch;
 }
 
 .item-card__title {
     color: var(--color-primary);
     font-family: var(--font-secondary);
-    font-size: 24px;
+    font-size: var(--title-h4);
     font-style: normal;
-    font-weight: 700;
+    font-weight: var(--weight-bold: 700);
     line-height: 130%; /* 31.2px */
 }
 
 .item-card__descriptions {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .item-card__description {
     color: var(--color-text);
-    font-family: var(--font-secondary);
-    font-size: 1rem;
-    font-style: normal;
-    line-height: 140%; /* 22.4px */
 }
 
 .item-card__group {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .item-card__list {
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    padding-inline-start: 40px;
+    margin-block-start: var(--space-md);
+    margin-block-end: var(--space-md);
+    padding-inline-start: var(--space-2xl);
     unicode-bidi: isolate;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .item-card__list-item {
@@ -104,16 +96,14 @@ Redirection cards
 .item-card__info-title {
     color: #000;
     font-family: var(--font-secondary);
-    font-size: 16px;
+    font-size: var(--text-base);
     font-style: normal;
-    font-weight: 700;
-    line-height: 140%; /* 22.4px */
+    font-weight: var(--weight-bold);
 }
 
 .item-card__link {
     color: var(--color-primary);
-    font-weight: 700;
-    line-height: 140%; /* 22.4px */
+    font-weight: var(--weight-bold);
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
@@ -132,7 +122,7 @@ Redirection cards
 }
 
 .item-card__label {
-    font-weight: 700;
+    font-weight: var(--weight-bold);
 }
 
 .item-card__text {

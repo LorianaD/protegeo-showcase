@@ -14,8 +14,6 @@ Sections Hero
     background-color: var(--color-background);
 
     width: 100%;
-
-    font-family: var(--font-primary);
 }
 
 .hero-container__title {
@@ -28,7 +26,7 @@ Sections Hero
 }
 
 .hero-container__description {
-    text-align: justify;
+    text-align: left;
     width: 100%;
 }
 
@@ -79,7 +77,7 @@ Sections
     align-items: center;
     justify-content: center;
 
-    gap: var(--space-md);    
+    gap: var(--space-xl);    
     padding: var(--space-3xl);
 
     border-radius: var(--radius-md);

@@ -4,3 +4,4 @@ export { default as StepsAccountManagementGuide } from "./StepsAccountManagement
 export { default as ExplanationsAccountManagementGuide } from "./ExplanationsAccountManagementGuide";
 
 export { default as FooterAccountManagementGuide } from "./FooterAccountManagementGuide";
+export { default as FinalWarningAccountManagement } from "./FinalWarningAccountManagement";

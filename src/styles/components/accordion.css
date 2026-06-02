@@ -11,12 +11,12 @@
 /* Close */
 .accordion__button {
     width: 100%;
-    padding: 16px 20px;
+    padding: var(--space-md) var(--space-lg);
     border: none;
     border-radius: var(--radius-sm);
     background: var(--color-background);
     color: var(--color-primary);
-    font-weight: 700;
+    font-weight: var(--weight-bold);
 
     display: flex;
     justify-content: space-between;
@@ -28,7 +28,7 @@
 
 /* Open */
 .accordion__button--open {
-    border-radius: 8px 8px 0 0;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
     background: #dcebf5;
     box-shadow: none;
 }
@@ -37,15 +37,15 @@
     padding: 20px;
     background: var(--color-background);
     color: var(--color-primary);
-    border-radius: 0 0 8px 8px;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.18);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--space-md);
 }
 
 .accordion__question {
-    margin-bottom: 18px;
+    margin-bottom: var(--space-md);
 }
 
 .accordion__question:last-child {
@@ -53,22 +53,20 @@
 }
 
 .accordion__question-title {
-    margin-bottom: 8px;
+    margin-bottom: var(--space-xs);
     color: var(--color-primary);
-    font-weight: 700;
-    font-size: 16px;
+    font-weight: var(--weight-bold);
 }
 
 .accordion__answer {
     margin: 0 0 6px;
-    color: var(--color-primary);
-    font-size: 15px;
-    line-height: 1.4;
+    color: var(--color-text);
 }
 
 .accordion__list {
-    margin: 8px 0 0 20px;
+    margin: var(--space-xs) 0 0 var(--space-lg);
     padding: 0;
+    color: var(--color-text);
 }
 
 .accordion__list-item {

@@ -6,7 +6,12 @@ import step5 from "./step5-account-management.png";
 import step52 from "./step5.2-account-management.png"
 import step6 from "./step6-account-management.png";
 import step7 from "./step7-account-management.png";
-import step9 from "./step9-account-management.png"
+import step9 from "./step9-account-management.png";
+import screenshotHome from "./screenshot-home.png";
+import screenshotRegister from "./screenshot-register.png";
+import screenshotDashboard from "./screenshot-dashboard.png";
+import screenshotAddMajor from "./screenshot-addMajor.png";
+import screenshotAnnualAccount from "./screenshot-annualAccount.png";
 
 export {
     step1,
@@ -18,4 +23,9 @@ export {
     step6,
     step7,
     step9,
+    screenshotHome,
+    screenshotRegister,
+    screenshotDashboard,
+    screenshotAddMajor,
+    screenshotAnnualAccount,
 };

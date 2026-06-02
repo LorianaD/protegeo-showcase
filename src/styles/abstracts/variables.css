@@ -3,7 +3,7 @@
     TYPOGRAPHIE
   *********************************** */
   --font-primary: "Marianne", Arial, sans-serif;
-  --font-secondary: Arial, sans-serif;
+  --font-secondary: "Spectral", serif;
 
   /*** Size ***/
   --title-h2: 2.25rem; /* 36px -- page title */

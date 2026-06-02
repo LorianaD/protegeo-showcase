@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import { MainLayout } from "../components";
-import { About, Community, Contact, ContactUs, Faq, Helps, Home, Measure, Steps, Templates } from "@/pages/public";
+import { About, Community, Contact, ContactUs, Discover, Faq, Helps, Home, Measure, Steps, Templates } from "@/pages/public";
 import { CookiePolicy, LegalNotice, PrivacyPolicy, Sitemap } from "@/pages/legal";
 
 function PublicRoutes() {
@@ -14,6 +14,7 @@ function PublicRoutes() {
                 <Route path='steps' element={<Steps />}/>
                 <Route path='contact' element={<Contact />}/>
                 <Route path='about' element={<About />}/>
+                <Route path="discover" element={<Discover />}/>
                 <Route path="faq" element={<Faq />}/>
                 <Route path="contact-us" element={<ContactUs />}/>
 

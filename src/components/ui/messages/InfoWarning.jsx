@@ -21,7 +21,7 @@ function InfoWarning({ icon, iconColor, img, title, description, important, vari
             )}
 
             <div className={`info-warning__content info-warning__content--${variant}`}>
-                {title && (
+                {title && typeof description === "string" && (
                     <p className={`info-warning__description info-warning__description--${variant}`}>
                         <span className={`info-warning__title info-warning__title--${variant}`}>
                             {title}
@@ -31,6 +31,22 @@ function InfoWarning({ icon, iconColor, img, title, description, important, vari
                         </span>
                         
                     </p>
+                )}
+
+                {title && Array.isArray(description) && (
+                    <div className={`info-warning__description info-warning__description--${variant}`}>
+                        <p className={`info-warning__title info-warning__title--${variant}`}>
+                            {title}
+                        </p>
+                        <p className={`info-warning__description-text info-warning__description-text--${variant}`}>
+                            {description.map((text) => (
+                                <span key={text}>
+                                    {text}
+                                </span>
+                            ))}                             
+                        </p>
+
+                    </div>
                 )}
 
                 {!title && Array.isArray(description) && (

@@ -17,6 +17,9 @@ function FooterAccountManagementGuide() {
                     </li>
                 ))}
             </ul>
+            <p className="guide-footer__reminder">
+                { accountManagementGuideFooter.reminder }
+            </p>
         </section>
     );
 }

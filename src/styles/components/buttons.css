@@ -1,22 +1,19 @@
 .primary-button {
     display: flex;
-    min-height: 40px;
-    padding: 5px 10px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    border-radius: 20px;
+    gap: var(--space-xs);    
+    min-height: 40px;
+    padding: var(--space-button-y) var(--space-button-x);
+    border-radius: var(--radius-button);
     background: var(--color-primary);
-    color: #FFFFFF;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 140%;
+    color: var(--white);
+    font-weight: var(--weight-bold);
 }
 
 .button-container {
     display: flex;
-    gap: 20px;
+    gap: var(--space-lg);
     width: 100%;
 }
 
@@ -24,33 +21,37 @@
 
 .shortcut-card {
     display: flex;
-    width: 300px;
-    padding: 20px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+
+    width: 300px;
+    min-height: 200px;    
+    
     background-color: var(--color-background);
-    border-radius: 12px;
-    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.25);
-    min-height: 200px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
 }
 
 .shortcut-card--guide {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    cursor: default;
     min-height: 200px;
-    gap: 16px;
+    gap: var(--space-md);    
+    cursor: default;
+}
+
+.shortcut-card--discover {    
+    cursor: default;
 }
 
 .shortcut-card__icon {
     width: 50px;
     height: 50px;
 }
-
-.shortcut-card__img {}
 
 .shortcut-card__content {
     display: flex;
@@ -60,12 +61,11 @@
 }
 
 .shortcut-card__title {
-    color: var(--color-primary);
     text-align: center;
     font-family: var(--font-secondary);
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 140%; /* 28px */
+    font-size: var(--title-h5);
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
 }
 
 .shortcut-card__title--guide {
@@ -74,9 +74,6 @@
 
 .shortcut-card__description {
     color: var(--color-text);
-    font-family: var(--font-secondary);
-    font-size: 16px;
-    line-height: 140%; /* 22.4px */
 }
 
 /* ***********************************

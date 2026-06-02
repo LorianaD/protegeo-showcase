@@ -28,9 +28,14 @@
     border: 2px solid var(--red);
 }
 
+.icon-band--reminder {
+    color: var(--orange);
+    border: 2px solid var(--orange);
+}
+
 .icon-band__sign {
-    font-size: 20px;
-    font-weight: 700;
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
 }
 
 @media screen and (max-width: 1050px) {

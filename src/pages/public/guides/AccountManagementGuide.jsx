@@ -1,4 +1,4 @@
-import { ExplanationsAccountManagementGuide, FooterAccountManagementGuide, HeroAccountManagementGuide, Main, StepsAccountManagementGuide, WarningAccountManagement } from "@/components";
+import { ExplanationsAccountManagementGuide, FinalWarningAccountManagement, FooterAccountManagementGuide, HeroAccountManagementGuide, Main, StepsAccountManagementGuide, WarningAccountManagement } from "@/components";
 
 function AccountManagementGuide() {
     return (
@@ -8,6 +8,7 @@ function AccountManagementGuide() {
             <StepsAccountManagementGuide/>
             <ExplanationsAccountManagementGuide/>
             <FooterAccountManagementGuide/>
+            <FinalWarningAccountManagement/>
         </Main>
     )
 }

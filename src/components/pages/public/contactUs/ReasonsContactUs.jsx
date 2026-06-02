@@ -9,6 +9,7 @@ function ReasonsContactUs() {
                     key={card.title}
                     title={card.title}
                     description={card.description}
+                    variant="guide"
                 />
             ))}
 

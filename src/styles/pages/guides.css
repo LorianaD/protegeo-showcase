@@ -28,6 +28,7 @@
 .guide-footer__label {
     font-size: 20px;
     font-weight: 700;
+    color: var(--white);
 }
 
 .guide-footer__checklist {
@@ -41,6 +42,10 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.guide-footer__reminder {
+    font-style: italic;
 }
 
 /* ***********************************
