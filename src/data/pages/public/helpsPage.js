@@ -1,7 +1,7 @@
 const helpsHero = 
 {
-    title: "Comprendre les mesures de protection juridique",
-    description: "Les mesures de tutelle, curatelle et sauvegarde de justice ont pour but de protéger une personne vulnérable dans la gestion de ses droits et de ses biens. Voici les différences expliquées simplement.",
+    title: "Vos aides et droits",
+    description: "Découvrez les principales aides financières et administratives : AAH, APL, RSA, MDPH, impôts, CPAM… Toutes ces informations sont rassemblées ici pour faciliter vos démarches.",
 }
 
 const helpsFinancial =
