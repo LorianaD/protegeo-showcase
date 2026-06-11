@@ -62,7 +62,7 @@ Section lien de redirection
     display: grid;
     justify-content: center;
     /* flex-wrap: wrap; */
-    grid-template-columns: repeat(3, minmax(220px, 260px));
+    grid-template-columns: repeat(3, minmax(220px, 300px));
     gap: var(--space-lg);
     width: 100%;
 }

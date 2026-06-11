@@ -4,7 +4,8 @@ Redirection cards
 .redirection-card {
     display: flex;
     width: 100%;
-    max-height: 260px;
+    aspect-ratio: 1/1;
+    height: 300px;
     aspect-ratio: 1;
     padding: var(--space-lg);
     flex-direction: column;
