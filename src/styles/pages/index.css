@@ -3,9 +3,7 @@
 ****************************************** */
 
 @import "./home.css";
-/* @import "./about.css"; */
 @import "./discover.css";
-/* @import "./faq.css"; */
-/* @import "./community.css"; */
-
 @import "./guides.css";
+
+@import "./auth.css";

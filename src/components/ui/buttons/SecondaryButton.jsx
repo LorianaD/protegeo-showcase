@@ -1,13 +1,13 @@
 import { Link } from "react-router"
 
-function PrimaryButton({ children, href, download, to, type = "button" }) {
+function SecondaryButton({ label, href, download, to, type = "button" }) {
     
-    const classe = "button primary-button";
+    const classe = "button secondary-button";
 
     if (href) {
         return (
             <a href={ href } download={ download } target="_blank" className={ classe }>
-                { children }
+                { label }
             </a>
         )
     }
@@ -15,16 +15,16 @@ function PrimaryButton({ children, href, download, to, type = "button" }) {
     if (to) {
         return (
             <Link to={ to } className={ classe }>
-                { children }
+                { label }
             </Link>
         )
     }
     
     return(
         <button type={ type } className={ classe }>
-            { children }
+            { label }
         </button>
     )
 }
 
-export default PrimaryButton
+export default SecondaryButton;

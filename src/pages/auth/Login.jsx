@@ -1,9 +1,11 @@
-import { Main, LoginPreview } from "@/components";
+import { Main, LoginPreview, HeaderLogin, BodyLogin } from "@/components";
 
 function Login() {
     return (
         <Main >
-            <LoginPreview/>
+            {/* <LoginPreview/> */}
+            <HeaderLogin/>
+            <BodyLogin/>
         </Main>
     )
 }

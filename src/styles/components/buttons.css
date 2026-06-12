@@ -1,4 +1,4 @@
-.primary-button {
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,9 +6,19 @@
     min-height: 40px;
     padding: var(--space-button-y) var(--space-button-x);
     border-radius: var(--radius-button);
-    background: var(--color-primary);
-    color: var(--white);
     font-weight: var(--weight-bold);
+    width: fit-content;
+}
+
+.primary-button {
+    background: var(--color-primary);
+    color: var(--white);  
+}
+
+.secondary-button {
+    background: var(--white);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);  
 }
 
 .button-container {

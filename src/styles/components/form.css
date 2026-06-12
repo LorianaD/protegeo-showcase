@@ -1,0 +1,80 @@
+/* FORMS' FIELDS */
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+}
+
+.form-field__label {
+    font-family: var(--font-primary);
+    font-size: var(--title-h4);
+    width: 100%;
+}
+
+.form-field__description {
+    color: #6A6A6A;
+    font-style: italic;
+    width: 100%;
+}
+
+.form-field__control {}
+
+.form-field__error {}
+
+.form-input {
+    width: 100%;
+    height: 30px;
+    border-bottom: 2px solid var(--gray);
+    background-color: #E7E7E7;
+    width: 100%;
+}
+
+.form-checkbox {}
+
+.form-radio {
+    width: 16px;
+    height: 16px;
+    fill: var(--white);
+    stroke-width: 1px;
+    stroke: var(--gray);
+}
+
+.form-select {}
+
+.form-textarea {}
+
+.form-input--date {}
+
+.form-input--currency {}
+
+.form-currency__symbol {}
+
+/* FORMS' CARD */
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    width: 100%;
+}
+
+.form-card__content {
+    width: 100%;
+}
+
+.form-card__title {
+    font-family: var(--font-primary);
+    font-size: var(--title-h3);
+    width: 100%;
+}
+
+.form-card__description {}
+
+.form-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+}
