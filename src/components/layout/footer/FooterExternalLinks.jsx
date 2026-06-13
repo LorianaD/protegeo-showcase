@@ -1,4 +1,4 @@
-import externalLinks from "../../../data/footer/externalLinks.js";
+import externalLinks from "../../../data/layout/footer/externalLinks.js";
 import externalLinkIcon from "../../../assets/imgs/external-link.svg";
 
 function FooterExternalLinks() {

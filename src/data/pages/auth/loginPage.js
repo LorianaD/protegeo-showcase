@@ -29,7 +29,7 @@ const loginForm = {
 const loginRegisterRedirection = {
     title : "Vous n’avez pas de compte ?",
     btn_label : "Créer un compte",
-    btn_url : "/register",
+    btn_url : "/auth/register",
 };
 
 export {

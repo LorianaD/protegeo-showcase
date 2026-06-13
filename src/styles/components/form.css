@@ -78,3 +78,49 @@
     flex-direction: column;
     gap: var(--space-xl);
 }
+
+/* STEP INDICATOR */
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    width: 100%;
+}
+
+.step-indicator__count,
+.step-indicator__next {
+    font-family: var(--font-secondary);
+    font-size: var(--text-base);
+    color: #484848;
+}
+
+.step-indicator__title {
+    font-family: var(--font-primary);
+    font-size: var(--title-h3);
+    font-weight: var(--weight-bold);
+}
+
+.step-indicator__bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    width: 100%;
+    height: 7px;
+}
+
+.step-indicator__progress {
+    background-color: var(--color-primary);
+}
+
+.step-indicator__part {
+    background-color: #c8c8c8;
+}
+
+.step-indicator__next {
+    font-style: italic;
+}
+
+.step-indicator__next-important {
+    font-weight: var(--weight-bold);
+}

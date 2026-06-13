@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import footerLegalLinks from "../../../data/footer/footerLegalLinks.js";
+import footerLegalLinks from "../../../data/layout/footer/footerLegalLinks.js";
 
 function FooterBottomLinks() {
     return (

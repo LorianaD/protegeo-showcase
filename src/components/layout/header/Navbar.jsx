@@ -1,5 +1,5 @@
 import { NavLink } from "react-router"
-import navLinks from "../../../data/header/nav.js"
+import navLinks from "../../../data/layout/header/nav.js"
 
 function Navbar({ closeMenu, isMobile = false }) {
     return(

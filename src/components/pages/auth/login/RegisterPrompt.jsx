@@ -10,6 +10,7 @@ function RegisterPrompt() {
             </h3>
             <SecondaryButton 
                 label={ section.btn_label } 
+                to={ section.btn_url }
             />
         </div>
     )

@@ -7,6 +7,7 @@ export { default as Checkbox } from "./Checkbox";
 export { default as RadioGroup } from "./RadioGroup";
 export { default as DateInput } from "./DateInput";
 export { default as CurrencyInput } from "./CurrencyInput";
+export { default as StepIndicator } from "./StepIndicator";
 
 export { default as FormMessage } from "./FormMessage";
 

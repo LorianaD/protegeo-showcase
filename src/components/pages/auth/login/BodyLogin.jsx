@@ -2,9 +2,9 @@ import { FormLogin, RegisterPrompt } from "./index";
 
 function BodyLogin() {
     return (
-        <div className="body-login">
+        <div className="body-auth">
             <FormLogin/>
-            <div className="body-login__divider"></div>
+            <div className="body-auth__divider"></div>
             <RegisterPrompt/>
         </div>
     )

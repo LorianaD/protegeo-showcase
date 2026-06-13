@@ -1,4 +1,4 @@
-import footerNavLinks from "../../../data/footer/footerNavLinks";
+import footerNavLinks from "../../../data/layout/footer/footerNavLinks";
 import FooterNavColumn from "./FooterNavColumn";
 
 function FooterTopLinks() {

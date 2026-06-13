@@ -1,10 +1,11 @@
-import Main from "../../components/layout/Main";
-import InBuild from "../../components/ui/messages/InBuild";
+import { Main, HeaderRegister, BodyRegister } from "@/components";
+
 
 function Register() {
     return (
         <Main>
-            <InBuild title={"Création  de compte sur Protégéo"}/>
+            <HeaderRegister/>
+            <BodyRegister/>
         </Main>
     )
 }
