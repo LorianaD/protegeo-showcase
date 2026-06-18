@@ -1,8 +1,8 @@
 import { SecondaryButton } from "@/components/ui";
-import { loginRegisterRedirection } from "@/data";
+import { login } from "@/data";
 
 function RegisterPrompt() {
-    const section = loginRegisterRedirection;
+    const section = login.registerRedirection;
     return (
         <div className="register-prompt">
             <h3 className="register-prompt__title">

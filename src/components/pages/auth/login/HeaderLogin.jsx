@@ -1,10 +1,11 @@
 import { AuthHeader } from "@/components/ui";
-import { loginHeader } from "@/data";
+import { login } from "@/data";
 
 function HeaderLogin() {
+    const section = login.header;
     return (
         <AuthHeader
-            title={loginHeader.title}
+            title={ section.title }
         />
     )
 }

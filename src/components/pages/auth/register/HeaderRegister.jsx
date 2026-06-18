@@ -1,10 +1,11 @@
 import { AuthHeader } from "@/components/ui";
-import { registerHeader } from "@/data";
+import { register } from "@/data";
 
 function HeaderRegister() {
+    const section = register.header;
     return (
         <AuthHeader
-            title={ registerHeader.title }
+            title={ section.title }
         />
     )
 }

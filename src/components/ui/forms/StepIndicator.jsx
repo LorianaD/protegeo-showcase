@@ -1,14 +1,12 @@
-import { registerStepIndicator } from "@/data";
-
-function StepIndicator({ actualStep = 1, stepsNumber = 3 }) {
+function StepIndicator({ section, actualStep = 1, stepsNumber = 3 }) {
     return (
         <div className="step-indicator">
             <span className="step-indicator__count">
-                { registerStepIndicator.count_step } {actualStep} { registerStepIndicator.count_on } {stepsNumber}
+                { section.count_step } {actualStep} { section.count_on } {stepsNumber}
             </span>
 
             <p className="step-indicator__title">
-                { registerStepIndicator.steps.step1 }
+                { section.steps.step1 }
             </p>
 
             <div className="step-indicator__bar">
@@ -18,7 +16,7 @@ function StepIndicator({ actualStep = 1, stepsNumber = 3 }) {
             </div>
 
             <p className="step-indicator__next">
-                <span className="step-indicator__next-important">{ registerStepIndicator.next_important }</span>{ registerStepIndicator.steps.step2 }
+                <span className="step-indicator__next-important">{ section.next_important }</span>{ section.steps.step2 }
             </p>
         </div>
     );

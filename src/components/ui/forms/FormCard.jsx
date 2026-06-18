@@ -1,6 +1,6 @@
-import { PrimaryButton } from "../buttons";
+import { PrimaryButton, SecondaryButton } from "../buttons";
 
-function FormCard({ title, description, children, btn_label }) {
+function FormCard({ title, description, mention, children, btn_label, secondaty_label }) {
     return (
         <section className="form-card">
             {title && (
@@ -15,13 +15,29 @@ function FormCard({ title, description, children, btn_label }) {
                 </p>
             )}
 
+            {mention && (
+                <p className="form-card__mention">
+                    { mention }
+                </p>
+            )}
+
             <div className="form-card__content">
                 { children }
             </div>
 
-            <PrimaryButton>
-                { btn_label }
-            </PrimaryButton>
+            <div className="form-card__cta-content">
+                {secondaty_label && (
+                    <SecondaryButton 
+                        label={secondaty_label}
+                    />
+                )}
+
+                <PrimaryButton>
+                    { btn_label }
+                </PrimaryButton>                
+            </div>
+
+
         </section>
     );
 }
