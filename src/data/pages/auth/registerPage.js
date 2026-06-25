@@ -29,9 +29,9 @@ const register = {
                 mention: {
                     title: "Votre mot de passe doit contenir au moins :",
                     indicators: [
-                        "12 caractères minimum",
-                        "1 caractère spécial",
-                        "1 chiffre minimum",
+                        "! 12 caractères minimum",
+                        "! 1 caractère spécial",
+                        "! 1 chiffre minimum",
                     ],
                 },
             },        

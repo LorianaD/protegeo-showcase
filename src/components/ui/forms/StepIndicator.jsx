@@ -1,4 +1,10 @@
 function StepIndicator({ section, actualStep = 1, stepsNumber = 3 }) {
+
+    const stepTitle = section.steps[`step${actualStep}`];
+    const nextStepTitle = section.steps[`step${actualStep + 1}`];
+    const classActualStep2 = actualStep >= 2 ? "step-indicator__progress" : "";
+    const classActualStep3 = actualStep >= 3 ? "step-indicator__progress" : "";
+
     return (
         <div className="step-indicator">
             <span className="step-indicator__count">
@@ -6,18 +12,23 @@ function StepIndicator({ section, actualStep = 1, stepsNumber = 3 }) {
             </span>
 
             <p className="step-indicator__title">
-                { section.steps.step1 }
+                {stepTitle}
             </p>
 
             <div className="step-indicator__bar">
                 <div className="step-indicator__progress"></div>
-                <div className="step-indicator__part"></div>
-                <div className="step-indicator__part"></div>
+                <div className={`step-indicator__part ${classActualStep2}`}></div>
+                <div className={`step-indicator__part ${classActualStep3}`}></div>
             </div>
 
-            <p className="step-indicator__next">
-                <span className="step-indicator__next-important">{ section.next_important }</span>{ section.steps.step2 }
-            </p>
+            {actualStep < stepsNumber && (
+                <p className="step-indicator__next">
+                <span className="step-indicator__next-important">
+                    {section.next_important}
+                </span>
+                {nextStepTitle}
+                </p>
+            )}
         </div>
     );
 }

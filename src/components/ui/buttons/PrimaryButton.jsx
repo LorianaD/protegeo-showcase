@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 
-function PrimaryButton({ children, href, download, to, type = "button" }) {
+function PrimaryButton({ children, href, download, to, type = "button", onClick }) {
     
     const classe = "button primary-button";
 
@@ -21,7 +21,7 @@ function PrimaryButton({ children, href, download, to, type = "button" }) {
     }
     
     return(
-        <button type={ type } className={ classe }>
+        <button type={ type } className={ classe } onClick={onClick}>
             { children }
         </button>
     )

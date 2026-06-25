@@ -1,4 +1,4 @@
-function FormField({ name, label, description, error, required, children }) {
+function FormField({ name, label, description, mention, error, required, children }) {
     return (
         <div className="form-field">
             <div>
@@ -26,6 +26,18 @@ function FormField({ name, label, description, error, required, children }) {
                 <p className="form-field__error">
                     { error }
                 </p>
+            )}
+
+            {mention && (
+                <div className="form-field__mention">
+                    <p>{mention.title}</p>
+
+                    <ul>
+                        {mention.indicators.map((indicator) => (
+                            <li key={indicator}>{indicator}</li>
+                        ))}
+                    </ul>
+                </div>
             )}
         </div>
     )

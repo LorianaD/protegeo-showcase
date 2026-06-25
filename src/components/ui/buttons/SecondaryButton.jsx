@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 
-function SecondaryButton({ label, href, download, to, type = "button" }) {
+function SecondaryButton({ label, href, download, to, type = "button", onClick }) {
     
     const classe = "button secondary-button";
 
@@ -21,7 +21,7 @@ function SecondaryButton({ label, href, download, to, type = "button" }) {
     }
     
     return(
-        <button type={ type } className={ classe }>
+        <button type={ type } className={ classe } onClick={ onClick }>
             { label }
         </button>
     )

@@ -1,15 +1,26 @@
 import { StepIndicator } from "@/components/ui";
 import { register } from "@/data";
 import FormRegister from "./FormRegister";
+import { useState } from "react";
 
 function BodyRegister() {
+    const [actualStep, setActualStep] = useState(1);
+
     const stepIndicator = register.stepIndicator;
-    const login = register.loginName;
+
+    const sections = [
+        register.loginName,
+        register.identity,
+        register.coordinates,
+    ];
+
+    const currentSection = sections[actualStep - 1];
+
     return (
         <div className="body-auth">
-            <StepIndicator section={stepIndicator}/>
+            <StepIndicator section={stepIndicator} actualStep={actualStep} stepsNumber="3"/>
             <div className="body-auth__divider"></div>
-            <FormRegister section={login}/>
+            <FormRegister section={currentSection} actualStep={actualStep} setActualStep={setActualStep} />
         </div>
     )
 }

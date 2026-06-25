@@ -26,10 +26,11 @@
 .form-input {
     width: 100%;
     height: 30px;
-    border-bottom: 2px solid var(--gray);
-    background-color: #E7E7E7;
+    border-bottom: 2px solid var(--blue);
+    background-color: var(--pale-blue);
     width: 100%;
 }
+
 
 .form-checkbox {}
 
@@ -39,6 +40,18 @@
     fill: var(--white);
     stroke-width: 1px;
     stroke: var(--gray);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.radio-group__option {
+    display: flex;
+    gap: 12px;
+    align-items: center;
 }
 
 .form-select {}
@@ -56,13 +69,33 @@
 .form-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: var(--space-xl);
     width: 100%;
 }
 
+.form-card__header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+}
+
 .form-card__content {
     width: 100%;
+}
+
+.form-card__content-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;    
+}
+
+.form-card__content-fields--inline {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: var(--space-xl);
 }
 
 .form-card__title {
@@ -71,12 +104,22 @@
     width: 100%;
 }
 
-.form-card__description {}
+.form-card__description {
+    text-align: left;
+}
 
 .form-card__content {
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
+}
+
+.form-card__cta-content {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-3xl);
+    padding: var(--space-xl);
+    width: 100%;
 }
 
 /* STEP INDICATOR */
@@ -109,12 +152,12 @@
     height: 7px;
 }
 
-.step-indicator__progress {
-    background-color: var(--color-primary);
+.step-indicator__part {
+    background-color: var(--pale-blue);
 }
 
-.step-indicator__part {
-    background-color: #c8c8c8;
+.step-indicator__progress {
+    background-color: var(--color-primary);
 }
 
 .step-indicator__next {
