@@ -1,0 +1,115 @@
+.siderbar {
+    display: flex;
+    flex-direction: column;
+    width: 231px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    gap: 50px;
+    border-radius: 0 0 4px 0;
+    background-color: #f4f7fa;
+    box-shadow: 1px 1px 12px 0 rgba(0, 0, 0, 0.20);
+}
+
+.siderbar-top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.siderbar-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.siderbar-header__logo {
+    display: flex;
+    justify-content: center;
+}
+
+.siderbar-header__logo-img {
+    width: 150px;
+    aspect-ratio: 1/1;
+}
+
+.siderbar-header__slogan {
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+}
+
+.siderbar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: var(--color-primary);
+}
+
+.siderbar-nav__section-title {
+    padding: 0 10px;
+    font-weight: var(--weight-bold);
+    color: var(--color-primary);
+}
+
+.siderbar-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--space-md);
+    gap: 6px;
+    border-top: 1px solid #e0eaf0;
+}
+
+.siderbar-footer__profil {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.siderbar-footer__profil-icon {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: var(--color-primary);
+}
+
+.siderbar-footer__profil-initial {
+    color: var(--white);
+    font-weight: var(--weight-bold);
+}
+
+.siderbar-footer__user {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.siderbar-footer__user-name {
+    font-weight: var(--weight-bold);
+}
+
+.siderbar-footer__user-role {
+    font-size: 12px;
+    color: #6B7280;
+}
+
+.siderbar-footer__logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: var(--space-md);
+}
+
+.siderbar-footer__logout-label {
+    height: auto;
+    color: var(--red);
+    font-weight: var(--weight-semibold);
+}
+
+.siderbar-footer__logout-icon {
+    width: var(--space-lg);
+    height: var(--space-lg);
+}

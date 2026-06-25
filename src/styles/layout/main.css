@@ -20,6 +20,17 @@
     align-items: center;
 }
 
+.dashboard-main-layout {
+    display: flex;
+}
+
+.dashboard {
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 /* ***********************************
     Responsive
 *********************************** */

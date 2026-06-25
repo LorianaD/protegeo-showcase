@@ -54,6 +54,13 @@ Sections Hero
     align-items: flex-start;
 }
 
+.hero--dashboard {
+    padding: var(--space-lg) var(--space-xl);
+    gap: var(--space-xl);
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 /***********************************
 Section lien de redirection
 ***********************************/
@@ -278,6 +285,34 @@ Sections
 
 .steps-container__footer-conclusion {
     color: var(--pale-blue);
+}
+
+/********************
+***** DASHBOARD *****
+********************/
+
+.section-overview-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 28px;
+    width: 100%;
+}
+
+.stats-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    width: 100%;
+}
+
+.section-action-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 28px;
 }
 
 /* ***********************************

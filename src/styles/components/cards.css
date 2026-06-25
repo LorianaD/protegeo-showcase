@@ -134,6 +134,30 @@ Redirection cards
     margin: 0;
 }
 
+/********************
+***** STAT CARD *****
+********************/
+
+.stat-card {
+    display: flex;
+    width: 200px;
+    height: 120px;
+    padding: 20px 10px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(217, 228, 238, 0.10);
+    background-color: var(--color-background);
+    box-shadow: 2px 2px 30px 0 rgba(0, 51, 102, 0.2);
+}
+
+.stat-card__data {
+    color: var(--color-primary);
+    font-size: 26px;
+    font-weight: var(--weight-bold);
+}
+
 /* ***********************************
     Responsive
 *********************************** */

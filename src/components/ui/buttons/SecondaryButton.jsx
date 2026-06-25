@@ -1,8 +1,8 @@
 import { Link } from "react-router"
 
-function SecondaryButton({ label, href, download, to, type = "button" }) {
+function SecondaryButton({ label, href, download, to, type = "button", onClick, variant = "default" }) {
     
-    const classe = "button secondary-button";
+    const classe = `button secondary-button secondary-button--${variant}`;
 
     if (href) {
         return (
@@ -21,7 +21,7 @@ function SecondaryButton({ label, href, download, to, type = "button" }) {
     }
     
     return(
-        <button type={ type } className={ classe }>
+        <button type={ type } className={ classe } onClick={ onClick }>
             { label }
         </button>
     )

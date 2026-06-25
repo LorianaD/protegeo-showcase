@@ -21,6 +21,8 @@ import iconSteps from "./icon-steps.png";
 import iconTemplate from "./icon-template.png";
 import iconTrib from "./icon-trib.png";
 import iconWarning from "./icon-warning.png";
+import logOut from "./log-out.svg";
+
 
 export {
     iconAccount,
@@ -46,4 +48,7 @@ export {
     iconTemplate,
     iconTrib,
     iconWarning, 
-}
+    logOut,
+};
+
+export * from "./dashboard";

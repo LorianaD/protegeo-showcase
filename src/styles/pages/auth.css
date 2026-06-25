@@ -24,7 +24,7 @@
     padding: var(--space-2xl);
     gap: var(--space-xl);
     background-color: var(--light-gray);
-    min-width: 550px;
+    width: 550px;
 }
 
 .body-auth__divider {

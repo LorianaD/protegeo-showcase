@@ -4,4 +4,4 @@ export * from "./pages";
 
 export * from "./form";
 
-export * from "./redirectionCards";
+export * from "./actions";

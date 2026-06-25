@@ -1,0 +1,8 @@
+.nav-dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 28px 0;
+    gap: 20px;
+    width: 100%;
+}

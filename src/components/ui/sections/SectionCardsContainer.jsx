@@ -1,8 +1,8 @@
 import RedirectionCard from "../cards/RedirectionCard.jsx";
-import redirectionCards from "../../../data/redirectionCards.js";
+import redirectionCards from "../../../data/actions/redirectionCards.js";
 
 function SectionCardsContainer({ names = [] }) {
-    return(
+    return (
         <section className="section-cards-container">
             {names.map((name) => {
 
@@ -10,12 +10,12 @@ function SectionCardsContainer({ names = [] }) {
                 if (!card) return null;
 
                 return (
-                    <RedirectionCard 
-                        key={card.name} 
-                        name={card.name} 
-                        img={card.img} 
-                        title={card.title} 
-                        description={card.description} 
+                    <RedirectionCard
+                        key={card.name}
+                        name={card.name}
+                        img={card.img}
+                        title={card.title}
+                        description={card.description}
                         link={card.link}
                     />
                 )

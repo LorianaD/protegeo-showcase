@@ -5,3 +5,4 @@ export { default as Footer } from "./Footer";
 
 export * from "./Header";
 export * from "./Footer";
+export * from "./dasboard";

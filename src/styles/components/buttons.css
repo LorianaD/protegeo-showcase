@@ -86,6 +86,51 @@
     color: var(--color-text);
 }
 
+/* Dashboard Nav Button */
+
+.dashboard-nav-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--color-primary);
+    padding: 0 12px 0 16px;
+}
+
+.dashboard-nav-button--siderbar {
+    padding: 10px 16px;
+    width: 100%;
+}
+
+.dashboard-nav-button--siderbar-active {
+    border-left: 3px solid #4fbbe5;
+    background-color: var(--color-primary);
+    color: var(--white);
+}
+
+.dashboard-nav-button__icon {
+    width: 20px;
+}
+
+.dashboard-nav-button--profile {
+    padding: 10px;
+    width: 100%;
+    background: #F3F6F9;
+    border-radius: 10px;
+    color: #6B7C93;
+}
+
+.dashboard-nav-button--profile-active {
+    border-radius: 10px;
+    border: 2px solid #D9E4EE;
+    background: #FFF;
+}
+
+.dashboard-nav-button--profile:hover {
+    background: #E8F0F8;
+    color: #2F5D9F;
+}
+
+
 /* ***********************************
     Responsive
 *********************************** */
