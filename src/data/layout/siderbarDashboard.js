@@ -111,7 +111,7 @@ const siderbarDashboard = {
                             active : dashboardProfileWhite
                         },
                         link_label : "Mon profil",
-                        link_url : "",
+                        link_url : "/dashboard/profile",
                     },
                     // {
                     //     link_icon : {

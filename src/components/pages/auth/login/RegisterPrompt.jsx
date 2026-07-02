@@ -1,4 +1,4 @@
-import { SecondaryButton } from "@/components/ui";
+import { Button } from "@/components/ui";
 import { login } from "@/data";
 
 function RegisterPrompt() {
@@ -8,9 +8,10 @@ function RegisterPrompt() {
             <h3 className="register-prompt__title">
                 { section.title }
             </h3>
-            <SecondaryButton 
+            <Button 
                 label={ section.btn_label } 
                 to={ section.btn_url }
+                variant="secondary"
             />
         </div>
     )

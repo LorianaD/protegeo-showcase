@@ -1,9 +1,12 @@
-import { HeroDashboardFinancialManagement, Main } from "@/components";
+import { HeroDashboard, Main } from "@/components";
+import { financialManagementDashboard } from "@/data";
 
 function FinancialManagement() {
+    const page = financialManagementDashboard;
+    const variantClass = "dashboard";
     return (
-        <Main>
-            <HeroDashboardFinancialManagement />
+        <Main variant={ variantClass }>
+            <HeroDashboard page={ page } />
         </Main>
     )
 }

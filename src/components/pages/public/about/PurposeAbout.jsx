@@ -1,5 +1,5 @@
 import { aboutPurpose } from "@/data";
-import { ItemCard, PrimaryButton, SectionContainer } from "@/components";
+import { Button, ItemCard, SectionContainer } from "@/components";
 
 function PurposeAbout() {
     return (
@@ -7,9 +7,11 @@ function PurposeAbout() {
             <ItemCard
                 description={aboutPurpose.description}
             />
-            <PrimaryButton to={aboutPurpose.btnLink}>
-                { aboutPurpose.btnLabel }
-            </PrimaryButton>
+            <Button 
+                to={aboutPurpose.btnLink} 
+                label={aboutPurpose.btnLabel} 
+                variant="primary"
+            />
         </SectionContainer>
     )
 }

@@ -2,9 +2,9 @@ function SectionContainer({ id, title, description, children, variant = "center"
     return(
         <section id={id} className={`section-container section-container--${variant}`}>
             {title && (
-                <h2 className="section-container__title">
+                <h3 className="section-container__title">
                     { title }
-                </h2>
+                </h3>
             )}
             {description && (
                 <div className="section-container__description">

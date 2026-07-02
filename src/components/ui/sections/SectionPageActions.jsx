@@ -1,4 +1,4 @@
-import { PrimaryButton, SecondaryButton } from "../buttons";
+import { Button } from "../buttons";
 
 function SectionPageActions({ title }) {
     return (
@@ -7,9 +7,9 @@ function SectionPageActions({ title }) {
                 { title }
             </h3>
             <div className="section-page-actions__buttons">
-                <SecondaryButton label="Modifier les informations" />
-                <PrimaryButton label="Historique" />
-                <SecondaryButton label="Télécharger en PDF" />
+                <Button label="Modifier les informations" variant="secondary" />
+                <Button label="Historique" variant="primary" />
+                <Button label="Télécharger en PDF" variant="secondary" />
             </div>
         </section>
     )

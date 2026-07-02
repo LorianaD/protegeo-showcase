@@ -10,12 +10,12 @@
     width: fit-content;
 }
 
-.primary-button {
+.button--primary {
     background: var(--color-primary);
     color: var(--white);  
 }
 
-.secondary-button {
+.button--secondary {
     background: var(--white);
     color: var(--color-primary);
     border: 2px solid var(--color-primary);  

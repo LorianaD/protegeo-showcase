@@ -1,9 +1,14 @@
-import { Main } from "@/components";
+import { HeroDashboard, Main, SectionOverviewContainer } from "@/components";
+import { protectedPersonsDashboard } from "@/data";
 
 function ProtectedPersons() {
+    const page = protectedPersonsDashboard;
+    const variantClass = "dashboard";
     return (
-        <Main>
-
+        <Main variant={ variantClass }>
+            <SectionOverviewContainer>
+                <HeroDashboard page={page} />
+            </SectionOverviewContainer>
         </Main>
     )
 }

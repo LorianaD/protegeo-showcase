@@ -1,10 +1,15 @@
-import Main from "../../components/layout/Main";
-import InBuild from "../../components/ui/messages/InBuild";
+import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard } from "@/components";
+import { accountDashboard } from "@/data";
 
 function Account() {
+    const page = accountDashboard;
+    const variantClass = "dashboard";
     return (
-        <Main>
-            <InBuild title={"Le compte de gestion"}/>
+        <Main variant={ variantClass }>
+            <SectionOverviewContainer>
+                <HeroDashboard page={ page } />
+                <TabsDashboard page={ page } />
+            </SectionOverviewContainer>
         </Main>
     )
 }

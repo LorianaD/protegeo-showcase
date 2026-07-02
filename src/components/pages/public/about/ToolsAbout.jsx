@@ -1,5 +1,5 @@
 import { aboutTools } from "../../../../data";
-import { ItemCard, PrimaryButton, SectionContainer } from "@/components";
+import { Button, ItemCard, SectionContainer } from "@/components";
 
 function ToolsAbout() {
     return (
@@ -7,9 +7,11 @@ function ToolsAbout() {
             <ItemCard
                 lists={aboutTools.lists}
             />
-            <PrimaryButton to={aboutTools.btnLink}>
-                {aboutTools.btnLabel}
-            </PrimaryButton>
+            <Button 
+                to={aboutTools.btnLink} 
+                label={aboutTools.btnLabel} 
+                variant="primary"
+            />
         </SectionContainer>
     )
 }

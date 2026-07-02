@@ -10,3 +10,4 @@ export { default as SectionOverviewContainer } from "./SectionOverviewContainer"
 export { default as SectionActionContainer } from "./SectionActionContainer";
 export { default as SectionDashboardActions } from "./SectionDashboardActions";
 export { default as SectionPageActions } from "./SectionPageActions";
+export { default as DashboardSection } from "./DashboardSection";

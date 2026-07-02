@@ -1,4 +1,4 @@
-import { SectionContainer , PrimaryButton } from "@/components/ui";
+import { SectionContainer , Button } from "@/components/ui";
 import { homeCafPaymentData } from "@/data";
 
 function CafPaymentHome() {
@@ -15,7 +15,7 @@ function CafPaymentHome() {
                         { homeCafPaymentData.item3 }
                     </li>
                 </ul>
-                <PrimaryButton children={ homeCafPaymentData.btn } href={ homeCafPaymentData.link }/>
+                <Button label={ homeCafPaymentData.btn } href={ homeCafPaymentData.link } variant="primary"/>
         </SectionContainer>
     )
 }

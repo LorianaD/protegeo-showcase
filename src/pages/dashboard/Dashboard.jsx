@@ -1,10 +1,13 @@
-import { HeroDashboardHome, Main, SectionOverviewContainer, StatsDashboardHome } from "@/components";
+import { HeroDashboard, Main, SectionOverviewContainer, StatsDashboardHome } from "@/components";
+import { homeDashboard } from "@/data";
 
 function Dashboard() {
+    const page = homeDashboard;
+    const variantClass = "dashboard";
     return (
-        <Main variant="dashboard">
+        <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboardHome />
+                <HeroDashboard page={ page } />
                 <StatsDashboardHome />
             </SectionOverviewContainer>
         </Main>

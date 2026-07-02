@@ -61,6 +61,20 @@ Sections Hero
     align-items: flex-start;
 }
 
+.hero-container__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hero-container__cta {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 /***********************************
 Section lien de redirection
 ***********************************/
@@ -305,6 +319,26 @@ Sections
     align-items: center;
     gap: 50px;
     width: 100%;
+}
+
+.dashboard-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-xl);
+    gap: 40px;
+}
+
+.dashboard-section__header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dashboard-section__title {
+    font-size: var(--title-h3);
+    font-weight: var(--weight-bold);
 }
 
 .section-action-container {

@@ -1,11 +1,14 @@
-import { HeroDashboardProtectedProfile, Main, NavDashboardProtectedProfile, SectionOverviewContainer } from "@/components";
+import { HeroDashboard, Main, SectionOverviewContainer, TabsDashboard } from "@/components";
+import { protectedProfileDashboard } from "@/data";
 
 function ProtectedProfile() {
+    const page = protectedProfileDashboard;
+    const variantClass = "dashboard";
     return (
-        <Main variant="dashboard">
+        <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboardProtectedProfile/>
-                <NavDashboardProtectedProfile/>                
+                <HeroDashboard page={ page }/>
+                <TabsDashboard page={ page }/>                
             </SectionOverviewContainer>
 
         </Main>

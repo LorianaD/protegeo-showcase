@@ -1,5 +1,5 @@
 import { Target } from "../badges";
-import { PrimaryButton } from "../buttons";
+import { Button } from "../buttons";
 
 
 function SectionHeroContainer({ title, description, target, children, btn, to, variant = "default" }) {
@@ -21,9 +21,7 @@ function SectionHeroContainer({ title, description, target, children, btn, to, v
             {children}
 
             {btn && to && (
-                <PrimaryButton to={ to } >
-                    { btn }
-                </PrimaryButton>
+                <Button to={ to } label={ btn } variant="primary"/>
             )}
             
         </section>

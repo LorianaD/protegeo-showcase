@@ -2,6 +2,10 @@ const financialManagementDashboard = {
     hero : {
         title : "Tableau de bord de la gestion annuelle",
         description : "Résumé clair de vos ressources, dépenses, alertes et actions importantes pour l’année sélectionnée.",
+        option : {
+            personName : "Céline DIANO",
+            annual : "2025",
+        },
     },
     stats : [
         {

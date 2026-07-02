@@ -5,3 +5,5 @@ export { default as ProtectedProfile } from "./ProtectedProfile";
 export { default as Budget } from "./Budget";
 export { default as Inventory } from "./Inventory";
 export { default as Account } from "./Account";
+
+export { default as UserProfile } from "./UserProfile";

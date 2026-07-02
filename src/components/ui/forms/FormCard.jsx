@@ -1,4 +1,4 @@
-import { PrimaryButton, SecondaryButton } from "../buttons";
+import { Button } from "../buttons";
 
 function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onPrevious }) {
     return (
@@ -29,15 +29,14 @@ function FormCard({ title, description, mention, children, btn_label, secondaty_
 
             <div className="form-card__cta-content">
                 {secondaty_label && (
-                    <SecondaryButton 
+                    <Button 
                         label={secondaty_label}
-                        onClick={onPrevious}    
+                        onClick={onPrevious}
+                        variant="secondary"  
                     />
                 )}
 
-                <PrimaryButton onClick={onNext}>
-                    { btn_label }
-                </PrimaryButton>                
+                <Button onClick={onNext} label={btn_label} variant="primary"/>
             </div>
 
 

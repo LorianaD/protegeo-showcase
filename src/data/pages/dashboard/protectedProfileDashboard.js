@@ -4,6 +4,9 @@ const protectedProfileDashboard = {
     hero : {
         title : "Profil de la personne protégée",
         description : "Informations essentielles concernant l’identité, la mesure de protection et les contacts associés.",
+        option : {
+            personName : "Céline DIANO",
+        }
     },
 
     nav : [
