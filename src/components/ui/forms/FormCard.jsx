@@ -1,8 +1,8 @@
 import { Button } from "../buttons";
 
-function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onPrevious }) {
+function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onPrevious, onSubmit }) {
     return (
-        <section className="form-card">
+        <form className="form-card" onSubmit={ onSubmit }>
             <div className="form-card__header">
                 {title && (
                     <h3 className="form-card__title">
@@ -32,15 +32,21 @@ function FormCard({ title, description, mention, children, btn_label, secondaty_
                     <Button 
                         label={secondaty_label}
                         onClick={onPrevious}
-                        variant="secondary"  
+                        variant="secondary"
+                        type="button"
                     />
                 )}
 
-                <Button onClick={onNext} label={btn_label} variant="primary"/>
+                <Button 
+                    onClick={onNext} 
+                    label={btn_label} 
+                    variant="primary" 
+                    type="submit"
+                />
             </div>
 
 
-        </section>
+        </form>
     );
 }
 

@@ -1,7 +1,16 @@
 import { siderbarDashboard } from "@/data";
+import { logout } from "@/services";
+import { useNavigate } from "react-router";
 
 function SiderbarFooter() {
     const section = siderbarDashboard.footer;
+    const navigate = useNavigate();
+
+    function handleLogout() {
+        logout();
+        navigate("/auth/login");
+    }
+
     return (
         <div className="siderbar-footer">
             <div className="siderbar-footer__profil">
@@ -17,14 +26,14 @@ function SiderbarFooter() {
                     </p>                    
                 </div>
             </div>
-            <div className="siderbar-footer__logout">
-                <p className="siderbar-footer__logout-label">
+            <button className="siderbar-footer__logout" type="button" onClick={handleLogout}>
+                <span className="siderbar-footer__logout-label">
                     {section.btn_label}
-                </p>
+                </span>
                 <div className="siderbar-footer_logout-icon">
                     <img src={section.btn_icon} alt={section.btn_label} />
                 </div>
-            </div>
+            </button>
         </div>
     )
 }

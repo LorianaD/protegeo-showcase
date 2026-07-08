@@ -1,4 +1,4 @@
-function Input({ name, type = "text", placeholder, value, onChange, required }) {
+function Input({ name, type = "text", placeholder, value = "", onChange, required = false }) {
     return (
         <input 
             type={ type } 
@@ -7,6 +7,7 @@ function Input({ name, type = "text", placeholder, value, onChange, required }) 
             placeholder={ placeholder }
             value={ value }
             onChange={ onChange }
+            required={ required }
             className="form-input"
         />
     )

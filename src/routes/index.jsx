@@ -3,6 +3,7 @@ import AuthRoutes from "./AuthRoutes";
 import PublicRoutes from "./publicRoutes";
 import GuidesRoutes from "./GuidesRoutes";
 import DashboardRoutes from "./DashboardRoutes";
+import { ProtectedRoute } from "./guards";
 
 function AppRoutes() {
     return (
@@ -10,7 +11,9 @@ function AppRoutes() {
             <Route path="/auth/*" element={<AuthRoutes />} />
             <Route path="/guides/*" element={<GuidesRoutes />} />
             <Route path="/*" element={<PublicRoutes />} />
-            <Route path="/dashboard/*" element={<DashboardRoutes />} />
+            <Route element={<ProtectedRoute />}>
+                <Route path="/dashboard/*" element={<DashboardRoutes />} />
+            </Route>
         </Routes>
     );
 }
