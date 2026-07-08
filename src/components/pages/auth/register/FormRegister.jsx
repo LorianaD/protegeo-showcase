@@ -1,12 +1,46 @@
 import { FormCard, FormField, Input, RadioGroup } from "@/components/ui";
+import { useRegisterForm } from "@/hooks";
+import { validateRegisterForm } from "@/utils";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
-function FormRegister({ section, actualStep, setActualStep }) {
+function FormRegister({ section, actualStep, setActualStep, formData, setFormData }) {
 
-    const onNext = () => {
+    const [formErrors, setFormErrors] = useState({});
+    const navigate = useNavigate();
+
+    function handleCancel() {
+        navigate("/auth/login");
+    }
+
+    function hasErrors(errors) {
+        for (const key in errors) {
+            return true;
+        }
+
+        return false;
+    }
+
+    function isCurrentStepValid() {
+        const errors = validateRegisterForm(formData, actualStep);
+        setFormErrors(errors);
+
+        if (hasErrors(errors)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function onNext() {
+        if (!isCurrentStepValid()) {
+            return;
+        }
+
         if (actualStep < 3) {
             setActualStep(actualStep + 1);
         }
-    };
+    }
 
     const onPrevious = () => {
         if (actualStep > 1) {
@@ -14,9 +48,31 @@ function FormRegister({ section, actualStep, setActualStep }) {
         }
     };
 
+    function handleChange(event) {
+        const { name, value } = event.target;
+        setFormData((previousData) => ({
+            ...previousData,
+            [name]: value,
+        }));
+    }
+
+    const { 
+        loading, 
+        error, 
+        handleRegister 
+    } = useRegisterForm();
+
+    function onRegisterSubmit() {
+        if (!isCurrentStepValid()) {
+            return;
+        }
+
+        handleRegister(formData);
+    }
+
     return (
         <div className="form-card__content-fields">
-            <FormCard title={section.title} description={section.description} mention={section.mention} btn_label={section.btn_label} secondaty_label={section.secondary_btn_label} onNext={onNext} onPrevious={onPrevious}>
+            <FormCard title={section.title} description={section.description} mention={section.mention} btn_label={section.btn_label} secondaty_label={section.secondary_btn_label} onSubmit={actualStep === 3 ? onRegisterSubmit : onNext} onCancel={actualStep === 1 ? handleCancel : undefined} onPrevious={onPrevious}>
                 {section.fields && section.fields.map((field) => (
                     <FormField
                         key={field.name}
@@ -30,7 +86,14 @@ function FormRegister({ section, actualStep, setActualStep }) {
                             name={field.name}
                             type={field.type}
                             placeholder={field.placeholder}
+                            value={formData[field.name] || ""}
+                            onChange={handleChange}
                         />
+                        {formErrors[field.name] && (
+                            <p className="form-error">
+                                {formErrors[field.name]}
+                            </p>
+                        )}
                     </FormField>
                 ))}
 
@@ -53,8 +116,15 @@ function FormRegister({ section, actualStep, setActualStep }) {
                                     >
                                         <RadioGroup
                                             name={field.name}
-                                            options={field.gender}
+                                            options={field.options}
+                                            value={formData[field.name] || ""}
+                                            onChange={handleChange}
                                         />
+                                        {formErrors[field.name] && (
+                                            <p className="form-error">
+                                                {formErrors[field.name]}
+                                            </p>
+                                        )}
                                     </FormField>
                                 ))
                             ) : (
@@ -70,13 +140,25 @@ function FormRegister({ section, actualStep, setActualStep }) {
                                             name={field.name}
                                             type={field.type}
                                             placeholder={field.placeholder}
+                                            value={formData[field.name] || ""}
+                                            onChange={handleChange}
                                         />
+                                        {formErrors[field.name] && (
+                                            <p className="form-error">
+                                                {formErrors[field.name]}
+                                            </p>
+                                        )}                                        
                                     </FormField>
                                 ))
                             )}
                         </div>
                     );
                 })}
+                {error && 
+                    <p className="form-error">
+                        {error}
+                    </p>
+                }
             </FormCard>
         </div>
     )

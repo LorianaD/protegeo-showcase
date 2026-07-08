@@ -6,6 +6,18 @@ import { useState } from "react";
 function BodyRegister() {
     const [actualStep, setActualStep] = useState(1);
 
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        civility: "",
+        lastname: "",
+        firstname: "",
+        address: "",
+        addressComplement: "",
+        postalCode: "",
+        city: "",
+    });
+
     const stepIndicator = register.stepIndicator;
 
     const sections = [
@@ -20,7 +32,13 @@ function BodyRegister() {
         <div className="body-auth">
             <StepIndicator section={stepIndicator} actualStep={actualStep} stepsNumber="3"/>
             <div className="body-auth__divider"></div>
-            <FormRegister section={currentSection} actualStep={actualStep} setActualStep={setActualStep} />
+            <FormRegister 
+                section={currentSection} 
+                actualStep={actualStep} 
+                setActualStep={setActualStep} 
+                formData={formData} 
+                setFormData={setFormData} 
+            />
         </div>
     )
 }

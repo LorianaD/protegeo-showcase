@@ -16,8 +16,10 @@ const fields = {
     },
 
     civility : {
+        name: "civility",
         title : "Civilité",
-        gender : options.civility,
+        options : options.civility,
+        required: true,
     },
 
     lastname: {

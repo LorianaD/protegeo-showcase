@@ -1,4 +1,4 @@
-import { cta, fields, messages } from "@/data/form";
+import { cta, fields, messages, options } from "@/data/form";
 
 
 const register = {
@@ -76,7 +76,6 @@ const register = {
                 type : "default",
                 fields : [
                     fields.address,
-                    fields.addressComplement,
                 ],
             },
             {
@@ -88,9 +87,8 @@ const register = {
             },
         ],
         btn_label : cta.confirm,
-        btn_link : "",
         secondary_btn_label : cta.previous,
-        secondary_btn_link : "",
+        secondary_btn_link : "/auth/login",
     },
 
 };

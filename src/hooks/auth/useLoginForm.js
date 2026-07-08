@@ -33,10 +33,11 @@ function useLoginForm() {
 
         setApiError("");
 
-        const validationErrors = validateLoginForm(values);
-        setErrors(validationErrors);
+        const validation = validateLoginForm(values);
 
-        if (Object.keys(validationErrors).length > 0) {
+        setErrors(validation.errors);
+
+        if (!validation.isValid) {
             return;
         }
 

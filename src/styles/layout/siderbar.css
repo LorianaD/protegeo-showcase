@@ -101,6 +101,8 @@
     align-items: center;
     gap: 12px;
     padding: var(--space-md);
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .siderbar-footer__logout-label {

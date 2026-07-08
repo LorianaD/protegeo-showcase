@@ -1,8 +1,22 @@
 import { Button } from "../buttons";
 
-function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onPrevious, onSubmit }) {
+function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onCancel, onPrevious, onSubmit }) {
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        if (onSubmit) {
+            onSubmit(event);
+            return;
+        }
+
+        if (onNext) {
+            onNext(event);
+        }        
+    }
+
+
     return (
-        <form className="form-card" onSubmit={ onSubmit }>
+        <form className="form-card" onSubmit={ handleSubmit }>
             <div className="form-card__header">
                 {title && (
                     <h3 className="form-card__title">
@@ -31,14 +45,13 @@ function FormCard({ title, description, mention, children, btn_label, secondaty_
                 {secondaty_label && (
                     <Button 
                         label={secondaty_label}
-                        onClick={onPrevious}
+                        onClick={onCancel || onPrevious}
                         variant="secondary"
                         type="button"
                     />
                 )}
 
                 <Button 
-                    onClick={onNext} 
                     label={btn_label} 
                     variant="primary" 
                     type="submit"
