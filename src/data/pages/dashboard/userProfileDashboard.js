@@ -26,13 +26,15 @@ const userProfileDashboard = {
             nationality : {
                 title : "Nationalité",
             },
-            Address : {
+            address : {
                 title : "Adresse complète",
             },
             phone_number : {
                 title : "Téléphone"
             },
-            email : "Adresse électronique",
+            email : {
+                title : "Adresse électronique",
+            },
         },
     },
 
@@ -46,13 +48,14 @@ const userProfileDashboard = {
             profession : {
                 title : "Emplois",
             },
-            praticing : {
+            practicing : {
                 title : "Exerçant en",
             },
+            roles : {
+                title : "Rôles",
+            },
         },
-        roles : {
-            title : "Rôles",
-        },
+
     },
 
     username : {
@@ -66,7 +69,7 @@ const userProfileDashboard = {
                 title : "E-mail de connexion",
             },
             password : {
-                title : "Password",
+                title : "Mot de passe",
             },
         },
     },

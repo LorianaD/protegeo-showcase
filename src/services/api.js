@@ -17,6 +17,10 @@ async function apiFetch(endpoint, options = {}) {
     const data = await response.json();
 
     if (!response.ok) {
+        if (response.status === 401 ) {
+            localStorage.removeItem("token");
+        }
+
         throw new Error(data.message || "Une erreur est survenu.");
     }
 

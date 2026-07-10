@@ -74,11 +74,13 @@
     align-items: center;
     border-radius: 20px;
     background-color: var(--color-primary);
+    line-height: 1.2;
 }
 
 .siderbar-footer__profil-initial {
     color: var(--white);
     font-weight: var(--weight-bold);
+    line-height: 1.2;
 }
 
 .siderbar-footer__user {

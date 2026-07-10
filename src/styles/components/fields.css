@@ -1,0 +1,40 @@
+.info-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+.info-row {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    gap: 32px;
+    border-radius: 8px;
+    background-color: #E8F0F8;
+    width: 100%;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.info-label {
+    font-weight: 700;
+    font-family: var(--font-primary);
+    width: 100%;
+    white-space: nowrap;
+}
+
+.info-value {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: right;
+    justify-content: center;
+    line-height: 1.2;
+}
