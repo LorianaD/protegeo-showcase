@@ -6,7 +6,7 @@ function mapRegisterFormToApi(formData) {
         lastname: formData.lastname,
         firstname: formData.firstname,
         address: formData.address,
-        postal_code: formData.postalCode,
+        postal_code: formData.postal_code,
         city: formData.city,
     };
 }

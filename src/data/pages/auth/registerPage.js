@@ -81,7 +81,7 @@ const register = {
             {
                 type : "inline",
                 fields : [
-                    fields.postalCode,
+                    fields.postal_code,
                     fields.city,
                 ],
             },

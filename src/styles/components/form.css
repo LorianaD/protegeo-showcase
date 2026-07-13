@@ -19,9 +19,9 @@
     width: 100%;
 }
 
-.form-field__control {}
+/* .form-field__control {} */
 
-.form-field__error {}
+/* .form-field__error {} */
 
 .form-input {
     width: 100%;
@@ -32,7 +32,7 @@
 }
 
 
-.form-checkbox {}
+/* .form-checkbox {} */
 
 .form-radio {
     width: 16px;
@@ -81,13 +81,13 @@
     width: 170px;
 }
 
-.form-textarea {}
+/* .form-textarea {} */
 
-.form-input--date {}
+/* .form-input--date {} */
 
-.form-input--currency {}
+/* .form-input--currency {} */
 
-.form-currency__symbol {}
+/* .form-currency__symbol {} */
 
 /* FORMS' CARD */
 
@@ -191,4 +191,26 @@
 
 .step-indicator__next-important {
     font-weight: var(--weight-bold);
+}
+
+/* UPDATE FORM FOOTER */
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.update-form__footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    justify-content: center;
+    align-items: center;
+}
+
+.update-form__actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
 }

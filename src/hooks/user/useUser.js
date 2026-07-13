@@ -8,6 +8,8 @@ function useUser() {
     const navigate = useNavigate();
 
     async function loadUser() {
+        setLoading(true);
+
         try {
             const profile = await getProfile();
             setUser(profile);
@@ -30,6 +32,7 @@ function useUser() {
     return {
         user,
         loading,
+        refreshUser: loadUser,
     }
 }
 

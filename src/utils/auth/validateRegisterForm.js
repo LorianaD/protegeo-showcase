@@ -27,10 +27,10 @@ function validateRegisterForm(formData, actualStep) {
 
     if (actualStep === 3) {
         if (!formData.address) errors.address = "L’adresse est obligatoire.";
-        if (!formData.postalCode) {
-            errors.postalCode = "Le code postal est obligatoire.";
-        } else if (!/^[0-9]{5}$/.test(formData.postalCode)) {
-            errors.postalCode = "Le code postal doit contenir 5 chiffres.";
+        if (!formData.postal_code) {
+            errors.postal_code = "Le code postal est obligatoire.";
+        } else if (!/^[0-9]{5}$/.test(formData.postal_code)) {
+            errors.postal_code = "Le code postal doit contenir 5 chiffres.";
         }
 
         if (!formData.city) errors.city = "La ville est obligatoire.";

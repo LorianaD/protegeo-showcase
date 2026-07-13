@@ -14,7 +14,7 @@ function BodyRegister() {
         firstname: "",
         address: "",
         addressComplement: "",
-        postalCode: "",
+        postal_code: "",
         city: "",
     });
 

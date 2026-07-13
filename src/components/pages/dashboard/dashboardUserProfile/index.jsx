@@ -1,4 +1,4 @@
 export { default as HeroDashboardUserProfile } from "../HeroDashboard";
 export { default as IdentifyDashboardUserProfile } from "./IdentifyDashboardUserProfile";
 export { default as ComplementaryDashboardUserProfile } from "./ComplementaryDashboardUserProfile";
-export { default as UsernameDashboardUserProfile } from "./UsernameDashboardUserProfile";
+export { default as PasswordDashboardUserProfile } from "./PasswordDashboardUserProfile";

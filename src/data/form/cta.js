@@ -3,6 +3,7 @@ const cta = {
     previous : "Précedent",
     confirm : "Valider",
     cancel : "Annuler",
+    recorded : "Enregistrer"
 };
 
 export {

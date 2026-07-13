@@ -13,3 +13,5 @@ export { default as FormMessage } from "./FormMessage";
 
 export { default as AuthHeader } from "./AuthHeader";
 export { default as FormCard } from "./FormCard";
+
+export { default as UpdateFormFooter } from "./UpdateFormFooter";
