@@ -3,7 +3,7 @@ import { cta, fields, messages } from "@/data/form";
 const userProfileDashboard = {
     hero : {
         title : "Mon profil personnel",
-        description : "Informations essentielles concernant mon identité, mon ou mes rôles, et mes idéntifiants.",
+        description: "Informations essentielles concernant mon identité, mon ou mes rôles et mes identifiants.",
     },
 
     identify : {
@@ -69,6 +69,10 @@ const userProfileDashboard = {
             ],
         ],
 
+        messages: {
+            loading: messages.loading,
+        },
+
         footer: {
             btn_cancel_label : cta.cancel,
             btn_recorded_label : cta.recorded,
@@ -104,6 +108,10 @@ const userProfileDashboard = {
                 "roles",
             ],
         ],
+        
+        messages: {
+            loading: messages.loading,
+        },
 
         footer: {
             btn_cancel_label : cta.cancel,
@@ -158,6 +166,7 @@ const userProfileDashboard = {
             newRequired: messages.password.newRequired,
             confirmRequired: messages.password.confirmRequired,
             passwordMismatch: messages.password.mismatch,
+            loading: messages.loading,
         },
 
         footer: {

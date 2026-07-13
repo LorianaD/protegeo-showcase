@@ -1,37 +1,15 @@
-import { DashboardSection, InfoField, InfoFieldGroup, Button, UpdateFormFooter } from "@/components/ui";
-import { useUpdateUser } from "@/hooks";
-import { createFormData, formatDate, formatPhoneNumber, santizePhoneNumber } from "@/utils";
-import { useEffect, useState } from "react";
+import { DashboardSection, InfoField, InfoFieldGroup, UpdateFormFooter, DashboardSectionLoading } from "@/components/ui";
+import { useUpdateUser, useEditableForm } from "@/hooks";
+import { formatDate, formatPhoneNumber, santizePhoneNumber } from "@/utils";
 
 function IdentifyDashboardUserProfile({ page, user, loading, refreshUser }) {
     const section = page.identify;
     const field = section.fields;
     const fieldList = section.rows.flat();
 
-    const [editing, setEditing] = useState(false);
-
-    const [formData, setFormData] = useState(
-        createFormData(fieldList)        
-    );
+    const {editing, formData, handleChange, handleEdit, handleCancel, closeEditing} = useEditableForm(fieldList, user);
 
     const { updateProfile, updating, updateError } = useUpdateUser();
-
-    useEffect(() => {
-        if (user) {
-            setFormData(
-                createFormData(fieldList, user)
-            );
-        }
-    }, [user]);
-
-    function handleChange(event) {
-        const { name, value } = event.target;
-
-        setFormData((currentData) => ({
-            ...currentData,
-            [name]: value,
-        }));
-    }
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -48,17 +26,12 @@ function IdentifyDashboardUserProfile({ page, user, loading, refreshUser }) {
         }
 
         await refreshUser();
-        setEditing(false);
+        closeEditing();
     }
 
     if (loading || !user) {
         return (
-            <DashboardSection
-                title={section.header.title}
-                actionLabel={section.header.btn_label}
-            >
-                <p>Chargement...</p>
-            </DashboardSection>
+            <DashboardSectionLoading section={section}/>
         );
     }
 
@@ -68,18 +41,6 @@ function IdentifyDashboardUserProfile({ page, user, loading, refreshUser }) {
             value: fieldName === "birth_date" ? formatDate(user.birth_date) : fieldName === "phone_number" ? formatPhoneNumber(user.phone_number) : user[fieldName] ?? "Non renseigné",
         }))
     ));
-
-    function handleEdit() {
-        setEditing(true);
-    }
-
-    function handleCancel() {
-        setEditing(false);
-
-        setFormData(
-            createFormData(fieldList, user)      
-        );
-    }
 
     return (
         <DashboardSection

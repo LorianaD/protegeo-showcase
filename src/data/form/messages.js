@@ -1,6 +1,8 @@
 const messages = {
     requiredFields: "Sauf mention contraire, tous les champs sont obligatoires.",
 
+    loading: "Chargement...",
+
     password: {
         mismatch: "Les mots de passe ne correspondent pas.",
         currentRequired: "Le mot de passe actuel est obligatoire.",

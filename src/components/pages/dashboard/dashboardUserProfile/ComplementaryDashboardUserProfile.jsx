@@ -1,44 +1,23 @@
-import { DashboardSection, InfoFieldGroup, InfoField, UpdateFormFooter } from "@/components/ui";
-import { useUpdateUser } from "@/hooks";
-import { createFormData } from "@/utils";
-import { useEffect, useState } from "react";
+import { DashboardSection, InfoFieldGroup, InfoField, UpdateFormFooter, DashboardSectionLoading } from "@/components/ui";
+import { useEditableForm, useUpdateUser } from "@/hooks";
 
 function ComplementaryDashboardUserProfile({ page, user, loading, refreshUser }) {
     const section = page.complementary_information;
     const field = section.fields;
     const fieldList = section.rows.flat();
+    const editableFieldList = ["profession", "practicing"];
 
-    const [editing, setEditing] = useState(false);
-
-    const [formData, setFormData] = useState(
-        createFormData(fieldList)        
-    );
+    const {editing, formData, handleChange, handleEdit, handleCancel, closeEditing} = useEditableForm(editableFieldList, user);
 
     const { updateProfile, updating, updateError } = useUpdateUser();
-
-    useEffect(() => {
-        if (user) {
-            setFormData(
-                createFormData(fieldList, user)
-            );
-        }
-    }, [user]);
-
-    function handleChange(event) {
-        const { name, value } = event.target;
-
-        setFormData((currentData) => ({
-            ...currentData,
-            [name]: value,
-        }));
-    }
 
     async function handleSubmit(event) {
         event.preventDefault();
 
         const data = {
-            ...formData,
-        }
+            profession: formData.profession,
+            practicing: formData.practicing,
+        };
 
         const updatedUser = await updateProfile(data);
 
@@ -47,17 +26,12 @@ function ComplementaryDashboardUserProfile({ page, user, loading, refreshUser })
         }
 
         await refreshUser();
-        setEditing(false);
+        closeEditing();
     }
 
     if (loading || !user) {
         return (
-            <DashboardSection
-                title={section.header.title}
-                actionLabel={section.header.btn_label}
-            >
-                <p>Chargement...</p>
-            </DashboardSection>
+            <DashboardSectionLoading section={section} />
         );
     }    
 
@@ -65,20 +39,9 @@ function ComplementaryDashboardUserProfile({ page, user, loading, refreshUser })
         row.map((fieldName) => ({
             ...field[fieldName],
             value: user[fieldName] ?? "Non renseigné",
+            editable: fieldName !== "roles",
         }))
     ));
-
-    function handleEdit() {
-        setEditing(true);
-    }
-
-    function handleCancel() {
-        setEditing(false);
-
-        setFormData(
-            createFormData(fieldList, user)      
-        );
-    }
 
     return (
         <DashboardSection
@@ -101,7 +64,7 @@ function ComplementaryDashboardUserProfile({ page, user, loading, refreshUser })
                                             ? formData[item.name]
                                             : item.value
                                     }
-                                    editing={editing}
+                                    editing={editing && item.editable}
                                     onChange={handleChange}
                                 />
                             ))}

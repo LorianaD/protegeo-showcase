@@ -1,4 +1,4 @@
-import { DashboardSection, InfoFieldGroup, InfoField, Modal, UpdateFormFooter } from "@/components/ui";
+import { DashboardSection, InfoFieldGroup, InfoField, Modal, UpdateFormFooter, DashboardSectionLoading } from "@/components/ui";
 import { useUpdatePassword } from "@/hooks";
 import { useState } from "react";
 
@@ -93,12 +93,7 @@ function PasswordDashboardUserProfile({ page, user, loading }) {
 
     if (loading || !user) {
         return (
-            <DashboardSection
-                title={section.header.title}
-                actionLabel={section.header.btn_label}
-            >
-                <p>Chargement...</p>
-            </DashboardSection>
+            <DashboardSectionLoading section={section} />
         );
     }
 
