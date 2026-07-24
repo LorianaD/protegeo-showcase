@@ -1,4 +1,4 @@
-import { HeroDashboard, Main, SectionOverviewContainer } from "@/components";
+import { HeroDashboard, Main, ProtectedPersonsDashboard, SectionOverviewContainer } from "@/components";
 import { protectedPersonsDashboard } from "@/data";
 
 function ProtectedPersons() {
@@ -8,6 +8,7 @@ function ProtectedPersons() {
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
                 <HeroDashboard page={page} />
+                <ProtectedPersonsDashboard page={page}/>
             </SectionOverviewContainer>
         </Main>
     )

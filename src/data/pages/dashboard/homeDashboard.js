@@ -1,3 +1,5 @@
+import { protectedColumns } from "@/data/tables"
+
 const homeDashboard = {
     hero : {
         title : "Tableau de bord",
@@ -29,7 +31,11 @@ const homeDashboard = {
         title : "Alertes",
     },
     protected : {
-        title : "Protégés",
+        header: {
+            title : "Protégés",
+        },
+        columns: protectedColumns,
+        emptyMessage: "Aucun protégés enregistré",
     },
     deadline : {
         title : "Échéances",

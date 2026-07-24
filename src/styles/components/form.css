@@ -81,7 +81,21 @@
     width: 170px;
 }
 
-/* .form-textarea {} */
+.select--siderbar {
+    width: 100%;
+}
+
+.form-textarea {
+    display: flex;
+    height: 360px;
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 8px;
+    background: #E8F0F8;
+    width: 100%;
+}
 
 /* .form-input--date {} */
 

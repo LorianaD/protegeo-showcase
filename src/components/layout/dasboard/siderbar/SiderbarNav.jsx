@@ -1,8 +1,23 @@
 import { DashboardNavButton } from "@/components/ui";
 import { siderbarDashboard } from "@/data";
+import { useParams } from "react-router";
 
 function SiderbarNav() {
     const nav = siderbarDashboard.nav;
+    const { reference } = useParams();
+
+    function buildLinkUrl(linkUrl) {
+        if (!linkUrl.includes(":reference")) {
+            return linkUrl;
+        }
+
+        if (!reference) {
+            return linkUrl.replace("/:reference", "/19-A-00480");
+        }
+
+        return linkUrl.replace(":reference", reference);
+    }
+
     return (
         <ul className="siderbar-nav__list">
             <li className="siderbar-nav__item">
@@ -11,6 +26,7 @@ function SiderbarNav() {
                     icon={nav.home.link_icon} 
                     to={nav.home.link_url}
                     variant="siderbar"
+                    end={nav.home.end}
                 />
             </li>
 
@@ -25,7 +41,7 @@ function SiderbarNav() {
                                 <DashboardNavButton 
                                     label={link.link_label} 
                                     icon={link.link_icon} 
-                                    to={link.link_url}
+                                    to={buildLinkUrl(link.link_url)}
                                     variant="siderbar"
                                 />                        
                             </li>

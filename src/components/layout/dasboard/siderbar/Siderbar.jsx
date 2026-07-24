@@ -1,3 +1,4 @@
+import SiderbarSelect from "./SidebarSelect";
 import SiderbarFooter from "./SiderbarFooter";
 import SiderbarHeader from "./SiderbarHeader";
 import SiderbarNav from "./SiderbarNav";
@@ -7,6 +8,7 @@ function Siderbar() {
         <div className="siderbar">
             <div className="siderbar-top">
                 <SiderbarHeader/>
+                <SiderbarSelect/>
                 <SiderbarNav/>                
             </div>
             <SiderbarFooter/>

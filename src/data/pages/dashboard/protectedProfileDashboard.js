@@ -1,11 +1,12 @@
 import { Family, FamilyGray, Judgment, JudgmentGray, Profile, ProfileGray, Referent, ReferentGray } from "@/assets";
+import { cta, fields, messages } from "@/data/form";
 
 const protectedProfileDashboard = {
     hero : {
         title : "Profil de la personne protégée",
         description : "Informations essentielles concernant l’identité, la mesure de protection et les contacts associés.",
         option : {
-            personName : "Céline DIANO",
+            personName : "Sélectionner une personne protégée",
         }
     },
 
@@ -16,7 +17,8 @@ const protectedProfileDashboard = {
                 active : Profile,
             },
             link_label : "Informations personnelles",
-            link_url : "",
+            link_url : "/dashboard/protected-profile/:reference",
+            end: true,
         },
         {
             link_icon : {
@@ -24,7 +26,8 @@ const protectedProfileDashboard = {
                 active : Judgment,
             },
             link_label : "Jugement",
-            link_url : "",
+            link_url : "/dashboard/protected-profile/:reference/judgment",
+            end: true,
         },
         {
             link_icon : {
@@ -60,37 +63,71 @@ const protectedProfileDashboard = {
         },
 
         identity : {
-            photo : "",
+            photo : "DefaultProtectedPerson",
             photo_alt : "Photo de",
-            fields : [
+            fields : {
+                civility: {
+                    ...fields.civility,
+                },
+                lastname : {
+                    ...fields.lastname,
+                },
+                firstname : {
+                    ...fields.firstname,
+                },
+                birth_date : {
+                    ...fields.birth_date,
+                },
+                birth_place : {
+                    ...fields.birth_place,
+                },
+                nationality : {
+                    ...fields.nationality,
+                },
+                family_situation : {
+                    ...fields.family_situation,
+                }
+            },
+
+            rows: [
                 [
-                    { label: "Civilité", value: "Madame" },
+                    "civility",
                 ],
                 [
-                    { label: "Nom", value: "DIANO" },
-                    { label: "Prénom", value: "Céline" },
+                    "lastname",
+                    "firstname",
                 ],
                 [
-                    { label: "Date de naissance", value: "24 / 04 / 1997" },
-                    { label: "Lieu de naissance", value: "Rome (Italie)" },
+                    "birth_date",
+                    "birth_place",
                 ],
                 [
-                    { label: "Nationalité", value: "Française" },
-                    { label: "Situation familiale", value: "Célibataire" },
+                    "nationality",
+                    "family_situation",
                 ],
-            ]
+            ],            
         },
 
         details :[
             [
-                { label: "Adresse complète", value: "Résidence Barthes entrée 4C\n33170 GRADIGNAN" },
+                { ...fields.address },
             ],
             [
-                { label: "Téléphone", value: "06 XX XX XX XX" },
-                { label: "Adresse électronique", value: "celine.diano@example.com" },
+                { ...fields.postal_code },
+                { ...fields.city },
             ],
             [
-                { label: "Situation professionnelle", value: "Sur liste d’attente à l’ESAT de Pessac Magellan" },
+                { ...fields.phone_number },
+                { 
+                    ...fields.email, 
+                    label: "Adresse électronique", 
+                },
+            ],
+            [
+                { 
+                    ...fields.profession,
+                    label: "Situation professionnelle"
+                },
             ],
             [
                 { label: "N° Sécurité Sociale", value: "2 XX XX XX XXX XXX XX" },
@@ -101,8 +138,8 @@ const protectedProfileDashboard = {
         ],
 
         notes: {
-            label: "Observations générales",
-            value: "Madame Céline a des difficultés pour les démarches administratives, cependant elle peut...",
+            ...fields.notes,
+            // placeholder: "",
         },
     },
 
@@ -115,69 +152,59 @@ const protectedProfileDashboard = {
         details :[
             [
                 { 
-                    label: "Type de mésure", 
-                    value: "Curatelle renforcée" 
+                    ...fields.measure_type,
                 },
             ],
             [
                 { 
-                    label: "Date du jugement", 
-                    value: "19 / 09 / 2024" 
+                    ...fields.judgment_date,
+                },
+                {
+                    ...fields.renewal,
+                },
+            ],
+            [
+                {
+                    ...fields.start_date,
                 },
                 { 
-                    label: "Date éventuelle de renouvellement ", 
-                    value: "19 / 09 / 2029" 
+                    ...fields.end_date,
                 },
             ],
             [
                 { 
-                    label: "Date de début", 
-                    value: "19 / 09 / 2024" 
+                    ...fields.reference_number, 
                 },
                 { 
-                    label: "Date de fin", 
-                    value: "19 / 09 / 2029" 
+                    ...fields.duration, 
                 },
             ],
             [
                 { 
-                    label: "Numéro de dossier", 
-                    value: "19XXX - XXX" 
+                    ...fields.tribrunal_name,
+                },
+                {
+                    ...fields.tribrunal_city,
                 },
                 { 
-                    label: "Durée", 
-                    value: "5 ans" 
-                },
-            ],
-            [
-                { 
-                    label: "Tribunal compétent", 
-                    value: "Tribunal des tutelles Bordeaux" 
+                    ...fields.cabinet, 
                 },
             ],
             [
                 { 
-                    label: "Cabinet", 
-                    value: "4" 
-                },
-            ],
-            [
-                { 
-                    label: "Curateurs", 
+                    ...fields.curator, 
                     value: [
                         "Madame Loriana DIANO",
                         "Madame Carine PELLET",
                     ],
                 },
                 { 
-                    label: "Subrogé", 
-                    value: "Aucun" 
+                    ...fields.subrogated, 
                 },
             ],
         ],
         notes : {
-            label : "Observations générales",
-            value : "",
+            ...fields.notes,
         },
         btn_label : "Télécharger la mesure de protection PDF",
         btn_link : "",
@@ -593,6 +620,14 @@ const protectedProfileDashboard = {
         },
     },
 
+    messages: {
+        loading: messages.loading,
+    },
+
+    footer_form: {
+        btn_cancel_label : cta.cancel,
+        btn_recorded_label : cta.recorded,
+    }
 }
 
 export {

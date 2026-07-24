@@ -38,6 +38,13 @@
     font-size: 11px;
 }
 
+.siderbar-select {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+
 .siderbar-nav {
     display: flex;
     flex-direction: column;

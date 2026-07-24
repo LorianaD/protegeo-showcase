@@ -38,6 +38,35 @@
     font-weight: var(--weight-bold);
 }
 
+.badge-status {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 14px;
+}
+
+.badge-status--finish {
+    border: 1px solid var(--med-blue);
+    background: var(--pale-blue);    
+}
+
+.badge-status--success {
+    border: 1px solid var(--green);
+    background: var(--pale-green);
+}
+
+.badge-status--warning {
+    border: 1px solid var(--orange);
+    background: rgba(--pale-orange);
+}
+
+.badge-status--danger {
+    border: 1px solid var(--red);
+    background: var(--pale-red);
+}
+
 @media screen and (max-width: 1050px) {
 
 }

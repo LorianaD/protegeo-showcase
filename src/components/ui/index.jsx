@@ -7,3 +7,4 @@ export * from "./accordion";
 export * from "./forms";
 export * from "./fields";
 export * from "./modals";
+export * from "./table";

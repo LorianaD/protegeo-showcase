@@ -1,11 +1,11 @@
 import { SectionHeroContainer } from "@/components/ui";
-import { homeDashboard } from "@/data";
 
-function HeroDashboardHome() {
+function HeroDashboardHome({page}) {
+    const section = page.hero;
     return (
         <SectionHeroContainer 
-            title={ homeDashboard.hero.title } 
-            description={ homeDashboard.hero.description }
+            title={ section.title } 
+            description={ section.description }
         />
     )
 }

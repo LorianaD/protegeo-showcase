@@ -1,9 +1,9 @@
 import { StatsSection } from "@/components/ui";
-import { homeDashboard } from "@/data";
 
-function StatsDashboardHome() {
+function StatsDashboardHome({page}) {
+    const section = page.stats;
     return (
-        <StatsSection stats={homeDashboard.stats} />
+        <StatsSection stats={section} />
     )
 }
 

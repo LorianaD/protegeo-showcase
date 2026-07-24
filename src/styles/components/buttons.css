@@ -123,6 +123,7 @@
     border-radius: 10px;
     border: 2px solid #D9E4EE;
     background: #FFF;
+    color: var(--color-primary);
 }
 
 .dashboard-nav-button--profile:hover {

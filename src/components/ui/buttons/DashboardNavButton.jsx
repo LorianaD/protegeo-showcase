@@ -1,10 +1,20 @@
 import { NavLink } from "react-router";
 
-function DashboardNavButton({ label , to , icon , variant = "siderbar" }) {
+function DashboardNavButton({ label , to , icon , variant = "siderbar", end = false, }) {
+    function getClassName({ isActive }) {
+        const activeClass = isActive && to ? `dashboard-nav-button--${variant}-active` : "";
+
+        return `dashboard-nav-button dashboard-nav-button--${variant} ${activeClass}`;
+    }
+
+    function isButtonActive(isActive) {
+        return isActive && to;
+    }
+
     return (
-        <NavLink to={ to || "#" } end={to === "/dashboard"} className={({ isActive }) => `dashboard-nav-button dashboard-nav-button--${variant} ${isActive && to ? `dashboard-nav-button--${variant}-active` : ""}`}>
+        <NavLink to={ to || "#" } end={end} className={getClassName}>
             {({ isActive }) => {
-                const active = isActive && to;
+                const active = isButtonActive(isActive);
                 return (
                 <>
                     <div className={`dashboard-nav-button__icon`}>

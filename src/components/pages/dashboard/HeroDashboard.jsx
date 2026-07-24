@@ -1,4 +1,5 @@
 import { SectionHeroContainer, Select } from "@/components/ui";
+import ProtectedPersonSelect from "./ProtectedPersonSelect";
 
 function HeroDashboard({ page }) {
     return (
@@ -10,7 +11,7 @@ function HeroDashboard({ page }) {
 
                 <div className="hero-container__cta">
                     {page.hero.option?.personName && (
-                        <Select 
+                        <ProtectedPersonSelect
                             placeholder={page.hero.option.personName}
                             variant="dashboard"
                         />

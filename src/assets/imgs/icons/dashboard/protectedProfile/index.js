@@ -13,6 +13,9 @@ import ReferentGray from "./icon-referent-gray.png";
 import Contacts from "./icon-contacts-blue.png";
 import ContactsGray from "./icon-contacts-gray.png";
 
+import defaultWoman from './default-profile-woman.png';
+import defaultMan from "./default-profile-man.png";
+
 export {
     Profile,
     ProfileGray,
@@ -24,4 +27,6 @@ export {
     ReferentGray,
     Contacts,
     ContactsGray,
+    defaultWoman,
+    defaultMan,
 };

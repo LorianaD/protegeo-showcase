@@ -1,12 +1,14 @@
 import DashboardSection from "./DashboardSection"
 
-function DashboardSectionLoading({ section }) {
+function DashboardSectionLoading({ section, page }) {
+    const loadingMessage = section?.messages?.loading ?? page?.messages?.loading ?? "Chargement...";
+
     return (
         <DashboardSection
             title={section.header.title}
             actionLabel={section.header.btn_label}
         >
-            <p>{section.messages.loading}</p>
+            <p>{ loadingMessage }</p>
         </DashboardSection>        
     )
 }

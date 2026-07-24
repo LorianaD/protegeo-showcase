@@ -13,6 +13,7 @@ const siderbarDashboard = {
             },
             link_label : "Tableau de bord",
             link_url : "/dashboard",
+            end : true,
         },
         sections: [
             {
@@ -45,7 +46,7 @@ const siderbarDashboard = {
                             active : dashboardHomeWhite,
                         },
                         link_label : "Gestion financière",
-                        link_url : "/dashboard/financial",
+                        link_url : "/dashboard/financial/:reference",
                     },
                     {
                         link_icon : {
@@ -53,23 +54,7 @@ const siderbarDashboard = {
                             active : dashboardProtectedProfileWhite,
                         },
                         link_label : "Profil",
-                        link_url : "/dashboard/protected-profile",
-                    },
-                    {
-                        link_icon : {
-                            default : dashboardBudget,
-                            active : dashboardBudgetWhite,
-                        },
-                        link_label : "Budget prévisionnel",
-                        link_url : "/dashboard/budget",
-                    },
-                    {
-                        link_icon : {
-                            default : dashboardInvetory,
-                            active : dashboardInvetoryWhite,
-                        },
-                        link_label : "Inventaire",
-                        link_url : "/dashboard/inventory",
+                        link_url : "/dashboard/protected-profile/:reference",
                     },
                     {
                         link_icon : {
@@ -77,7 +62,23 @@ const siderbarDashboard = {
                             active : dashboardAccountWhite,
                         },
                         link_label : "Comptes de gestion",
-                        link_url : "/dashboard/account",
+                        link_url : "/dashboard/account/:reference",
+                    },
+                    {
+                        link_icon : {
+                            default : dashboardBudget,
+                            active : dashboardBudgetWhite,
+                        },
+                        link_label : "Budget prévisionnel",
+                        link_url : "/dashboard/budget/:reference",
+                    },
+                    {
+                        link_icon : {
+                            default : dashboardInvetory,
+                            active : dashboardInvetoryWhite,
+                        },
+                        link_label : "Inventaire",
+                        link_url : "/dashboard/inventory/:reference",
                     },
                 ],
             },
