@@ -100,14 +100,14 @@ const fields = {
         name: "profession",
         type: "text",
         label: "Emplois",
-        placeholder: "",
+        placeholder: "ex. Infirmière",
     },
 
     practicing: {
         name: "practicing",
         type: "text",
         label: "Exerçant en",
-        placeholder: "",
+        placeholder: "ex. France",
     },
 
     roles : {
@@ -117,11 +117,18 @@ const fields = {
         required: false,
     },
 
-    relation: {
-        name: "relation",
+    contact_type_family: {
+        name: "contact_type",
         label: "Type de relation",
-        options: options.relation,
+        options: options.contact_type_family,
         required: true,
+    },
+
+    relation_type: {
+        name: "relation_type",
+        label: "Lien avec le protégé",
+        type: "text",
+        placeholder: "ex. Tante maternelle",
     },
 
     measure_type: {
@@ -206,6 +213,34 @@ const fields = {
     }
 };
 
+const familyContactFields = [
+    {
+        name: ["firstname", "lastname"],
+        label: "Prénom NOM",
+    },
+    {
+        name: ["birth_date", "birth_place"],
+        label: "Date et lieu de naissance",
+    },
+    {
+        ...fields.address,
+    },
+    {
+        ...fields.phone_number,
+        name: "phone",
+        label: "Téléphone",
+    },
+    {
+        ...fields.email,
+        label: "Adresse électronique",
+    },
+    {
+        ...fields.profession,
+        label: "Profession",
+    },
+];
+
 export {
     fields,
+    familyContactFields,
 };

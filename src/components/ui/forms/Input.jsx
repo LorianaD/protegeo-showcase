@@ -1,4 +1,4 @@
-function Input({ name, type = "text", placeholder, value = "", onChange, required = false }) {
+function Input({ name, type = "text", placeholder, value, onChange, required = false }) {
     return (
         <input 
             type={ type } 

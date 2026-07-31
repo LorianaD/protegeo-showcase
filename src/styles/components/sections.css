@@ -341,6 +341,11 @@ Sections
     font-weight: var(--weight-bold);
 }
 
+.dashboard-section__actions {
+    display: flex;
+    gap: var(--space-lg);
+}
+
 .section-action-container {
     display: flex;
     flex-direction: column;

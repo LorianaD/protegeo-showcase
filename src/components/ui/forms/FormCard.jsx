@@ -1,6 +1,6 @@
 import { Button } from "../buttons";
 
-function FormCard({ title, description, mention, children, btn_label, secondaty_label, onNext, onCancel, onPrevious, onSubmit }) {
+function FormCard({ title, description, mention, children, btn_label, secondary_label, btn_cancel_label, onNext, onCancel, onPrevious, onSubmit }) {
     function handleSubmit(event) {
         event.preventDefault();
         
@@ -42,9 +42,9 @@ function FormCard({ title, description, mention, children, btn_label, secondaty_
             </div>
 
             <div className="form-card__cta-content">
-                {secondaty_label && (
+                {(secondary_label || btn_cancel_label) &&  (
                     <Button 
-                        label={secondaty_label}
+                        label={secondary_label || btn_cancel_label}
                         onClick={onCancel || onPrevious}
                         variant="secondary"
                         type="button"

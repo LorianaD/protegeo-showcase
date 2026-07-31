@@ -87,53 +87,120 @@ const options = {
 
     roleType: [
         {
+            value: "curator_person_and_property",
             label: "Curateur / Curatrice aux biens et la personne"
         },
         {
+            value: "curator_property",
             label: "Curateur / Curatrice aux biens"
         },
         {
+            value: "curator_person",
             label: "Curateur / Curatrice à la personne"
         },
         {
+            value: "guardian",
             label: "Tuteur / Tutrice"
         },
         {
+            value: "deputy_curator",
             label: "Subrogé curateur / Subrogée curatrice"
         },
         {
+            value: "deputy_guardian",
             label: "Subrogé tuteur / Subrogée tutrice"
         },
     ],
 
-    relation: [
+    contact_category: [
         {
+            value: "family",
+            label: "Famille"
+        },
+        {
+            value: "professional",
+            label: "Référents"
+        },
+        {
+            value: "organization",
+            label: "Organisme"
+        },
+    ],
+
+    contact_type_family: [
+        {
+            label: "Vauillez sélectionner le type de relation",
+        },
+        {
+            value: "father",
             label: "Pére"
         },
         {
+            value: "mother",
             label: "Mére"
         },
         {
-            label: "Soeur"
+            value: "sibling",
+            label: "Frére et soeur"
         },
         {
-            label: "Frére"
+            value: "child",
+            label: "Enfants"
         },
         {
-            label: "Tante"
+            value: "trusted_person",
+            label: "Personnes de cofiance"
         },
         {
-            label: "Oncle"
-        },
-        {
-            label: "Epous"
-        },
-        {
-            label: "Epouse"
-        },
-        {
-            label: "Amis"
+            value: "spouse",
+            label: "Partenaire"
         }
+    ],
+
+    contact_type_professional: [
+        {
+            value: "doctor",
+            label: "Médecin traitant"
+        },
+        {
+            value: "social_worker",
+            label: "Travailleur social / accompagnement"
+        },
+        {
+            value: "professional_guardian",
+            label: "Curateur ou tuteur professionnel (si co-gestion)"
+        },
+        {
+            value: "lawyer",
+            label: "Avocat"
+        },
+        {
+            value: "notary",
+            label: "Notaire"
+        }
+    ],
+
+    contact_type_organization: [
+        {
+            value: "caf",
+            label: "CAF"
+        },
+        {
+            value: "cpam",
+            label: "CPAM"
+        },
+        {
+            value: "mdph",
+            label: "MDPH"
+        },
+        {
+            value: "bank",
+            label: "Banque"
+        },
+        {
+            value: "tax_office",
+            label: "Service des impôts"
+        },
     ],
 
 };

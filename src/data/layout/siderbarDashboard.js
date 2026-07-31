@@ -64,22 +64,22 @@ const siderbarDashboard = {
                         link_label : "Comptes de gestion",
                         link_url : "/dashboard/account/:reference",
                     },
-                    {
-                        link_icon : {
-                            default : dashboardBudget,
-                            active : dashboardBudgetWhite,
-                        },
-                        link_label : "Budget prévisionnel",
-                        link_url : "/dashboard/budget/:reference",
-                    },
-                    {
-                        link_icon : {
-                            default : dashboardInvetory,
-                            active : dashboardInvetoryWhite,
-                        },
-                        link_label : "Inventaire",
-                        link_url : "/dashboard/inventory/:reference",
-                    },
+                    // {
+                    //     link_icon : {
+                    //         default : dashboardBudget,
+                    //         active : dashboardBudgetWhite,
+                    //     },
+                    //     link_label : "Budget prévisionnel",
+                    //     link_url : "/dashboard/budget/:reference",
+                    // },
+                    // {
+                    //     link_icon : {
+                    //         default : dashboardInvetory,
+                    //         active : dashboardInvetoryWhite,
+                    //     },
+                    //     link_label : "Inventaire",
+                    //     link_url : "/dashboard/inventory/:reference",
+                    // },
                 ],
             },
             {

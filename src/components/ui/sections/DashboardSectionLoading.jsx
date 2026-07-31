@@ -7,6 +7,7 @@ function DashboardSectionLoading({ section, page }) {
         <DashboardSection
             title={section.header.title}
             actionLabel={section.header.btn_label}
+            addLabel={section.header.btn_label_add}
         >
             <p>{ loadingMessage }</p>
         </DashboardSection>        

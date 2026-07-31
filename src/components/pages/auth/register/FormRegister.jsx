@@ -72,7 +72,7 @@ function FormRegister({ section, actualStep, setActualStep, formData, setFormDat
 
     return (
         <div className="form-card__content-fields">
-            <FormCard title={section.title} description={section.description} mention={section.mention} btn_label={section.btn_label} secondaty_label={section.secondary_btn_label} onSubmit={actualStep === 3 ? onRegisterSubmit : onNext} onCancel={actualStep === 1 ? handleCancel : undefined} onPrevious={onPrevious}>
+            <FormCard title={section.title} description={section.description} mention={section.mention} btn_label={section.btn_label} secondary_label={section.secondary_btn_label} onSubmit={actualStep === 3 ? onRegisterSubmit : onNext} onCancel={actualStep === 1 ? handleCancel : undefined} onPrevious={onPrevious}>
                 {section.fields && section.fields.map((field) => (
                     <FormField
                         key={field.name}

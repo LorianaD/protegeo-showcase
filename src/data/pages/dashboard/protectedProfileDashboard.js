@@ -1,5 +1,5 @@
 import { Family, FamilyGray, Judgment, JudgmentGray, Profile, ProfileGray, Referent, ReferentGray } from "@/assets";
-import { cta, fields, messages } from "@/data/form";
+import { cta, familyContactFields, fields, messages } from "@/data/form";
 
 const protectedProfileDashboard = {
     hero : {
@@ -35,7 +35,7 @@ const protectedProfileDashboard = {
                 active : Family,
             },
             link_label : "Famille",
-            link_url : "",
+            link_url : "/dashboard/protected-profile/:reference/family",
         },
         {
             link_icon : {
@@ -215,65 +215,33 @@ const protectedProfileDashboard = {
             title : "Famille et proches",
             btn_label : "Modifier",
             btn_link : "",
+            btn_label_add : "Ajouter",
+            btn_link_add : "",
         },
-        father : {
-            title : "Pére",
-            fields : [
-                {
-                    label : "Prénom NOM",
-                    value : "Francesco DIANO",
-                },
-                {
-                    label : "Date et lieu de naissance",
-                    value : "11 / 07 / 1963 à Addis - Abbeba (Ethiopie)",
-                },
-                {
-                    label : "Adresse",
-                    value : "Résidence Barthés, 33170 GRADIGNAN\n (souvent en déplacement à l’étranger)",
-                },
-                {
-                    label : "Téléphone",
-                    value : "06 XX XX XX XX",
-                },
-                {
-                    label : "Adresse électronique",
-                    value : "francesco.diano@example.com",
-                },
-                {
-                    label : "Profession",
-                    value : "Auto-entrepreuneur",
-                }
-            ],
+
+        partners: {
+            current: {
+                title: "Partenaire de vie",
+                fields: familyContactFields,
+            },
+
+            former: {
+                title: "Ancien partenaire de vie",
+                fields: familyContactFields,
+            },
         },
-        mother : {
-            title : "Mère",
-            fields : [
-                {
-                    label : "Prénom NOM",
-                    value : "Sabine VAN DER MENSBRUGGHE",
-                },
-                {
-                    label : "Date et lieu de naissance",
-                    value : "06 / 03 / 1959 à Uccle (Belgique)",
-                },
-                {
-                    label : "Adresse",
-                    value : "Décédée",
-                },
-                {
-                    label : "Téléphone",
-                    value : "Décédée",
-                },
-                {
-                    label : "Adresse électronique",
-                    value : "Décédée",
-                },
-                {
-                    label : "Profession",
-                    value : "Infirmière",
-                }
-            ],
+       
+        parents : {
+            father : {
+                title : "Pére",
+                fields : familyContactFields,
+            },
+            mother : {
+                title : "Mère",
+                fields : familyContactFields,
+            },
         },
+
         sibling: {
             title: "Frères / Sœurs",
             columns: [
@@ -375,6 +343,47 @@ const protectedProfileDashboard = {
         notes : {
             label : "Observations générales",
             value : "",
+        },
+
+        form: {
+            header: {
+                title: "Ajouter un membre de la famille",
+                description: "Renseignez les informations concernant le membre de la famille.",
+            },
+
+            fields: [
+                {
+                    ...fields.contact_type_family,
+                },
+                {
+                    ...fields.relation_type,
+                },
+                {
+                    ...fields.lastname,
+                },
+                {
+                    ...fields.firstname,
+                },
+                {
+                    ...fields.birth_date,
+                },
+                {
+                    ...fields.birth_place,
+                },
+                {
+                    ...fields.address,
+                },
+                {
+                    ...fields.phone_number,
+                },
+                {
+                    ...fields.email,
+                    label : "Adresse électronique",
+                },
+                {
+                    ...fields.profession,
+                },
+            ],
         },
     },
 
@@ -490,7 +499,7 @@ const protectedProfileDashboard = {
         },
     },
 
-    professional_contacts : {
+    organization : {
         header : {
             title : "Contacts utiles",
             btn_label : "Modifier",
