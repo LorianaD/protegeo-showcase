@@ -1,4 +1,4 @@
-import { Button } from "../buttons";
+import { Button } from "../../buttons";
 
 function FormCard({ title, description, mention, children, btn_label, secondary_label, btn_cancel_label, onNext, onCancel, onPrevious, onSubmit }) {
     function handleSubmit(event) {

@@ -1,25 +1,29 @@
 import TableCell from "./TableCell";
 
-function TableRow({columns, row}) {
+function TableRow({columns, row, variant}) {
     const gridStyle = {
         "--table-columns": columns.length,
     };
 
+    const tableBodyRowClass = `table-body__row table-body__row--${variant}`;
+
     return (
-        <tr className="table-body__row" style={gridStyle}>
+        <tr className={tableBodyRowClass} style={gridStyle}>
             {columns.map((column) => {
-                const value = row[column.name];
+                const columnName = column.name ?? column.key;
 
-                const variant = column.variantName
-                    ? row[column.variantName]
-                    : null;
+                const value = row[columnName];
 
+                const variantName = column.variantName ?? column.variantKey;
+
+                const cellVariant = variantName ? row[variantName] : null;
+                
                 return (
                     <TableCell
-                        key={column.name}
+                        key={`${row.id}-${columnName}`}
                         value={value}
                         type={column.type}
-                        variant={variant}
+                        variant={cellVariant}
                     />
                 );
             })}

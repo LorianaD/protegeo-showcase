@@ -6,7 +6,10 @@ function useContacts(dossierId, contactCategory = null) {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    async function loadContacts() {
+    /**
+     * Loads the contacts linked to the selected dossier.
+     */
+    async function refreshContacts() {
         if (!dossierId) {
             setContacts([]);
             setIsLoading(false);
@@ -15,10 +18,13 @@ function useContacts(dossierId, contactCategory = null) {
         }
 
         try {
-            setIsLoading(true)
-            setError(null)
+            setIsLoading(true);
+            setError(null);
 
-            const contactsData = await getContactsService(dossierId, contactCategory);
+            const contactsData = await getContactsService(
+                dossierId,
+                contactCategory
+            );
 
             setContacts(contactsData);
         } catch (error) {
@@ -30,16 +36,17 @@ function useContacts(dossierId, contactCategory = null) {
     }
 
     useEffect(() => {
-        loadContacts();
+        refreshContacts();
     }, [dossierId, contactCategory]);
 
     return {
         contacts,
         isLoading,
         error,
+        refreshContacts,
     };
 }
 
 export {
     useContacts,
-}
+};

@@ -7,7 +7,7 @@ function TableHeader({columns}) {
         <thead className="table-header">
             <tr className="table-header__row" style={gridStyle}>
                 {columns.map((column) => (
-                    <th key={column.name} className="table-header__item">
+                    <th key={column.name ?? column.key} className="table-header__item">
                         {column.label}
                     </th>
                 ))}

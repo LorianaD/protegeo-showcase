@@ -129,9 +129,6 @@ const options = {
 
     contact_type_family: [
         {
-            label: "Vauillez sélectionner le type de relation",
-        },
-        {
             value: "father",
             label: "Pére"
         },

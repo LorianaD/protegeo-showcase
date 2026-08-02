@@ -153,11 +153,13 @@ const protectedProfileDashboard = {
             [
                 { 
                     ...fields.measure_type,
+                    source: "measure",
                 },
             ],
             [
                 { 
                     ...fields.judgment_date,
+                    source: "measure",
                 },
                 {
                     ...fields.renewal,
@@ -166,28 +168,35 @@ const protectedProfileDashboard = {
             [
                 {
                     ...fields.start_date,
+                    source: "measure",
                 },
                 { 
                     ...fields.end_date,
+                    source: "measure",
                 },
             ],
             [
                 { 
-                    ...fields.reference_number, 
+                    ...fields.reference_number,
+                    source: "dossier",
                 },
                 { 
                     ...fields.duration, 
+                    source: "measure",
                 },
             ],
             [
                 { 
-                    ...fields.tribrunal_name,
+                    ...fields.tribunal_name,
+                    source: "measure",
                 },
                 {
-                    ...fields.tribrunal_city,
+                    ...fields.tribunal_city,
+                    source: "measure",
                 },
                 { 
-                    ...fields.cabinet, 
+                    ...fields.cabinet,
+                    source: "measure",
                 },
             ],
             [
@@ -205,6 +214,7 @@ const protectedProfileDashboard = {
         ],
         notes : {
             ...fields.notes,
+            source: "measure",
         },
         btn_label : "Télécharger la mesure de protection PDF",
         btn_link : "",
@@ -244,6 +254,7 @@ const protectedProfileDashboard = {
 
         sibling: {
             title: "Frères / Sœurs",
+            emptyMessage: "Aucun frère ou aucune sœur enregistré.",
             columns: [
                 {
                     key: "fullname",
@@ -260,10 +271,12 @@ const protectedProfileDashboard = {
                 {
                     key: "phone",
                     label: "Téléphone",
+                    type: "truncate",
                 },
                 {
                     key: "email",
                     label: "Adresse électronique",
+                    type: "truncate",
                 },
                 {
                     key: "profession",
@@ -298,6 +311,7 @@ const protectedProfileDashboard = {
                 {
                     key: "email",
                     label: "Adresse électronique",
+                    type: "truncate",
                 },
                 {
                     key: "profession",
@@ -341,8 +355,8 @@ const protectedProfileDashboard = {
         },
 
         notes : {
+            ...fields.notes,
             label : "Observations générales",
-            value : "",
         },
 
         form: {
@@ -375,6 +389,7 @@ const protectedProfileDashboard = {
                 },
                 {
                     ...fields.phone_number,
+                    name: "phone",
                 },
                 {
                     ...fields.email,

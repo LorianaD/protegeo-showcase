@@ -1,6 +1,6 @@
-import { Button } from "../buttons";
+import { Button } from "../../buttons";
 
-function UpdateFormFooter({cancelLabel, submitLabel, loadingLabel = "Enregistrement...", onCancel, loading = false, error = ""}) {
+function UpdateFormFooter({ cancelLabel, submitLabel, loadingLabel = "Enregistrement...", onCancel, loading = false, error = "" }) {
     return (
         <div className="update-form__footer">
             <div className="update-form__actions">
@@ -26,7 +26,7 @@ function UpdateFormFooter({cancelLabel, submitLabel, loadingLabel = "Enregistrem
                 </p>
             )}
         </div>
-    );   
+    );
 }
 
 export default UpdateFormFooter;

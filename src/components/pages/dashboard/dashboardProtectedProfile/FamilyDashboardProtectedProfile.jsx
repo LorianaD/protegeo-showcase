@@ -1,61 +1,42 @@
-import { ContactCard, ContactForm, ContactFormModal, DashboardSection, DashboardSectionLoading, Modal } from "@/components/ui";
-import { useContacts } from "@/hooks";
-import { formatContactFieldValue } from "@/utils";
-import { useState } from "react";
+import { ContactFormModal, DashboardSection, DashboardSectionLoading, InfoField } from "@/components/ui";
+import { useContacts, useFamilyContactForm } from "@/hooks";
+import { formatContactCards, formatContactTableRows } from "@/utils";
 import { useOutletContext } from "react-router";
+import { ContactCardList, ContactObservationNote, ContactTable } from "./contacts";
 
 function FamilyDashboardProtectedProfile() {
     const { page, dossierId } = useOutletContext();
 
     const section = page.family;
 
-    const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-    const [contactType, setContactType] = useState("");
+    const { contacts, isLoading, error, refreshContacts } = useContacts(dossierId, "family");
 
-    const contactCardTypes = {
-        ...section.partners,
-        ...section.parents,
-    };
+    const partnerCards = formatContactCards(
+        contacts,
+        section.partners
+    );
 
-    const {contacts, isLoading, error, refreshContacts} = useContacts(dossierId, "family");
+    const parentCards = formatContactCards(
+        contacts,
+        section.parents
+    );
 
-    /**
-     * Opens the contact creation modal.
-     */
-    function handleOpenContactModal() {
-        setIsContactModalOpen(true);
-    }
+    const siblingTable = formatContactTableRows(
+        contacts,
+        "sibling"
+    );
 
-    /**
-     * Closes the contact creation modal.
-     */
-    function handleCloseContactModal() {
-        setIsContactModalOpen(false);
-    }
+    const trustedPeopleRows = formatContactTableRows(
+        contacts,
+        "trusted_person"
+    );
 
-    /**
-     * Refreshes the contact list after a successful creation.
-     */
-    async function handleContactCreated() {
-        await refreshContacts();
-        handleCloseContactModal();
-    }
+    const subrogatedRows = formatContactTableRows(
+        contacts,
+        "subrogated"
+    );
 
-    function handleContactTypeChange(event) {
-        if (event.target.name !== "contact_type") {
-            return;
-        }
-
-        setContactType(event.target.value);
-    }
-
-    const contactFormFields = section.form.fields.filter((field) => {
-        if (field.name === "relation_type") {
-            return contactType === "trusted_person";
-        }
-
-        return true;
-    });
+    const {isContactModalOpen, contactFormData, contactFormFields, isAdding, addError, handleOpenContactModal, handleCloseContactModal, handleContactChange, handleContactSubmit} = useFamilyContactForm(dossierId, section.form, refreshContacts);
 
     if (isLoading) {
         return (
@@ -71,57 +52,36 @@ function FamilyDashboardProtectedProfile() {
         )
     }
 
-    if (contacts.length === 0) {
-        return (
-            <DashboardSection title={section.header.title}  actionLabel={ section.header.btn_label } addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal}>
-                <p>Aucun membre trouvé.</p>
-            </DashboardSection>
-        )
-    }
-
-    const contactCards = contacts.map((contact) => {
-        const card = contactCardTypes[contact.contact_type];
-
-        if (!card) {
-            return null;
-        }
-
-        const cardFields = card.fields.map((field) => ({
-            ...field,
-            value: formatContactFieldValue(field, contact),
-        }));
-
-        return {
-            id: contact.id,
-            title: card.title,
-            fields: cardFields,
-            contact,
-        };
-    });
-
     return (
         <>
-            <DashboardSection title={section.header.title} actionLabel={ section.header.btn_label } addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal}>
-                <div className="contact-card-list">
-                    {contactCards.map((card) => (
-                        <ContactCard
-                            key={card.id}
-                            card={card}
-                        />
-                    ))}
-                </div>
+            <DashboardSection title={section.header.title} actionLabel={section.header.btn_label} addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal}>
+                {contacts.length === 0 ? (
+                    <p>Aucun membre trouvé.</p>
+                ) : (
+                    <div className="family-info">
+                        <ContactCardList contactCards={partnerCards}/>
+                        <ContactCardList contactCards={parentCards}/>
+                        <ContactTable contactType={section.sibling} rows={siblingTable}/>
+                        <ContactTable contactType={section.trusted_people} rows={trustedPeopleRows}/>
+                        <ContactTable contactType={section.subrogated} rows={subrogatedRows}/>
+                        <ContactObservationNote section={section}/>
+                    </div>
+                )}
             </DashboardSection>
 
             {isContactModalOpen && (
                 <ContactFormModal
                     form={section.form}
                     fields={contactFormFields}
-                    onChange={handleContactTypeChange}
+                    values={contactFormData}
+                    onChange={handleContactChange}
                     onClose={handleCloseContactModal}
-                    onSubmit={handleContactCreated}
+                    onSubmit={handleContactSubmit}
                     category="family"
                     cancelLabel={page.footer_form.btn_cancel_label}
                     submitLabel={page.footer_form.btn_recorded_label}
+                    loading={isAdding}
+                    error={addError}
                 />
             )}
         </>

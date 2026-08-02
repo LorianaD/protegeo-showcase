@@ -2,30 +2,30 @@ import { updateProtectionMeasureService } from "@/services";
 import { useState } from "react"
 
 function useUpdateMeasure() {
-    const [updating, setUpdating] = useState(false);
-    const [updateError, setUpdateError] = useState("");
+    const [updatingMeasure, setUpdatingMeasure] = useState(false);
+    const [updateErrorMeasure, setUpdateErrorMeasure] = useState("");
 
     async function updateMeasure(dossierId, measureId, measureData) {
-        setUpdating(true);
-        setUpdateError("");
+        setUpdatingMeasure(true);
+        setUpdateErrorMeasure("");
 
         try {
             const updatedMeasure = await updateProtectionMeasureService(dossierId, measureId, measureData);
 
             return updatedMeasure;
         } catch (error) {
-            setUpdateError(error.message);
+            setUpdateErrorMeasure(error.message);
 
             return null;
         } finally {
-            setUpdating(false);
+            setUpdatingMeasure(false);
         }
     }
 
     return {
         updateMeasure,
-        updating,
-        updateError,
+        updatingMeasure,
+        updateErrorMeasure,
     };
 }
 

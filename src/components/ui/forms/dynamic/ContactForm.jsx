@@ -1,14 +1,12 @@
-import FormCard from "./FormCard";
-import FormField from "./FormField";
-import Input from "./Input";
-import Select from "./Select";
+import { Input, Select } from "../fields";
+import { FormCard, FormField } from "../layout";
 
-function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, submitLabel }) {
+function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
 
     return (
         <FormCard
             description={form.header.description}
-            btn_label={submitLabel}
+            btn_label={loading ? "Enregistrement..." : submitLabel}
             btn_cancel_label={cancelLabel}
             onSubmit={onSubmit}
             onCancel={onCancel}
@@ -27,17 +25,24 @@ function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, 
                             name={field.name}
                             options={field.options}
                             onChange={onChange}
+                            placeholder={field.placeholder}
                         />
                     ) : (
                         <Input
                             name={field.name}
                             type={field.type}
                             placeholder={field.placeholder}
-                            // onChange={onChange}
+                            onChange={onChange}
                         />
                     )}
                 </FormField>
             ))}
+
+            {error && (
+                <p className="form-error">
+                    {error}
+                </p>
+            )}
         </FormCard>
     )
 }

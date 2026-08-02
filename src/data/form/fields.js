@@ -121,6 +121,7 @@ const fields = {
         name: "contact_type",
         label: "Type de relation",
         options: options.contact_type_family,
+        placeholder: "Veuillez sélectionner le type de relation",
         required: true,
     },
 
@@ -174,14 +175,14 @@ const fields = {
         label: "Date éventuelle de renouvellement",
     },
 
-    tribrunal_name: {
+    tribunal_name: {
         name: "tribunal_name",
         label: "Tribunal compétent",
         type: "text",
         placeholder: "",
     },
 
-    tribrunal_city: {
+    tribunal_city: {
         name: "tribunal_city",
         label: "Ville",
         type: "text",

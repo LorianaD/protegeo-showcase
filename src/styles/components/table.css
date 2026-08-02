@@ -1,10 +1,10 @@
 .dashboard-table {
     display: flex;
     width: 100%;
-    padding: var(--space-lg);
+    padding: 24px;
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--space-md);
+    gap: 16px;
     border-collapse: collapse;
 }
 
@@ -18,14 +18,14 @@
     display: grid;
     width: 100%;
     grid-template-columns: repeat(var(--table-columns), minmax(0, 1fr));
-    column-gap: var(--space-md);
+    column-gap: 16px;
     align-items: center;
 }
 
 .table-header__item {
-    color: var(--color-primary);
-    font-size: var(--text-lg);
-    font-weight: var(--weight-bold);
+    color: var(--colors-primary);
+    font-size: 20px;
+    font-weight: 700;
     text-align: left;
 }
 
@@ -33,12 +33,78 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 12px;
+}
+
+.dashboard-table-empty--contacts {
+    gap: 10px;
+    border-radius: 8px;
+    background-color: #E8F0F8;
+    border: none;
 }
 
 .table-body__row {
-    padding: var(--space-md);
-    border: 1px solid #d9e4ee;
-    border-radius: var(--radius-lg);
-    background: #fbfdff;
+    position: relative;
+    padding: 16px;
+    overflow: visible;
+    border: 1px solid #D9E4EE;
+    border-radius: 16px;
+    background-color: #FBFDFF;
+}
+
+.table-body__item {
+    min-width: 0;
+    padding: 16px;
+}
+
+.table-body__item--truncate {
+    position: relative;
+    min-width: 0;
+    overflow: visible;
+}
+
+.table-body__text-truncate {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.table-body__item--truncate:hover {
+    z-index: 20;
+}
+
+.table-body__item--truncate:hover .table-body__text-truncate {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    z-index: 20;
+
+    width: max-content;
+    min-width: calc(100% - 32px);
+    max-width: 384px;
+
+    padding: 12px;
+
+    overflow: visible;
+    white-space: nowrap;
+
+    background-color: #E8F0F8;
+    border-radius: 8px;
+
+    transform: translateY(-50%);
+}
+
+.dashboard-table--contacts {
+    width: 100%;
+    padding: 0;
+}
+
+.table-body__row--contacts {
+    overflow: visible;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: #E8F0F8;
+    border: none;
 }

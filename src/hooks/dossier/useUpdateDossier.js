@@ -2,28 +2,28 @@ import { updateDossierService } from "@/services";
 import { useState } from "react"
 
 function useUpdateDossier() {
-    const [updating, setUpdating] = useState(false);
-    const [updateError, setUpdateError] = useState("");
+    const [updatingDossier, setUpdatingDossier] = useState(false);
+    const [updateErrorDossier, setUpdateErrorDossier] = useState("");
 
     async function updateDossier(dossierId, dossierData) {
-        setUpdating(true);
-        setUpdateError("");
+        setUpdatingDossier(true);
+        setUpdateErrorDossier("");
 
         try {
             const updatedDossier = await updateDossierService(dossierId, dossierData);
 
             return updatedDossier;
         } catch (error) {
-            setUpdateError(error.message);
+            setUpdateErrorDossier(error.message);
         } finally {
-            setUpdating(false);
+            setUpdatingDossier(false);
         }
     }
 
     return {
         updateDossier,
-        updating,
-        updateError,
+        updatingDossier,
+        updateErrorDossier,
     };
 }
 
