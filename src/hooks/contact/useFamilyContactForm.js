@@ -67,8 +67,6 @@ function useFamilyContactForm(dossierId, form, refreshContacts) {
             contactData
         );
 
-        console.log("Contact créé :", createdContact);
-
         if (!createdContact) {
             return;
         }

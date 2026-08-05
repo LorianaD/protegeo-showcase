@@ -44,6 +44,10 @@ Redirection cards
     color: #0078A8;
 }
 
+.redirection-card__link:hover {
+    text-decoration: underline;
+}
+
 /* Article */
 
 .item-card {
@@ -53,6 +57,8 @@ Redirection cards
     align-items: flex-start;
     gap: var(--space-md);
     align-self: stretch;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .item-card__title {
@@ -105,7 +111,7 @@ Redirection cards
 .item-card__link {
     color: var(--color-primary);
     font-weight: var(--weight-bold);
-    text-decoration-line: underline;
+    /* text-decoration-line: underline; */
     text-decoration-style: solid;
     text-decoration-skip-ink: auto;
     text-decoration-thickness: auto;
@@ -113,6 +119,10 @@ Redirection cards
     text-underline-position: from-font;
     display: block;
     margin-top: 0.3rem;
+}
+
+.item-card__link:hover {
+    text-decoration: underline;
 }
 
 .item-card__row {

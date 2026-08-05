@@ -27,10 +27,6 @@ function useLoginForm() {
     async function handleSubmit(event) {
         event.preventDefault();
 
-        console.log("Le formulaire est soumis !");
-        console.log(values);
-        
-
         setApiError("");
 
         const validation = validateLoginForm(values);
