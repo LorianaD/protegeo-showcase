@@ -12,7 +12,7 @@ function SiderbarNav() {
         }
 
         if (!reference) {
-            return linkUrl.replace("/:reference", "/19-A-00480");
+            return "";
         }
 
         return linkUrl.replace(":reference", reference);

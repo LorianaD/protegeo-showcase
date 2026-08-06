@@ -1,16 +1,16 @@
-function RadioGroup({ name, options, value, onChange }) {
+function RadioGroup({ name, options = [], value, onChange }) {
     return (
         <div className="radio-group">
             {options.map((option) => (
-                <label key={option} className="radio-group__option">
+                <label key={`${name}-${option.value}`} className="radio-group__option">
                     <input
                         type="radio"
                         name={name}
-                        value={option}
-                        checked={value === option}
+                        value={option.value}
+                        checked={value === option.value}
                         onChange={onChange}
                     />
-                    {option}
+                    {option.label}
                 </label>
             ))}
         </div>
