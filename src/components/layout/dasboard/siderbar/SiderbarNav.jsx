@@ -1,21 +1,26 @@
 import { DashboardNavButton } from "@/components/ui";
 import { siderbarDashboard } from "@/data";
+import { useProtectedPersons } from "@/hooks";
 import { useParams } from "react-router";
 
 function SiderbarNav() {
     const nav = siderbarDashboard.nav;
     const { reference } = useParams();
 
+    const { protectedPersons } = useProtectedPersons();
+
+    const selectedReference = reference ?? protectedPersons[0]?.reference_number;
+
     function buildLinkUrl(linkUrl) {
         if (!linkUrl.includes(":reference")) {
             return linkUrl;
         }
 
-        if (!reference) {
+        if (!selectedReference) {
             return "";
         }
 
-        return linkUrl.replace(":reference", reference);
+        return linkUrl.replace(":reference", selectedReference);
     }
 
     return (

@@ -1,47 +1,67 @@
-import { protectedColumns } from "@/data/tables"
+import { quickActionsDashboard } from "@/data/actions";
+import { protectedColumns } from "@/data/tables";
 
 const homeDashboard = {
-    hero : {
-        title : "Tableau de bord",
-        description : "Résumé clair de vos protégés, et la situation globale.",
+    hero: {
+        title: "Tableau de bord",
+        description: "Résumé clair de vos protégés, et la situation globale.",
     },
-    stats : [
+
+    stats: [
         {
-            title : "Protégés suivis",
-            data : "24",
-            description : "Majeurs protégés",
+            name: "protectedPersons",
+            title: "Protégés suivis",
+            description: "Majeurs protégés",
         },
         {
-            title : "Dossiers urgents",
-            data : "3",
-            description : "Documents",
+            name: "urgentDossiers",
+            title: "Dossiers urgents",
+            description: "Échéances proches",
         },
         {
-            title : "Comptes à rendre",
-            data : "5",
-            description : "Comptes",
-        },
-        {
-            title : "Justificatifs manquants",
-            data : "3",
-            description : "Documents à compléter",
+            name: "managementAccounts",
+            title: "Comptes à rendre",
+            description: "Comptes",
         },
     ],
-    alert : {
-        title : "Alertes",
+
+    alert: {
+        title: "Alertes",
     },
-    protected : {
+
+    protected: {
         header: {
-            title : "Protégés",
+            title: "Protégés",
         },
         columns: protectedColumns,
-        emptyMessage: "Aucun protégés enregistré",
+        emptyMessage: "Aucun protégé enregistré",
     },
-    deadline : {
-        title : "Échéances",
-    }
-}
+
+    deadline: {
+        title: "Échéances",
+        emptyMessage: "Aucune échéance à venir",
+    },
+
+    actions: {
+        title: "Actions rapides",
+
+        items: [
+            {
+                ...quickActionsDashboard.addExpense,
+            },
+            {
+                ...quickActionsDashboard.addResource,
+            },
+            {
+                ...quickActionsDashboard.generateProtectedPersons,
+            },
+            {
+                ...quickActionsDashboard.generateAnnualAccount,
+            },
+        ],
+    },
+};
 
 export {
     homeDashboard,
-}
+};

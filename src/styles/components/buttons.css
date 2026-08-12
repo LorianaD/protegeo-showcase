@@ -8,15 +8,16 @@
     border-radius: var(--radius-button);
     font-weight: var(--weight-bold);
     width: fit-content;
-}
-
-.button:hover {
-    box-shadow: 2px 2px 10px -2px var(--color-secondary);
+    cursor: pointer;
 }
 
 .button--primary {
     background: var(--color-primary);
     color: var(--white);  
+}
+
+.button--primary:hover {
+    box-shadow: 2px 2px 10px -2px var(--color-secondary);
 }
 
 .button--secondary {
@@ -25,10 +26,30 @@
     border: 2px solid var(--color-primary);  
 }
 
+.button--secondary:hover {
+    box-shadow: 2px 2px 10px -2px var(--color-secondary);
+}
+
 .button-container {
     display: flex;
     gap: var(--space-lg);
     width: 100%;
+}
+
+.button--dashboard-action {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    gap: 10px;
+
+    border-radius: 14px;
+    background-color: #FBFDFF;
+    border: 1px solid #D9E4EE;
+}
+
+.button--dashboard-action:hover {
+    background-color: var(--color-background-light);
 }
 
 /* Shortcut Cards */
@@ -109,6 +130,10 @@
     border-left: 3px solid #4fbbe5;
     background-color: var(--color-primary);
     color: var(--white);
+}
+
+.dashboard-nav-button--siderbar:hover {
+    background: var(--pale-blue);
 }
 
 .dashboard-nav-button__icon {

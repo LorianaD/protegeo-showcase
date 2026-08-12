@@ -1,4 +1,6 @@
 import { commonMessages, measureStatuses } from "@/data";
+import { addMonths, addYears } from "../date";
+import { getTheoreticalMeasureEndDate } from "./calculateProtectionMeasure";
 
 function getMeasureLabel(measure) {
     if (!measure) {
@@ -10,12 +12,45 @@ function getMeasureLabel(measure) {
     return measureType;
 }
 
-function getMeasureDeadline(measure) {
-    if (!measure?.end_date) {
+function getMeasureDeadline(measure, fallback = commonMessages.notProvidedFeminine) {
+    if (!measure?.start_date ||!measure?.duration_years) {
+        return fallback;
+    }
+
+    return addYears(
+        measure.start_date,
+        measure.duration_years
+    );
+}
+
+function getMeasureDeadlineLabel(measure) {
+    if (!measure) {
         return commonMessages.notProvidedFeminine;
     }
 
-    return measure.end_date;
+    if (measure.end_date) {
+        const endDate = new Date(measure.end_date);
+
+        return `Terminée depuis le ${formatDate(endDate)}`;
+    }
+
+    const theoreticalEndDate = getTheoreticalMeasureEndDate(measure);
+
+    if (!theoreticalEndDate) {
+        return commonMessages.notProvidedFeminine;
+    }
+
+    const currentDate = new Date();
+    const urgentLimitDate = addMonths(currentDate, 3);
+
+    if (
+        theoreticalEndDate >= currentDate &&
+        theoreticalEndDate <= urgentLimitDate
+    ) {
+        return `Fin le ${formatDate(theoreticalEndDate)}`;
+    }
+
+    return "En cours";
 }
 
 function getMeasureStatus(measure) {
@@ -33,5 +68,6 @@ function getMeasureStatus(measure) {
 export {
     getMeasureLabel,
     getMeasureDeadline,
+    getMeasureDeadlineLabel,
     getMeasureStatus,
 };

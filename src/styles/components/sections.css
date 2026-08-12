@@ -329,6 +329,12 @@ Sections
     gap: 40px;
 }
 
+.dashboard-section--home {
+    border-radius: 18px;
+    border: 1px solid #D9E4EE;
+    background: #FFF;
+}
+
 .dashboard-section__header {
     width: 100%;
     display: flex;
@@ -341,17 +347,56 @@ Sections
     font-weight: var(--weight-bold);
 }
 
-.dashboard-section__actions {
+.dashboard-section__body {
+    padding: 0;
+}
+
+.section-dashboard-actions {
     display: flex;
     gap: var(--space-lg);
+    width: 100%;
 }
 
 .section-action-container {
     display: flex;
+    padding: 20px;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 28px;
+    align-items: flex-start;
+    gap: 15px;
+    
+    border-radius: 18px;
+    border: 1px solid #D9E4EE;
+    background: #FFFFFF;
+
+    width: 100%;
+}
+
+.section-action-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    width: 100%;
+}
+
+.section-deadline-list__item {
+    display: grid;
+    padding: 16px;
+    gap: 16px;
+    grid-template-rows: repeat(1, fit-content(100%));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+
+    border-radius: 14px;
+    border: 1px solid #D9E4EE;
+    background: #FBFDFF;
+}
+
+.section-deadline-list__empty {
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid #D9E4EE;
+    background: #FBFDFF;
+    width: 100%;    
 }
 
 /* ***********************************

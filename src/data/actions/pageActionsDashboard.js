@@ -36,4 +36,6 @@ const pageActionsDashboard = {
     },
 };
 
-export default pageActionsDashboard;
+export {
+    pageActionsDashboard
+};

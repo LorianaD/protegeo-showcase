@@ -82,27 +82,27 @@ const siderbarDashboard = {
                     // },
                 ],
             },
-            {
-                title: "Suivi",
-                links: [
-                    {
-                        link_icon : {
-                            default : dashboardHistory,
-                            active : dashboardHistoryWhite,
-                        },
-                        link_label : "Historique",
-                        link_url : "",
-                    },
-                    {
-                        link_icon : {
-                            default : dashboardAlert,
-                            active : dashboardAlertWhite,
-                        },
-                        link_label : "Alertes",
-                        link_url : "",
-                    },
-                ],
-            },
+            // {
+            //     title: "Suivi",
+            //     links: [
+            //         {
+            //             link_icon : {
+            //                 default : dashboardHistory,
+            //                 active : dashboardHistoryWhite,
+            //             },
+            //             link_label : "Historique",
+            //             link_url : "",
+            //         },
+            //         {
+            //             link_icon : {
+            //                 default : dashboardAlert,
+            //                 active : dashboardAlertWhite,
+            //             },
+            //             link_label : "Alertes",
+            //             link_url : "",
+            //         },
+            //     ],
+            // },
             {
                 title: "Paramètres",
                 links: [

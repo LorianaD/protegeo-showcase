@@ -1,15 +1,20 @@
 import { Button } from "../buttons";
 
-function SectionPageActions({ title }) {
+function SectionPageActions({ section }) {
     return (
-        <section>
+        <section className="section-page-actions">
             <h3>
-                { title }
+                {section.title}
             </h3>
+
             <div className="section-page-actions__buttons">
-                <Button label="Modifier les informations" variant="secondary" />
-                <Button label="Historique" variant="primary" />
-                <Button label="Télécharger en PDF" variant="secondary" />
+                {section.items.map((action) => (
+                    <Button
+                        key={action.name}
+                        label={action.label}
+                        variant={action.variant}
+                    />
+                ))}
             </div>
         </section>
     )

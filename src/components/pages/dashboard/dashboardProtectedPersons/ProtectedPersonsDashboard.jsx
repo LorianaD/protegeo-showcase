@@ -30,7 +30,7 @@ function ProtectedPersonsDashboard({page}) {
     })
 
     return (
-        <DashboardSection>
+        <DashboardSection variant="home">
             <DashboardTable
                 columns={section.columns}
                 emptyMessage={section.emptyMessage}

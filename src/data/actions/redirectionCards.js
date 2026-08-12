@@ -58,4 +58,6 @@ const redirectionCards = {
     },
 };
 
-export default redirectionCards;
+export {
+    redirectionCards
+};

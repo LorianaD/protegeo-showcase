@@ -1,20 +1,29 @@
-const quickActions = {
+const quickActionsDashboard = {
     addExpense: {
+        name: "addExpense",
         label: "+ Ajouter une dépense",
-        to: "/dashboard/expenses/new",
+        variant: "dashboard-action",
     },
+
     addResource: {
+        name: "addResource",
         label: "+ Ajouter une ressource",
-        to: "/dashboard/resources/new",
+        variant: "dashboard-action",
     },
-    generateProtectedList: {
+
+    generateProtectedPersons: {
+        name: "generateProtectedPersons",
         label: "+ Générer la liste des protégés",
-        to: "/dashboard/protected/export",
+        variant: "dashboard-action",
     },
+
     generateAnnualAccount: {
+        name: "generateAnnualAccount",
         label: "+ Générer le compte annuel",
-        to: "/dashboard/account/generate",
+        variant: "dashboard-action",
     },
 };
 
-export default quickActions;
+export {
+    quickActionsDashboard,
+};

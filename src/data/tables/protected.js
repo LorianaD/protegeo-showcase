@@ -8,8 +8,8 @@ const protectedColumns = [
         label: "Mesure",
     },
     {
-        name: "deadline",
-        label: "Échéance",
+        name: "measure_tracking",
+        label: "Suivi de la mesure",
     },
     {
         name: "status",

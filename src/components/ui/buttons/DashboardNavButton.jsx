@@ -1,6 +1,22 @@
 import { NavLink } from "react-router";
 
-function DashboardNavButton({ label , to , icon , variant = "siderbar", end = false, }) {
+function DashboardNavButton({ label , to , icon , variant = "siderbar", end = false }) {
+    if (!to) {
+        return (
+            <div className={`dashboard-nav-button dashboard-nav-button--${variant} dashboard-nav-button--disabled`}>
+                <div className="dashboard-nav-button__icon">
+                    <img
+                        src={icon.default}
+                        alt=""
+                        className="dashboard-nav-button__icon-img"
+                    />
+                </div>
+
+                <span>{label}</span>
+            </div>
+        );
+    }
+    
     function getClassName({ isActive }) {
         const activeClass = isActive && to ? `dashboard-nav-button--${variant}-active` : "";
 

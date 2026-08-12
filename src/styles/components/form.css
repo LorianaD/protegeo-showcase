@@ -29,6 +29,7 @@
     border-bottom: 2px solid var(--blue);
     background-color: var(--pale-blue);
     width: 100%;
+    padding: var(--space-xs);
 }
 
 

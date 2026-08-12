@@ -1,5 +1,5 @@
 import RedirectionCard from "../cards/RedirectionCard.jsx";
-import redirectionCards from "../../../data/actions/redirectionCards.js";
+import { redirectionCards } from "../../../data/actions";
 
 function SectionCardsContainer({ names = [] }) {
     return (

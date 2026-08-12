@@ -1,41 +1,8 @@
 import { DashboardSection, DashboardSectionLoading, DashboardTable } from "@/components/ui";
-import { commonMessages, measureStatuses } from "@/data";
-import { useProtectedPersons } from "@/hooks";
+import { formatDate, getMeasureDeadline, getMeasureDeadlineLabel, getMeasureLabel, getMeasureStatus } from "@/utils";
 
-function ProtectedPersonsDashboardHome({page}) {
+function ProtectedPersonsDashboardHome({page, protectedPersons = [], loading, error, variant}) {
     const section = page.protected;
-
-    const { protectedPersons, loading, error } = useProtectedPersons();
-
-    function getMeasureLabel(measure) {
-        if (!measure) {
-            return commonMessages.noMeasure;
-        }
-
-        const measureType = measure.measure_type ?? commonMessages.notProvidedFeminine;
-
-        return measureType;
-    }
-
-    function getMeasureDeadline(measure) {
-        if (!measure?.end_date) {
-            return commonMessages.notProvidedFeminine;
-        }
-
-        return measure.end_date;
-    }
-    
-    function getMeasureStatus(measure) {
-        if (!measure) {
-            return commonMessages.noMeasure;
-        }
-
-        if (measure.end_date) {
-            return measureStatuses.ended;
-        }
-
-        return measureStatuses.active;
-    }
 
     if (loading) {
         return (
@@ -61,14 +28,14 @@ function ProtectedPersonsDashboardHome({page}) {
             id: item.dossier_id,
             fullname: `${item.protected_person.firstname} ${item.protected_person.lastname}`,
             measure: getMeasureLabel(item.measure),
-            deadline: getMeasureDeadline(item.measure),
+            measure_tracking: getMeasureDeadlineLabel(item.measure),
             status: status.label,
-            status_variant: status.variant,            
-        }
-    })
+            status_variant: status.variant,
+        };
+    });
 
     return (
-        <DashboardSection title={section.header.title}>
+        <DashboardSection title={section.header.title} variant={variant}>
             <DashboardTable
                 columns={section.columns}
                 emptyMessage={section.emptyMessage}
