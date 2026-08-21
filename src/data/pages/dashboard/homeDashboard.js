@@ -47,10 +47,7 @@ const homeDashboard = {
 
         items: [
             {
-                ...quickActionsDashboard.addExpense,
-            },
-            {
-                ...quickActionsDashboard.addResource,
+                ...quickActionsDashboard.addProtectedPerson,
             },
             {
                 ...quickActionsDashboard.generateProtectedPersons,

@@ -211,7 +211,14 @@ const fields = {
         label: "Observations générales",
         type: "textarea",
         placeholder: "Saisisez vos observation sur la situation"
-    }
+    },
+
+    gender : {
+        name: "gender",
+        label : "Sexe",
+        options : options.gender,
+        required: true,
+    },
 };
 
 const familyContactFields = [

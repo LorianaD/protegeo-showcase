@@ -1,4 +1,11 @@
 const quickActionsDashboard = {
+
+    addProtectedPerson: {
+        name: "addProtectedPerson",
+        label: "+ Ajouter une persone protegée",
+        variant: "dashboard-action",
+    },
+
     addExpense: {
         name: "addExpense",
         label: "+ Ajouter une dépense",

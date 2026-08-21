@@ -7,6 +7,13 @@ const protectedPersonsDashboard = {
         description : "Résumé clair de vos protégés.",
     },
 
+    add : {
+        title : "Liste de mes protégés",
+        actionLabel : {
+            ...quickActionsDashboard.addProtectedPerson
+        },
+    },
+
     protected : {
         columns: protectedColumns,
         emptyMessage: "Aucun protégés enregistré",
@@ -22,10 +29,7 @@ const protectedPersonsDashboard = {
 
         items: [
             {
-                ...quickActionsDashboard.addExpense,
-            },
-            {
-                ...quickActionsDashboard.addResource,
+                ...quickActionsDashboard.addProtectedPerson,
             },
             {
                 ...quickActionsDashboard.generateProtectedPersons,

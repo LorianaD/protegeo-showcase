@@ -1,6 +1,6 @@
 import { SectionActionContainer, SectionActionList, SectionDashboardActions, SectionDeadlineList } from "@/components/ui";
 
-function ActionsDashboardHome({page, protectedPersons = []}) {
+function ActionsDashboardHome({page, protectedPersons = [], onAddDossier}) {
     const deadlineSection = page.deadline;
     const actionsSection = page.actions;
 
