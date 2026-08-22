@@ -17,6 +17,7 @@ const fields = {
 
     civility : {
         name: "civility",
+        type: "radio",
         title : "Civilité",
         label : "Civilité",
         options : options.civility,
@@ -60,6 +61,7 @@ const fields = {
 
     family_situation : {
         name: "family_situation",
+        type: "select",
         title: "Situation familiale",
         label: "Situation familiale",
         options: options.family_situation,
@@ -112,6 +114,7 @@ const fields = {
 
     roles : {
         name: "roles",
+        type: "select",
         label : "Rôles",
         options : options.roleType,
         required: false,
@@ -119,6 +122,7 @@ const fields = {
 
     contact_type_family: {
         name: "contact_type",
+        type: "select",
         label: "Type de relation",
         options: options.contact_type_family,
         placeholder: "Veuillez sélectionner le type de relation",
@@ -134,6 +138,7 @@ const fields = {
 
     measure_type: {
         name: "measure_type",
+        type: "select",
         label: "Type de measure",
         options: options.measureType,
         required: true,
@@ -215,8 +220,9 @@ const fields = {
 
     gender : {
         name: "gender",
-        label : "Sexe",
-        options : options.gender,
+        label: "Sexe",
+        type: "radio",
+        options: options.gender,
         required: true,
     },
 };

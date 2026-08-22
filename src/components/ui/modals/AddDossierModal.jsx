@@ -1,20 +1,17 @@
 import { useAddDossier } from "@/hooks";
+import Modal from "./Modal";
+import { BodyAddDossier } from "@/components/pages/dashboard/";
 
 function AddDossierModal({ open, onClose }) {
-    const {addDossier, isAdding, addError} = useAddDossier();
 
     if (!open) {
         return null;
     }
 
     return (
-        <div>
-            <h2>Ajouter une personne protégée</h2>
-
-            <button onClick={onClose}>
-                Fermer
-            </button>
-        </div>
+        <Modal onClose={onClose}>
+            <BodyAddDossier onClose={onClose}/>
+        </Modal>
     )
 }
 

@@ -1,17 +1,22 @@
+import { fields } from "./fields";
+
 const addDossierForm = {
     protectedPerson: {
         title: "Identité de la personne",
         subtitle: "Majeur protégé",
         description: "Ces informations permettent d’identifier la personne protégée.",
+        mention : "Sauf mention contraire tout les champs sont obligatoires.",
 
         fields: [
-            "gender",
-            "lastname",
-            "firstname",
-            "birthDate",
-            "address",
-            "postalCode",
-            "city",
+            fields.gender,
+            fields.lastname,
+            fields.firstname,
+            fields.birth_date,
+            fields.birth_place,
+            fields.nationality,
+            fields.address,
+            fields.postal_code,
+            fields.city,
         ],
     },
 
@@ -20,10 +25,10 @@ const addDossierForm = {
         description: "Informations concernant la mesure de protection.",
 
         fields: [
-            "judgmentDate",
-            "measureType",
-            "referenceNumber",
-            "tribunalName",
+            fields.judgment_date,
+            fields.measure_type,
+            fields.reference_number,
+            fields.tribunal_name,
         ],
     },
 
@@ -32,13 +37,15 @@ const addDossierForm = {
         description: "Informations concernant la mesure de protection.",
 
         fields: [
-            "roleType",
-            "lastname",
-            "firstname",
-            "birthDate",
-            "address",
-            "postalCode",
-            "city",
+            fields.roles,
+            fields.lastname,
+            fields.firstname,
+            fields.birth_date,
+            fields.birth_place,
+            fields.nationality,
+            fields.address,
+            fields.postal_code,
+            fields.city,
         ],
     },
 };
