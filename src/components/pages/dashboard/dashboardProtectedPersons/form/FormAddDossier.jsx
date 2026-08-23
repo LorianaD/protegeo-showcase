@@ -1,12 +1,9 @@
 import { FormCard, FormField, Input, RadioGroup, Select } from "@/components/ui";
-import { useAddDossier } from "@/hooks";
 import { hasErrors, validateRequiredFields } from "@/utils";
 import { useState } from "react";
 
-function FormAddDossier({section, actualStep, formData, handleChange, onNext, onPrevious, resetForm, onClose}) {
+function FormAddDossier({ section, actualStep, formData, handleChange, onNext, onPrevious, onSubmit, isAdding, addError }) {
     const [formErrors, setFormErrors] = useState({});
-
-    const {addDossier, isAdding, addError} = useAddDossier();
 
     function isCurrentStepValid() {
         const errors = {};
@@ -46,19 +43,12 @@ function FormAddDossier({section, actualStep, formData, handleChange, onNext, on
         onNext();
     }
 
-    async function handleSubmit() {
+    function handleSubmit() {
         if (!isCurrentStepValid()) {
             return;
         }
 
-        const result = await addDossier(formData);
-
-        if (!result) {
-            return;
-        }
-
-        resetForm();
-        onClose();
+        onSubmit();
     }
 
     return (
@@ -89,6 +79,7 @@ function FormAddDossier({section, actualStep, formData, handleChange, onNext, on
                         <Select
                             name={field.name}
                             options={field.options}
+                            placeholder={field.placeholder}
                             value={formData[field.name] || ""}
                             onChange={handleChange}
                         />
@@ -133,6 +124,7 @@ function FormAddDossier({section, actualStep, formData, handleChange, onNext, on
                                 <Select
                                     name={field.name}
                                     options={field.options}
+                                    placeholder={field.placeholder}
                                     value={formData[field.name] || ""}
                                     onChange={handleChange}
                                 />

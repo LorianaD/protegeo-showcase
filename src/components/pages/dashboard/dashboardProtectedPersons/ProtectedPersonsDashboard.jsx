@@ -3,10 +3,10 @@ import { commonMessages, measureStatuses, messages } from "@/data";
 import { useProtectedPersons } from "@/hooks";
 import { getMeasureDeadline, getMeasureLabel, getMeasureStatus } from "@/utils";
 
-function ProtectedPersonsDashboard({page}) {
+function ProtectedPersonsDashboard({page, refreshKey}) {
     const section = page.protected;
 
-    const { protectedPersons, loading, error } = useProtectedPersons();
+    const { protectedPersons, loading, error } = useProtectedPersons(refreshKey);
 
     if (loading) {
         return (

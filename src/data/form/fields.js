@@ -112,11 +112,12 @@ const fields = {
         placeholder: "ex. France",
     },
 
-    roles : {
-        name: "roles",
+    roles: {
+        name: "role_type",
         type: "select",
-        label : "Rôles",
-        options : options.roleType,
+        label: "Rôle",
+        options: options.roleType,
+        placeholder: "Sélectionner un rôle",
         required: false,
     },
 
@@ -223,6 +224,14 @@ const fields = {
         label: "Sexe",
         type: "radio",
         options: options.gender,
+        required: true,
+    },
+
+    is_current_user_representative: {
+        name: "is_current_user_representative",
+        type: "radio",
+        label: "Êtes-vous le représentant légal de cette personne ?",
+        options: options.yes_no,
         required: true,
     },
 };

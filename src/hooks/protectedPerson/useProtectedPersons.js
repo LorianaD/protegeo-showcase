@@ -1,7 +1,7 @@
 import { getProtectedPersonsService } from "@/services";
 import { useEffect, useState } from "react"
 
-function useProtectedPersons() {
+function useProtectedPersons(refreshKey = 0) {
     const [protectedPersons, setProtectedPersons] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
@@ -27,7 +27,7 @@ function useProtectedPersons() {
 
     useEffect(() => {
         fetchProtectedPersons();
-    }, []);
+    }, [refreshKey]);
 
     return {
         protectedPersons,

@@ -1,13 +1,21 @@
-import { commonMessages, measureStatuses } from "@/data";
+import { commonMessages, measureStatuses, options } from "@/data";
 import { addMonths, addYears } from "../date";
 import { getTheoreticalMeasureEndDate } from "./calculateProtectionMeasure";
 
 function getMeasureLabel(measure) {
-    if (!measure) {
+    if (!measure?.measure_type) {
         return commonMessages.noMeasure;
     }
 
-    const measureType = measure.measure_type ?? commonMessages.notProvidedFeminine;
+    const measureType = measure.measure_type;
+
+    const option = options.measureType.find(
+        (item) => item.value === measureType
+    );
+
+    if (option) {
+        return option.label;
+    }
 
     return measureType;
 }

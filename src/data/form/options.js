@@ -200,6 +200,17 @@ const options = {
         },
     ],
 
+    yes_no: [
+        {
+            value: "yes",
+            label: "Oui",
+        },
+        {
+            value: "no",
+            label: "Non",
+        },
+    ],
+
 };
 
 export { options };
