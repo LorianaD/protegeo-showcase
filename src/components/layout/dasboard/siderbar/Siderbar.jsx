@@ -3,13 +3,13 @@ import SiderbarFooter from "./SiderbarFooter";
 import SiderbarHeader from "./SiderbarHeader";
 import SiderbarNav from "./SiderbarNav";
 
-function Siderbar() {
+function Siderbar({ onAddDossier }) {
     return (
         <div className="siderbar">
             <div className="siderbar-top">
                 <SiderbarHeader/>
                 <SiderbarSelect/>
-                <SiderbarNav/>                
+                <SiderbarNav onAddDossier={onAddDossier}/>                
             </div>
             <SiderbarFooter/>
         </div>

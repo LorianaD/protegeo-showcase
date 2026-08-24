@@ -1,6 +1,6 @@
 import { DashboardSection, InfoFieldGroup, InfoField, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
 import { useCurrentMeasure, useDossier, useEditableForm, useUpdateDossier, useUpdateMeasure } from "@/hooks";
-import { formatDate } from "@/utils";
+import { formatDate, getMeasureLabel } from "@/utils";
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";
 
@@ -90,6 +90,7 @@ function JudgmentDashboardProtectedProfile () {
         }
 
         const updatedMeasure = await updateMeasure(
+            dossierId,
             measure.id,
             measureData,
         );
@@ -151,6 +152,10 @@ function JudgmentDashboardProtectedProfile () {
                 editable = true;
             }
 
+            if (item.name === "measure_type") {
+                value = getMeasureLabel(measure);
+            }
+
             /*
             * Renewal is calculated and remains read-only.
             * The final business rule will be added later.
@@ -208,8 +213,8 @@ function JudgmentDashboardProtectedProfile () {
 
                 {editing && (
                     <UpdateFormFooter
-                        cancelLabel={page.footer.btn_cancel_label}
-                        submitLabel={page.footer.btn_recorded_label}
+                        cancelLabel={page.footer_form.btn_cancel_label}
+                        submitLabel={page.footer_form.btn_recorded_label}
                         onCancel={handleCancel}
                         loading={updating}
                         error={updateError}

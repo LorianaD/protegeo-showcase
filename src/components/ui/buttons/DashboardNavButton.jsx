@@ -1,6 +1,24 @@
 import { NavLink } from "react-router";
 
-function DashboardNavButton({ label , to , icon , variant = "siderbar", end = false }) {
+function DashboardNavButton({ label , to , icon , onClick , variant = "siderbar", end = false }) {
+    if (onClick) {
+        return (
+            <button type="button" className={`dashboard-nav-button dashboard-nav-button--${variant}`} onClick={onClick}>
+                <div className="dashboard-nav-button__icon">
+                    <img 
+                        src={icon.default} 
+                        alt={label} 
+                        className="dashboard-nav-button__icon-img"
+                    />
+                </div>
+
+                <span className={`dashboard-nav-button__label dashboard-nav-button__label--${variant}`}>
+                    {label}
+                </span>
+            </button>
+        )
+    }
+    
     if (!to) {
         return (
             <div className={`dashboard-nav-button dashboard-nav-button--${variant} dashboard-nav-button--disabled`}>
@@ -31,16 +49,22 @@ function DashboardNavButton({ label , to , icon , variant = "siderbar", end = fa
         <NavLink to={ to || "#" } end={end} className={getClassName}>
             {({ isActive }) => {
                 const active = isButtonActive(isActive);
+                
                 return (
-                <>
-                    <div className={`dashboard-nav-button__icon`}>
-                        <img src={ active ? icon.active : icon.default } alt={ label }  className={`dashboard-nav-button__icon-img`}/>
-                    </div>
-                    <span className={`dashboard-nav-button__label dashboard-nav-button__label--${variant}`}>
-                        { label }
-                    </span>
-                </>
-            )}}
+                    <>
+                        <div className={`dashboard-nav-button__icon`}>
+                            <img 
+                                src={ active ? icon.active : icon.default } 
+                                alt={ label }  
+                                className={`dashboard-nav-button__icon-img`}
+                            />
+                        </div>
+                        <span className={`dashboard-nav-button__label dashboard-nav-button__label--${variant}`}>
+                            { label }
+                        </span>
+                    </>
+                )
+            }}
         </NavLink>
     )
 }

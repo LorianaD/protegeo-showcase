@@ -32,6 +32,12 @@ function ActionsDashboardHome({page, protectedPersons = [], onAddDossier}) {
         }
     });
 
+    function handleAction(actionName) {
+        if (actionName === "addProtectedPerson") {
+            onAddDossier();
+        }
+    }
+
     return (
         <SectionDashboardActions>
             <SectionActionContainer title={deadlineSection.title}>
@@ -44,6 +50,7 @@ function ActionsDashboardHome({page, protectedPersons = [], onAddDossier}) {
             <SectionActionContainer title={actionsSection.title}>
                 <SectionActionList
                     actions={actionsSection.items}
+                    onAction={handleAction}
                 />
             </SectionActionContainer>
         </SectionDashboardActions>

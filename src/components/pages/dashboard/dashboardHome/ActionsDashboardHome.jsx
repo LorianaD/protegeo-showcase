@@ -1,10 +1,11 @@
 import { SectionActionContainer, SectionActionList, SectionDashboardActions, SectionDeadlineList } from "@/components/ui";
+import { hasManagementAccountToSubmit, isMeasureUrgent } from "@/utils";
 
-function ActionsDashboardHome({page, protectedPersons = []}) {
+function ActionsDashboardHome({ page, protectedPersons = [], onAddDossier }) {
     const deadlineSection = page.deadline;
     const actionsSection = page.actions;
 
-     const deadlines = [];
+    const deadlines = [];
 
     protectedPersons.forEach((protectedPerson) => {
         const measure = protectedPerson.measure;
@@ -32,6 +33,12 @@ function ActionsDashboardHome({page, protectedPersons = []}) {
         }
     });
 
+    function handleAction(actionName) {
+        if (actionName === "addProtectedPerson") {
+            onAddDossier();
+        }
+    }
+
     return (
         <SectionDashboardActions>
             <SectionActionContainer title={deadlineSection.title}>
@@ -44,6 +51,7 @@ function ActionsDashboardHome({page, protectedPersons = []}) {
             <SectionActionContainer title={actionsSection.title}>
                 <SectionActionList
                     actions={actionsSection.items}
+                    onAction={handleAction}
                 />
             </SectionActionContainer>
         </SectionDashboardActions>

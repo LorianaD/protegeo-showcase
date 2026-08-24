@@ -34,6 +34,7 @@ const siderbarDashboard = {
                         },
                         link_label: "Ajouter un protégé",
                         link_url: "",
+                        action: "addProtectedPerson",
                     },
                 ],
             },

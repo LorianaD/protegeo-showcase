@@ -3,7 +3,7 @@ import { siderbarDashboard } from "@/data";
 import { useProtectedPersons } from "@/hooks";
 import { useParams } from "react-router";
 
-function SiderbarNav() {
+function SiderbarNav({ onAddDossier }) {
     const nav = siderbarDashboard.nav;
     const { reference } = useParams();
 
@@ -41,16 +41,27 @@ function SiderbarNav() {
                         {section.title}
                     </p>
                     <ul className="siderbar-nav__section-list">
-                        {section.links.map((link) => (
-                            <li className="siderbar-nav__item" key={link.link_label}>
-                                <DashboardNavButton 
-                                    label={link.link_label} 
-                                    icon={link.link_icon} 
-                                    to={buildLinkUrl(link.link_url)}
-                                    variant="siderbar"
-                                />                        
-                            </li>
-                        ))}
+                        {section.links.map((link) => {
+                            let linkUrl = buildLinkUrl(link.link_url);
+                            let onClick;
+
+                            if (link.action === "addProtectedPerson") {
+                                linkUrl = undefined;
+                                onClick = onAddDossier;
+                            }
+
+                            return (
+                                <li className="siderbar-nav__item" key={link.link_label}>
+                                    <DashboardNavButton 
+                                        label={link.link_label} 
+                                        icon={link.link_icon} 
+                                        to={linkUrl}
+                                        onClick={onClick}
+                                        variant="siderbar"
+                                    />                        
+                                </li>
+                            )
+                        })}
                     </ul>
                 </li>
             ))}

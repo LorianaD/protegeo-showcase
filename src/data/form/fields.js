@@ -140,7 +140,7 @@ const fields = {
     measure_type: {
         name: "measure_type",
         type: "select",
-        label: "Type de measure",
+        label: "Type de mesure",
         options: options.measureType,
         required: true,
     },

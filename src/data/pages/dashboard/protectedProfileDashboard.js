@@ -201,11 +201,7 @@ const protectedProfileDashboard = {
             ],
             [
                 { 
-                    ...fields.curator, 
-                    value: [
-                        "Madame Loriana DIANO",
-                        "Madame Carine PELLET",
-                    ],
+                    ...fields.curator,
                 },
                 { 
                     ...fields.subrogated, 
