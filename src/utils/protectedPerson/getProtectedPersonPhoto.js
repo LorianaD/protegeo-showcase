@@ -5,7 +5,7 @@ function getProtectedPersonPhoto(photoUrl, civility) {
         return photoUrl;
     }
 
-    const defaultImg = civility === "Madame" ? defaultWoman : defaultMan;
+    const defaultImg = civility === "madam" ? defaultWoman : defaultMan;
 
     return defaultImg;
 }

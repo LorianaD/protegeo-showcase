@@ -30,6 +30,8 @@ const addDossierForm = {
             fields.measure_type,
             fields.reference_number,
             fields.tribunal_name,
+            fields.tribunal_city,
+            fields.duration,
         ],
     },
 

@@ -24,6 +24,8 @@ function useAddDossierForm(onClose, onCreated) {
             measure_type: "",
             reference_number: "",
             tribunal_name: "",
+            tribunal_city: "",
+            duration: "",
         },
 
         // Prepared for future legal representative management.

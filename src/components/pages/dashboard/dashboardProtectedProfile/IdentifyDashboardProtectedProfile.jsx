@@ -1,6 +1,6 @@
 import { DashboardSection, DashboardSectionLoading, FormField, InfoField, InfoFieldGroup, Textarea, UpdateFormFooter } from "@/components/ui";
 import { useEditableForm, useProtectedPerson, useUpdateProtectedPerson } from "@/hooks";
-import { formatDate, formatPhoneNumber, getProtectedPersonPhoto, santizePhoneNumber } from "@/utils";
+import { formatCivility, formatDate, formatPhoneNumber, getProtectedPersonPhoto, santizePhoneNumber } from "@/utils";
 import { useOutletContext } from "react-router";
 
 function IdentifyDashboardProtectedProfile() {
@@ -68,8 +68,10 @@ function IdentifyDashboardProtectedProfile() {
         row.map((fieldName) => ({
             ...identityFields[fieldName],
             value:
-                fieldName === "birth_date"
-                    ? formatDate(protectedPerson.birth_date)
+            fieldName === "birth_date"
+                ? formatDate(protectedPerson.birth_date)
+                : fieldName === "civility"
+                    ? formatCivility(protectedPerson.civility)
                     : protectedPerson[fieldName] ?? "Non renseigné",
         }))
     );

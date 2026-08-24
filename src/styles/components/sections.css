@@ -347,6 +347,11 @@ Sections
     font-weight: var(--weight-bold);
 }
 
+.dashboard-section__actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
 .dashboard-section__body {
     padding: 0;
 }

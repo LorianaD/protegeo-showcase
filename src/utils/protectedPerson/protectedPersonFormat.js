@@ -1,4 +1,4 @@
-import { formatDate } from "../format";
+import { formatDate, formatPhoneNumber } from "../format";
 
 /**
  * Joins non-empty values with the provided separator.
@@ -71,6 +71,10 @@ function formatContactFieldValue(field, contact) {
     const fieldName = field.name;
 
     if (!Array.isArray(fieldName)) {
+        if (fieldName === "phone") {
+            return formatPhoneNumber(contact.phone);
+        }
+
         return contact[fieldName] ?? "Non renseigné";
     }
 
@@ -162,12 +166,21 @@ function formatContactTableRows(contacts, contactType) {
             contact.postal_code,
             contact.city
         ),
-        phone: contact.phone ?? "Non renseigné",
+        phone: formatPhoneNumber(contact.phone),
         email: contact.email ?? "Non renseigné",
         profession: contact.profession ?? "Non renseigné",
     }));
 
     return contactRows;
+}
+
+function formatCivility(civility) {
+    const civilityLabels = {
+        madam: "Madame",
+        sir: "Monsieur",
+    };
+
+    return civilityLabels[civility] ?? "Non renseigné";
 }
 
 export {
@@ -177,4 +190,5 @@ export {
     formatContactFieldValue,
     formatContactTableRows,
     formatFullName,
+    formatCivility,
 };
