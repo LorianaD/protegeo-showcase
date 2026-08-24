@@ -139,6 +139,8 @@ function useAddDossierForm(onClose, onCreated) {
                 start_date: formData.measure.start_date,
                 measure_type: formData.measure.measure_type,
                 tribunal_name: formData.measure.tribunal_name,
+                tribunal_city: formData.measure.tribunal_city,
+                duration: formData.measure.duration,
             },
         };
 
