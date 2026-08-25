@@ -12,9 +12,15 @@ function useFinancialManagementStats(reference, year) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    
     async function fetchFinancialManagementStats() {
         if (!reference || !year) {
+            setStatsData({
+                annualResources: 0,
+                annualExpenditure: 0,
+                estimatedBalance: 0,
+                missingDocuments: 0,
+            });
+
             setLoading(false);
             return;
         }
@@ -23,7 +29,10 @@ function useFinancialManagementStats(reference, year) {
             setLoading(true);
             setError(null);
 
-            const data = await getFinancialManagementStatsService(reference, year);
+            const data = await getFinancialManagementStatsService(
+                reference,
+                year
+            );
 
             setStatsData(data);
         } catch (error) {

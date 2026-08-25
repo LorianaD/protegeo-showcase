@@ -5,4 +5,8 @@ export * from "./dossier";
 export * from "./protectedPerson";
 export * from "./measure";
 export * from "./contact";
+export * from "./managementAccount";
+export * from "./transaction";
+export * from "./bankAccount";
+export * from "./bankingTransaction";
 export * from "./financialManagement";

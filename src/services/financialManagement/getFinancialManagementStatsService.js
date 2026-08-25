@@ -3,9 +3,7 @@ import {getDossierByReferenceService, getManagementAccountsService, getTransacti
 async function getFinancialManagementStatsService(reference, year) {
     const dossier = await getDossierByReferenceService(reference);
 
-    const dossierId = dossier.id;
-
-    const managementAccounts = await getManagementAccountsService(dossierId);
+    const managementAccounts = await getManagementAccountsService(dossier.id);
 
     const managementAccount = managementAccounts.find(
         (account) => Number(account.year) === Number(year)
@@ -21,7 +19,7 @@ async function getFinancialManagementStatsService(reference, year) {
     }
 
     const transactions = await getTransactionsService(
-        dossierId,
+        dossier.id,
         managementAccount.id
     );
 

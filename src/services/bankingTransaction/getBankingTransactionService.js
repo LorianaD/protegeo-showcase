@@ -1,6 +1,6 @@
 import { apiFetch } from "@/services";
 
-async function getBankingTransactionsService(dossierId, bankingTransactionId) {
+async function getBankingTransactionService(dossierId, bankingTransactionId) {
     const data = await apiFetch(`/dossiers/${dossierId}/banking-transactions/${bankingTransactionId}`, {
         method: "GET",
     });
@@ -9,5 +9,5 @@ async function getBankingTransactionsService(dossierId, bankingTransactionId) {
 }
 
 export {
-    getBankingTransactionsService,
+    getBankingTransactionService,
 }
