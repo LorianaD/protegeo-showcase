@@ -4,3 +4,4 @@ export * from "./format";
 export * from "./dossier";
 export * from "./protectedPerson";
 export * from "./protectionMeasure";
+export * from "./financialManagement";

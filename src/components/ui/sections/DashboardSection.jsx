@@ -19,7 +19,7 @@ function DashboardSection({ title, actionLabel, onAction, children, addLabel, on
 
                 </div>
             )}
-            <div className="dashboard-section__body">
+            <div className={`dashboard-section__body dashboard-section__body--${variant}`}>
                 { children }
             </div>
         </section>

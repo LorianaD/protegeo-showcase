@@ -42,10 +42,28 @@ const financialManagementDashboard = {
         {
             name: "monthlyEvolution",
             title: "Évolution mensuelle",
+            labels: {
+                resources: "Ressources",
+                expenses: "Dépenses",
+            },
         },
         {
             name: "expenseDistribution",
             title: "Répartition des dépenses",
+            labels: {
+                housing: "Logement",
+                dailyLife: "Vie courante",
+                insurance: "Assurances",
+                health: "Santé",
+                other: "Autres",
+            },
+            colors: [
+                "#F4511E",
+                "#FBBF24",
+                "#43A047",
+                "#1E88E5",
+                "#8E24AA",
+            ],
         },
     ],
 

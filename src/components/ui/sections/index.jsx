@@ -5,6 +5,7 @@ export { default as SectionLegal } from "./SectionLegal";
 export { default as SectionBand } from "./SectionBand";
 export { default as StepsContainer } from "./StepsContainer";
 export { default as StatsSection } from "./StatsSection";
+export { default as SectionChartsContainer } from "./SectionChartsContainer";
 
 export { default as SectionOverviewContainer } from "./SectionOverviewContainer";
 export { default as SectionActionContainer } from "./SectionActionContainer";

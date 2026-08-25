@@ -1,6 +1,6 @@
-import { ActionsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
+import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
 import { financialManagementDashboard } from "@/data";
-import { useFinancialManagementStats } from "@/hooks";
+import { useFinancialManagementCharts, useFinancialManagementStats } from "@/hooks";
 import { useParams } from "react-router";
 
 function FinancialManagement() {
@@ -11,6 +11,7 @@ function FinancialManagement() {
     const year = 2026;
 
     const { statsData, loading, error } = useFinancialManagementStats(reference, year);
+    const { monthlyEvolution, expenseBreakdown, loading: chartsLoading, error: chartsError } = useFinancialManagementCharts(reference, year);
 
     if (loading) {
         return (
@@ -46,7 +47,8 @@ function FinancialManagement() {
                 <HeroDashboard page={ page } />
                 {!loading && !error && (
                     <StatsDashboardFinancialManagement page={page} statsData={statsData}/>
-                )}                
+                )}
+                <ChartsDashboardFinancialManagement section={page.charts} monthlyEvolution={monthlyEvolution} expenseBreakdown={expenseBreakdown}/>              
             </SectionOverviewContainer>
             <ActionsDashboardFinancialManagement page={ page }/>
             <SectionPageActions section={page.actions} />
