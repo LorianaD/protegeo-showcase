@@ -115,7 +115,7 @@ function JudgmentDashboardProtectedProfile () {
 
     if (error) {
         return (
-            <DashboardSection title={section.header.title}>
+            <DashboardSection title={section.header.title} variant="profile">
                 <p>{error}</p>
             </DashboardSection>
         )
@@ -123,7 +123,7 @@ function JudgmentDashboardProtectedProfile () {
 
     if (!dossier) {
         return (
-            <DashboardSection title={section.header.title}>
+            <DashboardSection title={section.header.title} variant="profile">
                 <p>Aucun dossier trouvé.</p>
             </DashboardSection>
         )
@@ -131,7 +131,7 @@ function JudgmentDashboardProtectedProfile () {
 
     if (!measure) {
         return (
-            <DashboardSection title={section.header.title}>
+            <DashboardSection title={section.header.title} variant="profile">
                 <p>Aucune mesure de protection trouvée.</p>
             </DashboardSection>
         );
@@ -179,7 +179,7 @@ function JudgmentDashboardProtectedProfile () {
     const noteValue = measure[section.notes.name] ?? section.notes.placeholder;
 
     return (
-        <DashboardSection title={section.header.title} actionLabel={ editing ? null : section.header.btn_label } onAction={handleEdit} >
+        <DashboardSection title={section.header.title} actionLabel={ editing ? null : section.header.btn_label } onAction={handleEdit} variant="profile">
             <form className="update-form" onSubmit={handleSubmit}>
                 <div className="info-list">
                     {detailRows.map((row, index) => (

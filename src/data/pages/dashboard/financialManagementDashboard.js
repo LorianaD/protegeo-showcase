@@ -1,42 +1,102 @@
+import { pageActionsDashboard, quickActionsDashboard } from "@/data/actions"
+import { messages } from "@/data/form"
+
 const financialManagementDashboard = {
     hero : {
         title : "Tableau de bord de la gestion annuelle",
         description : "Résumé clair de vos ressources, dépenses, alertes et actions importantes pour l’année sélectionnée.",
         option : {
-            personName : "Céline DIANO",
-            annual : "2025",
+            personName : "Veuillez selectionnez votre protégée",
+            annual : "2026",
         },
     },
+
     stats : [
         {
+            name: "annualResources",
             title : "Ressources annuelles",
-            data : "16 000 €",
             description : "Revenus saisis et validés",
+            format: "currency",
         },
         {
+            name: "annualExpenditure",
             title : "Dépenses annuelles",
-            data : "12 450 €",
             description : "Charges et dépenses suivies",
+            format: "currency",
         },
         {
+            name: "estimatedBalance",
             title : "Solde estimé",
-            data : "3 550 €",
             description : "Équilibre budgétaire actuel",
+            format: "currency",
         },
         {
+            name: "missingDocuments",
             title : "Justificatifs manquants",
-            data : "3",
             description : "Documents à compléter",
+            format: "number",
         },
     ],
+
     charts : [
         {
-            title : "Évolution mensuelle",
+            name: "monthlyEvolution",
+            title: "Évolution mensuelle",
         },
         {
-            title : "Répartition des dépenses",
+            name: "expenseDistribution",
+            title: "Répartition des dépenses",
         },
     ],
+
+    caseStatus: {
+        title: "État du dossier",
+        emptyMessage: "Aucune information disponible.",
+    },
+
+    quickActions: {
+        title: "Actions rapides",
+        items: [
+            {
+                ...quickActionsDashboard.addResource,
+            },
+            {
+                ...quickActionsDashboard.addExpense,
+            },
+            {
+                ...quickActionsDashboard.generateAnnualAccount,
+            },
+        ],
+    },
+
+    alerts: {
+        title: "Alertes",
+        emptyMessage: "Aucune alerte.",
+    },
+
+    actions: {
+        title: "Actions",
+        items: [
+            {
+                ...pageActionsDashboard.monthlyFolder,
+            },
+            {
+                ...pageActionsDashboard.history,
+            },
+            {
+                ...pageActionsDashboard.generateAnnualAccount,
+            },
+        ],
+    },
+
+    messages: {
+        header: {
+            title: "",
+            ...messages.loading,
+            error: "Le dossier est introuvable ou inaccessible.",
+        }
+
+    }
 }
 
 export {

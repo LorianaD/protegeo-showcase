@@ -1,36 +1,36 @@
 const pageActionsDashboard = {
     monthlyFolder: {
         name: "monthlyFolder",
-        label: "Classeur mensuel",
-        type: "secondary",
-        to: "/dashboard/monthly-folder",
+        label: "Compte de gestion",
+        variant: "page-action-left",
+        // to: "/dashboard/account/:reference",
     },
 
     history: {
         name: "history",
         label: "Historique",
-        type: "primary",
-        to: "/dashboard/history",
+        variant: "page-action-center",
+        // to: "/dashboard/history",
     },
 
     generateAnnualAccount: {
         name: "generateAnnualAccount",
         label: "Générer le compte annuel",
-        type: "secondary",
-        to: "/dashboard/account/generate",
+        variant: "page-action-right",
+        // to: "/dashboard/account/generate",
     },
 
     edit: {
         name: "edit",
         label: "Modifier les informations",
-        type: "secondary",
+        variant: "page-action-left",
         to: "",
     },
 
     downloadPdf: {
         name: "downloadPdf",
         label: "Télécharger en PDF",
-        type: "secondary",
+        variant: "page-action-right",
         href: "",
         download: true,
     },

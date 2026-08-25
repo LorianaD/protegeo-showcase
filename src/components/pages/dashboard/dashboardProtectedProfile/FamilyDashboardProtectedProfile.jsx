@@ -54,7 +54,7 @@ function FamilyDashboardProtectedProfile() {
 
     return (
         <>
-            <DashboardSection title={section.header.title} actionLabel={section.header.btn_label} addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal}>
+            <DashboardSection title={section.header.title} actionLabel={section.header.btn_label} addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal} variant="profile">
                 {contacts.length === 0 ? (
                     <p>Aucun membre trouvé.</p>
                 ) : (

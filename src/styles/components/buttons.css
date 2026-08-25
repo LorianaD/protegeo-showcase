@@ -52,6 +52,54 @@
     background-color: var(--color-background-light);
 }
 
+.button--page-action-left,
+.button--page-action-right,
+.button--page-action-center {
+    height: 40px;
+    padding: 9px 5px;
+    justify-content: center;
+    align-items: center;
+}
+
+.button--page-action-left,
+.button--page-action-right {
+    width: 276px;
+    background: var(--white);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.button--page-action-center {
+    width: 360px;
+    background: var(--color-primary);
+    color: var(--white);
+    border: 1px solid var(--color-primary);
+}
+
+.button--page-action-left {
+    border-radius: 10px 0 0 10px;
+}
+
+.button--page-action-center {
+    border-radius: 0;
+}
+
+.button--page-action-right {
+    border-radius: 0 10px 10px 0;
+}
+
+.button--page-action-left:hover {
+    box-shadow: 2px 2px 10px -2px var(--color-secondary);
+}
+
+.button--page-action-center:hover {
+    box-shadow: 2px 2px 10px -2px var(--color-secondary);
+}
+
+.button--page-action-right:hover {
+    box-shadow: 2px 2px 10px -2px var(--color-secondary);
+}
+
 /* Shortcut Cards */
 
 .shortcut-card {

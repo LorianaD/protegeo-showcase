@@ -335,6 +335,12 @@ Sections
     background: #FFF;
 }
 
+.dashboard-section--profile {
+    border-top: 1px solid rgba(0, 0, 0, 0.30);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.30);
+    background: #FFF;
+}
+
 .dashboard-section__header {
     width: 100%;
     display: flex;
@@ -353,7 +359,10 @@ Sections
 }
 
 .dashboard-section__body {
+    display: flex;
+    flex-direction: column;
     padding: 0;
+    gap: 42px;
 }
 
 .section-dashboard-actions {
@@ -402,6 +411,37 @@ Sections
     border: 1px solid #D9E4EE;
     background: #FBFDFF;
     width: 100%;    
+}
+
+/********************
+
+*** PAGE ACTIONS ****
+
+********************/
+
+.section-page-actions {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid #E3F2FD;
+    background: #FFF;
+}
+
+.section-page-actions__title {
+    color: var(--color-primary);
+    font-size: var(--title-h5);
+    width: 100%;
+}
+
+.section-page-actions__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 /* ***********************************

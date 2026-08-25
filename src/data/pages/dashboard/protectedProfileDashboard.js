@@ -1,4 +1,5 @@
 import { Family, FamilyGray, Judgment, JudgmentGray, Profile, ProfileGray, Referent, ReferentGray } from "@/assets";
+import { pageActionsDashboard } from "@/data/actions";
 import { cta, familyContactFields, fields, messages } from "@/data/form";
 
 const protectedProfileDashboard = {
@@ -647,7 +648,22 @@ const protectedProfileDashboard = {
     footer_form: {
         btn_cancel_label : cta.cancel,
         btn_recorded_label : cta.recorded,
-    }
+    },
+
+    actions: {
+        title: "Actions",
+        items: [
+            {
+                ...pageActionsDashboard.edit,
+            },
+            {
+                ...pageActionsDashboard.history,
+            },
+            {
+                ...pageActionsDashboard.downloadPdf,
+            },
+        ],
+    },
 }
 
 export {

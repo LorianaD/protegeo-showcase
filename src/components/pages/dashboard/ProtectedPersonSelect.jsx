@@ -22,11 +22,15 @@ function ProtectedPersonSelect({placeholder = "Sélectionner une personne proté
         }
 
         const newPathname = location.pathname.replace(
-            `/protected-profile/${reference}`,
-            `/protected-profile/${newReference}`
+            reference,
+            newReference
         );
 
         navigate(newPathname);
+    }
+
+    if (loading) {
+        return null;
     }
 
     if (error) {

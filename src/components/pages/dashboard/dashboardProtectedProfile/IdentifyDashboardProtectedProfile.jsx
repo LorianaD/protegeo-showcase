@@ -1,4 +1,4 @@
-import { DashboardSection, DashboardSectionLoading, FormField, InfoField, InfoFieldGroup, Textarea, UpdateFormFooter } from "@/components/ui";
+import { DashboardSection, DashboardSectionLoading, FormField, InfoField, InfoFieldGroup, SectionContainer, SectionPageActions, Textarea, UpdateFormFooter } from "@/components/ui";
 import { useEditableForm, useProtectedPerson, useUpdateProtectedPerson } from "@/hooks";
 import { formatCivility, formatDate, formatPhoneNumber, getProtectedPersonPhoto, santizePhoneNumber } from "@/utils";
 import { useOutletContext } from "react-router";
@@ -92,7 +92,7 @@ function IdentifyDashboardProtectedProfile() {
     );
 
     return (
-        <DashboardSection title={section.header.title} actionLabel={ editing ? null : section.header.btn_label } onAction={ handleEdit }>
+        <DashboardSection title={section.header.title} actionLabel={ editing ? null : section.header.btn_label } onAction={ handleEdit } variant="profile">
             <form onSubmit={handleSubmit} className="update-form">
                 <div className="info-list">
                     <div className="protected-profile-identity">
