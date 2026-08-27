@@ -11,6 +11,7 @@ function Dashboard() {
     const { openAddDossierModal } = useOutletContext();
 
     const { protectedPersons, loading, error } = useProtectedPersons();
+    
     return (
         <Main variant={variantClass}>
             <SectionOverviewContainer>

@@ -18,6 +18,7 @@ function useTransactions(dossierId, managementAccountId) {
 
             setTransactions(data);
         } catch (error) {
+            setTransactions([]);
             setError(error.message);
         } finally {
             setLoading(false);
@@ -25,7 +26,11 @@ function useTransactions(dossierId, managementAccountId) {
     }
 
     useEffect(() => {
+        setTransactions([]);
+        setError(null);
+
         if (!dossierId || !managementAccountId) {
+            setLoading(false);
             return;
         }
 

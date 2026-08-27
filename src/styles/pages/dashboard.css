@@ -6,3 +6,41 @@
     gap: 20px;
     width: 100%;
 }
+
+/************************
+**** SUMMARY ACCOUNT ****
+************************/
+
+.account-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 50px; */
+    width: 100%;
+}
+
+.account-summary-status {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+}
+
+/*******************************
+********** Responsive **********
+*******************************/
+
+@media screen and (max-width: 1050px) {
+
+    .account-stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .account-summary-status {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+}

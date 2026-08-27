@@ -345,6 +345,12 @@ Sections
     width: 100%;
 }
 
+.dashboard-section--account-summary {
+    background: #FFF;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 20px;
+}
+
 .dashboard-section__header {
     width: 100%;
     display: flex;
@@ -409,11 +415,12 @@ Sections
     padding: 16px;
     gap: 16px;
     grid-template-rows: repeat(1, fit-content(100%));
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     border-radius: 14px;
     border: 1px solid #D9E4EE;
     background: #FBFDFF;
+    width: 100%;
 }
 
 .section-deadline-list__empty {
@@ -422,6 +429,22 @@ Sections
     border: 1px solid #D9E4EE;
     background: #FBFDFF;
     width: 100%;    
+}
+
+.section-deadline-list__status {
+    display: flex;
+    padding: 10px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: auto;
+}
+
+.section-deadline-list__status--warning {
+    border-radius: 14px;
+    border: 1px solid var(--red);
+    background: var(--pale-red);
+    color: var(--red);
 }
 
 /********************

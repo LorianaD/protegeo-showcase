@@ -11,17 +11,23 @@ function SectionDeadlineList({ deadlines = [], emptyMessage = "" }) {
         <div className="section-deadline-list">
             {deadlines.map((deadline) => (
                 <div key={deadline.id} className="section-deadline-list__item">
-                    <span className="section-deadline-list__label">
-                        {deadline.label}
-                    </span>
+                    <div className="section-deadline-list__label">
+                        <span className="section-deadline-list__status-text">
+                            {deadline.label}
+                        </span>
+                    </div>
 
-                    <span className="section-deadline-list__person">
-                        {deadline.fullname}
-                    </span>
+                    <div className="section-deadline-list__person">
+                        <span className="section-deadline-list__status-text">
+                            {deadline.fullname}
+                        </span>
+                    </div>
 
-                    <span className={`section-deadline-list__status section-deadline-list__status--${deadline.variant}`}>
-                        {deadline.status}
-                    </span>
+                    <div className={`section-deadline-list__status section-deadline-list__status--${deadline.variant}`}>
+                        <span className="section-deadline-list__status-text">
+                            {deadline.status}
+                        </span>
+                    </div>
                 </div>
             ))}
         </div>

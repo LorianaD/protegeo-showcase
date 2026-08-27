@@ -1,4 +1,5 @@
 import { StatsSection } from "@/components/ui";
+import { formatCurrency } from "@/utils";
 
 function StatsDashboardFinancialManagement({page, statsData = {}}) {
     const stats = page.stats.map((stat) => {
@@ -6,7 +7,7 @@ function StatsDashboardFinancialManagement({page, statsData = {}}) {
 
         return {
             ...stat,
-            data: stat.format === "currency" ? `${Number(value).toLocaleString("fr-FR")} €` : value,
+            data: stat.format === "currency" ? formatCurrency(value) : value,
         };
     });
 

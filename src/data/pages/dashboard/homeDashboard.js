@@ -49,12 +49,12 @@ const homeDashboard = {
             {
                 ...quickActionsDashboard.addProtectedPerson,
             },
-            {
-                ...quickActionsDashboard.generateProtectedPersons,
-            },
-            {
-                ...quickActionsDashboard.generateAnnualAccount,
-            },
+            // {
+            //     ...quickActionsDashboard.generateProtectedPersons,
+            // },
+            // {
+            //     ...quickActionsDashboard.generateAnnualAccount,
+            // },
         ],
     },
 };

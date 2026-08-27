@@ -17,7 +17,7 @@ function DashboardMainLayout() {
     return (
         <div>
             <div className="dashboard-main-layout">
-                <Siderbar onAddDossier={openAddDossierModal}/>
+                <Siderbar onAddDossier={openAddDossierModal} refreshKey={refreshKey}/>
 
                 <Outlet context={{openAddDossierModal, refreshKey}}/>
 

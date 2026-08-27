@@ -2,12 +2,12 @@ import { Select } from "@/components/ui";
 import { useProtectedPersons } from "@/hooks";
 import { useLocation, useNavigate, useParams } from "react-router";
 
-function ProtectedPersonSelect({placeholder = "Sélectionner une personne protégée", variant = "dashboard"}) {
+function ProtectedPersonSelect({placeholder = "Sélectionner une personne protégée", variant = "dashboard", refreshKey = 0}) {
     const {reference} = useParams();
     const location = useLocation();
     const navigate = useNavigate();
 
-    const {protectedPersons, loading, error} = useProtectedPersons();
+    const {protectedPersons, loading, error} = useProtectedPersons(refreshKey);
 
     const options = protectedPersons.map((item) => ({
         value: item.reference_number,

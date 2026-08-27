@@ -3,7 +3,7 @@ const pageActionsDashboard = {
         name: "monthlyFolder",
         label: "Compte de gestion",
         variant: "page-action-left",
-        // to: "/dashboard/account/:reference",
+        to: "/dashboard/account/:reference",
     },
 
     history: {

@@ -27,6 +27,8 @@ function useTransaction(dossierId, managementAccountId, transactionId) {
 
     useEffect(() => {
         if (!dossierId || !managementAccountId || !transactionId) {
+            setTransaction(null);
+            setLoading(false);
             return;
         }
 

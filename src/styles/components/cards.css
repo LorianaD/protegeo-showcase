@@ -150,21 +150,89 @@ Redirection cards
 
 .stat-card {
     display: flex;
-    width: 200px;
-    height: 120px;
-    padding: 20px 10px;
-    flex-direction: column;
-    justify-content: center;
+    padding: 20px 30px;
+    align-items: center;
     gap: 10px;
+
+    width: 200px;
+    max-height: 143px;
+
     border-radius: var(--radius-lg);
     border: 1px solid rgba(217, 228, 238, 0.10);
-    background-color: var(--color-background);
+    background: var(--color-background);
     box-shadow: 2px 2px 30px 0 rgba(0, 51, 102, 0.2);
+}
+
+.stat-card--balance {
+    border: 1px solid #DAEAF8;
+    background: #E3F2FD;
+    box-shadow: 0 10px 30px 0 rgba(0, 51, 102, 0.08);
+
+    color: #2F5D9F;
+}
+
+.stat-card--resources {
+    border: 1px solid rgba(46, 125, 50, 0.10);
+    background: #E8F5E9;
+    box-shadow: 0 10px 30px 0 rgba(0, 51, 102, 0.08);
+
+    color: #2E7D32;
+}
+
+.stat-card--expenses {
+    border: 1px solid rgba(198, 40, 40, 0.10);
+    background: #FDECEA;
+    box-shadow: 0 10px 30px 0 rgba(0, 51, 102, 0.08);
+
+    color: #C62828;
+}
+
+.stat-card__icon {
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1/1;
+}
+
+.stat-card__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .stat-card__data {
     color: var(--color-primary);
     font-size: 26px;
+    font-weight: var(--weight-bold);
+}
+
+/*********************
+***** INFOS CARD *****
+*********************/
+
+.info-card {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+
+    border-radius: 18px;
+    border: 1px solid #D9E4EE;
+    background: #FFF;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.07);
+
+    width: 100%;
+}
+
+.info-card__title {
+    color: #6B7C93;
+}
+
+.info-card__value {
+    color: var(--color-primary);
+    font-size: 24px;
     font-weight: var(--weight-bold);
 }
 
@@ -178,5 +246,11 @@ Redirection cards
         width: 100%;
         height: 260px;
     }
+
+    .stat-card {
+        width: 100%;
+    }
+
+    
 
 }

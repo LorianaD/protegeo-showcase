@@ -26,6 +26,8 @@ function useManagementAccount(dossierId, managementAccountId) {
 
     useEffect(() => {
         if (!dossierId || !managementAccountId) {
+            setManagementAccount(null);
+            setLoading(false);
             return;
         }
 

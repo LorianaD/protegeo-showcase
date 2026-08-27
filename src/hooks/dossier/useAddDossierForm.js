@@ -25,7 +25,7 @@ function useAddDossierForm(onClose, onCreated) {
             reference_number: "",
             tribunal_name: "",
             tribunal_city: "",
-            duration: "",
+            duration_years: "",
         },
 
         // Prepared for future legal representative management.
@@ -140,7 +140,7 @@ function useAddDossierForm(onClose, onCreated) {
                 measure_type: formData.measure.measure_type,
                 tribunal_name: formData.measure.tribunal_name,
                 tribunal_city: formData.measure.tribunal_city,
-                duration: formData.measure.duration,
+                duration_years: formData.measure.duration_years,
             },
         };
 

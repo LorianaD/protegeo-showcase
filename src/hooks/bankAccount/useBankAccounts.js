@@ -22,7 +22,11 @@ function useBankAccounts(dossierId) {
     }
 
     useEffect(() => {
+        setBankAccounts([]);
+        setError(null);
+
         if (!dossierId) {
+            setLoading(false);
             return;
         }
 

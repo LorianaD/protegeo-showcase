@@ -1,12 +1,10 @@
 import { DashboardSection, DashboardSectionLoading, DashboardTable } from "@/components/ui";
 import { commonMessages, measureStatuses, messages } from "@/data";
 import { useProtectedPersons } from "@/hooks";
-import { getMeasureDeadline, getMeasureLabel, getMeasureStatus } from "@/utils";
+import { getMeasureDeadline, getMeasureDeadlineLabel, getMeasureLabel, getMeasureStatus } from "@/utils";
 
-function ProtectedPersonsDashboard({page, refreshKey}) {
+function ProtectedPersonsDashboard({page, protectedPersons, loading, error}) {
     const section = page.protected;
-
-    const { protectedPersons, loading, error } = useProtectedPersons(refreshKey);
 
     if (loading) {
         return (
@@ -23,9 +21,9 @@ function ProtectedPersonsDashboard({page, refreshKey}) {
             id: item.dossier_id,
             fullname: `${item.protected_person.firstname} ${item.protected_person.lastname}`,
             measure: getMeasureLabel(item.measure),
-            deadline: getMeasureDeadline(item.measure),
+            measure_tracking: getMeasureDeadlineLabel(item.measure),
             status: status.label,
-            status_variant: status.variant,            
+            status_variant: status.variant,
         }
     })
 

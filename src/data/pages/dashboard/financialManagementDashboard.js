@@ -7,7 +7,7 @@ const financialManagementDashboard = {
         description : "Résumé clair de vos ressources, dépenses, alertes et actions importantes pour l’année sélectionnée.",
         option : {
             personName : "Veuillez selectionnez votre protégée",
-            annual : "2026",
+            annual : "Sélectionner une année",
         },
     },
 
@@ -81,9 +81,9 @@ const financialManagementDashboard = {
             {
                 ...quickActionsDashboard.addExpense,
             },
-            {
-                ...quickActionsDashboard.generateAnnualAccount,
-            },
+            // {
+            //     ...quickActionsDashboard.generateAnnualAccount,
+            // },
         ],
     },
 
@@ -101,9 +101,9 @@ const financialManagementDashboard = {
             {
                 ...pageActionsDashboard.history,
             },
-            {
-                ...pageActionsDashboard.generateAnnualAccount,
-            },
+            // {
+            //     ...pageActionsDashboard.generateAnnualAccount,
+            // },
         ],
     },
 

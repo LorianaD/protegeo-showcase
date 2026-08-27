@@ -1,5 +1,4 @@
 // TableCell affiche les valeur (texte, badge, botton,...)
-
 import { BadgeStatus } from "../badges";
 
 function TableCell({ value, type = "text", variant }) {

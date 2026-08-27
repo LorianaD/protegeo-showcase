@@ -1,6 +1,7 @@
 import { SectionActionContainer, SectionActionList, SectionDashboardActions, SectionDeadlineList } from "@/components/ui";
+import { hasManagementAccountToSubmit, isMeasureUrgent } from "@/utils";
 
-function ActionsDashboardHome({page, protectedPersons = [], onAddDossier}) {
+function ActionsProtectedPersonsDashboard({page, protectedPersons = [], onAddDossier}) {
     const deadlineSection = page.deadline;
     const actionsSection = page.actions;
 
@@ -57,4 +58,4 @@ function ActionsDashboardHome({page, protectedPersons = [], onAddDossier}) {
     )
 }
 
-export default ActionsDashboardHome;
+export default ActionsProtectedPersonsDashboard;

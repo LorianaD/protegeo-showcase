@@ -1,7 +1,7 @@
 import { DashboardMainLayout } from "@/components";
-import { Account, Budget, Dashboard, FinancialManagement, Inventory, ProtectedPersons, UserProfile } from "@/pages/dashboard";
+import { Budget, Dashboard, FinancialManagement, Inventory, ProtectedPersons, UserProfile } from "@/pages/dashboard";
 import { Route, Routes } from "react-router";
-import { ProtectedProfileRoutes } from "./dashboard";
+import { AccountRoutes, ProtectedProfileRoutes } from "./dashboard";
 
 function DashboardRoutes() {
     return (
@@ -13,7 +13,7 @@ function DashboardRoutes() {
                 <Route path="/protected-profile/:reference/*" element={<ProtectedProfileRoutes />} />
                 <Route path="/budget/:reference" element={<Budget />} />
                 <Route path="/inventory/:reference" element={<Inventory />} />
-                <Route path="/account/:reference" element={<Account />} />
+                <Route path="/account/:reference/*" element={<AccountRoutes />} />
                 <Route path="/profile" element={<UserProfile />} />
             </Route>
         </Routes>

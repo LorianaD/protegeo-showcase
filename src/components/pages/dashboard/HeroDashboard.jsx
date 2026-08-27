@@ -1,7 +1,8 @@
-import { SectionHeroContainer, Select } from "@/components/ui";
+import { SectionHeroContainer } from "@/components/ui";
 import ProtectedPersonSelect from "./ProtectedPersonSelect";
+import YearSelect from "./YearSelect";
 
-function HeroDashboard({ page, year, onYearChange }) {
+function HeroDashboard({ page, year, yearOptions = [], onYearChange, yearLoading = false }) {
     return (
         <SectionHeroContainer variant="dashboard">
             <div className="hero-container__header">
@@ -18,10 +19,13 @@ function HeroDashboard({ page, year, onYearChange }) {
                     )}
 
                     {page.hero.option?.annual && (
-                        <Select
+                        <YearSelect
+                            year={year}
+                            options={yearOptions}
+                            onChange={onYearChange}
                             placeholder={page.hero.option.annual}
                             variant="dashboard"
-                            disabled
+                            loading={yearLoading}
                         />
                     )}
                 </div>
