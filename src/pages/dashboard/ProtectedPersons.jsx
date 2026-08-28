@@ -16,10 +16,8 @@ function ProtectedPersons() {
             <SectionOverviewContainer>
                 <HeroDashboard page={page} />
                 <AddProtectedPersonsDashboard page={page} onAddDossier={openAddDossierModal}/>
-                <ProtectedPersonsDashboard page={page} refreshKey={refreshKey} protectedPersons={protectedPersons} loading={loading} error={error}/>
+                <ProtectedPersonsDashboard page={page} protectedPersons={protectedPersons} loading={loading} error={error}/>
                 <ActionsProtectedPersonsDashboard page={page} onAddDossier={openAddDossierModal} protectedPersons={protectedPersons}/>
-
-                {/* <AddDossierModal open={isAddDossierModalOpen} onClose={closeAddDossierModal} onCreated={refreshProtectedPersons}/> */}
             </SectionOverviewContainer>
         </Main>
     )
