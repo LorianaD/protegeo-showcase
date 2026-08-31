@@ -1,0 +1,24 @@
+.dashboard-total {
+    display: flex;
+    width: 100%;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: var(--radius-lg);
+    font-weight: var(--weight-semibold);
+}
+
+.dashboard-total--resources {
+    color: var(--dark-green);
+    background-color: var(--pale-green);
+}
+
+.dashboard-total--expenses {
+    color: var(--red);
+    background-color: var(--pale-red);
+}
+
+.dashboard-total--bank {
+    color: var(--color-primary);
+    background-color: var(--pale-blue);
+}

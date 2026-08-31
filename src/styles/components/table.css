@@ -108,3 +108,104 @@
     background-color: #E8F0F8;
     border: none;
 }
+
+/* Account Summary */
+
+.dashboard-table--account-summary {
+    padding: 0;
+    gap: var(--space-xs);
+
+    width: 100%;
+}
+
+.dashboard-table--account-summary .table-header {
+    display: none;
+}
+
+.dashboard-table--account-summary .table-body {
+    gap: var(--space-xs);
+    width: 100%;
+}
+
+.table-body__row--account-summary {
+    padding: 10px;
+    border: var(--border-none);
+    border-radius: var(--radius-sm);
+    background-color: var(--pale-blue);
+}
+
+.table-body__row--account-summary .table-body__item {
+    padding: 0;
+
+    width: 100%;
+}
+
+.table-body__row--account-summary .table-body__item:last-child {
+    text-align: right;
+}
+
+/* Account Bank */
+
+.dashboard-table--account-bank {
+    width: 100%;
+    padding: 0;
+    gap: var(--space-xs);
+}
+
+.dashboard-table--account-bank .table-header,
+.dashboard-table--account-bank .table-body {
+    width: 100%;
+}
+
+.dashboard-table--account-bank .table-body {
+    gap: var(--space-xs);
+}
+
+.table-header__row--account-bank,
+.table-body__row--account-bank {
+    grid-template-columns:
+        minmax(0, 1.3fr)
+        minmax(0, 1.35fr)
+        minmax(0, 1.6fr)
+        minmax(0, 1fr)
+        minmax(0, 0.9fr)
+        minmax(0, 0.9fr)
+        minmax(0, 1fr)
+        minmax(0, 0.8fr);
+
+    column-gap: var(--space-xs);
+}
+
+.table-header__row--account-bank {
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    background-color: var(--pale-blue);
+}
+
+.table-header__row--account-bank .table-header__item {
+    padding: 0;
+    color: var(--color-primary);
+    font-size: var(--text-small);
+    font-weight: var(--weight-bold);
+}
+
+.table-body__row--account-bank {
+    padding: 10px;
+    border: var(--border-none);
+    border-radius: var(--radius-sm);
+    background-color: var(--pale-blue);
+}
+
+.table-body__row--account-bank .table-body__item {
+    min-width: 0;
+    padding: 0;
+    font-size: var(--text-small);
+}
+
+.table-body__row--account-bank .table-body__item:nth-last-child(-n + 5) {
+    text-align: right;
+}
+
+.table-body__row--account-bank .table-body__item:nth-child(3) {
+    white-space: pre-line;
+}

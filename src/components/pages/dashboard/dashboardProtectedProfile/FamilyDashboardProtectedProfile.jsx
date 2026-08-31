@@ -36,11 +36,24 @@ function FamilyDashboardProtectedProfile() {
         "subrogated"
     );
 
-    const {isContactModalOpen, contactFormData, contactFormFields, isAdding, addError, handleOpenContactModal, handleCloseContactModal, handleContactChange, handleContactSubmit} = useFamilyContactForm(dossierId, section.form, refreshContacts);
+    const {
+        isContactModalOpen, 
+        contactFormData, 
+        contactFormFields, 
+        isAdding, 
+        addError, 
+        handleOpenContactModal, 
+        handleCloseContactModal, 
+        handleContactChange, 
+        handleContactSubmit
+    } = useFamilyContactForm(dossierId, section.form, refreshContacts);
 
     if (isLoading) {
         return (
-            <DashboardSectionLoading section={section} page={page}/>
+            <DashboardSectionLoading 
+                section={section} 
+                page={page}
+            />
         );
     }
 

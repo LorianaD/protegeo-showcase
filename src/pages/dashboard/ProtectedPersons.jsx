@@ -7,16 +7,14 @@ function ProtectedPersons() {
     const page = protectedPersonsDashboard;
     const variantClass = "dashboard";
 
-    const { openAddDossierModal, refreshKey } = useOutletContext();
-
-    const { protectedPersons, loading, error } = useProtectedPersons(refreshKey);
+    const { openAddDossierModal, protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
     
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={page} />
+                <HeroDashboard page={page} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
                 <AddProtectedPersonsDashboard page={page} onAddDossier={openAddDossierModal}/>
-                <ProtectedPersonsDashboard page={page} protectedPersons={protectedPersons} loading={loading} error={error}/>
+                <ProtectedPersonsDashboard page={page} protectedPersons={protectedPersons} loading={protectedPersonsLoading} error={protectedPersonsError}/>
                 <ActionsProtectedPersonsDashboard page={page} onAddDossier={openAddDossierModal} protectedPersons={protectedPersons}/>
             </SectionOverviewContainer>
         </Main>

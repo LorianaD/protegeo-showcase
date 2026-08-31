@@ -1,10 +1,12 @@
 import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
 import { financialManagementDashboard } from "@/data";
 import { useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountYear, useTransactions } from "@/hooks";
-import { useParams } from "react-router";
+import { useOutletContext, useParams } from "react-router";
 
 function FinancialManagement() {
     const {reference} = useParams();
+
+    const { protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
 
     const page = financialManagementDashboard;
     const variantClass = "dashboard";
@@ -27,7 +29,7 @@ function FinancialManagement() {
         return (
             <Main variant={variantClass}>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading}/>
+                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
 
                     <DashboardSectionLoading
                         page={page}
@@ -45,7 +47,7 @@ function FinancialManagement() {
         return (
             <Main variant={variantClass}>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange}/>
+                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
 
                     <DashboardSection>
                         <p>{page.messages.error}</p>
@@ -61,7 +63,7 @@ function FinancialManagement() {
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} />
+                <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
 
                 {!loading && !error && (
                     <StatsDashboardFinancialManagement page={page} statsData={statsData}/>

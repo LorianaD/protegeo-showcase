@@ -1,13 +1,15 @@
 import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPageActions, DashboardSection } from "@/components";
 import { accountDashboard } from "@/data";
 import { useBankAccounts, useDossierByReference, useManagementAccountYear, useTransactions } from "@/hooks";
-import { Outlet, useParams } from "react-router";
+import { Outlet, useOutletContext, useParams } from "react-router";
 
 function Account() {
     const page = accountDashboard;
     const variantClass = "dashboard";
 
     const { reference } = useParams();
+
+    const { protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
 
     const {dossierId, isLoading, error} = useDossierByReference(reference);
 
@@ -25,7 +27,7 @@ function Account() {
         return (
             <Main variant={ variantClass }>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={ page }/>
+                    <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
                     <TabsDashboard page={ page } />
                     <DashboardSection variant="profile">
                         <p>Chargement du dossier...</p>
@@ -40,7 +42,7 @@ function Account() {
         return (
             <Main variant={ variantClass }>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={ page }/>
+                    <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
                     <TabsDashboard page={ page } />
                     <DashboardSection variant="profile">
                         <p>Le dossier est introuvable ou inaccessible.</p>
@@ -54,7 +56,7 @@ function Account() {
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} />
+                <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
                 <TabsDashboard page={ page } />
                 <Outlet context={{ page, dossierId, year, managementAccount, managementAccountId, managementAccounts, bankAccounts, transactions }}/>
             </SectionOverviewContainer>

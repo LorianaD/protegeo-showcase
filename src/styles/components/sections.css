@@ -382,6 +382,19 @@ Sections
     width: 100%;
 }
 
+.dashboard-section--account-table {
+    display: flex;
+    padding: 28px;
+    flex-direction: column;
+    gap: 50px;
+
+    border-radius: 20px;
+    border: 1px solid var(--pale-blue);
+    background: var(--white);
+
+    width: 100%;
+}
+
 .section-dashboard-actions {
     display: flex;
     gap: var(--space-lg);

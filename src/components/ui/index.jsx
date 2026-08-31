@@ -9,3 +9,4 @@ export * from "./fields";
 export * from "./modals";
 export * from "./table";
 export * from "./charts";
+export * from "./totals";

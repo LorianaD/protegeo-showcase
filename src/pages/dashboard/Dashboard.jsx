@@ -8,14 +8,12 @@ function Dashboard() {
     const variantClass = "dashboard";
     const variantSection = "home";
 
-    const { openAddDossierModal } = useOutletContext();
-
-    const { protectedPersons, loading, error } = useProtectedPersons();
+    const { openAddDossierModal, loading, error, protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
     
     return (
         <Main variant={variantClass}>
             <SectionOverviewContainer>
-                <HeroDashboard page={page} />
+                <HeroDashboard page={page} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
                 <StatsDashboardHome page={page} protectedPersons={protectedPersons}/>
                 <ProtectedPersonsDashboardHome page={page} protectedPersons={protectedPersons} loading={loading} error={error} variant={variantSection}/>
                 <ActionsDashboardHome page={page} protectedPersons={protectedPersons} onAddDossier={openAddDossierModal}/>

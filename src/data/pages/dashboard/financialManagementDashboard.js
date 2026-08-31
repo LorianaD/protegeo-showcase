@@ -101,9 +101,9 @@ const financialManagementDashboard = {
             {
                 ...pageActionsDashboard.history,
             },
-            // {
-            //     ...pageActionsDashboard.generateAnnualAccount,
-            // },
+            {
+                ...pageActionsDashboard.generateAnnualAccount,
+            },
         ],
     },
 

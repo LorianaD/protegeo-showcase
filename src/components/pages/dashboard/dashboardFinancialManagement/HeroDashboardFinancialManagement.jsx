@@ -1,5 +1,4 @@
 import { SectionHeroContainer } from "@/components/ui";
-import { financialManagementDashboard } from "@/data";
 
 function HeroDashboardFinancialManagement({page}) {
     

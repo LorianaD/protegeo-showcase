@@ -118,6 +118,17 @@ const accountDashboard = {
         resourcesSection : {
             title : "A - Ressources",
 
+            columns : [
+                {
+                    name : "label",
+                    label : "Ressources",
+                },
+                {
+                    name : "amount",
+                    label : "Montant",
+                },
+            ],
+
             items : [
                 {
                     name : "salary",
@@ -146,10 +157,23 @@ const accountDashboard = {
                 label : "Total des ressources",
                 format : "currency",
             },
+
+            emptyMessage : "Aucune transaction enregistrer.",
         },
 
         expensesSection : {
             title : "B - Dépenses",
+
+            columns : [
+                {
+                    name : "label",
+                    label : "Dépenses",
+                },
+                {
+                    name : "amount",
+                    label : "Montant",
+                },
+            ],
 
             items : [
                 {
@@ -209,6 +233,8 @@ const accountDashboard = {
                 label : "Total des dépenses",
                 format : "currency",
             },
+
+            emptyMessage : "Aucune transaction enregistrer.",
         },
 
         bankAccountsSection : {
@@ -223,6 +249,7 @@ const accountDashboard = {
                 {
                     name : "accountNumber",
                     label : "Numéro",
+                    type : "truncate",
                     format : "text",
                 },
                 {
@@ -262,6 +289,8 @@ const accountDashboard = {
                 label : "Total",
                 format : "currency",
             },
+
+            emptyMessage : "Aucun compte enregistré.",
         },
 
         notes : {

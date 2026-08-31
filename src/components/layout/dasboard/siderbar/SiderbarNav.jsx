@@ -1,13 +1,10 @@
 import { DashboardNavButton } from "@/components/ui";
 import { siderbarDashboard } from "@/data";
-import { useProtectedPersons } from "@/hooks";
 import { useParams } from "react-router";
 
-function SiderbarNav({ onAddDossier }) {
+function SiderbarNav({ onAddDossier, protectedPersons }) {
     const nav = siderbarDashboard.nav;
     const { reference } = useParams();
-
-    const { protectedPersons } = useProtectedPersons();
 
     const selectedReference = reference ?? protectedPersons[0]?.reference_number;
 
