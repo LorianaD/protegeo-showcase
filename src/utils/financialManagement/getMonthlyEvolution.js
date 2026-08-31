@@ -25,7 +25,7 @@ function getMonthlyEvolution(transactions) {
         const monthIndex = date.getMonth();
         const amount = Number(transaction.amount);
 
-        if (transaction.transaction_type === "income") {
+        if (transaction.transaction_type === "resource") {
             monthlyEvolution[monthIndex].resources += amount;
         }
 

@@ -1,9 +1,22 @@
-function getTransactionCategoryTotal(transactions, transactionType, categoryGroup) {
+function getTransactionCategoryGroupTotal(transactions, transactionType, categoryGroup) {
     return transactions
         .filter(
             (transaction) =>
                 transaction.transaction_type === transactionType &&
                 transaction.category_group === categoryGroup
+        )
+        .reduce(
+            (total, transaction) => total + Number(transaction.amount),
+            0
+        );
+}
+
+function getTransactionCategoryTotal(transactions, transactionType, categoryType) {
+    return transactions
+        .filter(
+            (transaction) =>
+                transaction.transaction_type === transactionType &&
+                transaction.category_type === categoryType
         )
         .reduce(
             (total, transaction) => total + Number(transaction.amount),
@@ -32,6 +45,7 @@ function getBankAccountTotal(bankAccounts) {
 }
 
 export {
+    getTransactionCategoryGroupTotal,
     getTransactionCategoryTotal,
     getTransactionTotal,
     getBankAccountTotal,

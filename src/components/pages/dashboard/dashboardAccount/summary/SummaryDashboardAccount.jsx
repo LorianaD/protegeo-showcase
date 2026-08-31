@@ -1,7 +1,7 @@
 import { DashboardSection, DashboardTable, DashboardTotal, InfoField } from "@/components/ui";
 import { useOutletContext } from "react-router";
 import { StatusSummaryDashboardAccount, StatsSummaryDashboardAccount } from ".";
-import { formatCurrency, getBankAccountTotal, getTransactionCategoryTotal, getTransactionTotal } from "@/utils";
+import { formatCurrency, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
 
 function SummaryDashboardAccount() {
     const { page, year, managementAccount, bankAccounts, transactions } = useOutletContext();
@@ -12,7 +12,7 @@ function SummaryDashboardAccount() {
         id: item.name,
         label: item.label,
         amount: formatCurrency(
-            getTransactionCategoryTotal(
+            getTransactionCategoryGroupTotal(
                 transactions,
                 "resource",
                 item.name
@@ -29,7 +29,7 @@ function SummaryDashboardAccount() {
         id: item.name,
         label: item.label,
         amount: formatCurrency(
-            getTransactionCategoryTotal(
+            getTransactionCategoryGroupTotal(
                 transactions,
                 "expense",
                 item.name

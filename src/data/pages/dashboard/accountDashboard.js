@@ -131,8 +131,8 @@ const accountDashboard = {
 
             items : [
                 {
-                    name : "salary",
-                    label : "Salaire",
+                    name : "income",
+                    label : "Revenus",
                     format : "currency",
                 },
                 {
@@ -141,12 +141,12 @@ const accountDashboard = {
                     format : "currency",
                 },
                 {
-                    name : "financialIncome",
+                    name : "investment_income",
                     label : "Revenus mobiliers",
                     format : "currency",
                 },
                 {
-                    name : "otherResources",
+                    name : "other_resources",
                     label : "Autres ressources",
                     format : "currency",
                 },
@@ -177,7 +177,7 @@ const accountDashboard = {
 
             items : [
                 {
-                    name : "dailyLiving",
+                    name : "current_expenses",
                     label : "Vie courante",
                     format : "currency",
                 },
@@ -192,7 +192,7 @@ const accountDashboard = {
                     format : "currency",
                 },
                 {
-                    name : "homeCare",
+                    name : "home_care",
                     label : "Maintien à domicile",
                     format : "currency",
                 },
@@ -202,7 +202,7 @@ const accountDashboard = {
                     format : "currency",
                 },
                 {
-                    name : "majorPurchases",
+                    name : "major_purchases",
                     label : "Achats importants",
                     format : "currency",
                 },
@@ -212,7 +212,7 @@ const accountDashboard = {
                     format : "currency",
                 },
                 {
-                    name : "works",
+                    name : "repairs",
                     label : "Travaux",
                     format : "currency",
                 },
@@ -222,7 +222,7 @@ const accountDashboard = {
                     format : "currency",
                 },
                 {
-                    name : "otherExpenses",
+                    name : "other_expenses",
                     label : "Autres dépenses",
                     format : "currency",
                 },

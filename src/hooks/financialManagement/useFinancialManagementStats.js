@@ -22,7 +22,7 @@ function useFinancialManagementStats(transactions, managementAccountId) {
             transactions.forEach((transaction) => {
                 const amount = Number(transaction.amount);
 
-                if (transaction.transaction_type === "income") {
+                if (transaction.transaction_type === "resource") {
                     annualResources += amount;
                 }
 
