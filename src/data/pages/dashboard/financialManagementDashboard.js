@@ -17,25 +17,28 @@ const financialManagementDashboard = {
             title : "Ressources annuelles",
             description : "Revenus saisis et validés",
             format: "currency",
+            variant : "resources",
         },
         {
             name: "annualExpenditure",
             title : "Dépenses annuelles",
             description : "Charges et dépenses suivies",
             format: "currency",
+            variant : "expenses",
         },
         {
             name: "estimatedBalance",
             title : "Solde estimé",
             description : "Équilibre budgétaire actuel",
             format: "currency",
+            variant : "balance",
         },
-        {
-            name: "missingDocuments",
-            title : "Justificatifs manquants",
-            description : "Documents à compléter",
-            format: "number",
-        },
+        // {
+        //     name: "missingDocuments",
+        //     title : "Justificatifs manquants",
+        //     description : "Documents à compléter",
+        //     format: "number",
+        // },
     ],
 
     charts : [
@@ -45,6 +48,10 @@ const financialManagementDashboard = {
             labels: {
                 resources: "Ressources",
                 expenses: "Dépenses",
+            },
+            colors: {
+                resources: "#4F9E49",
+                expenses: "#C62828",
             },
         },
         {

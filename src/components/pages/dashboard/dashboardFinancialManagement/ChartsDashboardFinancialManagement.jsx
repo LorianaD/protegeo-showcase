@@ -15,6 +15,7 @@ function ChartsDashboardFinancialManagement({ section, monthlyEvolution, expense
                 <MonthlyEvolutionChart
                     data={monthlyEvolution}
                     labels={monthlyEvolutionSection.labels}
+                    colors={monthlyEvolutionSection.colors}
                 />                   
             </SectionChartsContainer>
 

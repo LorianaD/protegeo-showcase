@@ -9,14 +9,14 @@ ChartJS.register(
     Legend
 );
 
-function MonthlyEvolutionChart({ data, labels }) {
+function MonthlyEvolutionChart({ data, labels, colors }) {
     const chartData = {
         labels: data.map((item) => item.month),
         datasets: [
             {
                 label: labels.resources,
                 data: data.map((item) => item.resources),
-                backgroundColor: "#50B9DB",
+                backgroundColor: colors.resources,
                 borderRadius: 8,
                 borderSkipped: false,
                 barPercentage: 0.65,
@@ -25,7 +25,7 @@ function MonthlyEvolutionChart({ data, labels }) {
             {
                 label: labels.expenses,
                 data: data.map((item) => item.expenses),
-                backgroundColor: "#0787B8",
+                backgroundColor: colors.expenses,
                 borderRadius: 8,
                 borderSkipped: false,
                 barPercentage: 0.65,
