@@ -1,6 +1,6 @@
 import { SectionActionContainer, SectionActionList, SectionDashboardActions, SectionDeadlineList } from "@/components/ui";
 
-function ActionsDashboardFinancialManagement({page, protectedPersons = [], onAddDossier}) {
+function ActionsDashboardFinancialManagement({page, protectedPersons = [], onAddDossier, onAction}) {
     const caseStatusSection = page.caseStatus;
     const actionsSection = page.quickActions;
     const alertsSection = page.alerts;
@@ -14,6 +14,7 @@ function ActionsDashboardFinancialManagement({page, protectedPersons = [], onAdd
             <SectionActionContainer title={actionsSection.title}>
                 <SectionActionList
                     actions={actionsSection.items}
+                    onAction={onAction}
                 />
             </SectionActionContainer>
 

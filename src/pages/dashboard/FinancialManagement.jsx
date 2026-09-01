@@ -1,12 +1,12 @@
 import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
 import { financialManagementDashboard } from "@/data";
-import { useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountYear, useTransactions } from "@/hooks";
+import { useBankAccounts, useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountYear, useTransactions } from "@/hooks";
 import { useOutletContext, useParams } from "react-router";
 
 function FinancialManagement() {
     const {reference} = useParams();
 
-    const { protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
+    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal } = useOutletContext();
 
     const page = financialManagementDashboard;
     const variantClass = "dashboard";
@@ -15,7 +15,14 @@ function FinancialManagement() {
 
     const { managementAccountId, year, yearOptions, handleYearChange, loading: yearLoading, error: yearError } = useManagementAccountYear(dossierId);
 
+    const { bankAccounts, loading: bankAccountsLoading, error: bankAccountsError } = useBankAccounts(dossierId);
+
     const { transactions, loading: transactionsLoading, error: transactionsError } = useTransactions(dossierId, managementAccountId);
+
+    const bankAccountOptions = bankAccounts.map((bankAccount) => ({
+        value: bankAccount.id,
+        label: `${bankAccount.account_label} - ${bankAccount.account_number_masked}`,
+    }));
 
     const { statsData, loading: statsLoading, error: statsError } = useFinancialManagementStats(transactions);
 
@@ -24,6 +31,28 @@ function FinancialManagement() {
     const loading = dossierLoading || yearLoading || transactionsLoading || statsLoading || chartsLoading;
 
     const error = dossierError || yearError || transactionsError || statsError || chartsError;
+
+    function handleQuickAction(actionName) {
+        if (actionName === "addExpense") {
+            openTransactionModal({
+                transactionType: "expense",
+                dossierId,
+                managementAccountId,
+                bankAccountOptions,
+            });
+
+            return;
+        }
+
+        if (actionName === "addResource") {
+            openTransactionModal({
+                transactionType: "resource",
+                dossierId,
+                managementAccountId,
+                bankAccountOptions,
+            });
+        }
+    }
 
     if (loading) {
         return (
@@ -37,7 +66,11 @@ function FinancialManagement() {
                     />
                 </SectionOverviewContainer>
 
-                <ActionsDashboardFinancialManagement page={page} />
+                <ActionsDashboardFinancialManagement
+                    page={page}
+                    protectedPersons={protectedPersons}
+                    onAction={handleQuickAction}
+                />
                 <SectionPageActions section={page.actions} />
             </Main>
         );
@@ -54,7 +87,11 @@ function FinancialManagement() {
                     </DashboardSection>
                 </SectionOverviewContainer>
 
-                <ActionsDashboardFinancialManagement page={page} />
+                <ActionsDashboardFinancialManagement
+                    page={page}
+                    protectedPersons={protectedPersons}
+                    onAction={handleQuickAction}
+                />
                 <SectionPageActions section={page.actions} />
             </Main>
         );
@@ -71,7 +108,13 @@ function FinancialManagement() {
 
                 <ChartsDashboardFinancialManagement section={page.charts} monthlyEvolution={monthlyEvolution} expenseBreakdown={expenseBreakdown}/>              
             </SectionOverviewContainer>
-            <ActionsDashboardFinancialManagement page={ page }/>
+
+            <ActionsDashboardFinancialManagement
+                page={page}
+                protectedPersons={protectedPersons}
+                onAction={handleQuickAction}
+            />
+
             <SectionPageActions section={page.actions} />
         </Main>
     )

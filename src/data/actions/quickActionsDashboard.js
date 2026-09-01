@@ -10,12 +10,14 @@ const quickActionsDashboard = {
         name: "addExpense",
         label: "+ Ajouter une dépense",
         variant: "dashboard-action",
+        transactionType: "expense",
     },
 
     addResource: {
         name: "addResource",
         label: "+ Ajouter une ressource",
         variant: "dashboard-action",
+        transactionType: "resource",
     },
 
     generateProtectedPersons: {

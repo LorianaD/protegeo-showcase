@@ -234,6 +234,54 @@ const fields = {
         options: options.yes_no,
         required: true,
     },
+
+    bank_account_id: {
+        name: "bank_account_id",
+        type: "select",
+        label: "Compte bancaire",
+        placeholder: "Sélectionner un compte bancaire",
+        required: false,
+    },
+
+    transaction_category: {
+        name: "category_type",
+        type: "select",
+        label: "Catégorie",
+        placeholder: "Sélectionner une catégorie",
+        required: true,
+    },
+
+    transaction_label: {
+        name: "label",
+        type: "text",
+        label: "Libellé",
+        placeholder: "Ex. Carrefour",
+        required: false,
+    },
+
+    transaction_amount: {
+        name: "amount",
+        type: "currency",
+        label: "Montant",
+        placeholder: "0.00",
+        required: true,
+    },
+
+    operation_date: {
+        name: "operation_date",
+        type: "date",
+        label: "Date",
+        required: true,
+    },
+
+    payment_method: {
+        name: "payment_method",
+        type: "select",
+        label: "Moyen de paiement",
+        options: options.payment_methods,
+        placeholder: "Sélectionner un moyen de paiement",
+        required: false,
+    },
 };
 
 const familyContactFields = [

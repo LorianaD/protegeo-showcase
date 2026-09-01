@@ -1,4 +1,5 @@
 import { DashboardSection, ExpenseBreakdownChart, MonthlyEvolutionChart, SectionChartsContainer } from "@/components/ui";
+import { options } from "@/data";
 
 function ChartsDashboardFinancialManagement({ section, monthlyEvolution, expenseBreakdown }) {
     const monthlyEvolutionSection = section.find(
@@ -7,6 +8,13 @@ function ChartsDashboardFinancialManagement({ section, monthlyEvolution, expense
 
     const expenseDistributionSection = section.find(
         (item) => item.name === "expenseDistribution"
+    );
+
+    const expenseCategoryLabels = Object.fromEntries(
+        options.category_group.map((item) => [
+            item.value,
+            item.label,
+        ])
     );
 
     return (
@@ -22,7 +30,7 @@ function ChartsDashboardFinancialManagement({ section, monthlyEvolution, expense
             <SectionChartsContainer title={expenseDistributionSection.title}>
                 <ExpenseBreakdownChart
                     data={expenseBreakdown}
-                    labels={expenseDistributionSection.labels}
+                    labels={expenseCategoryLabels}
                     colors={expenseDistributionSection.colors}
                 />                
             </SectionChartsContainer>
