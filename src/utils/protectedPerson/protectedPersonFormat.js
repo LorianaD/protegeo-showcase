@@ -183,6 +183,30 @@ function formatCivility(civility) {
     return civilityLabels[civility] ?? "Non renseigné";
 }
 
+function formatMaritalStatus(status) {
+    const statuses = {
+        single: "Célibataire",
+        married: "Marié(e)",
+        divorced: "Divorcé(e)",
+        widowed: "Veuf / Veuve",
+        separated: "Séparé(e)",
+        civil_union: "Pacsé(e)",
+    };
+
+    return statuses[status] ?? status;
+}
+
+function formatProtectedPersonFieldValue(fieldName, value) {
+    const formatters = {
+        civility: formatCivility,
+        marital_status: formatMaritalStatus,
+    };
+
+    const formatter = formatters[fieldName];
+
+    return formatter ? formatter(value) : value;
+}
+
 export {
     formatBirthInformation,
     formatContactAddress,
@@ -191,4 +215,6 @@ export {
     formatContactTableRows,
     formatFullName,
     formatCivility,
+    formatMaritalStatus,
+    formatProtectedPersonFieldValue,
 };
