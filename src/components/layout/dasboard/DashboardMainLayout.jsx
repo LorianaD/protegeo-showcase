@@ -7,6 +7,7 @@ import { useState } from "react";
 
 function DashboardMainLayout() {
     const [refreshKey, setRefreshKey] = useState(0);
+    const [transactionRefreshKey, setTransactionRefreshKey] = useState(0);
 
     const {isAddDossierModalOpen, openAddDossierModal, closeAddDossierModal} = useAddDossierModal();
 
@@ -18,6 +19,10 @@ function DashboardMainLayout() {
         setRefreshKey((currentKey) => currentKey + 1);
     }
 
+    function refreshTransactions() {
+        setTransactionRefreshKey((currentKey) => currentKey + 1);
+    }    
+
     return (
         <div>
             <div className="dashboard-main-layout">
@@ -28,7 +33,7 @@ function DashboardMainLayout() {
                     protectedPersonsError={protectedPersonsError}
                 />
 
-                <Outlet context={{openAddDossierModal, refreshKey, protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal}}/>
+                <Outlet context={{openAddDossierModal, refreshKey, protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey}}/>
 
                 <AddDossierModal 
                     open={isAddDossierModalOpen} 
@@ -43,6 +48,7 @@ function DashboardMainLayout() {
                     managementAccountId={transactionModalData?.managementAccountId}
                     bankAccountOptions={transactionModalData?.bankAccountOptions}
                     onClose={closeTransactionModal}
+                     onCreated={refreshTransactions}
                 />
             </div>
             <Footer/>

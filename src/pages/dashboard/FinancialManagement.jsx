@@ -6,7 +6,7 @@ import { useOutletContext, useParams } from "react-router";
 function FinancialManagement() {
     const {reference} = useParams();
 
-    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal } = useOutletContext();
+    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey } = useOutletContext();
 
     const page = financialManagementDashboard;
     const variantClass = "dashboard";
@@ -17,7 +17,7 @@ function FinancialManagement() {
 
     const { bankAccounts, loading: bankAccountsLoading, error: bankAccountsError } = useBankAccounts(dossierId);
 
-    const { transactions, loading: transactionsLoading, error: transactionsError } = useTransactions(dossierId, managementAccountId);
+    const { transactions, loading: transactionsLoading, error: transactionsError } = useTransactions(dossierId, managementAccountId, transactionRefreshKey);
 
     const bankAccountOptions = bankAccounts.map((bankAccount) => ({
         value: bankAccount.id,

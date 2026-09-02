@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTransactionsService } from "@/services";
 
-function useTransactions(dossierId, managementAccountId) {
+function useTransactions(dossierId, managementAccountId, refreshKey = 0) {
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -35,7 +35,7 @@ function useTransactions(dossierId, managementAccountId) {
         }
 
         fetchTransactions();
-    }, [dossierId, managementAccountId]);
+    }, [dossierId, managementAccountId, refreshKey]);
 
     return {
         transactions,

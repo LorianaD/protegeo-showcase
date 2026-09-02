@@ -1,5 +1,5 @@
 import { DashboardSection, DashboardSectionLoading, DashboardTable } from "@/components/ui";
-import { formatDate, getMeasureDeadline, getMeasureDeadlineLabel, getMeasureLabel, getMeasureStatus } from "@/utils";
+import { getMeasureDeadlineLabel, getMeasureLabel, getMeasureStatus } from "@/utils";
 
 function ProtectedPersonsDashboardHome({page, protectedPersons = [], loading, error, variant}) {
     const section = page.protected;

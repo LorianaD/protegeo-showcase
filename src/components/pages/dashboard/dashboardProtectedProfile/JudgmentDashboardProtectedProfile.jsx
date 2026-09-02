@@ -1,6 +1,6 @@
 import { DashboardSection, InfoFieldGroup, InfoField, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
 import { useCurrentMeasure, useDossier, useEditableForm, useUpdateDossier, useUpdateMeasure } from "@/hooks";
-import { formatDate, getMeasureLabel } from "@/utils";
+import { formatDate, getMeasureDeadline, getMeasureLabel } from "@/utils";
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";
 
@@ -161,7 +161,7 @@ function JudgmentDashboardProtectedProfile () {
             * The final business rule will be added later.
             */
             if (item.name === "renewal") {
-                value = measure.end_date;
+                value = formatDate(getMeasureDeadline(measure));
             }
 
             if (item.type === "date") {
