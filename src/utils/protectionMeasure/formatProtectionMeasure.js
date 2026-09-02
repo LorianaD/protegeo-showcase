@@ -74,7 +74,12 @@ function getMeasureStatus(measure) {
     }
 
     if (measure.end_date) {
-        return measureStatuses.ended;
+        const endDate = new Date(measure.end_date);
+        const currentDate = new Date();
+
+        if (endDate < currentDate) {
+            return measureStatuses.ended;
+        }
     }
 
     return measureStatuses.active;
