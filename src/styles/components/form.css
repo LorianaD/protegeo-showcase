@@ -28,6 +28,13 @@
     font-size: var(--text-small);
 }
 
+.form-error {
+    color: var(--color-error);
+    font-style: italic;
+    margin-top: var(--space-xs);
+    font-size: var(--text-small);
+}
+
 .form-input {
     width: 100%;
     height: 30px;

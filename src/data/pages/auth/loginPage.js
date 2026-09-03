@@ -17,6 +17,7 @@ const login = {
             },
         ],
         btn_label : cta.confirm,
+        error : "Identifiant ou Mot de passe invalide."
     },
 
     registerRedirection : {

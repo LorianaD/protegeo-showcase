@@ -24,7 +24,7 @@ function FormLogin() {
             ))}
 
             {apiError && (
-                <p className="form-error">{ apiError }</p>
+                <p className="form-error">{ section.error }</p>
             )}
         </FormCard>
     )
