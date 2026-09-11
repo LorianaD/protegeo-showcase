@@ -1,4 +1,4 @@
-// GETTER : READ
+// GET : READ
 export * from "./getBankingTransactionsService";
 export * from "./getBankingTransactionService";
 
@@ -8,5 +8,5 @@ export * from "./createBankingTransactionService";
 // PATCH : UPDATE
 export * from "./updateBankingTransactionService";
 
-// DELETE
+// DELETE : DELETE
 export * from "./deleteBankingTransactionService";

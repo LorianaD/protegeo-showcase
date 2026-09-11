@@ -1,6 +1,6 @@
 import { Link } from "react-router"
 
-function Button({ label, href, download, to, type = "button", onClick, variant = "primary", }) {
+function Button({ label, href, download, to, type = "button", onClick, disabled = false, variant = "primary", }) {
     
     const classe = `button button--${variant}`;
 
@@ -21,7 +21,7 @@ function Button({ label, href, download, to, type = "button", onClick, variant =
     }
     
     return(
-        <button type={ type } className={ classe } onClick={onClick}>
+        <button type={ type } className={ classe } onClick={onClick} disabled={disabled}>
             { label }
         </button>
     )

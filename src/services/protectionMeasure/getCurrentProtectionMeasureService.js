@@ -1,17 +1,11 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 async function getCurrentProtectionMeasureService(dossierId) {
     const data = await apiFetch(`/dossiers/${dossierId}/measure-protections/current`, {
         method: "GET",
     });
 
-    const measure = data.measureProtection;
-
-    if (!measure) {
-        return null;
-    }
-
-    return data.measureProtection ?? null;
+    return data?.measure_protection ?? null;
 }
 
 export {

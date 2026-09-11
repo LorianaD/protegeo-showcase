@@ -1,5 +1,5 @@
-import { ContactFormModal, DashboardSection, DashboardSectionLoading, InfoField } from "@/components/ui";
-import { useContacts, useFamilyContactForm } from "@/hooks";
+import { ContactFormModal, DashboardSection, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
+import { useContactManagement, useContacts, useFamilyContactForm, useProtectedPerson } from "@/hooks";
 import { formatContactCards, formatContactTableRows } from "@/utils";
 import { useOutletContext } from "react-router";
 import { ContactCardList, ContactObservationNote, ContactTable } from "./contacts";
@@ -9,7 +9,19 @@ function FamilyDashboardProtectedProfile() {
 
     const section = page.family;
 
-    const { contacts, isLoading, error, refreshContacts } = useContacts(dossierId, "family");
+    const {
+        protectedPerson,
+        loading: protectedPersonLoading,
+        error: protectedPersonError,
+        refreshProtectedPerson,
+    } = useProtectedPerson(dossierId);
+
+    const {
+        contacts,
+        isLoading,
+        error,
+        refreshContacts,
+    } = useContacts(dossierId, "family");
 
     const partnerCards = formatContactCards(
         contacts,
@@ -48,7 +60,36 @@ function FamilyDashboardProtectedProfile() {
         handleContactSubmit
     } = useFamilyContactForm(dossierId, section.form, refreshContacts);
 
-    if (isLoading) {
+    const {
+        isManagingContacts,
+        selectedContact,
+        editFormData,
+        isEditModalOpen,
+        isUpdating,
+        updateError,
+        isDeleting,
+
+        isEditingObservation,
+        observationValue,
+        updatingObservation,
+        observationError,
+
+        handleStartManagement,
+        handleCancelManagement,
+        handleSubmitManagement,
+
+        handleOpenEditModal,
+        handleCloseEditModal,
+        handleEditChange,
+        handleUpdateContact,
+        handleDeleteContact,
+        handleObservationChange,
+    } = useContactManagement({ dossierId, protectedPerson, refreshProtectedPerson, refreshContacts, observationFieldName: section.notes.name });
+
+    const loading = isLoading || protectedPersonLoading;
+    const pageError = error || protectedPersonError;
+
+    if (loading) {
         return (
             <DashboardSectionLoading 
                 section={section} 
@@ -57,34 +98,102 @@ function FamilyDashboardProtectedProfile() {
         );
     }
 
-    if (error) {
+    if (pageError) {
         return (
             <DashboardSection title={section.header.title}>
-                <p>{error}</p>
+                <p>{pageError}</p>
             </DashboardSection>
         )
     }
 
     return (
         <>
-            <DashboardSection title={section.header.title} actionLabel={section.header.btn_label} addLabel={section.header.btn_label_add} onAdd={handleOpenContactModal} variant="profile">
+            <DashboardSection title={section.header.title} actionLabel={isManagingContacts ? null : section.header.btn_label} addLabel={section.header.btn_label_add} onAction={handleStartManagement} onAdd={handleOpenContactModal} variant="profile">
                 {contacts.length === 0 ? (
                     <p>Aucun membre trouvé.</p>
                 ) : (
-                    <div className="family-info">
-                        <ContactCardList contactCards={partnerCards}/>
-                        <ContactCardList contactCards={parentCards}/>
-                        <ContactTable contactType={section.sibling} rows={siblingTable}/>
-                        <ContactTable contactType={section.trusted_people} rows={trustedPeopleRows}/>
-                        <ContactTable contactType={section.subrogated} rows={subrogatedRows}/>
-                        <ContactObservationNote section={section}/>
-                    </div>
+                    <form className="update-form" onSubmit={handleSubmitManagement} >
+                        <div className="family-info">
+                            <ContactCardList
+                                contactCards={partnerCards}
+                                actions={section.actions}
+                                showActions={isManagingContacts}
+                                onEdit={handleOpenEditModal}
+                                onDelete={handleDeleteContact}
+                                disabled={isUpdating || isDeleting}
+                            />
+
+                            <ContactCardList
+                                contactCards={parentCards}
+                                actions={section.actions}
+                                showActions={isManagingContacts}
+                                onEdit={handleOpenEditModal}
+                                onDelete={handleDeleteContact}
+                                disabled={isUpdating || isDeleting}
+                            />
+
+                            <ContactTable
+                                contactType={section.sibling}
+                                rows={siblingTable}
+                                actions={section.actions}
+                                showActions={isManagingContacts}
+                                onEdit={handleOpenEditModal}
+                                onDelete={handleDeleteContact}
+                                disabled={isUpdating || isDeleting}
+                            />
+
+                            <ContactTable
+                                contactType={section.trusted_people}
+                                rows={trustedPeopleRows}
+                                actions={section.actions}
+                                showActions={isManagingContacts}
+                                onEdit={handleOpenEditModal}
+                                onDelete={handleDeleteContact}
+                                disabled={isUpdating || isDeleting}
+                            />
+
+                            <ContactTable
+                                contactType={section.subrogated}
+                                rows={subrogatedRows}
+                                actions={section.actions}
+                                showActions={isManagingContacts}
+                                onEdit={handleOpenEditModal}
+                                onDelete={handleDeleteContact}
+                                disabled={isUpdating || isDeleting}
+                            />
+
+                            <ContactObservationNote
+                                section={section}
+                                value={
+                                    isEditingObservation
+                                        ? observationValue
+                                        : protectedPerson?.[section.notes.name]
+                                            ?? section.notes.placeholder
+                                }
+                                editing={isEditingObservation}
+                                onChange={handleObservationChange}
+                            />
+                        </div>
+
+                        {isManagingContacts && (
+                            <UpdateFormFooter
+                                cancelLabel={page.footer_form.btn_cancel_label}
+                                submitLabel={page.footer_form.btn_recorded_label}
+                                onCancel={handleCancelManagement}
+                                loading={updatingObservation}
+                                error={observationError}
+                            />
+                        )}
+                    </form>
                 )}
             </DashboardSection>
 
             {isContactModalOpen && (
                 <ContactFormModal
-                    form={section.form}
+                    form={{
+                        ...section.form,
+                        header: section.form.add.header,
+                    }}
                     fields={contactFormFields}
                     values={contactFormData}
                     onChange={handleContactChange}
@@ -95,6 +204,25 @@ function FamilyDashboardProtectedProfile() {
                     submitLabel={page.footer_form.btn_recorded_label}
                     loading={isAdding}
                     error={addError}
+                />
+            )}
+
+            {isEditModalOpen && selectedContact && (
+                <ContactFormModal
+                    form={{
+                        ...section.form,
+                        header: section.form.edit.header,
+                    }}
+                    fields={section.form.fields}
+                    values={editFormData}
+                    onChange={handleEditChange}
+                    onClose={handleCloseEditModal}
+                    onSubmit={handleUpdateContact}
+                    category="family"
+                    cancelLabel={page.footer_form.btn_cancel_label}
+                    submitLabel={page.footer_form.btn_recorded_label}
+                    loading={isUpdating}
+                    error={updateError}
                 />
             )}
         </>

@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 async function addDossierService(dossierData) {
     const data = await apiFetch("/dossiers", {

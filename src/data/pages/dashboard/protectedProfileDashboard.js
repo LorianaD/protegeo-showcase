@@ -44,7 +44,7 @@ const protectedProfileDashboard = {
                 active : Referent,
             },
             link_label : "Référents",
-            link_url : "",
+            link_url : "/dashboard/protected-profile/:reference/professional",
         },
         {
             link_icon : {
@@ -140,7 +140,7 @@ const protectedProfileDashboard = {
 
         notes: {
             ...fields.notes,
-            // placeholder: "",
+            name: "situation_summary",
         },
     },
 
@@ -226,6 +226,20 @@ const protectedProfileDashboard = {
             btn_link_add : "",
         },
 
+        actions: {
+            column_label: "Actions",
+
+            edit: {
+                label: "Modifier",
+                variant: "secondary",
+            },
+
+            delete: {
+                label: "Supprimer",
+                variant: "danger",
+            },
+        },
+
         partners: {
             current: {
                 title: "Partenaire de vie",
@@ -304,6 +318,7 @@ const protectedProfileDashboard = {
                 {
                     key: "phone",
                     label: "Téléphone",
+                    type: "truncate",
                 },
                 {
                     key: "email",
@@ -353,13 +368,23 @@ const protectedProfileDashboard = {
 
         notes : {
             ...fields.notes,
+            name : "family_note",
             label : "Observations générales",
         },
 
         form: {
-            header: {
-                title: "Ajouter un membre de la famille",
-                description: "Renseignez les informations concernant le membre de la famille.",
+            add: {
+                header: {
+                    title: "Ajouter un membre de la famille",
+                    description: "Renseignez les informations concernant le membre de la famille.",
+                },
+            },
+
+            edit: {
+                header: {
+                    title: "Modifier un membre de la famille",
+                    description: "Modifiez les informations concernant le membre de la famille.",
+                },
             },
 
             fields: [
@@ -404,110 +429,192 @@ const protectedProfileDashboard = {
             title : "Référents professionnels",
             btn_label : "Modifier",
             btn_link : "",
+            btn_label_add : "Ajouter",
+            btn_link_add : "",
         },
-        general_practitioner : {
-            title : "Médecin traitant",
-            fields : [
-                {
-                    label : "Raison sociale",
-                    value : "Dr RICHARD-MOLLARD Aurélie",
-                },
-                {
-                    label : "Spécialité",
-                    value : "Médecin généraliste",
-                },
-                {
-                    label : "Cabinet",
-                    value : "Cabinet du Dr Richard-Mollard et Dr VIALARS HARO",
-                },
-                {
-                    label : "Adresse",
-                    value : "Cours du Général de Gaulle,\n 33170 GRADIGNAN",
-                },
-                {
-                    label : "Téléphone",
-                    value : "05 XX XX XX XX",
-                },
-                {
-                    label : "Adresse électronique",
-                    value : "Nan",
-                }
-            ],
 
-            notes : {
-                label : "Observations générales",
-                value : "",
+        actions: {
+            column_label: "Actions",
+
+            edit: {
+                label: "Modifier",
+                variant: "secondary",
+            },
+
+            delete: {
+                label: "Supprimer",
+                variant: "danger",
             },
         },
 
-        social_worker : {
-            title : "Travailleur social / accompagnement",
-            fields : [
+        general_practitioner: {
+            title: "Médecin traitant",
+
+            fields: [
                 {
-                    label : "Nom",
-                    value : "QUESADA Julien",
+                    name: ["firstname", "lastname"],
+                    label: "Raison sociale",
                 },
                 {
-                    label : "Service / Fonction",
-                    value : "Assistant social",
+                    name: "profession",
+                    label: "Spécialité",
                 },
                 {
-                    label : "Centre Social",
-                    value : "CCAS de Gradignan",
+                    name: "organization_name",
+                    label: "Cabinet",
                 },
                 {
-                    label : "Adresse",
-                    value : "Mairie de Gradignan \n 33170 GRADIGNAN",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "Téléphone",
-                    value : "05 XX XX XX XX",
+                    name: "phone",
+                    label: "Téléphone",
                 },
                 {
-                    label : "Adresse électronique",
-                    value : "quesada.julien@example.com",
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
                 }
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
-            },
+
+            // notes: {
+            //     ...fields.notes,
+            // },
         },
 
-        trustee : {
-            title : "Curateur ou tuteur professionnel (si co-gestion)",
-            fields : [
+        social_worker: {
+            title: "Travailleur social / accompagnement",
+
+            fields: [
                 {
-                    label : "Nom",
-                    value : "Nan",
+                    name: ["firstname", "lastname"],
+                    label: "Nom",
                 },
                 {
-                    label : "Service / Fonction",
-                    value : "Nan",
+                    name: "job_function",
+                    label: "Service / Fonction",
                 },
                 {
-                    label : "Centre Social",
-                    value : "Nan",
+                    name: "organization_name",
+                    label: "Centre social",
                 },
                 {
-                    label : "Adresse",
-                    value : "Nan",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "Téléphone",
-                    value : "Nan",
+                    name: "phone",
+                    label: "Téléphone",
                 },
                 {
-                    label : "Adresse électronique",
-                    value : "Nan",
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
                 }
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
+
+            // notes: {
+            //     ...fields.notes,
+            // },
+        },
+
+        trustee: {
+            title: "Curateur ou tuteur professionnel (si co-gestion)",
+
+            fields: [
+                {
+                    name: ["firstname", "lastname"],
+                    label: "Nom",
+                },
+                {
+                    name: "job_function",
+                    label: "Service / Fonction",
+                },
+                {
+                    name: "organization_name",
+                    label: "Structure",
+                },
+                {
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
+                },
+                {
+                    name: "phone",
+                    label: "Téléphone",
+                },
+                {
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                }
+            ],
+
+            // notes: {
+            //     ...fields.notes,
+            // },
+        },
+
+        form: {
+            add: {
+                header: {
+                    title: "Ajouter un référent professionnel",
+                    description: "Renseignez les informations concernant le référent professionnel.",
+                },
             },
+
+            edit: {
+                header: {
+                    title: "Modifier un référent professionnel",
+                    description: "Modifiez les informations concernant le référent professionnel.",
+                },
+            },
+
+            fields: [
+                {
+                    ...fields.contact_type_professional,
+                },
+                {
+                    ...fields.lastname,
+                },
+                {
+                    ...fields.firstname,
+                },
+                {
+                    ...fields.profession,
+                    label: "Fonction / Spécialité",
+                },
+                {
+                    ...fields.address,
+                },
+                {
+                    ...fields.postal_code,
+                },
+                {
+                    ...fields.city,
+                },
+                {
+                    ...fields.phone_number,
+                    name: "phone",
+                },
+                {
+                    ...fields.email,
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                }
+            ],
         },
     },
 

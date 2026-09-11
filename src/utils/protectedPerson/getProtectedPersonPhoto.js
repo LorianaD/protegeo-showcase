@@ -1,15 +1,11 @@
 import { defaultMan, defaultWoman } from "@/assets";
 
-function getProtectedPersonPhoto(photoUrl, civility) {
-    if (photoUrl) {
-        return photoUrl;
-    }
-
-    const defaultImg = civility === "madam" ? defaultWoman : defaultMan;
-
-    return defaultImg;
+function getDefaultProtectedPersonPhoto(civility) {
+    return civility === "madam"
+        ? defaultWoman
+        : defaultMan;
 }
 
 export {
-    getProtectedPersonPhoto,
-}
+    getDefaultProtectedPersonPhoto,
+};

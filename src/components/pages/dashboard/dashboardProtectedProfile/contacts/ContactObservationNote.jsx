@@ -1,19 +1,24 @@
 import { InfoField } from "@/components/ui";
 
-function ContactObservationNote({section}) {
+function ContactObservationNote({ section, notes, value, editing, onChange }) {
+    const noteConfig = notes ?? section?.notes;
+
+    if (!noteConfig) {
+        return null;
+    }
 
     return (
         <InfoField
-            label={section.notes.label}
-            type={section.notes.type}
-            name={section.notes.name}
-            placeholder={section.notes.placeholder}
-            // value={editing ? formData[section.notes.name] : protectedPerson[section.notes.name] ?? section.notes.placeholder }
-            // editing={editing}
-            // onChange={handleChange}
+            label={noteConfig.label}
+            type={noteConfig.type}
+            name={noteConfig.name}
+            placeholder={noteConfig.placeholder}
+            value={value || noteConfig.placeholder}
+            editing={editing}
+            onChange={onChange}
             variant="textarea"
         />
-    )
+    );
 }
 
 export default ContactObservationNote;

@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 async function getContactsService(dossierId, contactCategory = null) {
     
@@ -12,13 +12,7 @@ async function getContactsService(dossierId, contactCategory = null) {
         method: "GET",
     });
 
-    const contacts = data.contacts;
-
-    if (!contacts) {
-        return [];
-    }
-
-    return contacts;
+    return data?.contacts ?? [];
 }
 
 export {

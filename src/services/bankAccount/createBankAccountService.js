@@ -1,9 +1,9 @@
 import { apiFetch } from "@/services";
 
-async function createBankAccountService(dossierId, bankAccountId, bankAccountData) {
-    const data = await apiFetch(`/dossiers/${dossierId}/bank-accounts/${bankAccountId}`, {
+async function createBankAccountService(dossierId, bankAccountData) {
+    const data = await apiFetch(`/dossiers/${dossierId}/bank-accounts`, {
             method: "POST",
-            body: bankAccountData,
+            body: JSON.stringify(bankAccountData),
         }
     );
 

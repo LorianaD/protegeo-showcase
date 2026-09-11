@@ -1,4 +1,4 @@
-import { FamilyDashboardProtectedProfile, IdentifyDashboardProtectedProfile, JudgmentDashboardProtectedProfile } from "@/components";
+import { FamilyDashboardProtectedProfile, IdentifyDashboardProtectedProfile, JudgmentDashboardProtectedProfile, ProfessionalContactsDashboardProtectedProfile } from "@/components";
 import { ProtectedProfile } from "@/pages/dashboard";
 import { Route, Routes } from "react-router";
 
@@ -9,6 +9,7 @@ function ProtectedProfileRoutes() {
                 <Route index element={<IdentifyDashboardProtectedProfile />} />
                 <Route path="judgment" element={<JudgmentDashboardProtectedProfile />} />
                 <Route path="family" element={<FamilyDashboardProtectedProfile />} />
+                <Route path="professional" element={<ProfessionalContactsDashboardProtectedProfile />} />
             </Route>
         </Routes>
     )    

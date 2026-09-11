@@ -1,13 +1,13 @@
-import { apiFetch } from "../api"
+import { apiFetch } from "@/services";
 
 async function getProtectionMeasuresService(dossierId) {
     const data = await apiFetch(`/dossiers/${dossierId}/measure-protections`, {
         method: "GET",
-    })
+    });
 
-    return data.measureProtections ?? [];
+    return data?.measure_protections ?? [];
 }
 
 export {
     getProtectionMeasuresService,
-}
+};

@@ -1,4 +1,4 @@
-import { apiFetch } from "../api"
+import { apiFetch } from "@/services";
 
 async function updateProtectionMeasureService(dossierId, measureId, measureData) {
     const data = await apiFetch(`/dossiers/${dossierId}/measure-protections/${measureId}`, {
@@ -6,7 +6,7 @@ async function updateProtectionMeasureService(dossierId, measureId, measureData)
         body: JSON.stringify(measureData),
     });
 
-    return data;
+    return data?.measure_protection ?? null;
 }
 
 export {

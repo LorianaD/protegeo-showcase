@@ -1,16 +1,16 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 /**
- * Delete an existing contact from the selected protected person's dossier.
+ * Deletes an existing contact from the selected protected person's dossier.
  */
 async function deleteContactService(dossierId, contactId) {
-    const data = await apiFetch(`/dossiers/${dossierId}/contacts/${contactId}`, {
-        method: "DELETE"
+    await apiFetch(`/dossiers/${dossierId}/contacts/${contactId}`, {
+        method: "DELETE",
     });
 
-    return data;
+    return true;
 }
 
 export {
     deleteContactService,
-}
+};

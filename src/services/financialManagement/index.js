@@ -1,2 +1,2 @@
-// GETTER : READ
+// GET : READ
 export * from "./getFinancialManagementStatsService";

@@ -26,6 +26,12 @@
     border: 2px solid var(--color-primary);  
 }
 
+.button--danger {
+    background: var(--white);
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+
 .button--secondary:hover {
     box-shadow: 2px 2px 10px -2px var(--color-secondary);
 }

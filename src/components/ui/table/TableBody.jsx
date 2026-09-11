@@ -17,9 +17,9 @@ function TableBody({ columns = [], rows = [], emptyMessage = "Aucune donnée enr
 
     return (
         <tbody className={tableBodyClass}>
-            {rows.map((row) => (
+            {rows.map((row, index) => (
                 <TableRow
-                    key={row.id}
+                    key={row.id ?? index}
                     columns={columns}
                     row={row}
                     variant={variant}

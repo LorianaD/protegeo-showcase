@@ -38,10 +38,16 @@ function getMeasureDeadlineLabel(measure) {
     }
 
     const currentDate = new Date();
-    let endDate = null;
+    const startDate = measure.start_date
+        ? new Date(measure.start_date)
+        : null;
 
-    if (measure.end_date) {
-        endDate = new Date(measure.end_date);
+    let endDate = measure.end_date
+        ? new Date(measure.end_date)
+        : null;
+
+    if (startDate && startDate > currentDate) {
+        return `Débute le ${formatLongDate(startDate)}`;
     }
 
     if (!endDate) {
@@ -73,9 +79,18 @@ function getMeasureStatus(measure) {
         return measureStatuses.noMeasure;
     }
 
+    const currentDate = new Date();
+
+    if (measure.start_date) {
+        const startDate = new Date(measure.start_date);
+
+        if (startDate > currentDate) {
+            return measureStatuses.upcoming;
+        }
+    }
+
     if (measure.end_date) {
         const endDate = new Date(measure.end_date);
-        const currentDate = new Date();
 
         if (endDate < currentDate) {
             return measureStatuses.ended;

@@ -1,4 +1,4 @@
-import { apiFetch } from "../api"
+import { apiFetch } from "@/services";
 
 /**
  * Creates a new contact for the selected protected person's dossier.
@@ -9,7 +9,7 @@ async function addContactService(dossierId, contactData) {
         body: JSON.stringify(contactData),
     });
 
-    return data;
+    return data?.contact ?? null;
 }
 
 export {

@@ -1,6 +1,7 @@
+import { ContactActions } from "@/components/pages/dashboard";
 import { InfoField, InfoFieldGroup } from "../fields";
 
-function ContactCard({ card }) {
+function ContactCard({ card, actions, showActions = false, onEdit, onDelete, disabled = false }) {
     return (
         <div className="contact-card">
             <h4 className="contact-card__title">{card.title}</h4>
@@ -21,6 +22,15 @@ function ContactCard({ card }) {
                     </InfoFieldGroup>
                 ))}                    
             </div>
+
+            {showActions && (
+                <ContactActions
+                    actions={actions}
+                    onEdit={() => onEdit(card.contact)}
+                    onDelete={() => onDelete(card.contact)}
+                    disabled={disabled}
+                />
+            )}
         </div>
     )
 }

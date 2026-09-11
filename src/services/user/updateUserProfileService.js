@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 async function updateUserProfileService(profileData) {
     const data = await apiFetch("/user/profile", {

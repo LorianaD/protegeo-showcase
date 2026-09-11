@@ -75,6 +75,10 @@ function formatContactFieldValue(field, contact) {
             return formatPhoneNumber(contact.phone);
         }
 
+        if (fieldName === "note") {
+            return contact.note || field.placeholder || "Non renseigné";
+        }
+
         return contact[fieldName] ?? "Non renseigné";
     }
 
@@ -133,6 +137,8 @@ function formatContactCards(contacts, cardTypes) {
             id: contact.id,
             title: card.title,
             fields,
+            note: contact.note ?? "",
+            notes: card.notes,
             contact,
         };
     });
@@ -169,6 +175,9 @@ function formatContactTableRows(contacts, contactType) {
         phone: formatPhoneNumber(contact.phone),
         email: contact.email ?? "Non renseigné",
         profession: contact.profession ?? "Non renseigné",
+
+        // Keeps the original API contact available for update and delete actions.
+        contact,
     }));
 
     return contactRows;

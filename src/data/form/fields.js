@@ -130,6 +130,15 @@ const fields = {
         required: true,
     },
 
+    contact_type_professional: {
+        name: "contact_type",
+        type: "select",
+        label: "Type de référent",
+        options: options.contact_type_professional,
+        placeholder: "Veuillez sélectionner le type de référent",
+        required: true,
+    },
+
     relation_type: {
         name: "relation_type",
         label: "Lien avec le protégé",
@@ -213,7 +222,7 @@ const fields = {
     },
 
     notes: {
-        name: "notes",
+        name: "note",
         label: "Observations générales",
         type: "textarea",
         placeholder: "Saisisez vos observation sur la situation"
@@ -233,6 +242,20 @@ const fields = {
         label: "Êtes-vous le représentant légal de cette personne ?",
         options: options.yes_no,
         required: true,
+    },
+
+    organization_name: {
+        name: "organization_name",
+        type: "text",
+        label: "Structure / Organisme",
+        placeholder: "",
+    },
+
+    job_function: {
+        name: "job_function",
+        type: "text",
+        label: "Service / Fonction",
+        placeholder: "",
     },
 
     bank_account_id: {
@@ -282,6 +305,7 @@ const fields = {
         placeholder: "Sélectionner un moyen de paiement",
         required: false,
     },
+
 };
 
 const familyContactFields = [

@@ -1,6 +1,7 @@
-import { DashboardSection, DashboardSectionLoading, FormField, InfoField, InfoFieldGroup, SectionContainer, SectionPageActions, Textarea, UpdateFormFooter } from "@/components/ui";
-import { useEditableForm, useProtectedPerson, useUpdateProtectedPerson } from "@/hooks";
-import { formatCivility, formatDate, formatMaritalStatus, formatPhoneNumber, getProtectedPersonPhoto, santizePhoneNumber } from "@/utils";
+import { Button, DashboardSection, DashboardSectionLoading, InfoField, InfoFieldGroup, UpdateFormFooter } from "@/components/ui";
+import { useEditableForm, useProtectedPerson, useProtectedPersonPhoto, useUpdateProtectedPerson, useUpdateProtectedPersonPhoto } from "@/hooks";
+import { formatCivility, formatDate, formatMaritalStatus, formatPhoneNumber, santizePhoneNumber } from "@/utils";
+import { useState } from "react";
 import { useOutletContext } from "react-router";
 
 function IdentifyDashboardProtectedProfile() {
@@ -20,9 +21,34 @@ function IdentifyDashboardProtectedProfile() {
 
     const { protectedPerson, loading, error, refreshProtectedPerson } = useProtectedPerson(dossierId);
 
+    const { photo, refreshPhoto } = useProtectedPersonPhoto(
+        dossierId,
+        protectedPerson,
+    );
+
     const { editing, formData, handleChange, handleEdit, handleCancel, closeEditing } = useEditableForm(fieldList, protectedPerson);
     
     const { updateProtectedPerson, updating, updateError } = useUpdateProtectedPerson();
+
+    const { uploadPhoto, deletePhoto, updatingPhoto, photoError } = useUpdateProtectedPersonPhoto();
+
+    const [selectedPhoto, setSelectedPhoto] = useState(null);
+
+    const [previewPhoto, setPreviewPhoto] = useState(null);
+
+    /**
+     * Stores the selected photo and creates a local preview.
+     */
+    function handlePhotoChange(event) {
+        const file = event.target.files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        setSelectedPhoto(file);
+        setPreviewPhoto(URL.createObjectURL(file));
+    }
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -30,7 +56,7 @@ function IdentifyDashboardProtectedProfile() {
         const data = {
             ...formData,
             phone_number: santizePhoneNumber(formData.phone_number),
-        }
+        };
 
         const updatedPerson = await updateProtectedPerson(dossierId, data);
 
@@ -38,7 +64,23 @@ function IdentifyDashboardProtectedProfile() {
             return;
         }
 
+        if (selectedPhoto) {
+            const updatedPhotoPerson = await uploadPhoto(
+                dossierId,
+                selectedPhoto,
+            );
+
+            if (!updatedPhotoPerson) {
+                return;
+            }
+        }
+
         await refreshProtectedPerson();
+        await refreshPhoto();
+
+        setSelectedPhoto(null);
+        setPreviewPhoto(null);
+
         closeEditing();
     }
 
@@ -88,21 +130,79 @@ function IdentifyDashboardProtectedProfile() {
         }))
     );
 
-    const photo = getProtectedPersonPhoto(
-        protectedPerson.photo_url,
-        protectedPerson.civility,
-    );
+    const formLoading = updating || updatingPhoto;
+    const formError = updateError || photoError;
+
+    /**
+     * Cancels the current edition and clears the selected photo.
+     */
+    function handleCancelEdit() {
+        if (previewPhoto) {
+            URL.revokeObjectURL(previewPhoto);
+        }
+
+        setSelectedPhoto(null);
+        setPreviewPhoto(null);
+
+        handleCancel();
+    }
+
+    /**
+     * Deletes the current protected person's photo and clears the preview.
+     */
+    async function handleDeletePhoto() {
+        const updatedPerson = await deletePhoto(dossierId);
+
+        if (!updatedPerson) {
+            return;
+        }
+
+        if (previewPhoto) {
+            URL.revokeObjectURL(previewPhoto);
+        }
+
+        setSelectedPhoto(null);
+        setPreviewPhoto(null);
+
+        await refreshProtectedPerson();
+        await refreshPhoto();
+    }
 
     return (
         <DashboardSection title={section.header.title} actionLabel={ editing ? null : section.header.btn_label } onAction={ handleEdit } variant="profile">
             <form onSubmit={handleSubmit} className="update-form">
                 <div className="info-list">
                     <div className="protected-profile-identity">
-                        <div className="protected-profile-identity__photo">
-                            <img
-                                src={photo}
-                                alt={`${identity.photo_alt} ${protectedPerson.firstname} ${protectedPerson.lastname}`}
-                            />
+                        <div className="protected-profile-identity__photo-container">
+                            <div className="protected-profile-identity__photo">
+                                <img
+                                    src={previewPhoto ?? photo}
+                                    alt={`${identity.photo_alt} ${protectedPerson.firstname} ${protectedPerson.lastname}`}
+                                />
+                            </div>
+
+                            {editing && (
+                                <div className="protected-profile-identity__photo-actions">
+                                    <label>
+                                        Modifier la photo
+                                        <input
+                                            type="file"
+                                            accept="image/jpeg,image/png,image/webp"
+                                            onChange={handlePhotoChange}
+                                        />
+                                    </label>
+
+                                    {protectedPerson.photo_url && (
+                                        <Button
+                                            label="Supprimer la photo"
+                                            type="button"
+                                            onClick={handleDeletePhoto}
+                                            disabled={updatingPhoto}
+                                            variant="danger"
+                                        />
+                                    )}
+                                </div>
+                            )}
                         </div>
 
                         <div className="protected-profile-identity__fields">
@@ -158,9 +258,9 @@ function IdentifyDashboardProtectedProfile() {
                     <UpdateFormFooter
                         cancelLabel={page.footer_form.btn_cancel_label}
                         submitLabel={page.footer_form.btn_recorded_label}
-                        onCancel={handleCancel}
-                        loading={updating}
-                        error={updateError}
+                        onCancel={handleCancelEdit}
+                        loading={formLoading}
+                        error={formError}
                     />
                 )}
             </form>

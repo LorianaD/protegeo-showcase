@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 /**
  * Updates an existing contact from the selected protected person's dossier.
@@ -9,7 +9,7 @@ async function updateContactService(dossierId, contactId, contactData) {
         body: JSON.stringify(contactData),
     });
 
-    return data;
+    return data?.contact ?? null;
 }
 
 export {

@@ -1,4 +1,4 @@
-// GETTER : READ
+// GET : READ
 export * from "./getTransactionsService";
 export * from "./getTransactionService";
 

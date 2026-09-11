@@ -59,7 +59,7 @@
 
 .badge-status--warning {
     border: 1px solid var(--orange);
-    background: rgba(--pale-orange);
+    background: var(--pale-orange);
 }
 
 .badge-status--danger {

@@ -14,7 +14,7 @@ function ActionsProtectedPersonsDashboard({page, protectedPersons = [], onAddDos
 
         if (hasManagementAccountToSubmit(measure)) {
             deadlines.push({
-                id: `management-account-${protectedPerson.dossier_id}`,
+                id: `management-account-${protectedPerson.id}`,
                 label: "Compte de gestion annuel",
                 fullname: fullname,
                 status: "À préparer",
@@ -24,7 +24,7 @@ function ActionsProtectedPersonsDashboard({page, protectedPersons = [], onAddDos
 
         if (isMeasureUrgent(measure)) {
             deadlines.push({
-                id: `measure-${protectedPerson.dossier_id}`,
+                id: `measure-${protectedPerson.id}`,
                 label: "Renouvellement de la mesure",
                 fullname: fullname,
                 status: "À prévoir",

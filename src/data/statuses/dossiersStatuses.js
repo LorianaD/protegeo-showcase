@@ -13,6 +13,11 @@ const measureStatuses = {
         label: "Terminée",
         variant: "finish",
     },
+
+    upcoming: {
+        label: "À venir",
+        variant: "warning",
+    },
 };
 
 export {

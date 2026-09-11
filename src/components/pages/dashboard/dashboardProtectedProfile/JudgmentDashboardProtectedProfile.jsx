@@ -1,5 +1,6 @@
 import { DashboardSection, InfoFieldGroup, InfoField, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
 import { useCurrentMeasure, useDossier, useEditableForm, useUpdateDossier, useUpdateMeasure } from "@/hooks";
+import { useLatestMeasure } from "@/hooks/measure/useLatestMeasure";
 import { formatDate, getMeasureDeadline, getMeasureLabel } from "@/utils";
 import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";
@@ -35,7 +36,7 @@ function JudgmentDashboardProtectedProfile () {
     ];
 
     const { dossier, loading: dossierLoading, error: dossierError, refreshDossier } = useDossier(dossierId);
-    const { measure, loading: measureLoading, error: measureError, refreshMeasure } = useCurrentMeasure(dossierId);
+    const { measure, loading: measureLoading, error: measureError, refreshMeasure } = useLatestMeasure(dossierId);
 
     const [initialData, setInitialData] = useState(null);
 

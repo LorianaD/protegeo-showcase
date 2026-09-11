@@ -1,7 +1,7 @@
 import { Input, Select } from "../fields";
 import { FormCard, FormField } from "../layout";
 
-function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
+function ContactForm({ form, fields, values = {}, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
 
     return (
         <FormCard
@@ -24,6 +24,7 @@ function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, 
                         <Select
                             name={field.name}
                             options={field.options}
+                            value={values[field.name] ?? ""}
                             onChange={onChange}
                             placeholder={field.placeholder}
                         />
@@ -31,6 +32,7 @@ function ContactForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, 
                         <Input
                             name={field.name}
                             type={field.type}
+                            value={values[field.name] ?? ""}
                             placeholder={field.placeholder}
                             onChange={onChange}
                         />

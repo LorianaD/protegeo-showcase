@@ -1,4 +1,4 @@
-import { apiFetch } from "../api";
+import { apiFetch } from "@/services";
 
 async function updateProtectedPersonService(dossierId, personData) {
     const data = await apiFetch(`/dossiers/${dossierId}/protected-person`, {
@@ -6,9 +6,9 @@ async function updateProtectedPersonService(dossierId, personData) {
         body: JSON.stringify(personData),
     });
 
-    return data;
+    return data?.protected_person ?? null;
 }
 
 export {
     updateProtectedPersonService,
-}
+};
