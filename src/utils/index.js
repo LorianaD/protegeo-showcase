@@ -5,3 +5,4 @@ export * from "./dossier";
 export * from "./protectedPerson";
 export * from "./protectionMeasure";
 export * from "./financialManagement";
+export * from "./contact";

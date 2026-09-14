@@ -139,6 +139,15 @@ const fields = {
         required: true,
     },
 
+    contact_type_organization: {
+        name: "contact_type",
+        type: "select",
+        label: "Type d’organisme",
+        options: options.contact_type_organization,
+        placeholder: "Veuillez sélectionner le type d’organisme",
+        required: true,
+    },
+
     relation_type: {
         name: "relation_type",
         label: "Lien avec le protégé",
@@ -225,7 +234,8 @@ const fields = {
         name: "note",
         label: "Observations générales",
         type: "textarea",
-        placeholder: "Saisisez vos observation sur la situation"
+        placeholder: "Saisisez vos observation sur la situation",
+        required: false,
     },
 
     gender : {
@@ -248,7 +258,8 @@ const fields = {
         name: "organization_name",
         type: "text",
         label: "Structure / Organisme",
-        placeholder: "",
+        placeholder: "Nom de la structure",
+        required: false,
     },
 
     job_function: {
@@ -319,6 +330,7 @@ const familyContactFields = [
     },
     {
         ...fields.address,
+        name: ["address", "postal_code", "city"],
     },
     {
         ...fields.phone_number,

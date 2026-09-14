@@ -8,6 +8,7 @@ export * from "./useAddContact";
 export * from "./useContactForm";
 export * from "./useFamilyContactForm";
 export * from "./useProfessionalContactForm";
+export * from "./useOrganizationContactForm";
 
 // UPDATE
 export * from "./useUpdateContact";

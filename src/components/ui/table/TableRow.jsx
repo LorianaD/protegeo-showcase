@@ -10,7 +10,7 @@ function TableRow({columns, row, variant}) {
     return (
         <tr className={tableBodyRowClass} style={gridStyle}>
             {columns.map((column) => {
-                const columnName = column.name ?? column.key;
+                const columnName = column.key ?? column.name;
 
                 const value = row[columnName];
 

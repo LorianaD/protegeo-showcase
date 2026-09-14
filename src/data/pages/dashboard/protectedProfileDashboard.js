@@ -52,7 +52,7 @@ const protectedProfileDashboard = {
                 active : Profile,
             },
             link_label : "Contacts utiles",
-            link_url : "",
+            link_url : "/dashboard/protected-profile/:reference/organization",
         },
     ],
 
@@ -278,6 +278,7 @@ const protectedProfileDashboard = {
                 {
                     key: "address",
                     label: "Adresse",
+                    name: ["address", "postal_code", "city"],
                 },
                 {
                     key: "phone",
@@ -314,6 +315,7 @@ const protectedProfileDashboard = {
                 {
                     key: "address",
                     label: "Adresse",
+                    name: ["address", "postal_code", "city"],
                 },
                 {
                     key: "phone",
@@ -350,6 +352,7 @@ const protectedProfileDashboard = {
                 {
                     key: "address",
                     label: "Adresse",
+                    name: ["address", "postal_code", "city"],
                 },
                 {
                     key: "phone",
@@ -408,6 +411,12 @@ const protectedProfileDashboard = {
                 },
                 {
                     ...fields.address,
+                },
+                {
+                    ...fields.postal_code,
+                },
+                {
+                    ...fields.city,
                 },
                 {
                     ...fields.phone_number,
@@ -564,6 +573,76 @@ const protectedProfileDashboard = {
             // },
         },
 
+        lawyer: {
+            title: "Avocat",
+
+            fields: [
+                {
+                    name: ["firstname", "lastname"],
+                    label: "Nom",
+                },
+                {
+                    name: "profession",
+                    label: "Spécialité",
+                },
+                {
+                    name: "organization_name",
+                    label: "Cabinet",
+                },
+                {
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
+                },
+                {
+                    name: "phone",
+                    label: "Téléphone",
+                },
+                {
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                },
+            ],
+        },
+
+        notary: {
+            title: "Notaire",
+
+            fields: [
+                {
+                    name: ["firstname", "lastname"],
+                    label: "Nom",
+                },
+                {
+                    name: "profession",
+                    label: "Fonction",
+                },
+                {
+                    name: "organization_name",
+                    label: "Étude notariale",
+                },
+                {
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
+                },
+                {
+                    name: "phone",
+                    label: "Téléphone",
+                },
+                {
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                },
+            ],
+        },
+
         form: {
             add: {
                 header: {
@@ -591,7 +670,63 @@ const protectedProfileDashboard = {
                 },
                 {
                     ...fields.profession,
-                    label: "Fonction / Spécialité",
+
+                    contactTypes: [
+                        "doctor",
+                        "lawyer",
+                        "notary",
+                    ],
+
+                    labels: {
+                        doctor: "Spécialité",
+                        lawyer: "Spécialité",
+                        notary: "Domaine d’intervention",
+                    },
+
+                    placeholders: {
+                        doctor: "ex. Médecin généraliste",
+                        lawyer: "ex. Droit de la famille",
+                        notary: "ex. Droit immobilier",
+                    },
+                },
+                {
+                    ...fields.job_function,
+
+                    contactTypes: [
+                        "social_worker",
+                        "professional_guardian",
+                    ],
+
+                    labels: {
+                        social_worker: "Service / Fonction",
+                        professional_guardian: "Fonction",
+                    },
+
+                    placeholders: {
+                        social_worker: "ex. Assistante sociale",
+                        professional_guardian: "ex. Mandataire judiciaire",
+                    },
+                },
+                {
+                    ...fields.organization_name,
+
+                    labels: {
+                        doctor: "Cabinet",
+                        social_worker: "Centre social / Structure",
+                        professional_guardian: "Structure",
+                        lawyer: "Cabinet",
+                        notary: "Étude notariale",
+                    },
+
+                    placeholders: {
+                        doctor: "ex. Cabinet médical des Acacias",
+                        social_worker: "ex. CCAS de Bordeaux",
+                        professional_guardian: "ex. Association tutélaire",
+                        lawyer: "ex. Cabinet Dupont",
+                        notary: "ex. Étude notariale Oudgedy",
+                    },
+
+                    required: false,
                 },
                 {
                     ...fields.address,
@@ -612,6 +747,7 @@ const protectedProfileDashboard = {
                 },
                 {
                     ...fields.notes,
+                    required: false,
                     variant: "textarea",
                 }
             ],
@@ -619,132 +755,225 @@ const protectedProfileDashboard = {
     },
 
     organization : {
-        header : {
-            title : "Contacts utiles",
-            btn_label : "Modifier",
-            btn_link : "",
+        header: {
+            title: "Contacts utiles",
+            btn_label: "Modifier",
+            btn_link: "",
+            btn_label_add: "Ajouter",
+            btn_link_add: "",
         },
-        caf : {
-            title : "CAF",
-            fields : [
-                {
-                    label : "Organisme",
-                    value : "CAF de la Gironde",
-                },
-                {
-                    label : "Adresse",
-                    value : "CAF de la Gironde,\n 33100 Bordeaux Cedex",
-                },
-                {
-                    label : "Identifiant",
-                    value : "XXXXXXXXXXXX",
-                }
-            ],
 
-            notes : {
-                label : "Observations générales",
-                value : "",
+        actions: {
+            column_label: "Actions",
+
+            edit: {
+                label: "Modifier",
+                variant: "secondary",
+            },
+
+            delete: {
+                label: "Supprimer",
+                variant: "danger",
             },
         },
 
-        mdph : {
-            title : "MDPH",
-            fields : [
+        caf: {
+            title: "CAF",
+
+            fields: [
                 {
-                    label : "Organisme",
-                    value : "MDPH de la Gironde",
+                    name: "organization_name",
+                    label: "Organisme",
                 },
                 {
-                    label : "Adresse",
-                    value : "MDPH de la Gironde, \n 33000 Bordeaux",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "Identifiant",
-                    value : "XXXXXXXXXXXX",
-                }
+                    name: "identifier",
+                    label: "N° allocataire",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                },
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
-            },
         },
 
-        cpam : {
-            title : "CPAM",
-            fields : [
+        mdph: {
+            title: "MDPH",
+
+            fields: [
                 {
-                    label : "Organisme",
-                    value : "CPAM de la Gironde",
+                    name: "organization_name",
+                    label: "Organisme",
                 },
                 {
-                    label : "Adresse",
-                    value : "CPAM de la Gironde, \n 33000 Bordeaux",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "N° Sécurité Sociale",
-                    value : "2 97 04 99 XXX XXX XX",
+                    name: "identifier",
+                    label: "N° de dossier",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
                 },
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
-            },
         },
 
-        tax : {
-            title : "Service des impôts",
-            fields : [
+        cpam: {
+            title: "CPAM",
+
+            fields: [
                 {
-                    label : "Organisme",
-                    value : "CENTRE DES FINANCES PUBLIQUES",
+                    name: "organization_name",
+                    label: "Organisme",
                 },
                 {
-                    label : "Adresse",
-                    value : "CENTRE DES FINANCES PUBLIQUES \n SIP PESSAC TALENCE \n SAID PESSAC-TALENCE \n RUE JULES FERRY \n 33090 BORDEAUX CEDEX",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "N° Fiscal",
-                    value : "XX XX XXX XXX XXX",
+                    name: "identifier",
+                    label: "N° de Sécurité sociale",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
                 },
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
-            },
         },
 
-        bank : {
-            title : "Banque principale",
-            fields : [
+        tax_office: {
+            title: "Service des impôts",
+
+            fields: [
                 {
-                    label : "Agence",
-                    value : "Banque",
+                    name: "organization_name",
+                    label: "Service",
                 },
                 {
-                    label : "Conseillé",
-                    value : "Nom Prénom",
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
                 },
                 {
-                    label : "Adresse",
-                    value : "Agence de Gradignan, \n 33170 Gradignan",
+                    name: "identifier",
+                    label: "N° fiscal",
                 },
                 {
-                    label : "Téléphone",
-                    value : "XX XX XX XX XX",
-                },
-                {
-                    label : "Adresse électronique",
-                    value : "banque@example.com",
+                    ...fields.notes,
+                    variant: "textarea",
                 },
             ],
-            
-            notes : {
-                label : "Observations générales",
-                value : "",
+        },
+
+        bank: {
+            title: "Banque principale",
+
+            fields: [
+                {
+                    name: "organization_name",
+                    label: "Agence",
+                },
+                {
+                    name: "contact_person",
+                    label: "Conseiller",
+                },
+                {
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
+                },
+                {
+                    name: "phone",
+                    label: "Téléphone",
+                },
+                {
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                },
+            ],
+        },
+
+        other_organization: {
+            title: "Autre organisme",
+
+            fields: [
+                {
+                    name: "organization_name",
+                    label: "Organisme",
+                },
+                {
+                    name: "contact_person",
+                    label: "Personne à contacter",
+                },
+                {
+                    name: ["address", "postal_code", "city"],
+                    label: "Adresse",
+                },
+                {
+                    name: "phone",
+                    label: "Téléphone",
+                },
+                {
+                    name: "email",
+                    label: "Adresse électronique",
+                },
+                {
+                    ...fields.notes,
+                    variant: "textarea",
+                },
+            ],
+        },
+
+        form: {
+            add: {
+                header: {
+                    title: "Ajouter un organisme",
+                    description: "Renseignez les informations concernant l’organisme.",
+                },
             },
+
+            edit: {
+                header: {
+                    title: "Modifier un organisme",
+                    description: "Modifiez les informations concernant l’organisme.",
+                },
+            },
+
+            fields: [
+                {
+                    ...fields.contact_type_organization,
+                },
+                {
+                    ...fields.organization_name,
+                    required: true,
+                },
+                {
+                    ...fields.address,
+                },
+                {
+                    ...fields.postal_code,
+                },
+                {
+                    ...fields.city,
+                },
+                {
+                    ...fields.phone_number,
+                    name: "phone",
+                    required: false,
+                },
+                {
+                    ...fields.notes,
+                    required: false,
+                    variant: "textarea",
+                },
+            ],
         },
     },
 

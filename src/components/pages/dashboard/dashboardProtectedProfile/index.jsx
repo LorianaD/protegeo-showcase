@@ -4,5 +4,6 @@ export { default as IdentifyDashboardProtectedProfile } from "./IdentifyDashboar
 export { default as JudgmentDashboardProtectedProfile } from "./JudgmentDashboardProtectedProfile";
 export { default as FamilyDashboardProtectedProfile } from "./FamilyDashboardProtectedProfile";
 export { default as ProfessionalContactsDashboardProtectedProfile } from "./ProfessionalContactsDashboardProtectedProfile";
+export { default as OrganizationContactsDashboardProtectedProfile } from "./OrganizationContactsDashboardProtectedProfile";
 
 export * from "./contacts";

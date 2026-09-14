@@ -1,44 +1,45 @@
-import { useContactManagement, useContacts, useProfessionalContactForm, useProtectedPerson } from "@/hooks";
-import { formatContactCards, sortProfessionalContacts } from "@/utils";
+import { ContactFormModal, DashboardSection, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
+import { useContactManagement, useContacts, useOrganizationContactForm, useProtectedPerson } from "@/hooks";
+import { formatContactCards, sortOrganizationContacts } from "@/utils";
 import { useOutletContext } from "react-router";
 import { ContactCardList } from "./contacts";
-import { ContactFormModal, DashboardSection, DashboardSectionLoading, UpdateFormFooter } from "@/components/ui";
 
-function ProfessionalContactsDashboardProtectedProfile() {
+function OrganizationContactsDashboardProtectedProfile() {
     const { page, dossierId } = useOutletContext();
 
-    const section = page.professional_contacts;
+    const section = page.organization;
 
     const { protectedPerson, loading: protectedPersonLoading, error: protectedPersonError, refreshProtectedPerson } = useProtectedPerson(dossierId);
 
-    const { contacts, isLoading, error, refreshContacts } = useContacts(dossierId, "professional");
+    const { contacts, isLoading, error, refreshContacts } = useContacts(dossierId, "organization");
 
     const cardTypes = {
-        doctor: section.general_practitioner,
-        social_worker: section.social_worker,
-        professional_guardian: section.trustee,
-        lawyer: section.lawyer,
-        notary: section.notary,
+        caf: section.caf,
+        cpam: section.cpam,
+        mdph: section.mdph,
+        tax_office: section.tax_office,
+        bank: section.bank,
+        other_organization: section.other_organization,
     };
 
-    const orderedContacts = sortProfessionalContacts(contacts);
+    const orderedContacts = sortOrganizationContacts(contacts);
 
     const cards = formatContactCards(
         orderedContacts,
         cardTypes
-    ); 
+    );
 
-    const { 
-        isContactModalOpen, 
-        contactFormData, 
-        contactFormFields, 
-        isAdding, 
-        addError, 
-        handleOpenContactModal, 
-        handleCloseContactModal, 
-        handleContactChange, 
-        handleContactSubmit 
-    } = useProfessionalContactForm(dossierId, section.form, refreshContacts);
+    const {
+        isContactModalOpen,
+        contactFormData,
+        contactFormFields,
+        isAdding,
+        addError,
+        handleOpenContactModal,
+        handleCloseContactModal,
+        handleContactChange,
+        handleContactSubmit,
+    } = useOrganizationContactForm(dossierId, section.form, refreshContacts);
 
     const {
         isManagingContacts,
@@ -48,22 +49,16 @@ function ProfessionalContactsDashboardProtectedProfile() {
         isUpdating,
         updateError,
         isDeleting,
-
-        isEditingObservation,
-        observationValue,
         updatingObservation,
         observationError,
-
         handleStartManagement,
         handleCancelManagement,
         handleSubmitManagement,
-
         handleOpenEditModal,
         handleCloseEditModal,
         handleEditChange,
         handleUpdateContact,
         handleDeleteContact,
-        handleObservationChange,
     } = useContactManagement({ dossierId, protectedPerson, refreshProtectedPerson, refreshContacts });
 
     const loading = isLoading || protectedPersonLoading;
@@ -72,7 +67,7 @@ function ProfessionalContactsDashboardProtectedProfile() {
     if (loading) {
         return (
             <DashboardSectionLoading
-                section={section} 
+                section={section}
                 page={page}
             />
         );
@@ -83,17 +78,27 @@ function ProfessionalContactsDashboardProtectedProfile() {
             <DashboardSection title={section.header.title}>
                 <p>{pageError}</p>
             </DashboardSection>
-        )
+        );
     }
 
     return (
         <>
-            <DashboardSection title={section.header.title} actionLabel={isManagingContacts ? null : section.header.btn_label} addLabel={section.header.btn_label_add} onAction={handleStartManagement} onAdd={handleOpenContactModal} variant="profile">
+            <DashboardSection
+                title={section.header.title}
+                actionLabel={isManagingContacts ? null : section.header.btn_label}
+                addLabel={section.header.btn_label_add}
+                onAction={handleStartManagement}
+                onAdd={handleOpenContactModal}
+                variant="profile"
+            >
                 {contacts.length === 0 ? (
-                    <p>Aucun référent professionnel trouvé.</p>
+                    <p>Aucun organisme trouvé.</p>
                 ) : (
-                    <form className="update-form" onSubmit={handleSubmitManagement} >
-                        <div className="">
+                    <form
+                        className="update-form"
+                        onSubmit={handleSubmitManagement}
+                    >
+                        <div className="contact-card-list-container">
                             <ContactCardList
                                 contactCards={cards}
                                 actions={section.actions}
@@ -128,7 +133,7 @@ function ProfessionalContactsDashboardProtectedProfile() {
                     onChange={handleContactChange}
                     onClose={handleCloseContactModal}
                     onSubmit={handleContactSubmit}
-                    category="professional"
+                    category="organization"
                     cancelLabel={page.footer_form.btn_cancel_label}
                     submitLabel={page.footer_form.btn_recorded_label}
                     loading={isAdding}
@@ -147,7 +152,7 @@ function ProfessionalContactsDashboardProtectedProfile() {
                     onChange={handleEditChange}
                     onClose={handleCloseEditModal}
                     onSubmit={handleUpdateContact}
-                    category="professional"
+                    category="organization"
                     cancelLabel={page.footer_form.btn_cancel_label}
                     submitLabel={page.footer_form.btn_recorded_label}
                     loading={isUpdating}
@@ -155,7 +160,7 @@ function ProfessionalContactsDashboardProtectedProfile() {
                 />
             )}
         </>
-    )
+    );
 }
 
-export default ProfessionalContactsDashboardProtectedProfile;
+export default OrganizationContactsDashboardProtectedProfile;

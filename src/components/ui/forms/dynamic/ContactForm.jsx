@@ -3,6 +3,28 @@ import { FormCard, FormField } from "../layout";
 
 function ContactForm({ form, fields, values = {}, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
 
+    const selectedContactType = values.contact_type;
+
+    const preparedFields = fields
+        .filter((field) => {
+            if (!field.contactTypes) {
+                return true;
+            }
+
+            return field.contactTypes.includes(selectedContactType);
+        })
+        .map((field) => ({
+            ...field,
+
+            label:
+                field.labels?.[selectedContactType]
+                ?? field.label,
+
+            placeholder:
+                field.placeholders?.[selectedContactType]
+                ?? field.placeholder,
+        }));
+
     return (
         <FormCard
             description={form.header.description}
@@ -11,7 +33,7 @@ function ContactForm({ form, fields, values = {}, onChange, onCancel, onSubmit, 
             onSubmit={onSubmit}
             onCancel={onCancel}
         >
-            {fields.map((field) => (
+            {preparedFields.map((field) => (
                 <FormField
                     key={field.name}
                     name={field.name}

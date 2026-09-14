@@ -59,6 +59,8 @@ Sections Hero
     gap: var(--space-xl);
     justify-content: space-between;
     align-items: flex-start;
+
+    width: 100%;
 }
 
 .hero-container__header {
