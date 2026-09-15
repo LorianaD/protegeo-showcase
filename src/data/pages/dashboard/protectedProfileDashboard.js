@@ -744,6 +744,7 @@ const protectedProfileDashboard = {
                 {
                     ...fields.email,
                     label: "Adresse électronique",
+                    required: false,
                 },
                 {
                     ...fields.notes,

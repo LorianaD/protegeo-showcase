@@ -236,6 +236,7 @@ const fields = {
         type: "textarea",
         placeholder: "Saisisez vos observation sur la situation",
         required: false,
+        variant: "textarea",
     },
 
     gender : {

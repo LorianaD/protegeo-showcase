@@ -7,7 +7,7 @@ function Textarea({ name , placeholder, value, onChange,  }) {
             className="form-textarea"
             value={ value }
             onChange={ onChange }
-        />
+        ></textarea>
     )
 }
 

@@ -1,4 +1,4 @@
-import { Input, Select } from "../fields";
+import { Input, Select, Textarea } from "../fields";
 import { FormCard, FormField } from "../layout";
 
 function ContactForm({ form, fields, values = {}, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
@@ -49,6 +49,13 @@ function ContactForm({ form, fields, values = {}, onChange, onCancel, onSubmit, 
                             value={values[field.name] ?? ""}
                             onChange={onChange}
                             placeholder={field.placeholder}
+                        />
+                    ) : field.type === "textarea" ? (
+                        <Textarea
+                            name={field.name}
+                            value={values[field.name] ?? ""}
+                            placeholder={field.placeholder}
+                            onChange={onChange}
                         />
                     ) : (
                         <Input

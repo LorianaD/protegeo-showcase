@@ -2,7 +2,7 @@ import { Input, Select, Textarea } from "../forms";
 
 function InfoField({ label, value, editing = false, name, type = "text", onChange, variant, options = [], placeholder }) {
     const hasOptions = options.length > 0;
-    const isTextarea = type === "textarea";
+    const isTextarea = type === "textarea" || variant === "textarea";
 
     function renderEditableField() {
         if (hasOptions) {
