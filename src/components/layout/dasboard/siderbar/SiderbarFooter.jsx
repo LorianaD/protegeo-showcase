@@ -1,7 +1,7 @@
 import { siderbarDashboard } from "@/data";
 import { useUser } from "@/hooks";
 import { logout } from "@/services";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 
 function SiderbarFooter() {
     const section = siderbarDashboard.footer;
@@ -35,11 +35,22 @@ function SiderbarFooter() {
                     </p>
                 </div>
             </div>
+
+            <Link to="/" className="siderbar-footer__back-site">
+                <span className="siderbar-footer__back-site-label">
+                    {section.btn_back_site}
+                </span>
+
+                <div className="siderbar-footer__back-site-icon">
+                    <img src={section.btn_back_icon} alt="" />
+                </div>
+            </Link>
+
             <button className="siderbar-footer__logout" type="button" onClick={handleLogout}>
                 <span className="siderbar-footer__logout-label">
                     {section.btn_label}
                 </span>
-                <div className="siderbar-footer_logout-icon">
+                <div className="siderbar-footer__logout-icon">
                     <img src={section.btn_icon} alt={section.btn_label} />
                 </div>
             </button>

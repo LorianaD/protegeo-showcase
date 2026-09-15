@@ -130,6 +130,8 @@ const siderbarDashboard = {
     footer : {
         btn_label : "Se déconnecter",
         btn_icon : logOut,
+        btn_back_site : "Retour au site",
+        btn_back_icon: dashboardHome,
     }
 }
 

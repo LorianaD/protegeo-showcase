@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router";
 import { MainLayout } from "../components";
 import { About, Community, Contact, ContactUs, Discover, Faq, Helps, Home, Measure, Steps, Templates } from "@/pages/public";
 import { CookiePolicy, LegalNotice, PrivacyPolicy, Sitemap } from "@/pages/legal";
+import NotFound from "@/pages/NotFound";
 
 function PublicRoutes() {
     return (
@@ -24,6 +25,8 @@ function PublicRoutes() {
                 <Route path="privacy-policy" element={<PrivacyPolicy/>}/>
                 <Route path="cookies" element={<CookiePolicy/>}/>
                 <Route path="sitemap" element={<Sitemap/>}/>
+
+                <Route path="*" element={<NotFound/>}/>
             </Route>
         </Routes>
     )
