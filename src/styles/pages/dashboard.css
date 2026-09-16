@@ -13,10 +13,35 @@
 
 .account-stats {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    /* gap: 50px; */
+    gap: 50px;
     width: 100%;
+}
+
+.account-stats--main {
+    justify-content: space-between;
+}
+
+.account-stats--categories {
+    display: grid;
+    width: 100%;
+    gap: var(--space-xl);
+}
+
+.account-stats--categories .stat-card {
+    min-width: 0;
+}
+
+.account-stats--resources {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.account-stats--expenses {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.account-stats--banks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .account-summary-status {
@@ -25,6 +50,194 @@
     gap: 20px;
     width: 100%;
 }
+
+.select-month__container {
+    display: flex;
+    padding: 0 30px;
+    align-items: center;
+    gap: 30px;
+}
+
+/* ***********************************
+    FINANCIAL TABLE SECTION
+*********************************** */
+
+.dashboard-table-section--resources,
+.dashboard-table-section--expenses {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-sm);
+
+    width: 100%;
+    padding: var(--space-xl);
+
+    border-radius: var(--radius-lg);
+    background-color: var(--white);
+}
+
+.dashboard-table-section--resources {
+    border: 1px solid var(--pale-green);
+}
+
+.dashboard-table-section--expenses {
+    border: 1px solid var(--pale-red);
+}
+
+.dashboard-table-section__header--resources,
+.dashboard-table-section__header--expenses {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+}
+
+.dashboard-table-section__title--resources,
+.dashboard-table-section__title--expenses {
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+}
+
+.dashboard-table-section__title--resources {
+    color: var(--color-primary);
+}
+
+.dashboard-table-section__title--expenses {
+    color: var(--red);
+}
+
+
+/* ***********************************
+    FINANCIAL TABLE
+*********************************** */
+
+.dashboard-table--resources,
+.dashboard-table--expenses {
+    width: 100%;
+    padding: 0;
+    gap: 0;
+
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.dashboard-table--resources {
+    border: 1px solid var(--pale-green);
+}
+
+.dashboard-table--expenses {
+    border: 1px solid var(--pale-red);
+}
+
+
+/* Table header */
+
+.dashboard-table--resources .table-header,
+.dashboard-table--expenses .table-header {
+    display: block;
+    width: 100%;
+}
+
+.table-header__row--resources,
+.table-header__row--expenses {
+    padding: var(--space-lg) 0;
+}
+
+.table-header__row--resources {
+    background-color: var(--pale-green);
+}
+
+.table-header__row--expenses {
+    background-color: var(--pale-red);
+}
+
+.table-header__row--resources .table-header__item,
+.table-header__row--expenses .table-header__item {
+    padding: 0 var(--space-sm);
+
+    font-family: var(--font-primary);
+    font-size: var(--text-lg);
+    font-weight: var(--weight-bold);
+    line-height: var(--line-text);
+    text-align: center;
+}
+
+.table-header__row--resources .table-header__item {
+    color: var(--dark-green);
+}
+
+.table-header__row--expenses .table-header__item {
+    color: var(--red);
+}
+
+
+/* Table body */
+
+.dashboard-table--resources .table-body,
+.dashboard-table--expenses .table-body {
+    width: 100%;
+    gap: 0;
+}
+
+.table-body__row--resources,
+.table-body__row--expenses {
+    padding: var(--space-sm) var(--space-sm) var(--space-sm) 30px;
+
+    border-radius: 0;
+    background-color: var(--white);
+}
+
+.table-body__row--resources {
+    border: 1px solid var(--pale-green);
+}
+
+.table-body__row--expenses {
+    border: 1px solid var(--pale-red);
+}
+
+.table-body__row--resources .table-body__item,
+.table-body__row--expenses .table-body__item {
+    width: 100%;
+    padding: 0;
+
+    font-size: var(--text-base);
+}
+
+.table-body__row--resources .table-body__item:last-child,
+.table-body__row--expenses .table-body__item:last-child {
+    text-align: right;
+}
+
+
+/* ***********************************
+    FINANCIAL TOTAL
+*********************************** */
+
+.dashboard-total--resources,
+.dashboard-total--expenses {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    padding: var(--space-sm);
+
+    border-radius: var(--radius-sm);
+}
+
+.dashboard-total--resources {
+    color: var(--dark-green);
+    background-color: var(--pale-green);
+}
+
+.dashboard-total--expenses {
+    color: var(--red);
+    background-color: var(--pale-red);
+}
+
+
 
 /*******************************
 ********** Responsive **********

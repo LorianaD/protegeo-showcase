@@ -32,6 +32,11 @@
     border: 2px solid var(--red);
 }
 
+.button--edit {
+    border: 1px solid #D9E4EE;
+    background: #FBFDFF;
+}
+
 .button--secondary:hover {
     box-shadow: 2px 2px 10px -2px var(--color-secondary);
 }

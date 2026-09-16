@@ -6,6 +6,7 @@ function StatsSection({ stats = [], className = "" }) {
             {stats.map((stat) => (
                 <StatCard
                     key={stat.title}
+                    img={stat.img}
                     title={stat.title}
                     data={stat.data}
                     description={stat.description}

@@ -1,7 +1,9 @@
 export { default as HeroDashboard } from "./HeroDashboard";
 export { default as TabsDashboard } from "./TabsDashboard";
+
 export { default as ProtectedPersonSelect } from "./ProtectedPersonSelect";
 export { default as YearSelect } from "./YearSelect";
+export { default as MonthSelect } from "./MonthSelect";
 
 export * from "./dashboardHome";
 export * from "./dashboardProtectedPersons";

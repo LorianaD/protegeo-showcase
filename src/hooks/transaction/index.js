@@ -10,3 +10,4 @@ export * from "./useUpdateTransaction";
 
 // INTERFACE STATE
 export * from "./useTransactionModal";
+export * from "./useTransactionAccordion";

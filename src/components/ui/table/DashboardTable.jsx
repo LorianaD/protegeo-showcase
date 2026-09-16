@@ -6,7 +6,7 @@ function DashboardTable({ columns = [], rows = [], emptyMessage = "Aucune donné
     
     return (
         <table className={tableClassName}>
-            <TableHeader columns={columns} />
+            <TableHeader columns={columns} variant={variant} />
             <TableBody
                 columns={columns}
                 rows={rows}

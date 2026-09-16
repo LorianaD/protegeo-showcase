@@ -14,5 +14,7 @@ export { default as SectionPageActions } from "./SectionPageActions";
 export { default as DashboardSection } from "./DashboardSection";
 export { default as SectionActionList } from "./SectionActionList";
 export { default as SectionDeadlineList } from "./SectionDeadlineList";
+export { default as DashboardSectionHeader } from "./DashboardSectionHeader";
+export { default as DashboardTableSection } from "./DashboardTableSection";
 
 export { default as DashboardSectionLoading } from "./DashboardSectionLoading";

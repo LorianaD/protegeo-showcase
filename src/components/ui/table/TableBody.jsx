@@ -1,3 +1,4 @@
+import { useTransactionAccordion } from "@/hooks";
 import TableRow from "./TableRow";
 
 function TableBody({ columns = [], rows = [], emptyMessage = "Aucune donnée enregistrée.", variant = "default" }) {
