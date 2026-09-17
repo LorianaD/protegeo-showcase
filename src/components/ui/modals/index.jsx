@@ -4,3 +4,4 @@ export { default as ContactFormModal } from "./ContactFormModal";
 
 export { default as AddDossierModal } from "./AddDossierModal";
 export { default as TransactionFormModal } from "./TransactionFormModal";
+export { default as ManagementAccountFormModal } from "./ManagementAccountFormModal";

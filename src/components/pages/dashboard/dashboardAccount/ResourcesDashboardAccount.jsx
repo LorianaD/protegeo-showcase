@@ -1,10 +1,12 @@
 import { useOutletContext } from "react-router";
 import { DashboardSection, DashboardSectionHeader, DashboardTableSection, StatsSection } from "@/components/ui";
-import { formatCurrency, formatLongDate, formatResourceRows, formatResourceStats, getTransactionCategoryGroupTotal } from "@/utils";
+import { formatCurrency, formatFinancialStats, formatLongDate, formatResourceRows, getTransactionCategoryGroupTotal } from "@/utils";
 
 function ResourcesDashboardAccount() {
     const {
         page,
+        year,
+        monthLabel,
         isAnnualView,
         displayedTransactions,
         monthUpdateDate,
@@ -13,6 +15,21 @@ function ResourcesDashboardAccount() {
     } = useOutletContext();
 
     const section = page.resources;
+
+    const {
+        currentMonth,
+        annual,
+        ...otherDescriptions
+    } = section.header.description;
+
+    const currentPeriodDescription = isAnnualView
+        ? `${annual} ${year}.`
+        : `${currentMonth} ${monthLabel}.`;
+
+    const descriptions = {
+        currentPeriod: currentPeriodDescription,
+        ...otherDescriptions,
+    };
 
     const statsData = {
         previousMonthResources:
@@ -27,7 +44,7 @@ function ResourcesDashboardAccount() {
         ...monthlyFinancialData.resources,
     };
 
-    const mainStats = formatResourceStats(
+    const mainStats = formatFinancialStats(
         section.mainStats,
         statsData,
         {
@@ -56,7 +73,7 @@ function ResourcesDashboardAccount() {
             );
     });
 
-    const categoryStats = formatResourceStats(
+    const categoryStats = formatFinancialStats(
         section.categoryStats,
         categoryStatsData,
         formatLongDate(monthUpdateDate)
@@ -86,14 +103,16 @@ function ResourcesDashboardAccount() {
         <DashboardSection>
             <DashboardSectionHeader
                 title={section.header.title}
-                descriptions={section.header.description}
+                descriptions={descriptions}
                 variant="transaction"
             />
 
-            <StatsSection
-                stats={mainStats}
-                className="account-stats account-stats--main"
-            />
+            {!isAnnualView && (
+                <StatsSection
+                    stats={mainStats}
+                    className="account-stats account-stats--main"
+                />
+            )}
 
             <StatsSection
                 stats={categoryStats}

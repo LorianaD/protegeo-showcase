@@ -1,19 +1,38 @@
-import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
-import { financialManagementDashboard } from "@/data";
-import { useBankAccounts, useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountYear, useTransactions } from "@/hooks";
+import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, ManagementAccountFormModal, ManagementAccountPeriod, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
+import { addManagementAccountForm, financialManagementDashboard } from "@/data";
+import { useBankAccounts, useCreateManagementAccount, useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountModal, useManagementAccountYear, useTransactions } from "@/hooks";
 import { useOutletContext, useParams } from "react-router";
 
 function FinancialManagement() {
     const {reference} = useParams();
 
-    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey } = useOutletContext();
+    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey, managementAccountRefreshKey, refreshManagementAccounts } = useOutletContext();
 
     const page = financialManagementDashboard;
     const variantClass = "dashboard";
 
     const {dossierId, isLoading: dossierLoading, error: dossierError} = useDossierByReference(reference);
 
-    const { managementAccountId, year, yearOptions, handleYearChange, loading: yearLoading, error: yearError } = useManagementAccountYear(dossierId);
+    const { 
+        managementAccount, 
+        managementAccountId, 
+        selectedManagementAccountId, 
+        year, 
+        yearOptions, 
+        handleYearChange, 
+        loading: yearLoading, 
+        error: yearError 
+    } = useManagementAccountYear(dossierId, managementAccountRefreshKey);
+
+    const { isManagementAccountModalOpen, managementAccountValues, openManagementAccountModal, closeManagementAccountModal, handleManagementAccountChange } = useManagementAccountModal();
+
+    const { createManagementAccount, loading: managementAccountCreationLoading, error: managementAccountCreationError } = useCreateManagementAccount();
+
+    const managementAccountFields =
+        addManagementAccountForm.fields.map((field) => ({
+            ...field,
+            value: managementAccountValues[field.name] ?? "",
+        }));
 
     const { bankAccounts, loading: bankAccountsLoading, error: bankAccountsError } = useBankAccounts(dossierId);
 
@@ -33,6 +52,11 @@ function FinancialManagement() {
     const error = dossierError || yearError || transactionsError || statsError || chartsError;
 
     function handleQuickAction(actionName) {
+        if (actionName === "addManagementAccount") {
+            openManagementAccountModal();
+            return;
+        }
+
         if (actionName === "addExpense") {
             openTransactionModal({
                 transactionType: "expense",
@@ -54,11 +78,25 @@ function FinancialManagement() {
         }
     }
 
+    async function handleManagementAccountSubmit() {
+        try {
+            await createManagementAccount(
+                dossierId,
+                managementAccountValues
+            );
+
+            closeManagementAccountModal();
+            refreshManagementAccounts();
+        } catch {
+            // The hook stores the error displayed by the modal.
+        }
+    }
+
     if (loading) {
         return (
             <Main variant={variantClass}>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+                    <HeroDashboard page={page} year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
 
                     <DashboardSectionLoading
                         page={page}
@@ -80,7 +118,7 @@ function FinancialManagement() {
         return (
             <Main variant={variantClass}>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+                    <HeroDashboard page={page} year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
 
                     <DashboardSection>
                         <p>{page.messages.error}</p>
@@ -100,7 +138,9 @@ function FinancialManagement() {
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={page} year={year} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+                <HeroDashboard page={page} year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} yearLoading={yearLoading} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+
+                <ManagementAccountPeriod section={page.period} managementAccount={managementAccount}/>
 
                 {!loading && !error && (
                     <StatsDashboardFinancialManagement page={page} statsData={statsData}/>
@@ -116,6 +156,18 @@ function FinancialManagement() {
             />
 
             <SectionPageActions section={page.actions} />
+
+            {isManagementAccountModalOpen && (
+                <ManagementAccountFormModal
+                    form={addManagementAccountForm}
+                    fields={managementAccountFields}
+                    onChange={handleManagementAccountChange}
+                    onClose={closeManagementAccountModal}
+                    onSubmit={handleManagementAccountSubmit}
+                    loading={managementAccountCreationLoading}
+                    error={managementAccountCreationError}
+                />
+            )}
         </Main>
     )
 }

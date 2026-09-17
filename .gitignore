@@ -27,3 +27,6 @@ dist-ssr
 desktop.ini
 
 .env
+
+CLAUDE.md
+AGENTS.md

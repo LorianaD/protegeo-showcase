@@ -318,6 +318,21 @@ const fields = {
         required: false,
     },
 
+    management_account_year: {
+        name: "year",
+        type: "number",
+        label: "Année du compte",
+        placeholder: "Ex. 2026",
+        required: true,
+    },
+
+    management_account_note: {
+        name: "note",
+        type: "textarea",
+        label: "Note",
+        placeholder: "Ajouter une note facultative",
+        required: false,
+    },
 };
 
 const familyContactFields = [

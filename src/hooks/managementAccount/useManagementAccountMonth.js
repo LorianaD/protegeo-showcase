@@ -1,53 +1,44 @@
 import { useEffect, useState } from "react";
-import {
-    getMonthlyTransactions,
-    getMonthlyUpdateDate,
-    getPreviousMonth,
-} from "@/utils";
+import { getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth } from "@/utils";
 
-function useManagementAccountMonth(
-    year,
-    page,
-    transactions = []
-) {
-    const months = page.monthNav.months;
-
+function useManagementAccountMonth(managementAccount, page, transactions = []) {
     const [month, setMonth] = useState("");
 
-    const monthOptions = year ? months.map((monthOption) => ({
-            value: monthOption.value === "annual"
-                ? "annual"
-                : `${year}-${String(monthOption.value).padStart(2, "0")}`,
-
-            label: `${monthOption.label} ${year}`,
-        })) : [];
+    const monthOptions = getManagementAccountMonthOptions(
+        managementAccount,
+        page.monthNav.months
+    );
 
     function handleMonthChange(event) {
         setMonth(event.target.value);
     }
 
     function getDefaultMonth() {
-        if (!year) {
+        if (!managementAccount) {
             return "";
         }
 
         const currentDate = new Date();
-        const currentYear = currentDate.getFullYear();
 
-        if (Number(year) !== currentYear) {
-            return "annual";
+        const currentMonth = [
+            currentDate.getFullYear(),
+            String(currentDate.getMonth() + 1).padStart(2, "0"),
+        ].join("-");
+
+        const currentMonthExists = monthOptions.some(
+            (monthOption) => monthOption.value === currentMonth
+        );
+
+        if (currentMonthExists) {
+            return currentMonth;
         }
 
-        const currentMonth = String(
-            currentDate.getMonth() + 1
-        ).padStart(2, "0");
-
-        return `${year}-${currentMonth}`;
+        return "annual";
     }
 
     useEffect(() => {
         setMonth(getDefaultMonth());
-    }, [year]);
+    }, [managementAccount?.id]);
 
     const isAnnualView = month === "annual";
 

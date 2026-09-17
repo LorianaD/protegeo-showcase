@@ -18,3 +18,5 @@ export { default as DashboardSectionHeader } from "./DashboardSectionHeader";
 export { default as DashboardTableSection } from "./DashboardTableSection";
 
 export { default as DashboardSectionLoading } from "./DashboardSectionLoading";
+
+export { default as ManagementAccountPeriod } from "./ManagementAccountPeriod";

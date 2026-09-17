@@ -2,7 +2,8 @@ import { ExpensesStats, FinalBalanceStats, PreviousBalanceStats, ResourcesStats 
 
 const summaryAccount = {
     header : {
-        title : "Résumé annuel",
+        annualTitle: "Résumé annuel",
+        monthlyTitle: "Résumé mensuel du mois de",
     },
 
     messages : {

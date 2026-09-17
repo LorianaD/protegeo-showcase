@@ -5,6 +5,7 @@ export * from "./getExpenseBreakdown";
 export * from "./getMonthlyTransactions";
 export * from "./getMonthlyUpdateDate";
 export * from "./getMonthlyFinancialData";
+export * from "./getManagementAccountMonthOptions";
 
 export * from "./getTotal";
 

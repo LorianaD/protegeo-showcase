@@ -1,57 +1,129 @@
 import { useOutletContext } from "react-router";
 import { DashboardSection, DashboardSectionHeader, DashboardTableSection, StatsSection } from "@/components/ui";
-import { formatCurrency, formatExpensesRows, formatExpensesStats, formatLongDate, getTransactionCategoryGroupTotal } from "@/utils";
+import { formatCurrency, formatExpensesRows, formatFinancialStats, formatLongDate, getTransactionCategoryGroupTotal } from "@/utils";
+
+const categoryGroupNames = {
+    daily_living: "current_expenses",
+    works: "repairs",
+};
 
 function ExpensesDashboardAccount() {
-    const { page, transactions, year, month } = useOutletContext();
+    const {
+        page,
+        year,
+        monthLabel,
+        isAnnualView,
+        displayedTransactions,
+        monthUpdateDate,
+        previousMonthUpdateDate,
+        monthlyFinancialData,
+    } = useOutletContext();
 
     const section = page.expenses;
 
-    const date = (year);
+    const {
+        currentMonth,
+        annual,
+        ...otherDescriptions
+    } = section.header.description;
 
-    const endDate = formatLongDate(date);
+    const currentPeriodDescription = isAnnualView
+        ? `${annual} ${year}.`
+        : `${currentMonth} ${monthLabel}.`;
 
-    const mainStats = formatExpensesStats(
+    const descriptions = {
+        currentPeriod: currentPeriodDescription,
+        ...otherDescriptions,
+    };
+
+    const mainStatsData = {
+        previous_month_expenses:
+            monthlyFinancialData.previousMonthExpenses,
+
+        current_month_expenses:
+            monthlyFinancialData.currentMonthExpenses,
+
+        final_balance:
+            monthlyFinancialData.finalBalance,
+    };
+
+    const mainStats = formatFinancialStats(
         section.mainStats,
-        transactions,
-        endDate
+        mainStatsData,
+        {
+            previous_month_expenses: formatLongDate(
+                previousMonthUpdateDate
+            ),
+
+            current_month_expenses: formatLongDate(
+                monthUpdateDate
+            ),
+
+            final_balance: formatLongDate(
+                monthUpdateDate
+            ),
+        }
     );
 
-    const categoryStats = formatExpensesStats(
-        section.categoryStats,
-        transactions,
-        endDate
-    );
+    const categoryStatsData = {};
 
-    const expensesSections = section.sections.map((expenseSection) => ({
-        ...expenseSection,
+    section.categoryStats.forEach((stat) => {
+        const categoryGroup =
+            categoryGroupNames[stat.name] ?? stat.name;
 
-        rows: formatExpensesRows(
-            expenseSection.table.items,
-            transactions
-        ),
-
-        totalValue: formatCurrency(
+        categoryStatsData[stat.name] =
             getTransactionCategoryGroupTotal(
-                transactions,
+                displayedTransactions,
                 "expense",
-                expenseSection.name
-            )
-        ),
-    }));
+                categoryGroup
+            );
+    });
+
+    const categoryStats = formatFinancialStats(
+        section.categoryStats,
+        categoryStatsData,
+        formatLongDate(monthUpdateDate)
+    );
+
+    const expensesSections = section.sections.map(
+        (expenseSection) => {
+            const categoryGroup =
+                categoryGroupNames[expenseSection.name]
+                ?? expenseSection.name;
+
+            return {
+                ...expenseSection,
+
+                rows: formatExpensesRows(
+                    expenseSection.table.items,
+                    displayedTransactions
+                ),
+
+                totalValue: formatCurrency(
+                    getTransactionCategoryGroupTotal(
+                        displayedTransactions,
+                        "expense",
+                        categoryGroup
+                    )
+                ),
+            };
+        }
+    );
 
     return (
         <DashboardSection>
             <DashboardSectionHeader
                 title={section.header.title}
-                descriptions={section.header.description}
+                descriptions={descriptions}
                 variant="transaction"
             />
 
-            <StatsSection
-                stats={mainStats}
-                className="account-stats account-stats--main"
-            />
+            {!isAnnualView && (
+                <StatsSection
+                    stats={mainStats}
+                    className="account-stats account-stats--main"
+                />
+            )}
 
             <StatsSection
                 stats={categoryStats}
@@ -68,6 +140,9 @@ function ExpensesDashboardAccount() {
                     totalLabel={expenseSection.table.total.label}
                     totalValue={expenseSection.totalValue}
                     variant="expenses"
+                    displayMode={
+                        isAnnualView ? "accordion" : "table"
+                    }
                 />
             ))}
         </DashboardSection>

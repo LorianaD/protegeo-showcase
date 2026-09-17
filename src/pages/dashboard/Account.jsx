@@ -1,4 +1,4 @@
-import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPageActions, DashboardSection, MonthSelect } from "@/components";
+import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPageActions, DashboardSection, MonthSelect, ManagementAccountPeriod } from "@/components";
 import { accountDashboard } from "@/data";
 import { useBankAccounts, useDossierByReference, useManagementAccountMonth, useManagementAccountYear, useTransactions } from "@/hooks";
 import { getMonthlyFinancialData } from "@/utils";
@@ -10,20 +10,26 @@ function Account() {
 
     const { reference } = useParams();
 
-    const { protectedPersons, protectedPersonsLoading, protectedPersonsError } = useOutletContext();
+    const { 
+        protectedPersons, 
+        protectedPersonsLoading, 
+        protectedPersonsError, 
+        managementAccountRefreshKey, 
+        transactionRefreshKey,
+    } = useOutletContext();
 
     const {dossierId, isLoading, error} = useDossierByReference(reference);
 
-    const {
-        managementAccounts,
+    const { 
         managementAccount,
         managementAccountId,
+        selectedManagementAccountId,
         year,
         yearOptions,
         handleYearChange,
-        loading: managementAccountsLoading,
-        error: managementAccountsError,
-    } = useManagementAccountYear(dossierId);
+        loading: yearLoading,
+        error: yearError,
+    } = useManagementAccountYear(dossierId, managementAccountRefreshKey);
 
     const {
         bankAccounts,
@@ -35,7 +41,7 @@ function Account() {
         transactions, 
         loading: transactionsLoading, 
         error: transactionsError
-    } = useTransactions(dossierId, managementAccountId);
+    } = useTransactions(dossierId, managementAccountId, transactionRefreshKey);
 
     const {
         month, 
@@ -48,22 +54,22 @@ function Account() {
         previousMonthTransactions, 
         previousMonthUpdateDate, 
         handleMonthChange
-    } = useManagementAccountMonth(year, page, transactions);
+    } = useManagementAccountMonth(managementAccount, page, transactions);
 
     const monthlyFinancialData = getMonthlyFinancialData(
         monthTransactions,
         previousMonthTransactions
     );
 
-    const loading = isLoading || managementAccountsLoading || bankAccountsLoading || transactionsLoading;
+    const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading;
 
-    const accountError = error || managementAccountsError || bankAccountsError || transactionsError;
+    const accountError = error || yearError || bankAccountsError || transactionsError;
 
     if (loading) {
         return (
             <Main variant={ variantClass }>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
+                    <HeroDashboard page={ page } year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
                     <TabsDashboard page={ page } />
                     <DashboardSection variant="profile">
                         <p>Chargement du dossier...</p>
@@ -78,7 +84,7 @@ function Account() {
         return (
             <Main variant={ variantClass }>
                 <SectionOverviewContainer>
-                    <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
+                    <HeroDashboard page={ page } year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError} />
                     <TabsDashboard page={ page } />
                     <DashboardSection variant="profile">
                         <p>Le dossier est introuvable ou inaccessible.</p>
@@ -92,9 +98,10 @@ function Account() {
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={ page } year={year} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+                <HeroDashboard page={ page } year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
+                <ManagementAccountPeriod section={page.period} managementAccount={managementAccount}/>
                 <TabsDashboard page={ page } />
-                <MonthSelect label={page.monthNav.label} month={month} options={monthOptions} onChange={handleMonthChange} loading={managementAccountsLoading}/>
+                <MonthSelect label={page.monthNav.label} month={month} options={monthOptions} onChange={handleMonthChange} loading={yearLoading}/>
                 <Outlet context={{ 
                     page, 
                     dossierId, 
@@ -104,8 +111,7 @@ function Account() {
                     isAnnualView,
                     displayedTransactions,
                     managementAccount, 
-                    managementAccountId, 
-                    managementAccounts, 
+                    managementAccountId,
                     bankAccounts, 
                     transactions, 
                     monthTransactions, 

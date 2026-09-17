@@ -4,16 +4,33 @@ import { StatusSummaryDashboardAccount, StatsSummaryDashboardAccount } from ".";
 import { formatCurrency, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
 
 function SummaryDashboardAccount() {
-    const { page, year, managementAccount, bankAccounts, transactions } = useOutletContext();
+    const { 
+        page, 
+        year, 
+        monthLabel, 
+        isAnnualView, 
+        displayedTransactions, 
+        managementAccount, 
+        bankAccounts 
+    } = useOutletContext();
 
     const section = page.summaryAccount;
 
+    const title = isAnnualView
+        ? section.header.annualTitle
+        : `${section.header.monthlyTitle} ${monthLabel}`;
+
+    const statsDate = isAnnualView
+        ? year
+        : monthLabel;
+
+    // RESSOURCES
     const resourceRows = section.resourcesSection.items.map((item) => ({
         id: item.name,
         label: item.label,
         amount: formatCurrency(
             getTransactionCategoryGroupTotal(
-                transactions,
+                displayedTransactions,
                 "resource",
                 item.name
             )
@@ -21,16 +38,17 @@ function SummaryDashboardAccount() {
     }));
 
     const totalResources = getTransactionTotal(
-        transactions,
+        displayedTransactions,
         "resource"
     );
 
+    // DÉPENSES
     const expenseRows = section.expensesSection.items.map((item) => ({
         id: item.name,
         label: item.label,
         amount: formatCurrency(
             getTransactionCategoryGroupTotal(
-                transactions,
+                displayedTransactions,
                 "expense",
                 item.name
             )
@@ -38,7 +56,7 @@ function SummaryDashboardAccount() {
     }));
 
     const totalExpenses = getTransactionTotal(
-        transactions,
+        displayedTransactions,
         "expense"
     );
 
@@ -48,7 +66,7 @@ function SummaryDashboardAccount() {
         previousBalance: null,
         resources: totalResources,
         expenses: totalExpenses,
-        finalBalance: finalBalance,
+        finalBalance,
     };
 
     const bankAccountRows = bankAccounts.map((bankAccount) => ({
@@ -67,11 +85,11 @@ function SummaryDashboardAccount() {
 
     return (
         <>
-            <DashboardSection title={section.header.title} variant="account-summary">
+            <DashboardSection title={title} variant="account-summary">
                 <StatsSummaryDashboardAccount
                     section={section}
                     statsData={statsData}
-                    date={year}
+                    date={statsDate}
                 />
             </DashboardSection>
 

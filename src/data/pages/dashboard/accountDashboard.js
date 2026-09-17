@@ -104,6 +104,11 @@ const accountDashboard = {
             },
         ],
     },
+
+    period: {
+        label: "Période sélectionnée",
+        missing: "Période non renseignée",
+    },
 };
 
 export {

@@ -83,6 +83,9 @@ const financialManagementDashboard = {
         title: "Actions rapides",
         items: [
             {
+                ...quickActionsDashboard.addManagementAccount,
+            },
+            {
                 ...quickActionsDashboard.addResource,
             },
             {
@@ -121,7 +124,12 @@ const financialManagementDashboard = {
             error: "Le dossier est introuvable ou inaccessible.",
         }
 
-    }
+    },
+
+    period: {
+        label: "Période sélectionnée",
+        missing: "Période non renseignée",
+    },
 }
 
 export {

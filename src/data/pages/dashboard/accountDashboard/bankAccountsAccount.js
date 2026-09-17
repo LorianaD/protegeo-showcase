@@ -6,6 +6,7 @@ const bankAccountsAccount = {
 
         description : {
             currentMonth : "Vous êtes en train de renseigner les données du mois de",
+            annual: "Vous consultez les données de l’année",
             integration : "Ces informations seront automatiquement intégrées dans le compte de gestion annuel.",
             officialSection : "Ces informations correspondent à la SECTION D - SITUATION DES COMPTES ET LIVRETS BANCAIRES.",
         },

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getManagementAccountsService } from "@/services";
 
-function useManagementAccounts(dossierId) {
+function useManagementAccounts(dossierId, refreshKey = 0) {
     const [managementAccounts, setManagementAccounts] = useState([]);
     const [loadedDossierId, setLoadedDossierId] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -35,7 +35,7 @@ function useManagementAccounts(dossierId) {
         }
 
         fetchManagementAccounts();
-    }, [dossierId]);
+    }, [dossierId, refreshKey]);
 
     const currentManagementAccounts =
         loadedDossierId === dossierId ? managementAccounts : [];

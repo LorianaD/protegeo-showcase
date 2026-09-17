@@ -1,19 +1,43 @@
 import { DashboardSection, DashboardSectionHeader, StatsSection } from "@/components/ui";
-import { formatBankStats, formatLongDate } from "@/utils";
+import { formatFinancialStats, formatLongDate } from "@/utils";
 import { useOutletContext } from "react-router";
 
 function BankAccountDashboardAccount() {
-    const { page, transactions, year, month } = useOutletContext();
+    const { 
+        page,  
+        year, 
+        monthLabel,
+        isAnnualView,
+        displayedTransactions,
+        monthUpdateDate,
+        previousMonthUpdateDate,
+        monthlyFinancialData,
+    } = useOutletContext();
 
     const section = page.bankAccounts;
+
+    const {
+        currentMonth,
+        annual,
+        ...otherDescriptions
+    } = section.header.description;
+
+    const currentPeriodDescription = isAnnualView
+        ? `${annual} ${year}.`
+        : `${currentMonth} ${monthLabel}.`;
+
+    const descriptions = {
+        currentPeriod: currentPeriodDescription,
+        ...otherDescriptions,
+    };
 
     const date = (year);
 
     const endDate = formatLongDate(date);
 
-    const mainStats = formatBankStats(
+    const mainStats = formatFinancialStats(
         section.mainStats,
-        transactions,
+        displayedTransactions,
         endDate
     );
 
@@ -21,7 +45,7 @@ function BankAccountDashboardAccount() {
         <DashboardSection>
             <DashboardSectionHeader
                 title={section.header.title}
-                descriptions={section.header.description}
+                descriptions={descriptions}
                 variant="transaction"
                 notice={section.header.notice}
             />
