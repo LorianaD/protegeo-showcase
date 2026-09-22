@@ -10,6 +10,9 @@ const expensesAccount = {
             integration : "Ces informations seront automatiquement intégrées dans le compte de gestion annuel.",
             officialSection : "Ces informations correspondent à la SECTION B - DÉPENSES DU COMPTE DE GESTION OFFICIEL.",
         },
+
+        addLabel : "+ Ajouter une dépense",
+        variantBtn : "secondary",
     },
 
     mainStats : [

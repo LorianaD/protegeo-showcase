@@ -109,6 +109,11 @@ const accountDashboard = {
         label: "Période sélectionnée",
         missing: "Période non renseignée",
     },
+
+    footer_form: {
+        btn_cancel_label : cta.cancel,
+        btn_recorded_label : cta.recorded,
+    },
 };
 
 export {

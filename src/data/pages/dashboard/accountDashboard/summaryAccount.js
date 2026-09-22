@@ -4,6 +4,9 @@ const summaryAccount = {
     header : {
         annualTitle: "Résumé annuel",
         monthlyTitle: "Résumé mensuel du mois de",
+
+        addLabel : "+ Ajouter une opération",
+        variantBtn : "secondary",
     },
 
     messages : {
@@ -68,6 +71,9 @@ const summaryAccount = {
     resourcesSection : {
         title : "A - Ressources",
 
+        addLabel : "+ Ajouter une ressource",
+        variantBtn : "edit",
+
         columns : [
             {
                 name : "label",
@@ -113,6 +119,9 @@ const summaryAccount = {
 
     expensesSection : {
         title : "B - Dépenses",
+
+        addLabel : "+ Ajouter une dépense",
+        variantBtn : "edit",
 
         columns : [
             {

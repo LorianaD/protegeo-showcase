@@ -175,19 +175,13 @@
 }
 
 .transaction-accordion__entry {
-    display: grid;
-    grid-template-columns:
-        minmax(160px, 1.5fr)
-        minmax(140px, 1fr)
-        minmax(160px, 1.2fr)
-        minmax(140px, 1fr)
-        minmax(100px, auto);
+    display: flex;
 
     align-items: center;
     gap: var(--space-sm);
 
     width: 100%;
-    padding: var(--space-sm) 50px;
+    padding: var(--space-sm);
 
     border: 0;
 
@@ -207,6 +201,16 @@
     text-align: right;
 }
 
+.transaction-accordion__entry-fields {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+
+    width: 100%;
+}
+
 .transaction-accordion__entry:hover {
     filter: brightness(0.98);
 }
@@ -217,5 +221,5 @@
     padding: var(--space-sm) 30px;
 
     color: var(--gray);
-    background-color: var(--white);
+    background-color: var(--pale-blue);
 }

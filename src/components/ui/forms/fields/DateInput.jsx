@@ -1,4 +1,4 @@
-function DateInput({ name, value, onChange, required }) {
+function DateInput({ name, value, onChange, required, min, max }) {
     return (
         <input 
             type="date" 
@@ -8,6 +8,8 @@ function DateInput({ name, value, onChange, required }) {
             value={value}
             onChange={onChange}
             required={required}
+            min={min}
+            max={max}
         />
     )
 }

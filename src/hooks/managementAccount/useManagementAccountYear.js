@@ -68,10 +68,27 @@ function useManagementAccountYear(dossierId, refreshKey = 0) {
             === selectedManagementAccountId
     );
 
+    const previousManagementAccount = managementAccount
+        ? [...managementAccounts]
+            .filter(
+                (account) =>
+                    account.id !== managementAccount.id
+                    && account.end_date
+                    && managementAccount.start_date
+                    && account.end_date < managementAccount.start_date
+            )
+            .sort(
+                (firstAccount, secondAccount) =>
+                    new Date(secondAccount.end_date)
+                    - new Date(firstAccount.end_date)
+            )[0] ?? null
+        : null;
+
     return {
         managementAccounts,
         managementAccount,
         managementAccountId: managementAccount?.id ?? null,
+        previousManagementAccount,
         selectedManagementAccountId,
         year: managementAccount?.year ?? "",
         yearOptions,

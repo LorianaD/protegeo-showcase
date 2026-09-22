@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth } from "@/utils";
+import { getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth, getTransactionTotal } from "@/utils";
 
-function useManagementAccountMonth(managementAccount, page, transactions = []) {
+function useManagementAccountMonth(managementAccount, page, transactions = [], previousManagementAccountTransactions = []) {
     const [month, setMonth] = useState("");
 
     const monthOptions = getManagementAccountMonthOptions(
@@ -53,12 +53,41 @@ function useManagementAccountMonth(managementAccount, page, transactions = []) {
             month
         );
 
+    const previousMonthIsBeforeCurrentAccount =
+        previousMonth
+        && managementAccount?.start_date
+        && previousMonth < managementAccount.start_date.slice(0, 7);
+
     const previousMonthTransactions = isAnnualView
         ? []
         : getMonthlyTransactions(
-            transactions,
+            previousMonthIsBeforeCurrentAccount
+                ? previousManagementAccountTransactions
+                : transactions,
             previousMonth
         );
+
+    // const previousTransactions = isAnnualView 
+    //     ? []
+    //     : [
+    //         ...previousManagementAccountTransactions,
+    //         ...transactions.filter(
+    //             (transaction) =>
+    //                 transaction.operation_date?.slice(0, 7) < month
+    //         ),
+    //     ];
+
+    // const previousResources = getTransactionTotal(
+    //     previousTransactions, 
+    //     "resource"
+    // );
+
+    // const previousExpenses = getTransactionTotal(
+    //     previousTransactions,
+    //     "expense"
+    // );
+
+    // const previousBalance = previousResources - previousExpenses;
 
     // This is the single transaction list used by
     // category statistics and account tables.
@@ -90,6 +119,7 @@ function useManagementAccountMonth(managementAccount, page, transactions = []) {
         monthUpdateDate,
         previousMonthTransactions,
         previousMonthUpdateDate,
+        // previousBalance,
         handleMonthChange,
     };
 }

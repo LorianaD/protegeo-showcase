@@ -6,8 +6,10 @@ export * from "./getMonthlyTransactions";
 export * from "./getMonthlyUpdateDate";
 export * from "./getMonthlyFinancialData";
 export * from "./getManagementAccountMonthOptions";
+export * from "./getTransactionFieldValue";
 
 export * from "./getTotal";
 
 export * from "./formatRows";
 export * from "./formatStats";
+export * from "./formatTransactionFields";

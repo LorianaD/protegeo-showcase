@@ -40,7 +40,18 @@ function DashboardMainLayout() {
                     protectedPersonsError={protectedPersonsError}
                 />
 
-                <Outlet context={{openAddDossierModal, refreshKey, protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey, managementAccountRefreshKey, refreshManagementAccounts}}/>
+                <Outlet context={{
+                    openAddDossierModal, 
+                    refreshKey, 
+                    protectedPersons, 
+                    protectedPersonsLoading, 
+                    protectedPersonsError, 
+                    openTransactionModal, 
+                    transactionRefreshKey, 
+                    refreshTransactions, 
+                    managementAccountRefreshKey, 
+                    refreshManagementAccounts
+                }}/>
 
                 <AddDossierModal 
                     open={isAddDossierModalOpen} 
@@ -54,8 +65,10 @@ function DashboardMainLayout() {
                     dossierId={transactionModalData?.dossierId}
                     managementAccountId={transactionModalData?.managementAccountId}
                     bankAccountOptions={transactionModalData?.bankAccountOptions}
+                    startDate={transactionModalData?.startDate}
+                    endDate={transactionModalData?.endDate}
                     onClose={closeTransactionModal}
-                     onCreated={refreshTransactions}
+                    onCreated={refreshTransactions}
                 />
             </div>
             <Footer/>

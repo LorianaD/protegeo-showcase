@@ -69,6 +69,7 @@ const protectedProfileDashboard = {
             fields : {
                 civility: {
                     ...fields.civility,
+                    type: "select",
                 },
                 lastname : {
                     ...fields.lastname,

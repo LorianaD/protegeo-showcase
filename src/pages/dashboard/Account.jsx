@@ -14,8 +14,10 @@ function Account() {
         protectedPersons, 
         protectedPersonsLoading, 
         protectedPersonsError, 
+        openTransactionModal, 
         managementAccountRefreshKey, 
         transactionRefreshKey,
+        refreshTransactions,
     } = useOutletContext();
 
     const {dossierId, isLoading, error} = useDossierByReference(reference);
@@ -23,6 +25,7 @@ function Account() {
     const { 
         managementAccount,
         managementAccountId,
+        previousManagementAccount,
         selectedManagementAccountId,
         year,
         yearOptions,
@@ -44,6 +47,12 @@ function Account() {
     } = useTransactions(dossierId, managementAccountId, transactionRefreshKey);
 
     const {
+        transactions: previousManagementAccountTransactions,
+        loading: previousTransactionsLoading,
+        error: previousTransactionsError,
+    } = useTransactions(dossierId, previousManagementAccount?.id, transactionRefreshKey);
+
+    const {
         month, 
         monthLabel, 
         monthOptions, 
@@ -53,17 +62,24 @@ function Account() {
         monthUpdateDate, 
         previousMonthTransactions, 
         previousMonthUpdateDate, 
+        previousBalance,
         handleMonthChange
-    } = useManagementAccountMonth(managementAccount, page, transactions);
+    } = useManagementAccountMonth(managementAccount, page, transactions, previousManagementAccountTransactions);
+
+    const bankAccountOptions = bankAccounts.map((bankAccount) => ({
+        value: bankAccount.id,
+        label: `${bankAccount.account_label} - ${bankAccount.account_number_masked}`,
+    }));
 
     const monthlyFinancialData = getMonthlyFinancialData(
         monthTransactions,
-        previousMonthTransactions
+        previousMonthTransactions,
+        // previousBalance
     );
 
-    const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading;
+    const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading || previousTransactionsLoading;
 
-    const accountError = error || yearError || bankAccountsError || transactionsError;
+    const accountError = error || yearError || bankAccountsError || transactionsError || previousTransactionsError;
 
     if (loading) {
         return (
@@ -118,7 +134,10 @@ function Account() {
                     monthUpdateDate, 
                     previousMonthTransactions, 
                     previousMonthUpdateDate, 
-                    monthlyFinancialData 
+                    monthlyFinancialData, 
+                    bankAccountOptions,
+                    openTransactionModal,
+                    refreshTransactions,
                 }}/>
             </SectionOverviewContainer>
             <SectionPageActions section={page.actions} /> 

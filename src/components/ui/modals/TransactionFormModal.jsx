@@ -3,7 +3,7 @@ import { Modal, TransactionForm } from "@/components/ui";
 import { addTransactionForm, options } from "@/data";
 import { useCreateTransaction } from "@/hooks";
 
-function TransactionFormModal({ open, transactionType, dossierId, managementAccountId, bankAccountOptions = [], onClose, onCreated }) {
+function TransactionFormModal({ open, transactionType, dossierId, managementAccountId, bankAccountOptions = [], startDate, endDate, onClose, onCreated }) {
     const form = addTransactionForm[transactionType];
 
     const [formData, setFormData] = useState({
@@ -39,6 +39,15 @@ function TransactionFormModal({ open, transactionType, dossierId, managementAcco
                 ...field,
                 value: formData[field.name],
                 options: bankAccountOptions,
+            };
+        }
+
+        if (field.name === "operation_date") {
+            return {
+                ...field,
+                value: formData[field.name],
+                min: startDate,
+                max: endDate,
             };
         }
 

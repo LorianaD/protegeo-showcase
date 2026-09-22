@@ -591,6 +591,11 @@ Sections
     font-weight: var(--weight-bold);
 }
 
+.dashboard-section-header__container-title {
+    display: flex;
+    justify-content: space-between;
+}
+
 .dashboard-section-header__description {
     font-size: var(--text-lg);
 }

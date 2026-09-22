@@ -12,6 +12,9 @@ const bankAccountsAccount = {
         },
 
         notice : "Important : Les fonds et valeurs mobilières de la personne protégée doivent obligatoirement être déposés sur un compte ouvert à son nom et mentionnant la mesure de protection. Pour chaque compte bancaire, vous devrez joindre une copie du dernier relevé bancaire.",
+
+        addLabel : "+ Ajouter un compte",
+        variantBtn : "secondary",
     },
 
     mainStats : [

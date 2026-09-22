@@ -1,5 +1,11 @@
 function formatCurrency(value) {
-    return `${Number(value ?? 0).toLocaleString("fr-FR")} €`;
+    const amount = Number(value ?? 0);
+    const hasDecimals = amount % 1 !== 0;
+
+    return `${amount.toLocaleString("fr-FR", {
+        minimumFractionDigits: hasDecimals ? 2 : 0,
+        maximumFractionDigits: 2,
+    })} €`;
 }
 
 export {

@@ -1,6 +1,6 @@
-import { Button, DashboardTable, DashboardTotal, TransactionAccordionTable } from "@/components/ui";
+import { Button, DashboardTable, DashboardTotal, TransactionAccordionTable, UpdateFormFooter } from "@/components/ui";
 
-function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage, totalLabel, totalValue, displayMode = "table", onAction, onEdit, variant = "default" }) {
+function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage, totalLabel, totalValue, displayMode = "table", fields = [], editing = false, formData = {}, onChange, onAction, onSubmit, cancelLabel, submitLabel, onCancel, error, loading, variant = "default" }) {
     const isAccordion = displayMode === "accordion";
     
     return (
@@ -20,27 +20,42 @@ function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage
                 )}
             </div>
 
-            {isAccordion ? (
-                <TransactionAccordionTable
-                    rows={rows}
-                    emptyMessage={emptyMessage}
-                    onEdit={onEdit}
-                    variant={variant}
-                />
-            ) : (
-                <DashboardTable
-                    columns={columns}
-                    rows={rows}
-                    emptyMessage={emptyMessage}
-                    variant={variant}
-                />
-            )}
+            <form onSubmit={onSubmit} className="update-form">
+                {isAccordion ? (
+                    <TransactionAccordionTable
+                        rows={rows}
+                        fields={fields}
+                        editing={editing}
+                        formData={formData}
+                        onChange={onChange}
+                        emptyMessage={emptyMessage}
+                        variant={variant}
+                    />
+                ) : (
+                    <DashboardTable
+                        columns={columns}
+                        rows={rows}
+                        emptyMessage={emptyMessage}
+                        variant={variant}
+                    />
+                )}
 
-            <DashboardTotal
-                label={totalLabel}
-                value={totalValue}
-                variant={variant}
-            />
+                <DashboardTotal
+                    label={totalLabel}
+                    value={totalValue}
+                    variant={variant}
+                />
+
+                {editing && (
+                    <UpdateFormFooter
+                        cancelLabel={cancelLabel}
+                        submitLabel={submitLabel}
+                        onCancel={onCancel}
+                        loading={loading}
+                        error={error}
+                    />
+                )}
+            </form>
         </section>
     );
 }

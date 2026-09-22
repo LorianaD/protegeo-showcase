@@ -45,6 +45,8 @@ function TransactionForm({ form, fields, onChange, onCancel, onSubmit, cancelLab
                             value={field.value}
                             onChange={onChange}
                             required={field.required !== false}
+                            min={field.min}
+                            max={field.max}
                         />
                     )}
 

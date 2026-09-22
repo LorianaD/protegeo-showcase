@@ -10,10 +10,7 @@ import {
  * @param {Array} previousMonthTransactions
  * @returns {Object}
  */
-function getMonthlyFinancialData(
-    monthTransactions,
-    previousMonthTransactions
-) {
+function getMonthlyFinancialData(monthTransactions, previousMonthTransactions, previousBalance = 0) {
     const previousMonthResources = getTransactionTotal(
         previousMonthTransactions,
         "resource"
@@ -40,8 +37,7 @@ function getMonthlyFinancialData(
         currentMonthResources,
         currentMonthExpenses,
 
-        finalBalance:
-            currentMonthResources - currentMonthExpenses,
+        finalBalance: previousBalance + currentMonthResources - currentMonthExpenses,
 
         resources: {
             income: getTransactionCategoryGroupTotal(

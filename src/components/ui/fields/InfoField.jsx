@@ -1,11 +1,11 @@
 import { Input, Select, Textarea } from "../forms";
 
 function InfoField({ label, value, editing = false, name, type = "text", onChange, variant, options = [], placeholder }) {
-    const hasOptions = options.length > 0;
+    const isSelect = type === "select";
     const isTextarea = type === "textarea" || variant === "textarea";
 
     function renderEditableField() {
-        if (hasOptions) {
+        if (isSelect) {
             return (
                 <Select 
                     name={name}
@@ -40,9 +40,11 @@ function InfoField({ label, value, editing = false, name, type = "text", onChang
 
     return (
         <div className={`info-item info-item--${variant}`}>
-            <p className="info-label">
-                { label }
-            </p>
+            {label && (
+                <p className="info-label">
+                    { label }
+                </p>
+            )}
             {editing ? (
                 renderEditableField()
             ) : (

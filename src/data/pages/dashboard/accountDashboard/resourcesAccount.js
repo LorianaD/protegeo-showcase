@@ -10,6 +10,9 @@ const resourcesAccount = {
             integration : "Ces informations seront automatiquement intégrées dans le compte de gestion annuel.",
             officialSection : "Ces informations correspondent à la SECTION A - RESSOURCES DU COMPTE DE GESTION OFFICIEL.",
         },
+
+        addLabel : "+ Ajouter une ressource",
+        variantBtn : "secondary",
     },
 
     mainStats : [
@@ -117,7 +120,7 @@ const resourcesAccount = {
                     },
                 ],
 
-                addLabel : "- ajouter",
+                addLabel : "+ ajouter",
 
                 total : {
                     name : "totalEarnings",
