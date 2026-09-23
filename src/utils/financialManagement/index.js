@@ -13,3 +13,4 @@ export * from "./getTotal";
 export * from "./formatRows";
 export * from "./formatStats";
 export * from "./formatTransactionFields";
+export * from "./formatBankAccount";

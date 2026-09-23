@@ -7,3 +7,5 @@ export * from "./useCreateBankAccount";
 
 // PATCH : UPDATE
 export * from "./useUpdateBankAccount";
+
+export * from "./useBankAccountModal";

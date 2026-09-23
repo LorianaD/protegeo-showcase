@@ -202,12 +202,16 @@ const expensesAccount = {
                         label: "Eau",
                     },
                     {
-                        name: "phone",
+                        name: "telephone",
                         label: "Téléphone",
                     },
                 ],
 
-                total : "Total des dépenses logement",
+                total : {
+                    name: "totalHousing",
+                    label: "Total des dépenses logement",
+                    format: "currency",
+                },
             },
         },
         {
@@ -525,7 +529,7 @@ const expensesAccount = {
                     },
                 ],
 
-                addLabel : "- ajouter",
+                addLabel : "+ ajouter",
 
                 total: {
                     name: "totalOtherExpenses",

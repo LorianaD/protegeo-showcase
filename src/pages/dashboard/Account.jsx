@@ -1,6 +1,6 @@
 import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPageActions, DashboardSection, MonthSelect, ManagementAccountPeriod } from "@/components";
 import { accountDashboard } from "@/data";
-import { useBankAccounts, useDossierByReference, useManagementAccountMonth, useManagementAccountYear, useTransactions } from "@/hooks";
+import { useBankAccounts, useBankingTransactions, useDossierByReference, useManagementAccountMonth, useManagementAccountYear, useTransactions } from "@/hooks";
 import { getMonthlyFinancialData } from "@/utils";
 import { Outlet, useOutletContext, useParams } from "react-router";
 
@@ -14,9 +14,13 @@ function Account() {
         protectedPersons, 
         protectedPersonsLoading, 
         protectedPersonsError, 
+
         openTransactionModal, 
+        openBankAccountModal,
+
         managementAccountRefreshKey, 
         transactionRefreshKey,
+        bankAccountRefreshKey,
         refreshTransactions,
     } = useOutletContext();
 
@@ -38,7 +42,13 @@ function Account() {
         bankAccounts,
         loading: bankAccountsLoading,
         error: bankAccountsError,
-    } = useBankAccounts(dossierId);
+    } = useBankAccounts(dossierId, bankAccountRefreshKey);
+
+    const {
+        bankingTransactions,
+        loading: bankingTransactionsLoading,
+        error: bankingTransactionsError,
+    } = useBankingTransactions(dossierId);
 
     const {
         transactions, 
@@ -77,9 +87,9 @@ function Account() {
         // previousBalance
     );
 
-    const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading || previousTransactionsLoading;
+    const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading || previousTransactionsLoading || bankingTransactionsLoading;
 
-    const accountError = error || yearError || bankAccountsError || transactionsError || previousTransactionsError;
+    const accountError = error || yearError || bankAccountsError || transactionsError || previousTransactionsError || bankingTransactionsError;
 
     if (loading) {
         return (
@@ -129,6 +139,7 @@ function Account() {
                     managementAccount, 
                     managementAccountId,
                     bankAccounts, 
+                    bankingTransactions, 
                     transactions, 
                     monthTransactions, 
                     monthUpdateDate, 
@@ -137,6 +148,7 @@ function Account() {
                     monthlyFinancialData, 
                     bankAccountOptions,
                     openTransactionModal,
+                    openBankAccountModal,
                     refreshTransactions,
                 }}/>
             </SectionOverviewContainer>

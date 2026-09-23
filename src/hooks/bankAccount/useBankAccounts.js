@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getBankAccountsService } from "@/services";
 
-function useBankAccounts(dossierId) {
+function useBankAccounts(dossierId, refreshKey = 0) {
     const [bankAccounts, setBankAccounts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -31,7 +31,7 @@ function useBankAccounts(dossierId) {
         }
 
         fetchBankAccounts();
-    }, [dossierId]);
+    }, [dossierId, refreshKey]);
 
     return {
         bankAccounts,

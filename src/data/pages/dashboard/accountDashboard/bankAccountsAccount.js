@@ -42,7 +42,7 @@ const bankAccountsAccount = {
     ],
 
     account : {
-        actionLabel : "Modifier",
+        editLabel : "Modifier",
 
         fields : [
             {
@@ -51,7 +51,7 @@ const bankAccountsAccount = {
                 format : "text",
             },
             {
-                name : "agencyName",
+                name : "bankAgency",
                 label : "Nom de l'agence",
                 format : "text",
             },

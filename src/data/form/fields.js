@@ -333,6 +333,48 @@ const fields = {
         placeholder: "Ajouter une note facultative",
         required: false,
     },
+
+    bank_name: {
+        name: "bank_name",
+        label: "Nom de la banque",
+        type: "text",
+        placeholder: "Ex. Crédit Agricole",
+    },
+
+    agency_name: {
+        name: "agency_name",
+        label: "Nom de l'agence",
+        type: "text",
+        placeholder: "Ex. Gradignan",
+    },
+
+    account_type: {
+        name: "account_type",
+        label: "Type de compte",
+        type: "select",
+        placeholder: "Sélectionner un type de compte",
+        options: options.bank_account_type,
+    },
+
+    account_label: {
+        name: "account_label",
+        label: "Libellé du compte",
+        type: "text",
+        placeholder: "Ex. Compte courant principal",
+    },
+
+    account_number: {
+        name: "account_number",
+        label: "Numéro de compte",
+        type: "text",
+        placeholder: "Ex. 12345678901",
+    },
+
+    bank_account_opened_at: {
+        name: "opened_at",
+        label: "Date d'ouverture",
+        type: "date",
+    },
 };
 
 const familyContactFields = [

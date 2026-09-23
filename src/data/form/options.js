@@ -561,6 +561,21 @@ const options = {
             label: "Autre",
         },
     ],
+
+    bank_account_type: [
+        {
+            value: "current_account",
+            label: "Compte courant",
+        },
+        {
+            value: "livret_a",
+            label: "Livret A",
+        },
+        {
+            value: "savings_account",
+            label: "Compte épargne",
+        },
+    ],
 };
 
 export { options };
