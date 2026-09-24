@@ -1,16 +1,21 @@
 import { DashboardSection, DashboardTable, DashboardTotal, InfoField } from "@/components/ui";
 import { useOutletContext } from "react-router";
 import { StatusSummaryDashboardAccount, StatsSummaryDashboardAccount } from ".";
-import { formatCurrency, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
+import { formatCurrency, formatLongDate, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
 
 function SummaryDashboardAccount() {
     const { 
         page, 
         year, 
         monthLabel, 
+        previousMonthLabel,
         isAnnualView, 
         displayedTransactions, 
+        monthlyFinancialData,
+        annualFinancialData,
         managementAccount, 
+        monthUpdateDate,
+        previousManagementAccount,
         bankAccounts 
     } = useOutletContext();
 
@@ -20,9 +25,11 @@ function SummaryDashboardAccount() {
         ? section.header.annualTitle
         : `${section.header.monthlyTitle} ${monthLabel}`;
 
-    const statsDate = isAnnualView
-        ? year
-        : monthLabel;
+    const statsDate = formatLongDate(monthUpdateDate);
+
+    const previousBalanceDate = isAnnualView
+        ? formatLongDate(previousManagementAccount?.end_date)
+        : previousMonthLabel;
 
     // RESSOURCES
     const resourceRows = section.resourcesSection.items.map((item) => ({
@@ -60,14 +67,14 @@ function SummaryDashboardAccount() {
         "expense"
     );
 
-    const finalBalance = totalResources - totalExpenses;
-
-    const statsData = {
-        previousBalance: null,
-        resources: totalResources,
-        expenses: totalExpenses,
-        finalBalance,
-    };
+    const statsData = isAnnualView
+        ? annualFinancialData
+        : {
+            previousBalance: monthlyFinancialData.previousBalance,
+            resources: monthlyFinancialData.currentMonthResources,
+            expenses: monthlyFinancialData.currentMonthExpenses,
+            finalBalance: monthlyFinancialData.finalBalance,
+        };
 
     const bankAccountRows = bankAccounts.map((bankAccount) => ({
         id: bankAccount.id,
@@ -90,6 +97,7 @@ function SummaryDashboardAccount() {
                     section={section}
                     statsData={statsData}
                     date={statsDate}
+                    previousBalanceDate={previousBalanceDate}
                 />
             </DashboardSection>
 

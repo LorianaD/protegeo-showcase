@@ -8,9 +8,11 @@ import {
  *
  * @param {Array} monthTransactions
  * @param {Array} previousMonthTransactions
+ * @param {number} previousResources
+ * @param {number} previousExpenses
  * @returns {Object}
  */
-function getMonthlyFinancialData(monthTransactions, previousMonthTransactions, previousBalance = 0) {
+function getMonthlyFinancialData(monthTransactions, previousMonthTransactions, previousResources = 0, previousExpenses = 0) {
     const previousMonthResources = getTransactionTotal(
         previousMonthTransactions,
         "resource"
@@ -31,101 +33,24 @@ function getMonthlyFinancialData(monthTransactions, previousMonthTransactions, p
         "expense"
     );
 
+    const previousBalance = previousResources - previousExpenses;
+
+    const resourcesBalance = previousResources + currentMonthResources;
+
+    const expensesBalance = previousExpenses + currentMonthExpenses;
+
+    const finalBalance = previousBalance + currentMonthResources - currentMonthExpenses;
+
     return {
         previousMonthResources,
         previousMonthExpenses,
         currentMonthResources,
         currentMonthExpenses,
+        previousBalance,
+        resourcesBalance,
+        expensesBalance,
+        finalBalance,
 
-        finalBalance: previousBalance + currentMonthResources - currentMonthExpenses,
-
-        resources: {
-            income: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "resource",
-                "income"
-            ),
-
-            allowances: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "resource",
-                "allowances"
-            ),
-
-            investment_income: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "resource",
-                "investment_income"
-            ),
-
-            other_resources: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "resource",
-                "other_resources"
-            ),
-        },
-
-        expenses: {
-            current_expenses: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "current_expenses"
-            ),
-
-            housing: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "housing"
-            ),
-
-            insurance: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "insurance"
-            ),
-
-            home_care: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "home_care"
-            ),
-
-            taxes: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "taxes"
-            ),
-
-            major_purchases: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "major_purchases"
-            ),
-
-            investments: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "investments"
-            ),
-
-            repairs: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "repairs"
-            ),
-
-            loans: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "loans"
-            ),
-
-            other_expenses: getTransactionCategoryGroupTotal(
-                monthTransactions,
-                "expense",
-                "other_expenses"
-            ),
-        },
     };
 }
 

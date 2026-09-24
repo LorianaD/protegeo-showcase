@@ -15,6 +15,7 @@ function ExpensesDashboardAccount() {
         dossierId,
         year,
         monthLabel,
+        previousMonthLabel,
         isAnnualView,
         displayedTransactions,
         managementAccount,
@@ -63,23 +64,18 @@ function ExpensesDashboardAccount() {
     }
 
     const mainStatsData = {
-        previous_month_expenses:
-            monthlyFinancialData.previousMonthExpenses,
+        previous_month_expenses: monthlyFinancialData.previousMonthExpenses,
 
-        current_month_expenses:
-            monthlyFinancialData.currentMonthExpenses,
+        current_month_expenses: monthlyFinancialData.currentMonthExpenses,
 
-        final_balance:
-            monthlyFinancialData.finalBalance,
+        final_balance: monthlyFinancialData.expensesBalance,
     };
 
     const mainStats = formatFinancialStats(
         section.mainStats,
         mainStatsData,
         {
-            previous_month_expenses: formatLongDate(
-                previousMonthUpdateDate
-            ),
+            previous_month_expenses: previousMonthLabel,
 
             current_month_expenses: formatLongDate(
                 monthUpdateDate

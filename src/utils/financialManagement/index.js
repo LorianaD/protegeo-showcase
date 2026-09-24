@@ -7,6 +7,7 @@ export * from "./getMonthlyUpdateDate";
 export * from "./getMonthlyFinancialData";
 export * from "./getManagementAccountMonthOptions";
 export * from "./getTransactionFieldValue";
+export * from "./getAnnualFinancialData";
 
 export * from "./getTotal";
 

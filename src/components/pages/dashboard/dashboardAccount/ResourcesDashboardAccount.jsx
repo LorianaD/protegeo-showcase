@@ -10,12 +10,12 @@ function ResourcesDashboardAccount() {
         dossierId,
         year,
         monthLabel,
+        previousMonthLabel,
         isAnnualView,
         displayedTransactions,
         managementAccount,
         managementAccountId,
         monthUpdateDate,
-        previousMonthUpdateDate,
         monthlyFinancialData,
         bankAccountOptions,
         openTransactionModal,
@@ -58,14 +58,11 @@ function ResourcesDashboardAccount() {
     }
 
     const statsData = {
-        previousMonthResources:
-            monthlyFinancialData.previousMonthResources,
+        previousMonthResources: monthlyFinancialData.previousMonthResources,
 
-        currentMonthResources:
-            monthlyFinancialData.currentMonthResources,
+        currentMonthResources: monthlyFinancialData.currentMonthResources,
 
-        finalBalance:
-            monthlyFinancialData.finalBalance,
+        finalBalance: monthlyFinancialData.resourcesBalance,
 
         ...monthlyFinancialData.resources,
     };
@@ -74,9 +71,7 @@ function ResourcesDashboardAccount() {
         section.mainStats,
         statsData,
         {
-            previousMonthResources: formatLongDate(
-                previousMonthUpdateDate
-            ),
+            previousMonthResources: previousMonthLabel,
 
             currentMonthResources: formatLongDate(
                 monthUpdateDate

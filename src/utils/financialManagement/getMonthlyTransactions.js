@@ -49,7 +49,28 @@ function getPreviousMonth(selectedMonth) {
     return `${previousYear}-${previousMonth}`;
 }
 
+function formatMonthLabel(selectedMonth, monthDefinitions) {
+    if (!selectedMonth) {
+        return "";
+    }
+
+    const [year, month] = selectedMonth
+        .split("-")
+        .map(Number);
+
+    const monthDefinition = monthDefinitions.find(
+        (monthDefinition) => monthDefinition.value === month
+    );
+
+    if (!monthDefinition) {
+        return "";
+    }
+
+    return `${monthDefinition.label} ${year}`;
+}
+
 export {
     getMonthlyTransactions,
     getPreviousMonth,
+    formatMonthLabel,
 };

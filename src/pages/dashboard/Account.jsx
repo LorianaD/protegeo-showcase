@@ -1,7 +1,7 @@
 import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPageActions, DashboardSection, MonthSelect, ManagementAccountPeriod } from "@/components";
 import { accountDashboard } from "@/data";
 import { useBankAccounts, useBankingTransactions, useDossierByReference, useManagementAccountMonth, useManagementAccountYear, useTransactions } from "@/hooks";
-import { getMonthlyFinancialData } from "@/utils";
+import { getAnnualFinancialData, getMonthlyFinancialData } from "@/utils";
 import { Outlet, useOutletContext, useParams } from "react-router";
 
 function Account() {
@@ -65,6 +65,7 @@ function Account() {
     const {
         month, 
         monthLabel, 
+        previousMonthLabel,
         monthOptions, 
         isAnnualView,
         displayedTransactions,
@@ -72,6 +73,8 @@ function Account() {
         monthUpdateDate, 
         previousMonthTransactions, 
         previousMonthUpdateDate, 
+        previousResources,
+        previousExpenses,
         previousBalance,
         handleMonthChange
     } = useManagementAccountMonth(managementAccount, page, transactions, previousManagementAccountTransactions);
@@ -84,7 +87,13 @@ function Account() {
     const monthlyFinancialData = getMonthlyFinancialData(
         monthTransactions,
         previousMonthTransactions,
-        // previousBalance
+        previousResources,
+        previousExpenses
+    );
+
+    const annualFinancialData = getAnnualFinancialData(
+        transactions,
+        previousManagementAccountTransactions
     );
 
     const loading = isLoading || yearLoading || bankAccountsLoading || transactionsLoading || previousTransactionsLoading || bankingTransactionsLoading;
@@ -128,29 +137,32 @@ function Account() {
                 <ManagementAccountPeriod section={page.period} managementAccount={managementAccount}/>
                 <TabsDashboard page={ page } />
                 <MonthSelect label={page.monthNav.label} month={month} options={monthOptions} onChange={handleMonthChange} loading={yearLoading}/>
-                <Outlet context={{ 
-                    page, 
-                    dossierId, 
-                    year, 
-                    month, 
-                    monthLabel, 
+                <Outlet context={{
+                    page,
+                    dossierId,
+                    year,
+                    month,
+                    monthLabel,
+                    previousMonthLabel,
                     isAnnualView,
                     displayedTransactions,
-                    managementAccount, 
+                    managementAccount,
                     managementAccountId,
-                    bankAccounts, 
-                    bankingTransactions, 
-                    transactions, 
-                    monthTransactions, 
-                    monthUpdateDate, 
-                    previousMonthTransactions, 
-                    previousMonthUpdateDate, 
-                    monthlyFinancialData, 
+                    previousManagementAccount,
+                    bankAccounts,
+                    bankingTransactions,
+                    transactions,
+                    monthTransactions,
+                    monthUpdateDate,
+                    previousMonthTransactions,
+                    previousMonthUpdateDate,
+                    monthlyFinancialData,
+                    annualFinancialData,
                     bankAccountOptions,
                     openTransactionModal,
                     openBankAccountModal,
                     refreshTransactions,
-                }}/>
+                }} />
             </SectionOverviewContainer>
             <SectionPageActions section={page.actions} /> 
         </Main>

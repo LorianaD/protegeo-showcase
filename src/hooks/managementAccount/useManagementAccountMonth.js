@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth, getTransactionTotal } from "@/utils";
+import { formatMonthLabel, getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth, getTransactionTotal } from "@/utils";
 
 function useManagementAccountMonth(managementAccount, page, transactions = [], previousManagementAccountTransactions = []) {
     const [month, setMonth] = useState("");
@@ -67,27 +67,27 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
             previousMonth
         );
 
-    // const previousTransactions = isAnnualView 
-    //     ? []
-    //     : [
-    //         ...previousManagementAccountTransactions,
-    //         ...transactions.filter(
-    //             (transaction) =>
-    //                 transaction.operation_date?.slice(0, 7) < month
-    //         ),
-    //     ];
+    const previousTransactions = isAnnualView 
+        ? []
+        : [
+            ...previousManagementAccountTransactions,
+            ...transactions.filter(
+                (transaction) =>
+                    transaction.operation_date?.slice(0, 7) < month
+            ),
+        ];
 
-    // const previousResources = getTransactionTotal(
-    //     previousTransactions, 
-    //     "resource"
-    // );
+    const previousResources = getTransactionTotal(
+        previousTransactions, 
+        "resource"
+    );
 
-    // const previousExpenses = getTransactionTotal(
-    //     previousTransactions,
-    //     "expense"
-    // );
+    const previousExpenses = getTransactionTotal(
+        previousTransactions,
+        "expense"
+    );
 
-    // const previousBalance = previousResources - previousExpenses;
+    const previousBalance = previousResources - previousExpenses;
 
     // This is the single transaction list used by
     // category statistics and account tables.
@@ -97,7 +97,7 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
 
     const monthUpdateDate = getMonthlyUpdateDate(
         displayedTransactions,
-        isAnnualView ? "" : month
+        month
     );
 
     const previousMonthUpdateDate = getMonthlyUpdateDate(
@@ -109,9 +109,17 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
         (monthOption) => monthOption.value === month
     )?.label ?? "";
 
+    const previousMonthLabel = isAnnualView
+        ? ""
+        : formatMonthLabel(
+            previousMonth,
+            page.monthNav.months
+        );
+
     return {
         month,
         monthLabel,
+        previousMonthLabel,
         monthOptions,
         isAnnualView,
         displayedTransactions,
@@ -119,7 +127,9 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
         monthUpdateDate,
         previousMonthTransactions,
         previousMonthUpdateDate,
-        // previousBalance,
+        previousResources,
+        previousExpenses,
+        previousBalance,
         handleMonthChange,
     };
 }
