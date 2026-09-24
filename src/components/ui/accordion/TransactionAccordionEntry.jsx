@@ -1,6 +1,6 @@
-import { InfoField } from "@/components/ui";
+import { Button, InfoField } from "@/components/ui";
 
-function TransactionAccordionEntry({ transaction, fields = [], editing = false, formData = {}, onChange, variant }) {
+function TransactionAccordionEntry({ transaction, fields = [], editing = false, formData = {}, onChange, onDelete, variant }) {
     return (
         <div className="transaction-accordion__entry">
             <div className="transaction-accordion__entry-fields">
@@ -11,13 +11,23 @@ function TransactionAccordionEntry({ transaction, fields = [], editing = false, 
                         type={field.type}
                         options={field.options}
                         placeholder={field.placeholder}
-                        value={editing ? formData[field.name] : field.formatValue(transaction)}
+                        value={
+                            editing ? formData[field.name] ?? "" : field.formatValue(transaction) ?? ""
+                        }
                         editing={editing}
                         onChange={onChange}
                         variant={variant}
                     />
                 ))}
             </div>
+
+            {editing && (
+                <Button
+                    label="Supprimer"
+                    variant="delete"
+                    onClick={onDelete}
+                />
+            )}
         </div>
     );
 }

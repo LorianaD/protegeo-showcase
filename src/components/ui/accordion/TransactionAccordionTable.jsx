@@ -2,7 +2,7 @@ import { KeyboardArrowDown } from "@/assets/imgs/icons/ui";
 import { useTransactionAccordion } from "@/hooks";
 import TransactionAccordionEntry from "./TransactionAccordionEntry";
 
-function TransactionAccordionTable({ rows = [], fields = [], editing = false, formData = {}, onChange, variant = "default" }) {
+function TransactionAccordionTable({ rows = [], fields = [], editing = false, formData = {}, onChange, onDelete, variant = "default" }) {
     const { handleToggleRow, isRowOpen, } = useTransactionAccordion();
 
     return (
@@ -50,6 +50,7 @@ function TransactionAccordionTable({ rows = [], fields = [], editing = false, fo
                                             editing={editing}
                                             formData={formData[entry.id] ?? {}}
                                             onChange={(event) => onChange(entry.id, event)}
+                                            onDelete={() => onDelete?.(entry.transaction)}
                                             variant={variant}
                                         />
                                     ))

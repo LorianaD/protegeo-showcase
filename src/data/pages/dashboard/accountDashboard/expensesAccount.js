@@ -186,7 +186,7 @@ const expensesAccount = {
                         label: "Loyer",
                     },
                     {
-                        name: "accommodation",
+                        name: "accommodation_expenses",
                         label: "Frais d'hébergement",
                     },
                     {

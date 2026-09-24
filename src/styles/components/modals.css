@@ -61,6 +61,17 @@
 
 .modal__content .info-list {
     gap: 1rem;
-
     width: 100%;
+}
+
+.confirm-modal {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.confirm-modal__actions {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
 }

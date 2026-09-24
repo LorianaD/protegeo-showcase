@@ -12,19 +12,22 @@ function BankAccountCard({ card, actions, showActions = false, onEdit, onDelete,
             </div>
             
             <div className="bank-account-card__info-list">
-                {card.fields.map((field) => (
-                    <InfoFieldGroup key={`${card.id}-${field.name ?? field.label}`}>
-                        <InfoField
-                            label = {field.label}
-                            value = {field.value}
-                            variant = {field.variant}
-                            editing = {field.editing}
-                            name = {field.name}
-                            type = {field.type}
-                            onChange = {field.onChange}
-                            options = {field.options}
-                            placeholder = {field.placeholder}
-                        />
+                {card.fields.map((row, index) => (
+                    <InfoFieldGroup key={`${card.id}-row-${index}`}>
+                        {row.map((item) => (
+                            <InfoField
+                                key={`${card.id}-${item.name}`}
+                                label={item.label}
+                                value={item.value}
+                                variant={item.variant}
+                                editing={item.editing}
+                                name={item.name}
+                                type={item.type}
+                                onChange={item.onChange}
+                                options={item.options}
+                                placeholder={item.placeholder}
+                            />
+                        ))}
                     </InfoFieldGroup>
                 ))}
             </div>

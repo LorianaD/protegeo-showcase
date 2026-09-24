@@ -68,14 +68,16 @@ function formatBankAccountCards(config, bankAccounts, transactions, bankingTrans
             title: bankAccount.account_label,
             editLabel: config.editLabel,
 
-            fields: config.fields.map((field) => ({
-                ...field,
-                value: getBankAccountFieldValue(
-                    field,
-                    bankAccount,
-                    financialData
-                ),
-            })),
+            fields: config.fields.map((row) =>
+                row.map((field) => ({
+                    ...field,
+                    value: getBankAccountFieldValue(
+                        field,
+                        bankAccount,
+                        financialData
+                    ),
+                }))
+            ),
         };
     });
 }
@@ -94,8 +96,8 @@ function getBankAccountFieldValue(field, bankAccount, financialData) {
         bankAgency: getBankAgencyLabel(bankAccount),
         income: financialData.income,
         expenses: financialData.expenses,
-        creditMovements: financialData.creditMovement,
-        debitMovements: financialData.debitMovement,
+        creditMovement: financialData.creditMovement,
+        debitMovement: financialData.debitMovement,
     };
 
     const value = values[field.name];

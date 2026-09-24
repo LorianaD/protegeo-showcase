@@ -35,6 +35,12 @@
 .button--edit {
     border: 1px solid #D9E4EE;
     background: #FBFDFF;
+    color: var(--color-text);
+}
+
+.button--delete {
+    background: var(--red);
+    color: var(--white);
 }
 
 .button--secondary:hover {

@@ -44,47 +44,53 @@ const bankAccountsAccount = {
     account : {
         editLabel : "Modifier",
 
-        fields : [
-            {
-                name : "accountNumber",
-                label : "Numéro de compte",
-                format : "text",
-            },
-            {
-                name : "bankAgency",
-                label : "Nom de l'agence",
-                format : "text",
-            },
-            {
-                name : "previousBalance",
-                label : "Ancien solde",
-                format : "currency",
-            },
-            {
-                name : "income",
-                label : "Recettes",
-                format : "currency",
-            },
-            {
-                name : "expenses",
-                label : "Dépenses",
-                format : "currency",
-            },
-            {
-                name : "creditMovement",
-                label : "Mouv. crédit",
-                format : "currency",
-            },
-            {
-                name : "debitMovement",
-                label : "Mouv. débit",
-                format : "currency",
-            },
-            {
-                name : "balance",
-                label : "Solde",
-                format : "currency",
-            },
+        fields: [
+            [
+                {
+                    name: "accountNumber",
+                    label: "Numéro de compte",
+                    format: "text",
+                },
+                {
+                    name: "bankAgency",
+                    label: "Nom de l'agence",
+                    format: "text",
+                },
+            ],
+            [
+                {
+                    name: "previousBalance",
+                    label: "Ancien solde",
+                    format: "currency",
+                },
+                {
+                    name: "income",
+                    label: "Recettes",
+                    format: "currency",
+                },
+                {
+                    name: "expenses",
+                    label: "Dépenses",
+                    format: "currency",
+                },
+            ],
+            [
+                {
+                    name: "creditMovement",
+                    label: "Mouv. crédit",
+                    format: "currency",
+                },
+                {
+                    name: "debitMovement",
+                    label: "Mouv. débit",
+                    format: "currency",
+                },
+                {
+                    name: "balance",
+                    label: "Solde",
+                    format: "currency",
+                },
+            ],
         ],
     },
 

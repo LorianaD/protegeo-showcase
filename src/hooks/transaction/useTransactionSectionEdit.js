@@ -38,6 +38,19 @@ function useTransactionSectionEdit() {
     }
 
     /**
+     * Removes a deleted transaction from the local form data.
+     */
+    function removeTransactionFromForm(transactionId) {
+        setFormData((currentData) => {
+            const updatedData = { ...currentData };
+
+            delete updatedData[transactionId];
+
+            return updatedData;
+        });
+    }
+
+    /**
      * Closes the current section without keeping local changes.
      */
     function handleCancelSection() {
@@ -59,6 +72,7 @@ function useTransactionSectionEdit() {
         formData,
         handleEditSection,
         handleChange,
+        removeTransactionFromForm,
         handleCancelSection,
         closeEditingSection,
         isEditingSection,

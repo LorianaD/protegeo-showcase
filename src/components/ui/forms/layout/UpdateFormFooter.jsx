@@ -1,9 +1,19 @@
 import { Button } from "../../buttons";
 
-function UpdateFormFooter({ cancelLabel, submitLabel, loadingLabel = "Enregistrement...", onCancel, loading = false, error = "" }) {
+function UpdateFormFooter({ cancelLabel, submitLabel, deleteLabel, loadingLabel = "Enregistrement...", onCancel, onDelete, loading = false, error = "" }) {
     return (
         <div className="update-form__footer">
             <div className="update-form__actions">
+                {deleteLabel && onDelete && (
+                    <Button
+                        label={deleteLabel}
+                        type="button"
+                        onClick={onDelete}
+                        disabled={loading}
+                        variant="delete"
+                    />
+                )}
+
                 <Button
                     label={cancelLabel}
                     type="button"

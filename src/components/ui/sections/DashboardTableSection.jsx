@@ -1,6 +1,6 @@
 import { Button, DashboardTable, DashboardTotal, TransactionAccordionTable, UpdateFormFooter } from "@/components/ui";
 
-function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage, totalLabel, totalValue, displayMode = "table", fields = [], editing = false, formData = {}, onChange, onAction, onSubmit, cancelLabel, submitLabel, onCancel, error, loading, variant = "default" }) {
+function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage, totalLabel, totalValue, displayMode = "table", fields = [], editing = false, formData = {}, onChange, onAction, onSubmit, onDelete, cancelLabel, submitLabel, onCancel, error, loading, variant = "default" }) {
     const isAccordion = displayMode === "accordion";
     
     return (
@@ -28,6 +28,7 @@ function DashboardTableSection({ title, actionLabel, columns, rows, emptyMessage
                         editing={editing}
                         formData={formData}
                         onChange={onChange}
+                        onDelete={onDelete}
                         emptyMessage={emptyMessage}
                         variant={variant}
                     />

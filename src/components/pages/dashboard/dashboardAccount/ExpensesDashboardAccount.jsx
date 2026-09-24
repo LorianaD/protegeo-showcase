@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router";
-import { DashboardSection, DashboardSectionHeader, DashboardTableSection, StatsSection } from "@/components/ui";
+import { ConfirmModal, DashboardSection, DashboardSectionHeader, DashboardTableSection, StatsSection } from "@/components/ui";
 import { formatCurrency, formatExpensesRows, formatFinancialStats, formatLongDate, formatTransactionFields, getTransactionCategoryGroupTotal } from "@/utils";
-import { useTransactionSectionEdit, useUpdateTransaction } from "@/hooks";
+import { useDeleteTransaction, useTransactionDeleteConfirm, useTransactionSectionEdit, useUpdateTransaction } from "@/hooks";
 import { addTransactionForm, options } from "@/data";
 
 const categoryGroupNames = {
@@ -31,6 +31,10 @@ function ExpensesDashboardAccount() {
     const sectionName = "expenses";
 
     const {updateTransaction, loading: updateLoading, error: updateError} = useUpdateTransaction();
+
+    const {deleteTransaction, loading: deleteLoading, error: deleteError} = useDeleteTransaction();
+
+    const {transactionToDelete, openDeleteConfirm,closeDeleteConfirm} = useTransactionDeleteConfirm();
 
     const {
         currentMonth,
@@ -182,6 +186,7 @@ function ExpensesDashboardAccount() {
         formData,
         handleEditSection,
         handleChange,
+        removeTransactionFromForm,
         handleCancelSection,
         closeEditingSection,
         isEditingSection,
@@ -206,6 +211,27 @@ function ExpensesDashboardAccount() {
             closeEditingSection();
         } catch (error) {
             console.error("Unable to update transactions.", error);
+        }
+    }
+
+    async function handleDelete() {
+        if (!transactionToDelete) {
+            return;
+        }
+        
+        try {
+            await deleteTransaction(
+                dossierId,
+                managementAccountId,
+                transactionToDelete.id
+            );
+
+            removeTransactionFromForm(transactionToDelete.id);
+            await refreshTransactions();
+
+            closeDeleteConfirm();
+        } catch (error) {
+            console.error("Unable to delete transaction.", error);
         }
     }
 
@@ -258,13 +284,26 @@ function ExpensesDashboardAccount() {
                     onChange={handleChange}
                     onCancel={handleCancelSection}
                     onSubmit={handleSubmit}
-                    error={updateError}
-                    loading={updateLoading}
+                    onDelete={openDeleteConfirm}
+                    error={updateError || deleteError}
+                    loading={updateLoading || deleteLoading}
                     displayMode="accordion"
                     cancelLabel={page.footer_form.btn_cancel_label}
                     submitLabel={page.footer_form.btn_recorded_label}
                 />
             ))}
+
+            {transactionToDelete && (
+                <ConfirmModal
+                    title="Supprimer la transaction"
+                    message="Êtes-vous sûre de vouloir supprimer cette transaction ? Cette action est définitive."
+                    confirmLabel="Supprimer"
+                    cancelLabel="Annuler"
+                    onConfirm={handleDelete}
+                    onClose={closeDeleteConfirm}
+                    loading={deleteLoading}
+                />
+            )}
         </DashboardSection>
     );
 }
