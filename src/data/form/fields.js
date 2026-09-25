@@ -375,6 +375,63 @@ const fields = {
         label: "Date d'ouverture",
         type: "date",
     },
+
+    initial_balance: {
+        name: "initial_balance",
+        label: "Solde initial",
+        type: "number",
+        placeholder: "0,00",
+        required: false,
+    },
+
+    source_bank_account_id: {
+        name: "source_bank_account_id",
+        type: "select",
+        label: "Compte à débiter",
+        placeholder: "Sélectionner le compte source",
+        required: true,
+    },
+
+    destination_bank_account_id: {
+        name: "destination_bank_account_id",
+        type: "select",
+        label: "Compte à créditer",
+        placeholder: "Sélectionner le compte destinataire",
+        required: true,
+    },
+
+    banking_movement_type: {
+        name: "movement_type",
+        type: "select",
+        label: "Type de mouvement",
+        placeholder: "Sélectionner un type de mouvement",
+        required: true,
+    },
+
+    source_bank_account_id: {
+        name: "source_bank_account_id",
+        type: "select",
+        label: "Compte à débiter",
+        placeholder: "Sélectionner le compte source",
+        required: true,
+    },
+
+    destination_bank_account_id: {
+        name: "destination_bank_account_id",
+        type: "select",
+        label: "Compte à créditer",
+        placeholder: "Sélectionner le compte destinataire",
+        required: true,
+    },
+
+    banking_movement_type: {
+        name: "movement_type",
+        type: "select",
+        label: "Type de mouvement",
+        options: options.banking_movement_type,
+        placeholder: "Sélectionner un type de mouvement",
+        required: true,
+    },
 };
 
 const familyContactFields = [

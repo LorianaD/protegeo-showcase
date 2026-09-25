@@ -24,7 +24,12 @@ const quickActionsDashboard = {
         name: "addManagementAccount",
         label: "+ Ajouter un compte annuel",
         variant: "dashboard-action",
-        transactionType: "resource",
+    },
+
+    addBankingTransaction: {
+        name: "addBankingTransaction",
+        label: "+ Ajouter un mouvement bancaire",
+        variant: "dashboard-action",
     },
 
     generateProtectedPersons: {

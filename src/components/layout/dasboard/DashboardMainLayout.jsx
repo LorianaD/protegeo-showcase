@@ -1,8 +1,8 @@
 import { Outlet } from "react-router";
 import { Siderbar } from "./siderbar";
 import Footer from "../Footer";
-import { useAddDossierModal, useBankAccountModal, useProtectedPersons, useTransactionModal } from "@/hooks";
-import { AddDossierModal, BankAccountFormModal, TransactionFormModal } from "@/components/ui";
+import { useAddDossierModal, useBankAccountModal, useBankingTransactionModal, useProtectedPersons, useTransactionModal } from "@/hooks";
+import { AddDossierModal, BankAccountFormModal, BankingTransactionFormModal, TransactionFormModal } from "@/components/ui";
 import { useState } from "react";
 
 function DashboardMainLayout() {
@@ -10,6 +10,7 @@ function DashboardMainLayout() {
     const [transactionRefreshKey, setTransactionRefreshKey] = useState(0);
     const [managementAccountRefreshKey, setManagementAccountRefreshKey] = useState(0);
     const [bankAccountRefreshKey, setBankAccountRefreshKey] = useState(0);
+    const [bankingTransactionRefreshKey, setBankingTransactionRefreshKey] = useState(0);
 
     const {
         isAddDossierModalOpen,
@@ -37,6 +38,13 @@ function DashboardMainLayout() {
         closeBankAccountModal,
     } = useBankAccountModal();
 
+    const {
+        isBankingTransactionModalOpen,
+        bankingTransactionModalData,
+        openBankingTransactionModal,
+        closeBankingTransactionModal,
+    } = useBankingTransactionModal();
+
     function refreshProtectedPersons() {
         setRefreshKey((currentKey) => currentKey + 1);
     }
@@ -55,6 +63,12 @@ function DashboardMainLayout() {
         setBankAccountRefreshKey((currentKey) => currentKey + 1);
     }
 
+    function refreshBankingTransactions() {
+        setBankingTransactionRefreshKey(
+            (currentKey) => currentKey + 1
+        );
+    }
+
     return (
         <div>
             <div className="dashboard-main-layout">
@@ -71,14 +85,21 @@ function DashboardMainLayout() {
                     protectedPersons,
                     protectedPersonsLoading,
                     protectedPersonsError,
+
                     openTransactionModal,
                     transactionRefreshKey,
                     refreshTransactions,
+
                     managementAccountRefreshKey,
                     refreshManagementAccounts,
+
                     openBankAccountModal,
                     bankAccountRefreshKey,
                     refreshBankAccounts,
+
+                    openBankingTransactionModal,
+                    bankingTransactionRefreshKey,
+                    refreshBankingTransactions,
                 }}/>
 
                 <AddDossierModal
@@ -105,6 +126,14 @@ function DashboardMainLayout() {
                     bankAccount={bankAccountModalData?.bankAccount}
                     onClose={closeBankAccountModal}
                     onCreated={refreshBankAccounts}
+                />
+
+                <BankingTransactionFormModal
+                    open={isBankingTransactionModalOpen}
+                    dossierId={bankingTransactionModalData?.dossierId}
+                    bankAccounts={bankingTransactionModalData?.bankAccounts ?? []}
+                    onClose={closeBankingTransactionModal}
+                    onCreated={refreshBankingTransactions}
                 />
             </div>
 

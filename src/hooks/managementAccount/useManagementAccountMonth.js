@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { formatMonthLabel, getManagementAccountMonthOptions, getMonthlyTransactions, getMonthlyUpdateDate, getPreviousMonth, getTransactionTotal } from "@/utils";
 
-function useManagementAccountMonth(managementAccount, page, transactions = [], previousManagementAccountTransactions = []) {
+function useManagementAccountMonth(managementAccount, page, transactions = [], previousManagementAccountTransactions = [], bankingTransactions = []) {
     const [month, setMonth] = useState("");
 
     const monthOptions = getManagementAccountMonthOptions(
@@ -77,6 +77,13 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
             ),
         ];
 
+    const previousBankingTransactions = isAnnualView
+        ? []
+        : bankingTransactions.filter(
+            (transaction) =>
+                transaction.operation_date?.slice(0, 7) < month
+        );
+
     const previousResources = getTransactionTotal(
         previousTransactions, 
         "resource"
@@ -94,6 +101,13 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
     const displayedTransactions = isAnnualView
         ? transactions
         : monthTransactions;
+
+    const displayedBankingTransactions = isAnnualView
+        ? bankingTransactions
+        : getMonthlyTransactions(
+            bankingTransactions,
+            month
+        );
 
     const monthUpdateDate = getMonthlyUpdateDate(
         displayedTransactions,
@@ -123,6 +137,9 @@ function useManagementAccountMonth(managementAccount, page, transactions = [], p
         monthOptions,
         isAnnualView,
         displayedTransactions,
+        displayedBankingTransactions,
+        previousTransactions,
+        previousBankingTransactions,
         monthTransactions,
         monthUpdateDate,
         previousMonthTransactions,

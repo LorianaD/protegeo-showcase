@@ -14,14 +14,14 @@ const financialManagementDashboard = {
     stats : [
         {
             name: "annualResources",
-            title : "Ressources annuelles",
+            title : "Ressources de la période",
             description : "Revenus saisis et validés",
             format: "currency",
             variant : "resources",
         },
         {
             name: "annualExpenditure",
-            title : "Dépenses annuelles",
+            title : "Dépenses de la période",
             description : "Charges et dépenses suivies",
             format: "currency",
             variant : "expenses",
@@ -91,9 +91,9 @@ const financialManagementDashboard = {
             {
                 ...quickActionsDashboard.addExpense,
             },
-            // {
-            //     ...quickActionsDashboard.generateAnnualAccount,
-            // },
+            {
+                ...quickActionsDashboard.addBankingTransaction,
+            },
         ],
     },
 

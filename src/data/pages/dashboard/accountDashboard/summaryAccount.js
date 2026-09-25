@@ -1,4 +1,5 @@
 import { ExpensesStats, FinalBalanceStats, PreviousBalanceStats, ResourcesStats } from "@/assets"
+import { cta, fields } from "@/data/form"
 
 const summaryAccount = {
     header : {
@@ -254,7 +255,19 @@ const summaryAccount = {
 
     notes : {
         title : "Observations",
-        label : "Observations générales",
+        
+        field: {
+            ...fields.notes,
+        },
+
+        action : {
+            label : "Modifier",
+        },
+
+        footer : {
+            btn_cancel_label : cta.cancel,
+            btn_recorded_label : cta.recorded,
+        },
     },
 }
 

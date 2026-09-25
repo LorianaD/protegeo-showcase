@@ -576,6 +576,45 @@ const options = {
             label: "Compte épargne",
         },
     ],
+
+    banking_movement_type: [
+        {
+            value: "bank_transfer",
+            label: "Virement entre comptes",
+        },
+        {
+            value: "savings_deposit",
+            label: "Versement vers un compte épargne",
+        },
+        {
+            value: "savings_withdrawal",
+            label: "Retrait depuis un compte épargne",
+        },
+        {
+            value: "investment_contribution",
+            label: "Versement sur un placement",
+        },
+        {
+            value: "investment_redemption",
+            label: "Retrait d’un placement",
+        },
+        {
+            value: "securities_purchase",
+            label: "Achat de titres",
+        },
+        {
+            value: "securities_sale",
+            label: "Vente de titres",
+        },
+        {
+            value: "account_closure_transfer",
+            label: "Transfert lors de la clôture d’un compte",
+        },
+        {
+            value: "other_transfer",
+            label: "Autre transfert",
+        },
+    ],
 };
 
 export { options };

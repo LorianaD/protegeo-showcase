@@ -1,15 +1,30 @@
 import { Button } from "../buttons";
 
-function DashboardSectionHeader({ title, descriptions, variant = "default", notice, labelBtn, variantBtn, onClickBtn }) {
+function DashboardSectionHeader({ title, descriptions, variant = "default", notice, labelBtn, variantBtn, onClickBtn, secondLabelBtn, secondVariantBtn, onClickSecondBtn }) {
     return (
         <header className={`dashboard-section-header dashboard-section-header--${variant}`}>
             <div className="dashboard-section-header__container-title">
                 <h3 className="dashboard-section-header__title">
                     {title}
                 </h3>
-                {labelBtn && (
-                    <Button label={labelBtn} variant={variantBtn} onClick={onClickBtn} />
-                )}
+
+                <div className="dashboard-section-header__actions">
+                    {secondLabelBtn && (
+                        <Button
+                            label={secondLabelBtn}
+                            variant={secondVariantBtn}
+                            onClick={onClickSecondBtn}
+                        />
+                    )}
+
+                    {labelBtn && (
+                        <Button
+                            label={labelBtn}
+                            variant={variantBtn}
+                            onClick={onClickBtn}
+                        />
+                    )}
+                </div>
             </div>
 
 

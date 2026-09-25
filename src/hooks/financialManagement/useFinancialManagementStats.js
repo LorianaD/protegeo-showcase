@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useFinancialManagementStats(transactions, managementAccountId) {
+function useFinancialManagementStats(transactions, startDate, endDate) {
     const [statsData, setStatsData] = useState({
         annualResources: 0,
         annualExpenditure: 0,
@@ -19,7 +19,26 @@ function useFinancialManagementStats(transactions, managementAccountId) {
             let annualResources = 0;
             let annualExpenditure = 0;
 
+            if (!startDate || !endDate) {
+                return;
+            }
+
+            const periodStart = new Date(startDate);
+            const periodEnd = new Date(endDate);
+
             transactions.forEach((transaction) => {
+                const transactionDate = new Date(
+                    transaction.operation_date
+                );
+
+                // Only include transactions from the selected management period.
+                if (
+                    transactionDate < periodStart
+                    || transactionDate > periodEnd
+                ) {
+                    return;
+                }
+
                 const amount = Number(transaction.amount);
 
                 if (transaction.transaction_type === "resource") {
@@ -34,7 +53,8 @@ function useFinancialManagementStats(transactions, managementAccountId) {
             setStatsData({
                 annualResources,
                 annualExpenditure,
-                estimatedBalance: annualResources - annualExpenditure,
+                estimatedBalance:
+                    annualResources - annualExpenditure,
                 missingDocuments: 0,
             });
         } catch (error) {
@@ -46,7 +66,7 @@ function useFinancialManagementStats(transactions, managementAccountId) {
 
     useEffect(() => {
         calculateStats();
-    }, [transactions]);
+    }, [transactions, startDate, endDate]);
 
     return {
         statsData,

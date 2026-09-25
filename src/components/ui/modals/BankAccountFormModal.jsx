@@ -10,6 +10,7 @@ const initialFormData = {
     account_label: "",
     account_number: "",
     opened_at: "",
+    initial_balance: "",
 };
 
 function BankAccountFormModal({open, dossierId, bankAccount, onClose, onCreated}) {
@@ -49,6 +50,7 @@ function BankAccountFormModal({open, dossierId, bankAccount, onClose, onCreated}
             account_label: bankAccount.account_label ?? "",
             account_number: "",
             opened_at: bankAccount.opened_at ?? "",
+            initial_balance: bankAccount.initial_balance ?? "",
         });
     }, [open, bankAccount]);
 
@@ -99,6 +101,7 @@ function BankAccountFormModal({open, dossierId, bankAccount, onClose, onCreated}
             account_type: formData.account_type,
             account_label: formData.account_label,
             opened_at: formData.opened_at,
+            initial_balance: formData.initial_balance,
         };
 
         if (formData.account_number.trim() !== "") {

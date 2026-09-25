@@ -21,6 +21,7 @@ const addBankAccountForm = {
         fields.account_label,
         fields.account_number,
         fields.bank_account_opened_at,
+        fields.initial_balance,
     ],
 
     actions: {

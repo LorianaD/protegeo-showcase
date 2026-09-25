@@ -1,5 +1,5 @@
 import { BankAccountCard, DashboardSection, DashboardSectionHeader, StatsSection } from "@/components/ui";
-import { formatBankAccountCards, formatFinancialStats, formatLongDate } from "@/utils";
+import { formatBankAccountCards, formatFinancialStats, formatLongDate, getBankAccountsFinancialData } from "@/utils";
 import { useOutletContext } from "react-router";
 
 function BankAccountDashboardAccount() {
@@ -8,11 +8,17 @@ function BankAccountDashboardAccount() {
         year,
         monthLabel,
         isAnnualView,
+
         displayedTransactions,
+        displayedBankingTransactions,
+        previousTransactions,
+        previousBankingTransactions,
+
+        managementAccount,
         dossierId,
         bankAccounts,
-        bankingTransactions,
         openBankAccountModal,
+        openBankingTransactionModal,
     } = useOutletContext();
 
     const section = page.bankAccounts;
@@ -32,21 +38,38 @@ function BankAccountDashboardAccount() {
         ...otherDescriptions,
     };
 
-    const date = (year);
+    const startDate = managementAccount?.start_date;
+    const endDate = managementAccount?.end_date;
 
-    const endDate = formatLongDate(date);
+    const formattedEndDate = formatLongDate(endDate);
+
+    const bankAccountsFinancialData = getBankAccountsFinancialData(
+        bankAccounts,
+        displayedTransactions,
+        displayedBankingTransactions,
+        startDate,
+        endDate,
+        previousTransactions,
+        previousBankingTransactions,
+        isAnnualView
+    );
 
     const mainStats = formatFinancialStats(
         section.mainStats,
-        displayedTransactions,
-        endDate
+        bankAccountsFinancialData,
+        formattedEndDate
     );
 
     const bankAccountCards = formatBankAccountCards(
-        section.account,
         bankAccounts,
+        section.account,
         displayedTransactions,
-        bankingTransactions
+        displayedBankingTransactions,
+        startDate,
+        endDate,
+        previousTransactions,
+        previousBankingTransactions,
+        isAnnualView
     );
 
     function handleAddBankAccount() {
@@ -57,6 +80,13 @@ function BankAccountDashboardAccount() {
         openBankAccountModal(dossierId, bankAccount);
     }
 
+    function handleAddBankingTransaction() {
+        openBankingTransactionModal({
+            dossierId,
+            bankAccounts,
+        });
+    }
+
     return (
         <DashboardSection>
             <DashboardSectionHeader
@@ -64,6 +94,11 @@ function BankAccountDashboardAccount() {
                 descriptions={descriptions}
                 variant="transaction"
                 notice={section.header.notice}
+
+                secondLabelBtn={section.header.addMovementLabel}
+                secondVariantBtn={section.header.variantBtn}
+                onClickSecondBtn={handleAddBankingTransaction}
+
                 labelBtn={section.header.addLabel}
                 variantBtn={section.header.variantBtn}
                 onClickBtn={handleAddBankAccount}

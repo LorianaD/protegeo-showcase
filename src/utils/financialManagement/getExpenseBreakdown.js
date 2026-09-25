@@ -1,8 +1,27 @@
-function getExpenseBreakdown(transactions) {
+function getExpenseBreakdown(transactions, startDate, endDate) {
+    if (!startDate || !endDate) {
+        return [];
+    }
+
+    const periodStart = new Date(startDate);
+    const periodEnd = new Date(endDate);
+
     const expensesByCategory = {};
 
     transactions.forEach((transaction) => {
         if (transaction.transaction_type !== "expense") {
+            return;
+        }
+
+        const transactionDate = new Date(
+            transaction.operation_date
+        );
+
+        // Only include expenses from the selected management period.
+        if (
+            transactionDate < periodStart
+            || transactionDate > periodEnd
+        ) {
             return;
         }
 

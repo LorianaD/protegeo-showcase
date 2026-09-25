@@ -44,9 +44,18 @@ function getBankAccountTotal(bankAccounts) {
     );
 }
 
+function getBankingTransactionTotal(bankingTransactions) {
+    return bankingTransactions.reduce(
+        (total, transaction) =>
+            total + Number(transaction.amount),
+        0
+    );
+}
+
 export {
     getTransactionCategoryGroupTotal,
     getTransactionCategoryTotal,
     getTransactionTotal,
     getBankAccountTotal,
+    getBankingTransactionTotal,
 };

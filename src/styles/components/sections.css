@@ -600,6 +600,12 @@ Sections
     font-size: var(--text-lg);
 }
 
+.dashboard-section-header__actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
 /* ***********************************
     Responsive
 *********************************** */

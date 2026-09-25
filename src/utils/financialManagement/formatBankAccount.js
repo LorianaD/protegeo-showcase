@@ -1,5 +1,5 @@
 import { formatCurrency } from "../format";
-import { getTransactionTotal } from "./getTotal";
+import { getBankingTransactionTotal, getTransactionTotal } from "./getTotal";
 
 /**
  * Builds the financial data for a bank account over the selected period.
@@ -12,10 +12,29 @@ function getBankAccountFinancialData(
     bankAccountId,
     transactions,
     bankingTransactions,
+    startDate,
+    endDate,
     previousBalance = 0
 ) {
     const bankAccountTransactions = transactions.filter(
-        (transaction) => transaction.bank_account_id === bankAccountId
+        (transaction) =>
+            transaction.bank_account_id === bankAccountId
+    );
+
+    const periodBankingTransactions = getBankingTransactionsByPeriod(
+        bankingTransactions,
+        startDate,
+        endDate
+    );
+
+    const creditTransactions = periodBankingTransactions.filter(
+        (transaction) =>
+            transaction.destination_bank_account?.id === bankAccountId
+    );
+
+    const debitTransactions = periodBankingTransactions.filter(
+        (transaction) =>
+            transaction.source_bank_account?.id === bankAccountId
     );
 
     const income = getTransactionTotal(
@@ -28,38 +47,102 @@ function getBankAccountFinancialData(
         "expense"
     );
 
-    const creditTransactions = bankingTransactions.filter(
-        (transaction) =>
-            transaction.destination_bank_account_id === bankAccountId
-    );
-
-    const debitTransactions = bankingTransactions.filter(
-        (transaction) =>
-            transaction.source_bank_account_id === bankAccountId
-    );
-
-    const creditMovement = getTransactionTotal(
+    const creditMovement = getBankingTransactionTotal(
         creditTransactions
     );
 
-    const debitMovement = getTransactionTotal(
+    const debitMovement = getBankingTransactionTotal(
         debitTransactions
     );
 
+    const balance =
+        previousBalance
+        + income
+        + creditMovement
+        - expenses
+        - debitMovement;
+
     return {
+        previousBalance,
         income,
         expenses,
         creditMovement,
         debitMovement,
+        balance,
     };
 }
 
-function formatBankAccountCards(config, bankAccounts, transactions, bankingTransactions) {
+
+function getBankAccountsFinancialData(
+    bankAccounts,
+    transactions,
+    bankingTransactions,
+    startDate,
+    endDate,
+    previousTransactions = [],
+    previousBankingTransactions = [],
+    isAnnualView = true
+) {
+    return bankAccounts.reduce(
+        (totals, bankAccount) => {
+            const previousBalance = isAnnualView
+                ? Number(bankAccount.initial_balance ?? 0)
+                : getBankAccountPreviousBalance(
+                    bankAccount,
+                    previousTransactions,
+                    previousBankingTransactions
+                );
+
+            const financialData = getBankAccountFinancialData(
+                bankAccount.id,
+                transactions,
+                bankingTransactions,
+                startDate,
+                endDate,
+                previousBalance
+            );
+
+            totals.totalBalance += financialData.balance;
+            totals.totalIncome += financialData.income;
+            totals.totalExpenses += financialData.expenses;
+
+            return totals;
+        },
+        {
+            totalBalance: 0,
+            totalIncome: 0,
+            totalExpenses: 0,
+        }
+    );
+}
+
+function formatBankAccountCards(
+    bankAccounts,
+    config,
+    transactions,
+    bankingTransactions,
+    startDate,
+    endDate,
+    previousTransactions = [],
+    previousBankingTransactions = [],
+    isAnnualView = true
+) {
     return bankAccounts.map((bankAccount) => {
+        const previousBalance = isAnnualView
+            ? Number(bankAccount.initial_balance ?? 0)
+            : getBankAccountPreviousBalance(
+                bankAccount,
+                previousTransactions,
+                previousBankingTransactions
+            );
+
         const financialData = getBankAccountFinancialData(
             bankAccount.id,
             transactions,
-            bankingTransactions
+            bankingTransactions,
+            startDate,
+            endDate,
+            previousBalance,
         );
 
         return {
@@ -94,10 +177,12 @@ function getBankAccountFieldValue(field, bankAccount, financialData) {
     const values = {
         accountNumber: bankAccount.account_number_masked,
         bankAgency: getBankAgencyLabel(bankAccount),
+        previousBalance: financialData.previousBalance,
         income: financialData.income,
         expenses: financialData.expenses,
         creditMovement: financialData.creditMovement,
         debitMovement: financialData.debitMovement,
+        balance: financialData.balance,
     };
 
     const value = values[field.name];
@@ -111,7 +196,52 @@ function getBankAccountFieldValue(field, bankAccount, financialData) {
         : value;
 }
 
+function getBankingTransactionsByPeriod(
+    bankingTransactions,
+    startDate,
+    endDate
+) {
+    if (!startDate || !endDate) {
+        return bankingTransactions;
+    }
+
+    const periodStart = new Date(startDate);
+    const periodEnd = new Date(endDate);
+
+    return bankingTransactions.filter((transaction) => {
+        const operationDate = new Date(transaction.operation_date);
+
+        return (
+            operationDate >= periodStart
+            && operationDate <= periodEnd
+        );
+    });
+}
+
+function getBankAccountPreviousBalance(
+    bankAccount,
+    previousTransactions,
+    previousBankingTransactions
+) {
+    const initialBalance = Number(
+        bankAccount.initial_balance ?? 0
+    );
+
+    const previousFinancialData = getBankAccountFinancialData(
+        bankAccount.id,
+        previousTransactions,
+        previousBankingTransactions,
+        null,
+        null,
+        initialBalance
+    );
+
+    return previousFinancialData.balance;
+}
+
 export {
     getBankAccountFinancialData,
+    getBankAccountsFinancialData,
+    getBankAccountPreviousBalance,
     formatBankAccountCards,
 };

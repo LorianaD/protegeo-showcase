@@ -1,7 +1,7 @@
 import { getExpenseBreakdown, getMonthlyEvolution } from "@/utils";
 import { useEffect, useState } from "react";
 
-function useFinancialManagementCharts(transactions, managementAccountId) {
+function useFinancialManagementCharts(transactions, startDate, endDate) {
     const [monthlyEvolution, setMonthlyEvolution] = useState([]);
     const [expenseBreakdown, setExpenseBreakdown] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,11 +13,15 @@ function useFinancialManagementCharts(transactions, managementAccountId) {
             setError(null);
 
             setMonthlyEvolution(
-                getMonthlyEvolution(transactions)
+                getMonthlyEvolution(
+                    transactions,
+                    startDate,
+                    endDate
+                )
             );
 
             setExpenseBreakdown(
-                getExpenseBreakdown(transactions)
+                getExpenseBreakdown(transactions, startDate, endDate)
             );
         } catch (error) {
             setError(error.message);
@@ -28,7 +32,7 @@ function useFinancialManagementCharts(transactions, managementAccountId) {
 
     useEffect(() => {
         calculateCharts();
-    }, [transactions]);
+    }, [transactions, startDate, endDate]);
 
     return {
         monthlyEvolution,

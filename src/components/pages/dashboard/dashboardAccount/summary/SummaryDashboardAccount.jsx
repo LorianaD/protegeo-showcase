@@ -1,25 +1,48 @@
-import { DashboardSection, DashboardTable, DashboardTotal, InfoField } from "@/components/ui";
+import { DashboardSection, DashboardTable, DashboardTotal, InfoField, UpdateFormFooter } from "@/components/ui";
 import { useOutletContext } from "react-router";
 import { StatusSummaryDashboardAccount, StatsSummaryDashboardAccount } from ".";
-import { formatCurrency, formatLongDate, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
+import { formatCurrency, formatLongDate, getBankAccountFinancialData, getBankAccountPreviousBalance, getBankAccountsFinancialData, getBankAccountTotal, getTransactionCategoryGroupTotal, getTransactionTotal } from "@/utils";
+import { useEditableForm, useUpdateManagementAccount } from "@/hooks";
 
 function SummaryDashboardAccount() {
     const { 
-        page, 
+        page,
+        dossierId, 
         year, 
         monthLabel, 
         previousMonthLabel,
-        isAnnualView, 
-        displayedTransactions, 
+        isAnnualView,
+
+        displayedTransactions,
+        displayedBankingTransactions,
+        previousTransactions,
+        previousBankingTransactions,
+
         monthlyFinancialData,
         annualFinancialData,
         managementAccount, 
         monthUpdateDate,
         previousManagementAccount,
-        bankAccounts 
+        bankAccounts,
+        bankingTransactions, 
     } = useOutletContext();
 
     const section = page.summaryAccount;
+
+    const {
+        editing,
+        formData,
+        handleChange,
+        handleEdit,
+        handleCancel,
+        closeEditing,
+    } = useEditableForm(["note"], managementAccount);
+
+    const {
+        updateManagementAccount,
+        loading: updating,
+        error: updateError,
+    } = useUpdateManagementAccount();
 
     const title = isAnnualView
         ? section.header.annualTitle
@@ -76,19 +99,89 @@ function SummaryDashboardAccount() {
             finalBalance: monthlyFinancialData.finalBalance,
         };
 
-    const bankAccountRows = bankAccounts.map((bankAccount) => ({
-        id: bankAccount.id,
-        accountLabel: bankAccount.account_label,
-        accountNumber: bankAccount.account_number_masked,
-        bankName: bankAccount.bank_name && bankAccount.agency_name ? `${bankAccount.bank_name}\n${bankAccount.agency_name}` : bankAccount.bank_name ?? bankAccount.agency_name ?? null,
-        previousBalance: formatCurrency(bankAccount.previous_balance ?? 0),
-        resources: formatCurrency(bankAccount.resources ?? 0),
-        expenses: formatCurrency(bankAccount.expenses ?? 0),
-        movements: formatCurrency(bankAccount.movements ?? 0),
-        balance: formatCurrency(bankAccount.balance ?? 0),
-    }));
+    const startDate = managementAccount?.start_date;
+    const endDate = managementAccount?.end_date;
 
-    const totalBankAccount = getBankAccountTotal(bankAccounts);
+    const bankAccountRows = bankAccounts.map((bankAccount) => {
+        const previousBalance = isAnnualView
+            ? Number(bankAccount.initial_balance ?? 0)
+            : getBankAccountPreviousBalance(
+                bankAccount,
+                previousTransactions,
+                previousBankingTransactions
+            );
+
+        const financialData = getBankAccountFinancialData(
+            bankAccount.id,
+            displayedTransactions,
+            displayedBankingTransactions,
+            startDate,
+            endDate,
+            previousBalance
+        );
+
+        const movements =
+            financialData.creditMovement
+            - financialData.debitMovement;
+
+        return {
+            id: bankAccount.id,
+            accountLabel: bankAccount.account_label,
+            accountNumber: bankAccount.account_number_masked,
+            bankName:
+                bankAccount.bank_name && bankAccount.agency_name
+                    ? `${bankAccount.bank_name}\n${bankAccount.agency_name}`
+                    : bankAccount.bank_name
+                        ?? bankAccount.agency_name
+                        ?? null,
+            previousBalance: formatCurrency(
+                financialData.previousBalance
+            ),
+            resources: formatCurrency(
+                financialData.income
+            ),
+            expenses: formatCurrency(
+                financialData.expenses
+            ),
+            movements: formatCurrency(
+                movements
+            ),
+            balance: formatCurrency(
+                financialData.balance
+            ),
+        };
+    });
+
+    const bankAccountsFinancialData = getBankAccountsFinancialData(
+        bankAccounts,
+        displayedTransactions,
+        displayedBankingTransactions,
+        startDate,
+        endDate,
+        previousTransactions,
+        previousBankingTransactions,
+        isAnnualView
+    );
+
+    const totalBankAccount = bankAccountsFinancialData.totalBalance;
+
+    async function handleNoteSubmit(event) {
+        event.preventDefault();
+
+        const updatedManagementAccount = await updateManagementAccount(
+            dossierId,
+            managementAccount.id,
+            {
+                note: formData.note,
+            }
+        );
+
+        if (!updatedManagementAccount) {
+            return;
+        }
+
+        closeEditing();
+    }
 
     return (
         <>
@@ -151,17 +244,35 @@ function SummaryDashboardAccount() {
                 />
             </DashboardSection>
 
-            <DashboardSection title={section.notes.title} variant="account-notes">
+        <DashboardSection title={section.notes.title} actionLabel={editing ? null : section.notes.action.label} onAction={handleEdit} variant="account-notes">
+            <form onSubmit={handleNoteSubmit} className="update-form">
                 <InfoField
+                    label={section.notes.label}
                     type={section.notes.type}
                     name={section.notes.name}
                     placeholder={section.notes.placeholder}
-                    // value={editing ? formData[section.notes.name] : protectedPerson[section.notes.name] ?? section.notes.placeholder }
-                    // editing={editing}
-                    // onChange={handleChange}
+                    value={
+                        editing
+                            ? formData.note
+                            : managementAccount?.note
+                                ?? section.notes.placeholder
+                    }
+                    editing={editing}
+                    onChange={handleChange}
                     variant="textarea"
                 />
-            </DashboardSection>
+
+                {editing && (
+                    <UpdateFormFooter
+                        cancelLabel={section.notes.footer.btn_cancel_label}
+                        submitLabel={section.notes.footer.btn_recorded_label}
+                        onCancel={handleCancel}
+                        loading={updating}
+                        error={updateError}
+                    />
+                )}
+            </form>
+        </DashboardSection>
         </>
     );
 }

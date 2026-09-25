@@ -17,10 +17,12 @@ function Account() {
 
         openTransactionModal, 
         openBankAccountModal,
+        openBankingTransactionModal,
 
         managementAccountRefreshKey, 
         transactionRefreshKey,
         bankAccountRefreshKey,
+        bankingTransactionRefreshKey,
         refreshTransactions,
     } = useOutletContext();
 
@@ -48,7 +50,7 @@ function Account() {
         bankingTransactions,
         loading: bankingTransactionsLoading,
         error: bankingTransactionsError,
-    } = useBankingTransactions(dossierId);
+    } = useBankingTransactions(dossierId, bankingTransactionRefreshKey);
 
     const {
         transactions, 
@@ -69,6 +71,9 @@ function Account() {
         monthOptions, 
         isAnnualView,
         displayedTransactions,
+        displayedBankingTransactions,
+        previousTransactions,
+        previousBankingTransactions,
         monthTransactions, 
         monthUpdateDate, 
         previousMonthTransactions, 
@@ -77,7 +82,7 @@ function Account() {
         previousExpenses,
         previousBalance,
         handleMonthChange
-    } = useManagementAccountMonth(managementAccount, page, transactions, previousManagementAccountTransactions);
+    } = useManagementAccountMonth(managementAccount, page, transactions, previousManagementAccountTransactions, bankingTransactions);
 
     const bankAccountOptions = bankAccounts.map((bankAccount) => ({
         value: bankAccount.id,
@@ -145,7 +150,12 @@ function Account() {
                     monthLabel,
                     previousMonthLabel,
                     isAnnualView,
+
                     displayedTransactions,
+                    displayedBankingTransactions,
+                    previousTransactions,
+                    previousBankingTransactions,
+
                     managementAccount,
                     managementAccountId,
                     previousManagementAccount,
@@ -161,6 +171,7 @@ function Account() {
                     bankAccountOptions,
                     openTransactionModal,
                     openBankAccountModal,
+                    openBankingTransactionModal,
                     refreshTransactions,
                 }} />
             </SectionOverviewContainer>

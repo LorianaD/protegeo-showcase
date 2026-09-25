@@ -1,12 +1,19 @@
-import { DateInput, Input, Select } from "../fields";
-import { FormCard, FormField } from "../layout";
+import { DateInput, Input, Select } from "@/components/ui";
+import { FormCard, FormField } from "@/components/ui";
 
-function BankAccountForm({ form, fields, onChange, onCancel, onSubmit, cancelLabel, submitLabel, loading, error }) {
+function BankingTransactionForm({
+    form,
+    fields,
+    onChange,
+    onCancel,
+    onSubmit,
+    loading,
+    error,
+}) {
     return (
         <FormCard
-            description={form.header.description}
-            btn_label={loading ? "Enregistrement..." : submitLabel}
-            btn_cancel_label={cancelLabel}
+            btn_label={loading ? "Enregistrement..." : form.actions.submit}
+            btn_cancel_label={form.actions.cancel}
             onSubmit={onSubmit}
             onCancel={onCancel}
         >
@@ -15,17 +22,26 @@ function BankAccountForm({ form, fields, onChange, onCancel, onSubmit, cancelLab
                     key={field.name}
                     name={field.name}
                     label={field.label}
-                    description={field.description}
                     required={field.required !== false}
-                    mention={field.mention}
                 >
                     {field.type === "select" && (
                         <Select
                             name={field.name}
-                            options={field.options}
                             value={field.value}
-                            onChange={onChange}
+                            options={field.options}
                             placeholder={field.placeholder}
+                            onChange={onChange}
+                        />
+                    )}
+
+                    {field.type === "currency" && (
+                        <Input
+                            name={field.name}
+                            type="number"
+                            value={field.value}
+                            placeholder={field.placeholder}
+                            onChange={onChange}
+                            required={field.required !== false}
                         />
                     )}
 
@@ -33,19 +49,6 @@ function BankAccountForm({ form, fields, onChange, onCancel, onSubmit, cancelLab
                         <DateInput
                             name={field.name}
                             value={field.value}
-                            onChange={onChange}
-                            required={field.required !== false}
-                            min={field.min}
-                            max={field.max}
-                        />
-                    )}
-
-                    {["text", "number"].includes(field.type) && (
-                        <Input
-                            name={field.name}
-                            type={field.type}
-                            value={field.value}
-                            placeholder={field.placeholder}
                             onChange={onChange}
                             required={field.required !== false}
                         />
@@ -62,4 +65,4 @@ function BankAccountForm({ form, fields, onChange, onCancel, onSubmit, cancelLab
     );
 }
 
-export default BankAccountForm;
+export default BankingTransactionForm;

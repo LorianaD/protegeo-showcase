@@ -10,3 +10,6 @@ export * from "./useUpdateBankingTransaction";
 
 // DELETE
 export * from "./useDeleteBankingTransaction";
+
+// MANAGEMENT
+export * from "./useBankingTransactionModal";

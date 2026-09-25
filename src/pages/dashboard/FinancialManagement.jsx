@@ -6,7 +6,18 @@ import { useOutletContext, useParams } from "react-router";
 function FinancialManagement() {
     const {reference} = useParams();
 
-    const { protectedPersons, protectedPersonsLoading, protectedPersonsError, openTransactionModal, transactionRefreshKey, managementAccountRefreshKey, refreshManagementAccounts } = useOutletContext();
+    const { 
+        protectedPersons, 
+        protectedPersonsLoading, 
+        protectedPersonsError, 
+
+        openTransactionModal, 
+        openBankingTransactionModal,
+
+        transactionRefreshKey, 
+        managementAccountRefreshKey, 
+        refreshManagementAccounts 
+    } = useOutletContext();
 
     const page = financialManagementDashboard;
     const variantClass = "dashboard";
@@ -43,9 +54,18 @@ function FinancialManagement() {
         label: `${bankAccount.account_label} - ${bankAccount.account_number_masked}`,
     }));
 
-    const { statsData, loading: statsLoading, error: statsError } = useFinancialManagementStats(transactions);
+    const { 
+        statsData, 
+        loading: statsLoading, 
+        error: statsError 
+    } = useFinancialManagementStats(transactions, managementAccount?.start_date, managementAccount?.end_date);
 
-    const { monthlyEvolution, expenseBreakdown, loading: chartsLoading, error: chartsError } = useFinancialManagementCharts(transactions);
+    const { 
+        monthlyEvolution, 
+        expenseBreakdown, 
+        loading: chartsLoading, 
+        error: chartsError 
+    } = useFinancialManagementCharts(transactions, managementAccount?.start_date, managementAccount?.end_date);
 
     const loading = dossierLoading || yearLoading || transactionsLoading || statsLoading || chartsLoading;
 
@@ -75,6 +95,17 @@ function FinancialManagement() {
                 managementAccountId,
                 bankAccountOptions,
             });
+
+            return;
+        }
+
+        if (actionName === "addBankingTransaction") {
+            openBankingTransactionModal({
+                dossierId,
+                bankAccounts,
+            });
+
+            return;
         }
     }
 
