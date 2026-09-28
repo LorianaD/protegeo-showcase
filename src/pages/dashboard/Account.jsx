@@ -2,13 +2,16 @@ import { Main, HeroDashboard, SectionOverviewContainer, TabsDashboard, SectionPa
 import { accountDashboard } from "@/data";
 import { useBankAccounts, useBankingTransactions, useDossierByReference, useManagementAccountMonth, useManagementAccountYear, useTransactions } from "@/hooks";
 import { getAnnualFinancialData, getMonthlyFinancialData } from "@/utils";
-import { Outlet, useOutletContext, useParams } from "react-router";
+import { Outlet, useLocation, useOutletContext, useParams } from "react-router";
 
 function Account() {
     const page = accountDashboard;
     const variantClass = "dashboard";
 
     const { reference } = useParams();
+    const { pathname } = useLocation();
+
+const isHistoryPage = pathname.endsWith("/history");
 
     const { 
         protectedPersons, 
@@ -23,6 +26,8 @@ function Account() {
         transactionRefreshKey,
         bankAccountRefreshKey,
         bankingTransactionRefreshKey,
+
+        refreshManagementAccounts,
         refreshTransactions,
     } = useOutletContext();
 
@@ -30,12 +35,14 @@ function Account() {
 
     const { 
         managementAccount,
+        managementAccounts,
         managementAccountId,
         previousManagementAccount,
         selectedManagementAccountId,
         year,
         yearOptions,
         handleYearChange,
+        selectManagementAccount,
         loading: yearLoading,
         error: yearError,
     } = useManagementAccountYear(dossierId, managementAccountRefreshKey);
@@ -138,10 +145,35 @@ function Account() {
     return (
         <Main variant={ variantClass }>
             <SectionOverviewContainer>
-                <HeroDashboard page={ page } year={selectedManagementAccountId} yearOptions={yearOptions} onYearChange={handleYearChange} protectedPersons={protectedPersons} protectedPersonsLoading={protectedPersonsLoading} protectedPersonsError={protectedPersonsError}/>
-                <ManagementAccountPeriod section={page.period} managementAccount={managementAccount}/>
-                <TabsDashboard page={ page } />
-                <MonthSelect label={page.monthNav.label} month={month} options={monthOptions} onChange={handleMonthChange} loading={yearLoading}/>
+                <HeroDashboard 
+                    page={ page } 
+                    year={selectedManagementAccountId} 
+                    yearOptions={yearOptions} 
+                    onYearChange={handleYearChange} 
+                    protectedPersons={protectedPersons} 
+                    protectedPersonsLoading={protectedPersonsLoading} 
+                    protectedPersonsError={protectedPersonsError}
+                    showYearSelect={!isHistoryPage}
+                />
+                {!isHistoryPage && (
+                    <ManagementAccountPeriod
+                        section={page.period}
+                        managementAccount={managementAccount}
+                    />
+                )}
+
+                <TabsDashboard page={page} />
+
+                {!isHistoryPage && (
+                    <MonthSelect
+                        label={page.monthNav.label}
+                        month={month}
+                        options={monthOptions}
+                        onChange={handleMonthChange}
+                        loading={yearLoading}
+                    />
+                )}
+
                 <Outlet context={{
                     page,
                     dossierId,
@@ -157,8 +189,12 @@ function Account() {
                     previousBankingTransactions,
 
                     managementAccount,
+                    managementAccounts,
                     managementAccountId,
+                    selectManagementAccount,
                     previousManagementAccount,
+                    refreshManagementAccounts,
+
                     bankAccounts,
                     bankingTransactions,
                     transactions,
@@ -169,13 +205,15 @@ function Account() {
                     monthlyFinancialData,
                     annualFinancialData,
                     bankAccountOptions,
+
                     openTransactionModal,
                     openBankAccountModal,
                     openBankingTransactionModal,
                     refreshTransactions,
                 }} />
+
             </SectionOverviewContainer>
-            <SectionPageActions section={page.actions} /> 
+            <SectionPageActions section={page.actions} reference={reference} /> 
         </Main>
     )
 }

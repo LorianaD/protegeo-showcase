@@ -260,6 +260,18 @@ Redirection cards
     font-weight: var(--weight-bold);
 }
 
+.info-card__value--warning {
+    color: var(--orange);
+}
+
+.info-card__value--success {
+    color: var(--green);
+}
+
+.info-card__value--year {
+    color: var(--color-primary);
+}
+
 /***********************************
  BANK ACCOUT CARDS 
 ***********************************/

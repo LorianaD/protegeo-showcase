@@ -589,6 +589,7 @@ Sections
 .dashboard-section-header__title {
     font-size: var(--title-h3);
     font-weight: var(--weight-bold);
+    width: 100%;
 }
 
 .dashboard-section-header__container-title {
@@ -604,6 +605,8 @@ Sections
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 /* ***********************************

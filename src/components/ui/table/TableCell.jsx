@@ -1,5 +1,6 @@
 // TableCell affiche les valeur (texte, badge, botton,...)
 import { BadgeStatus } from "../badges";
+import { Button } from "../buttons";
 
 function TableCell({ value, type = "text", variant }) {
     const hasValue = value !== null && value !== undefined && value !== "";
@@ -12,7 +13,7 @@ function TableCell({ value, type = "text", variant }) {
                 <BadgeStatus
                     status={ displayedValue }
                     variant={ variant }
-                />                
+                />
             </td>
         )
     }
@@ -23,6 +24,18 @@ function TableCell({ value, type = "text", variant }) {
                 <span className="table-body__text-truncate">
                     {displayedValue}
                 </span>
+            </td>
+        );
+    }
+
+    if (type === "button") {
+        return (
+            <td className="table-body__item">
+                <Button
+                    label={value.label}
+                    onClick={value.onClick}
+                    variant="primary"
+                />
             </td>
         );
     }

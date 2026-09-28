@@ -1,4 +1,4 @@
-import { BankAccountDashboardAccount, ExpensesDashboardAccount, ResourcesDashboardAccount, SummaryDashboardAccount } from "@/components";
+import { AccountListDashboardAccount, BankAccountDashboardAccount, ExpensesDashboardAccount, ResourcesDashboardAccount, SummaryDashboardAccount } from "@/components";
 import { Account } from "@/pages/dashboard";
 import { Route, Routes } from "react-router";
 
@@ -10,6 +10,7 @@ function AccountRoutes() {
                 <Route path="/resources" element={<ResourcesDashboardAccount />} />
                 <Route path="/expenses" element={<ExpensesDashboardAccount />} />
                 <Route path="/bank-accounts" element={<BankAccountDashboardAccount />} />
+                <Route path="/history" element={<AccountListDashboardAccount />}/>
             </Route>
         </Routes>
     )    

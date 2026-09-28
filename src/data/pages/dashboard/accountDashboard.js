@@ -1,7 +1,7 @@
 import { AllowanceStats, BankAccount, BankAccountGray, DailyLivingStats, EarningStats, Expenses, ExpensesGray, ExpensesStats, FinalBalanceStats, FinancialProfitStats, HomeCareStats, HousingStats, InsuranceStats, InvestmentStats, LoanStats, MajorPurchaseStats, OtherExpensesStats, OtherResourceStats, PreviousBalanceStats, Resources, ResourcesGray, ResourcesStats, SummaryAccount, SummaryAccountGray, TaxStats, WorkStats } from "@/assets";
 import { pageActionsDashboard } from "@/data/actions";
 import { cta, messages } from "@/data/form";
-import { summaryAccount, resourcesAccount, expensesAccount, bankAccountsAccount } from "./accountDashboard/index";
+import { summaryAccount, resourcesAccount, expensesAccount, bankAccountsAccount, accountListAccount } from "./accountDashboard/index";
 
 const accountDashboard = {
     hero : {
@@ -77,6 +77,7 @@ const accountDashboard = {
     resources : resourcesAccount,
     expenses : expensesAccount,
     bankAccounts : bankAccountsAccount,
+    accountList : accountListAccount,
 
     messages : {
         loading : messages.loading,
@@ -98,6 +99,7 @@ const accountDashboard = {
             },
             {
                 ...pageActionsDashboard.history,
+                to: "/dashboard/account/:reference/history"
             },
             {
                 ...pageActionsDashboard.generateAnnualAccount,

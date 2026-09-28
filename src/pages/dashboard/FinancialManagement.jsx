@@ -1,6 +1,7 @@
 import { ActionsDashboardFinancialManagement, ChartsDashboardFinancialManagement, DashboardSection, DashboardSectionLoading, HeroDashboard, Main, ManagementAccountFormModal, ManagementAccountPeriod, SectionOverviewContainer, SectionPageActions, StatsDashboardFinancialManagement } from "@/components";
 import { addManagementAccountForm, financialManagementDashboard } from "@/data";
 import { useBankAccounts, useCreateManagementAccount, useDossierByReference, useFinancialManagementCharts, useFinancialManagementStats, useManagementAccountModal, useManagementAccountYear, useTransactions } from "@/hooks";
+import { getNextManagementAccountPeriod } from "@/utils";
 import { useOutletContext, useParams } from "react-router";
 
 function FinancialManagement() {
@@ -26,6 +27,7 @@ function FinancialManagement() {
 
     const { 
         managementAccount, 
+        managementAccounts, 
         managementAccountId, 
         selectedManagementAccountId, 
         year, 
@@ -35,9 +37,19 @@ function FinancialManagement() {
         error: yearError 
     } = useManagementAccountYear(dossierId, managementAccountRefreshKey);
 
-    const { isManagementAccountModalOpen, managementAccountValues, openManagementAccountModal, closeManagementAccountModal, handleManagementAccountChange } = useManagementAccountModal();
+    const {
+        isManagementAccountModalOpen,
+        managementAccountValues,
+        openCreateManagementAccountModal,
+        closeManagementAccountModal,
+        handleManagementAccountChange
+    } = useManagementAccountModal();
 
-    const { createManagementAccount, loading: managementAccountCreationLoading, error: managementAccountCreationError } = useCreateManagementAccount();
+    const { 
+        createManagementAccount, 
+        loading: managementAccountCreationLoading, 
+        error: managementAccountCreationError 
+    } = useCreateManagementAccount();
 
     const managementAccountFields =
         addManagementAccountForm.fields.map((field) => ({
@@ -73,7 +85,10 @@ function FinancialManagement() {
 
     function handleQuickAction(actionName) {
         if (actionName === "addManagementAccount") {
-            openManagementAccountModal();
+            const suggestedPeriod =
+                getNextManagementAccountPeriod(managementAccounts);
+
+            openCreateManagementAccountModal(suggestedPeriod);
             return;
         }
 

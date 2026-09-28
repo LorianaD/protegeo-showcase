@@ -1,14 +1,14 @@
-function formatManagementAccountStatus(status) {
-    const statuses = {
-        in_progress: "En cours",
-        to_validate: "À valider",
-        validated: "Validé",
-        sent: "Envoyé",
-    };
+import { managementAccountStatuses } from "@/data";
 
-    return statuses[status] ?? status;
+function formatManagementAccountStatus(status) {
+    return managementAccountStatuses[status]?.label ?? status;
+}
+
+function getManagementAccountStatusVariant(status) {
+    return managementAccountStatuses[status]?.variant ?? "default";
 }
 
 export {
     formatManagementAccountStatus,
+    getManagementAccountStatusVariant,
 };

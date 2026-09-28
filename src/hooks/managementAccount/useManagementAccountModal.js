@@ -14,13 +14,36 @@ function useManagementAccountModal() {
     const [managementAccountValues, setManagementAccountValues] =
         useState(initialValues);
 
-    function openManagementAccountModal() {
-        setManagementAccountValues(initialValues);
+    const [editingManagementAccountId, setEditingManagementAccountId] =
+        useState(null);
+
+    function openCreateManagementAccountModal(values = null) {
+        setEditingManagementAccountId(null);
+
+        setManagementAccountValues({
+            ...initialValues,
+            ...values,
+        });
+
+        setIsManagementAccountModalOpen(true);
+    }
+
+    function openEditManagementAccountModal(account) {
+        setEditingManagementAccountId(account.id);
+
+        setManagementAccountValues({
+            year: account.year ?? "",
+            start_date: account.start_date ?? "",
+            end_date: account.end_date ?? "",
+            note: account.note ?? "",
+        });
+
         setIsManagementAccountModalOpen(true);
     }
 
     function closeManagementAccountModal() {
         setIsManagementAccountModalOpen(false);
+        setEditingManagementAccountId(null);
         setManagementAccountValues(initialValues);
     }
 
@@ -36,7 +59,9 @@ function useManagementAccountModal() {
     return {
         isManagementAccountModalOpen,
         managementAccountValues,
-        openManagementAccountModal,
+        editingManagementAccountId,
+        openCreateManagementAccountModal,
+        openEditManagementAccountModal,
         closeManagementAccountModal,
         handleManagementAccountChange,
     };

@@ -32,12 +32,16 @@ function getMeasureDeadline(measure, fallback = commonMessages.notProvidedFemini
     );
 }
 
-function getMeasureDeadlineLabel(measure) {
+function getMeasureDeadlineStatus(measure) {
     if (!measure) {
-        return commonMessages.notProvidedFeminine;
+        return {
+            label: commonMessages.notProvidedFeminine,
+            variant: "neutral",
+        };
     }
 
     const currentDate = new Date();
+
     const startDate = measure.start_date
         ? new Date(measure.start_date)
         : null;
@@ -47,7 +51,10 @@ function getMeasureDeadlineLabel(measure) {
         : null;
 
     if (startDate && startDate > currentDate) {
-        return `Débute le ${formatLongDate(startDate)}`;
+        return {
+            label: `Débute le ${formatLongDate(startDate)}`,
+            variant: "warning",
+        };
     }
 
     if (!endDate) {
@@ -55,23 +62,36 @@ function getMeasureDeadlineLabel(measure) {
     }
 
     if (!endDate) {
-        return commonMessages.notProvidedFeminine;
+        return {
+            label: commonMessages.notProvidedFeminine,
+            variant: "neutral",
+        };
     }
 
     if (endDate < currentDate) {
-        return `Terminée depuis le ${formatLongDate(endDate)}`;
+        return {
+            label: `Terminée depuis le ${formatLongDate(endDate)}`,
+            variant: "danger",
+        };
     }
 
     const urgentLimitDate = addMonths(currentDate, 3);
 
-    if (
-        endDate >= currentDate &&
-        endDate <= urgentLimitDate
-    ) {
-        return `Fin le ${formatLongDate(endDate)}`;
+    if (endDate <= urgentLimitDate) {
+        return {
+            label: `Fin le ${formatLongDate(endDate)}`,
+            variant: "danger",
+        };
     }
 
-    return "En cours";
+    return {
+        label: "En cours",
+        variant: "success",
+    };
+}
+
+function getMeasureDeadlineLabel(measure) {
+    return getMeasureDeadlineStatus;
 }
 
 function getMeasureStatus(measure) {
@@ -105,4 +125,5 @@ export {
     getMeasureDeadline,
     getMeasureDeadlineLabel,
     getMeasureStatus,
+    getMeasureDeadlineStatus,
 };

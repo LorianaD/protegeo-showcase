@@ -8,8 +8,10 @@ const protectedColumns = [
         label: "Mesure",
     },
     {
-        name: "measure_tracking",
+        key: "measure_tracking",
         label: "Suivi de la mesure",
+        type: "badge",
+        variantKey: "measure_tracking_variant",
     },
     {
         name: "status",

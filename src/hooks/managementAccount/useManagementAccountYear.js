@@ -31,6 +31,10 @@ function useManagementAccountYear(dossierId, refreshKey = 0) {
         setSelectedManagementAccountId(event.target.value);
     }
 
+    function selectManagementAccount(managementAccountId) {
+        setSelectedManagementAccountId(String(managementAccountId));
+    }
+
     useEffect(() => {
         setSelectedManagementAccountId("");
     }, [dossierId]);
@@ -93,6 +97,7 @@ function useManagementAccountYear(dossierId, refreshKey = 0) {
         year: managementAccount?.year ?? "",
         yearOptions,
         handleYearChange,
+        selectManagementAccount,
         loading,
         error,
     };
