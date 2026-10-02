@@ -28,7 +28,6 @@
     padding: 50px 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 /* ***********************************
@@ -39,5 +38,11 @@
     .main {
         width: 100%;
         padding: var(--space-xl);
+    }
+}
+
+@media (max-width: 1250px) {
+    .dashboard-main-layout {
+        flex-direction: column;
     }
 }
