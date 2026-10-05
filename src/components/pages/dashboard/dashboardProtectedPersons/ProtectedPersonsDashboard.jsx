@@ -35,6 +35,7 @@ function ProtectedPersonsDashboard({page, protectedPersons, loading, error}) {
                 columns={section.columns}
                 emptyMessage={section.emptyMessage}
                 rows={rows}
+                variant="home"
             />
         </DashboardSection>
     )

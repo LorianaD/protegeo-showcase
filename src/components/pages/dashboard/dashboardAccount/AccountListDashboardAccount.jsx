@@ -119,6 +119,7 @@ function AccountListDashboardAccount() {
                 columns={section.columns}
                 emptyMessage={section.emptyMessage}
                 rows={rows}
+                variant="account-history"
             />
 
             {isManagementAccountModalOpen && (

@@ -207,7 +207,7 @@ function IdentifyDashboardProtectedProfile() {
 
                         <div className="protected-profile-identity__fields">
                             {identityRows.map((row, index) => (
-                                <InfoFieldGroup key={`identity-${index}`}>
+                                <InfoFieldGroup key={`identity-${index}`} variant="profile">
                                     {row.map((item) => (
                                         <InfoField
                                             key={item.name ?? item.label}
@@ -226,7 +226,7 @@ function IdentifyDashboardProtectedProfile() {
                     </div>
 
                     {detailRows.map((row, index) => (
-                        <InfoFieldGroup key={index}>
+                        <InfoFieldGroup key={index} variant="profile">
                             {row.map((item) => (
                                 <InfoField
                                     key={item.name ?? item.label}

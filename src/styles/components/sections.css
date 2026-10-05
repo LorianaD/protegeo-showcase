@@ -425,6 +425,14 @@ Sections
     width: 100%;
 }
 
+.section-deadline-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+}
+
 .section-deadline-list__item {
     display: grid;
     padding: 16px;
@@ -623,6 +631,19 @@ Sections
         text-align: left;
     }
 
+    .dashboard-section-header__container-title {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .dashboard-section-header__actions {
+        justify-content: flex-start;
+    }
+
+    .dashboard-section--account-table {
+        gap: var(--space-lg);
+    }
+
     .dashboard-section__body--chart {
         grid-template-columns: 1fr;
     }
@@ -653,5 +674,75 @@ Sections
 
     .steps-container__item {
         padding: var(--space-xs) var(--space-sm);
+    }
+
+    .stats-section {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        gap: var(--space-lg);
+    }
+
+    .section-dashboard-actions {
+        flex-direction: column;
+    }
+
+    .section-action-container {
+        justify-content: center;
+    }
+
+    .stats-section {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        align-items: stretch;
+        gap: var(--space-lg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dashboard-section .dashboard-section__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-md);
+    }
+
+    .hero-container__header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .hero-container__cta {
+        width: 100%;
+        padding: 0;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .stats-section {
+        grid-template-columns: 1fr;
+    }
+
+    .section-deadline-list__item {
+        grid-template-columns: 1fr;
+    }
+
+    .section-deadline-list__status {
+        margin: 0;
+        width: fit-content;
+    }
+
+    .section-page-actions__buttons {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+
+    .section-page-actions__buttons .button {
+        width: 100%;
+    }
+
+    .section-page-actions__buttons .button--page-action-left,
+    .section-page-actions__buttons .button--page-action-center,
+    .section-page-actions__buttons .button--page-action-right {
+        border-radius: var(--radius-button);
     }
 }

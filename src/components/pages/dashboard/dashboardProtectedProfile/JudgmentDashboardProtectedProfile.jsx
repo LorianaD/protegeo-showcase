@@ -184,7 +184,7 @@ function JudgmentDashboardProtectedProfile () {
             <form className="update-form" onSubmit={handleSubmit}>
                 <div className="info-list">
                     {detailRows.map((row, index) => (
-                        <InfoFieldGroup key={index}>
+                        <InfoFieldGroup key={index} variant="profile">
                             {row.map((item) => (
                                 <InfoField
                                     key={item.name ?? item.label}

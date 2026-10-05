@@ -25,11 +25,23 @@ function ResourcesDashboardAccount() {
     const section = page.resources;
     const sectionName = "resources";
 
-    const {updateTransaction, loading: updateLoading, error: updateError} = useUpdateTransaction();
+    const {
+        updateTransaction, 
+        loading: updateLoading, 
+        error: updateError
+    } = useUpdateTransaction();
 
-    const {deleteTransaction, loading: deleteLoading, error: deleteError} = useDeleteTransaction();
+    const {
+        deleteTransaction, 
+        loading: deleteLoading, 
+        error: deleteError
+    } = useDeleteTransaction();
 
-    const {transactionToDelete, openDeleteConfirm,closeDeleteConfirm} = useTransactionDeleteConfirm();
+    const {
+        transactionToDelete, 
+        openDeleteConfirm,
+        closeDeleteConfirm
+    } = useTransactionDeleteConfirm();
 
     const {
         currentMonth,

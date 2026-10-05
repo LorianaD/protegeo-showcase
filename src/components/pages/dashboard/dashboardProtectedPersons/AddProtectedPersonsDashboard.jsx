@@ -8,6 +8,7 @@ function AddProtectedPersonsDashboard({page, onAddDossier}) {
             title={section.title}
             addLabel={section.actionLabel.label}
             onAdd={onAddDossier}
+            variant="add-protected-person"
         />
     )
 }

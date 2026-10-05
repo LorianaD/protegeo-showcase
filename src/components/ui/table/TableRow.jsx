@@ -21,9 +21,11 @@ function TableRow({columns, row, variant}) {
                 return (
                     <TableCell
                         key={`${row.id}-${columnName}`}
+                        name={columnName}
                         value={value}
                         type={column.type}
                         variant={cellVariant}
+                        label={column.label}
                     />
                 );
             })}

@@ -16,7 +16,11 @@ function TransactionAccordionEntry({ transaction, fields = [], editing = false, 
                         }
                         editing={editing}
                         onChange={onChange}
-                        variant={variant}
+                        variant={
+                            field.name === "operation_date" || field.name === "amount"
+                                ? "transaction-right"
+                                : "transaction"
+                        }
                     />
                 ))}
             </div>

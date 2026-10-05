@@ -134,7 +134,7 @@ function PasswordDashboardUserProfile({ page, user, loading }) {
                     <form className="update-form" onSubmit={handleSubmit}>
                         <div className="info-list">
                             {modalRows.map((row, index) => (
-                                <InfoFieldGroup key={index}>
+                                <InfoFieldGroup key={index} variant="user-profile">
                                     {row.map((item) => (
                                         <InfoField
                                             key={item.name}

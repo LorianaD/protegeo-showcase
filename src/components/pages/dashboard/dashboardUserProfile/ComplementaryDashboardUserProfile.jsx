@@ -52,7 +52,7 @@ function ComplementaryDashboardUserProfile({ page, user, loading, refreshUser })
             <form onSubmit={handleSubmit} className="update-form">
                 <div className="info-list">
                     {rows.map((row, index) => (
-                        <InfoFieldGroup key={index}>
+                        <InfoFieldGroup key={index} variant="user-profile">
                             {row.map((item) => (
                                 <InfoField
                                     key={item.name ?? item.label}

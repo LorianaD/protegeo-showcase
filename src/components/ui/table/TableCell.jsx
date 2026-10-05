@@ -1,26 +1,32 @@
-// TableCell affiche les valeur (texte, badge, botton,...)
+// TableCell displays table values such as text, badges and buttons.
 import { BadgeStatus } from "../badges";
 import { Button } from "../buttons";
 
-function TableCell({ value, type = "text", variant }) {
+function TableCell({ name, value, type = "text", variant, label }) {
     const hasValue = value !== null && value !== undefined && value !== "";
 
     const displayedValue = hasValue ? value : "Non renseigné";
-    
-    if(type === "badge") {
+
+    const itemClassName = `table-body__item table-body__item--${name}`;
+
+    if (type === "badge") {
         return (
-            <td className="table-body__item">
+            <td className={itemClassName} data-label={label}>
                 <BadgeStatus
-                    status={ displayedValue }
-                    variant={ variant }
+                    status={displayedValue}
+                    variant={variant}
                 />
             </td>
-        )
+        );
     }
 
     if (type === "truncate") {
         return (
-            <td className="table-body__item table-body__item--truncate" title={displayedValue}>
+            <td
+                className={`${itemClassName} table-body__item--truncate`}
+                title={displayedValue}
+                data-label={label}
+            >
                 <span className="table-body__text-truncate">
                     {displayedValue}
                 </span>
@@ -30,7 +36,7 @@ function TableCell({ value, type = "text", variant }) {
 
     if (type === "button") {
         return (
-            <td className="table-body__item">
+            <td className={itemClassName} data-label={label}>
                 <Button
                     label={value.label}
                     onClick={value.onClick}
@@ -41,10 +47,12 @@ function TableCell({ value, type = "text", variant }) {
     }
 
     return (
-        <td className="table-body__item">
-            { displayedValue }
+        <td className={itemClassName} data-label={label}>
+            <span className="table-body__value">
+                {displayedValue}
+            </span>
         </td>
-    )
+    );
 }
 
 export default TableCell;
