@@ -44,9 +44,6 @@
     padding: var(--space-xs);
 }
 
-
-/* .form-checkbox {} */
-
 .form-radio {
     width: 16px;
     height: 16px;
@@ -65,6 +62,51 @@
     display: flex;
     gap: 12px;
     align-items: center;
+}
+
+.form-checkbox--switch {
+    appearance: none;
+    position: relative;
+
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 50px;
+    background-color: var(--light-gray);
+
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.form-checkbox--switch::before {
+    content: "";
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+    background-color: var(--white);
+
+    transition: transform 0.2s ease;
+}
+
+.form-checkbox--switch:checked {
+    background-color: var(--color-primary);
+}
+
+.form-checkbox--switch:checked::before {
+    transform: translateX(20px);
+}
+
+.form-checkbox--switch:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .select {

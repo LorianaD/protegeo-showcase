@@ -1,7 +1,16 @@
+import { CookieConsentBanner } from "./components";
+import { useAnalyticsPageView } from "./hooks";
 import AppRoutes from "./routes";
 
 function App() {
-    return <AppRoutes />;
+    useAnalyticsPageView();
+    
+    return (
+        <>
+            <AppRoutes />
+            <CookieConsentBanner />
+        </>
+    );
 }
 
 export default App;

@@ -10,3 +10,5 @@ export * from "./transaction";
 export * from "./financialManagement";
 export * from "./bankAccount";
 export * from "./bankingTransaction";
+export * from "./cookieConsent";
+export * from "./analytics";

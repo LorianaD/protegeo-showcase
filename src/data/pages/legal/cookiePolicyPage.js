@@ -109,6 +109,52 @@ const cookiesPolicy = {
     ],
 };
 
+const cookiesBanner = {
+    title: "Protégéo utilise des cookies",
+
+    description: "Nous utilisons des cookies nécessaires au bon fonctionnement du site et, avec votre accord, des cookies de mesure d’audience afin d’améliorer Protégéo.",
+
+    actions: {
+        refuse: "Tout refuser",
+        customize: "Personnaliser",
+        accept: "Tout accepter",
+    },
+
+    links: {
+        policy: "/cookies",
+    },
+
+    preferences: {
+        title: "Préférences des cookies",
+        description: "Vous pouvez choisir les cookies que vous souhaitez autoriser.",
+
+        categories: [
+            {
+                name: "necessary",
+                title: "Cookies nécessaires",
+                description: "Nécessaires au bon fonctionnement et à la sécurité de Protégéo.",
+                disabled: true,
+            },
+            {
+                name: "preferences",
+                title: "Cookies de préférence",
+                description: "Permettent de mémoriser certaines préférences d’affichage et de navigation.",
+            },
+            {
+                name: "analytics",
+                title: "Mesure d’audience",
+                description: "Permet de mesurer l’utilisation de Protégéo afin d’améliorer le site.",
+            },
+        ],
+
+        actions: {
+            refuse: "Tout refuser",
+            save: "Enregistrer mes choix",
+        },
+    },
+};
+
 export {
     cookiesPolicy,
+    cookiesBanner,
 };

@@ -10,3 +10,4 @@ export * from "./transaction";
 export * from "./bankAccount";
 export * from "./bankingTransaction";
 export * from "./financialManagement";
+export * from "./analytics";
